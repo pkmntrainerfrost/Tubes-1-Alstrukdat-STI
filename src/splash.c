@@ -1,3 +1,12 @@
+#include <stdio.h>
+
+void splash() {
+
+    printf("Hello World!\n");
+    
+}
+
+
 //             *#%(                :::::::::  ::::    ::: ::::    ::::   ::::::::  
 // /((******/#%&@@@&%##((((#       :+:    :+: :+:+:   :+: +:+:+: :+:+:+ :+:    :+:
 // *(@(/(((((..............(,      +:+    +:+ :+:+:+  +:+ +:+ +:+:+ +:+ +:+    +:+
@@ -12,8 +21,10 @@
 //     &&**(((((((((&(((#&( &(.&   18221166 - Erensi Ratu Chelsia
 //          *& /#(((((             18221168 - Rania Sasi Kirana
 //
-// - Tugas Besar 1 IF2111 Algoritma Dan Struktur Data STI - Kelompok 06 Kelas 02 -
-//
+// - Tugas Besar 1 IF2111 Algoritma dan Struktur Data STI - Kelompok 06 Kelas 02 -
+// 
+// Selamat Datang di BNMO!
+// INPUT [START] ATAU [LOAD]...
 // root@BNMO:~$
 //
 //  
