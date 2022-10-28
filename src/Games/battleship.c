@@ -13,13 +13,52 @@ void initializeGrid(Grid *G) {
             SHIP(TILE(*G,P)) = false;
             SHOT(TILE(*G,P)) = false;
 
+            destroyPoint(&P);
+
         }
     }
 
 }
 
+void printGrid(Grid G,boolean Enemy) {
+
+
+
+    for (int x = 1; x < 11; x++) {
+
+        for (int y = 1; y < 11; y++) {
+
+            Point P;
+            createPoint(&P,x,y);
+
+            if (SHOT(TILE(G,P))) {
+                printf("X");
+            } else if (SHIP(TILE(G,P))) {
+                if (!Enemy) {
+                    printf("#");
+                }
+            } else {
+                printf(" ");
+            }
+
+            destroyPoint(&P);
+
+        }
+
+        printf("\n");
+
+    }
+
+}
+
 boolean shipPosValid(Point P, int Length, boolean Vertical) {
-    
+
+    if (Vertical) {
+        return (ORDINATE(P) + Length - 1 <= 10 && ABSICSSA(P) <= 10 && isFirstQuadrant(P));
+    } else {
+        return (ABSICSSA(P) + Length - 1 <= 10 && ORDINATE(P) <= 10 && isFirstQuadrant(P));
+    }
+
 }
 
 void placeShip(Grid *G, Point P, int Length, boolean Vertical) {
