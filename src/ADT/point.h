@@ -22,4 +22,6 @@ void readPoint(Point *P);
 
 void displayPoint(Point *P);
 
+Point movePoint(Point P, int dx, int dy);
+
 #endif
