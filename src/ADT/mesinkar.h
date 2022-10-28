@@ -1,8 +1,8 @@
 /* File         : mesinkar.h */
 /* Deskripsi    : Header ADT Mesin Karakter */
 
-#ifndef __MESIN_KAR__
-#define __MESIN_KAR__
+#ifndef __MESINKAR__
+#define __MESINKAR__
 
 #include "../boolean.h"
 
