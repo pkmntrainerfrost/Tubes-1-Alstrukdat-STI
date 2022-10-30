@@ -16,8 +16,6 @@ typedef struct {
 
 void createPoint(Point *P , int x, int y);
 
-void destroyPoint(Point *P);
-
 boolean isOrigin(Point P);
 
 boolean isFirstQuadrant(Point P);
@@ -26,6 +24,8 @@ void readPoint(Point *P);
 
 void displayPoint(Point *P);
 
-Point movePoint(Point P, int dx, int dy);
+Point translate(Point P, int dx, int dy);
+
+void movePoint(Point *P, int dx, int dy);
 
 #endif

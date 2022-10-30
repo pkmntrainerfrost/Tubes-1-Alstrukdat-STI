@@ -5,7 +5,7 @@
 // Loid Forger -> lebih pinter, strategi 
 // Anya Forger -> hax (baca pikiran), harus bener terus ato nggak auto kalah
 
-void initializeGrid(Grid *G) {
+void initializeGrid(Grid *G, boolean Enemy) {
 
     int i = 0;
 
@@ -17,36 +17,87 @@ void initializeGrid(Grid *G) {
 
             HAS_SHIP(TILE(*G,P)) = false;
             WAS_SHOT(TILE(*G,P)) = false;
-
-            destroyPoint(&P);
+            ENEMY(*G) = Enemy;
 
         }
     }
 
 }
 
-void endTurn(Grid *G, boolean *endGame) {
+void createShip(Ship *S, char *N, Point P, boolean V, int L) {
 
-    boolean allShipsSunk = true;
+    NAME(*S) = N;
+    POSITION(*S) = P;
+    VERTICAL(*S) = V;
+    SHIPLENGTH(*S) = L;
+    SUNK(*S) = false;
+
+}
+
+void placeShipPlayer(Grid *G) {
+
+    
+
+}
+
+boolean shipPosValid(Grid G, Point P, Ship S) {
+
+    boolean Valid = false;
+
+    if (VERTICAL(S)) {
+        if (ORDINATE(P) + LENGTH(S) - 1 <= 10 && ABSICSSA(P) <= 10 && isFirstQuadrant(P)) {
+            int i = 0;
+            boolean Overlap = false;
+            while (!Overlap && i <= LENGTH(S)) {
+                if (HAS_SHIP(TILE(G,P))) {
+                    Overlap = true;
+                }
+                movePoint(&P,0,1);
+                i = i + 1;
+            }
+            Valid = !Overlap;
+        }
+    } else {
+        if (ABSICSSA(P) + LENGTH(S) - 1 <= 10 && ORDINATE(P) <= 10 && isFirstQuadrant(P)) {
+            int i = 0;
+            boolean Overlap = false;
+            while (!Overlap && i <= LENGTH(S)) {
+                if (HAS_SHIP(TILE(G,P))) {
+                    Overlap = true;
+                }
+                movePoint(&P,1,0);
+                i = i + 1;
+            }
+            Valid = !Overlap;
+        }
+    }
+
+    return Valid;
+
+}
+
+void endTurn(Grid *G, boolean *EndGame) {
+
+    boolean AllShipsSunk = true;
 
     for (int i = 0; i < SHIPCOUNT; i++) {
 
         if (!SUNK(SHIP(*G,i))) {
 
-            allShipsSunk = false;
+            AllShipsSunk = false;
 
-            boolean allTilesShot = true;
-            Point checkPos = POSITION(SHIP(*G,i));
-            int shipLength = SHIPLENGTH(SHIP(*G,i));
+            boolean AllTilesShot = true;
+            Point CheckPos = POSITION(SHIP(*G,i));
+            int ShipLength = SHIPLENGTH(SHIP(*G,i));
 
-            while (allTilesShot && shipLength > 0) {
-                if (!WAS_SHOT(TILE(*G,checkPos))) {
-                    allTilesShot = false;
+            while (AllTilesShot && ShipLength > 0) {
+                if (!WAS_SHOT(TILE(*G,CheckPos))) {
+                    AllTilesShot = false;
                 }
-                shipLength = shipLength - 1;
+                ShipLength = ShipLength - 1;
             }
 
-            if (allTilesShot) {
+            if (AllTilesShot) {
                 SUNK(SHIP(*G,i)) = true;
             }
 
@@ -54,25 +105,11 @@ void endTurn(Grid *G, boolean *endGame) {
 
     }
 
-    if (allShipsSunk) {
-        *endGame = true;
+    if (AllShipsSunk) {
+        *EndGame = true;
     }
 
 }
-
-       PAPAN ANDA               PAPAN ANYA
-
-INTEGRITAS KAPAL   |A|B|C|D|E|F|G|H|I|J| |A|B|C|D|E|F|G|H|I|J|   INTEGRITAS KAPAL
-                   | | | | | | | | | | |0| | | | | | | | | | |   
-                   | | | | | | | | | | |1| | | | | | | | | | |   CARRIER #####
-                   | | | | | | | | | | |2| | | | | | | | | | |   
-                   | | | | | | | | | | |3| | | | | | | | | | |   BATTLESHIP ####
-                   | | | | | | | | | | |4| | | | | | | | | | |   
-                   | | | | | | | | | | |5| | | | | | | | | | |   CRUISER ###
-                   | | | | | | | | | | |6| | | | | | | | | | |   
-                   | | | | | | | | | | |7| | | | | | | | | | |   SUBMARINE ###
-                   | | | | | | | | | | |8| | | | | | | | | | |   
-                   | | | | | | | | | | |9| | | | | | | | | | |   DESTROYER ##
 
 /*
 
