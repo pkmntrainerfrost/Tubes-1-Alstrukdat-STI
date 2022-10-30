@@ -1,11 +1,34 @@
 #include <stdio.h>
 
-void splash() {
+int main() {
 
-    printf("Hello World!\n");
+    printf("            *#%%(                :::::::::  ::::    ::: ::::    ::::   :::::::: \n");
+    printf("/((******/#%%&@@@&%%##((((#       :+:    :+: :+:+:   :+: +:+:+: :+:+:+ :+:    :+:\n");
+    printf("*(@(/(((((..............(,      +:+    +:+ :+:+:+  +:+ +:+ +:+:+ +:+ +:+    +:+\n");
+    printf("*(/((((((%%...@.......@..(,      +#++:++#+  +#+ +:+ +#+ +#+  +:+  +#+ +#+    +:+\n");
+    printf("/(&#&%%#((%%......@#@.....(       +#+    +#+ +#+  +#+#+# +#+       +#+ +#+    +#+\n");
+    printf("/(&&&/(((&..............(       #+#    #+# #+#   #+#+# #+#       #+# #+#    #+#\n");
+    printf("/(@&&&((((@@&%%(((((((&&((       #########  ###    #### ###       ###  ######## \n");
+    printf("/(((%%&(/(((((((((((((((((                                                      \n");
+    printf("%%((%%&&/((((&***((((%%,((((       18220010 - Agnes Tamara Putri\n");
+    printf("&(&/*&/(((((((((((((&##@(&      18221102 - Salman Ma'arif Achsien\n");
+    printf("(((**#(((((((((#((&((&(( **@    18221122 - Reswara Trista Aulia C\n");
+    printf("    &&**(((((((((&(((#&( &(.&   18221166 - Erensi Ratu Chelsia\n");
+    printf("         *& /#(((((             18221168 - Rania Sasi Kirana\n");
+    printf("\n");
+    printf("- Tugas Besar 1 IF2111 Algoritma dan Struktur Data STI - Kelompok 06 Kelas 02 -\n");
+    printf("\n");
+    printf("Selamat Datang di BNMO!\n");
+    printf("INPUT [START] ATAU [LOAD]...\n");
+    printf("root@BNMO:~$ ");
+
+    int A;
+    scanf("%d",&A);
+
+
+    return 0;
     
 }
-
 
 //             *#%(                :::::::::  ::::    ::: ::::    ::::   ::::::::  
 // /((******/#%&@@@&%##((((#       :+:    :+: :+:+:   :+: +:+:+: :+:+:+ :+:    :+:
@@ -25,11 +48,4 @@ void splash() {
 // 
 // Selamat Datang di BNMO!
 // INPUT [START] ATAU [LOAD]...
-// root@BNMO:~$
-//
-//  
-//
-//
-//
-// 
-//
+// root@BNMO:~$ 
