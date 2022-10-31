@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int main() {
+void splash() {
 
     printf("            *#%%(                :::::::::  ::::    ::: ::::    ::::   :::::::: \n");
     printf("/((******/#%%&@@@&%%##((((#       :+:    :+: :+:+:   :+: +:+:+: :+:+:+ :+:    :+:\n");
@@ -21,12 +21,6 @@ int main() {
     printf("Selamat Datang di BNMO!\n");
     printf("INPUT [START] ATAU [LOAD]...\n");
     printf("root@BNMO:~$ ");
-
-    int A;
-    scanf("%d",&A);
-
-
-    return 0;
     
 }
 

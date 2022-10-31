@@ -14,18 +14,18 @@ typedef struct {
 #define ABSICSSA(p) (p).x
 #define ORDINATE(p) (p).y
 
-void createPoint(Point *P , int x, int y);
+void createPoint(Point *p , int x, int y);
 
-boolean isOrigin(Point P);
+boolean isOrigin(Point p);
 
-boolean isFirstQuadrant(Point P);
+boolean isFirstQuadrant(Point p);
 
-void readPoint(Point *P);
+void readPoint(Point *p);
 
-void displayPoint(Point *P);
+void displayPoint(Point *p);
 
-Point translate(Point P, int dx, int dy);
+Point translate(Point p, int dx, int dy);
 
-void movePoint(Point *P, int dx, int dy);
+void movePoint(Point *p, int dx, int dy);
 
 #endif
