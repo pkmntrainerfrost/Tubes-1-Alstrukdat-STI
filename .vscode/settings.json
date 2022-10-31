@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "point.h": "c",
+        "random.h": "c"
+    }
+}

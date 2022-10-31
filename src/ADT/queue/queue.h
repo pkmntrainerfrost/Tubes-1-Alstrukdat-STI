@@ -47,7 +47,7 @@ boolean isEmpty(Queue q);
 
 void createQueue(Queue *q);
 
-void enqueue(Queue *q, QElType *x);
+void enqueue(Queue *q, QElType x);
 
 void dequeue(Queue *q, QElType *x);
 

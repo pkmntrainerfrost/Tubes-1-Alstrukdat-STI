@@ -36,7 +36,38 @@ void createShip(Ship *S, char *N, Point P, boolean V, int L) {
 
 void placeShipPlayer(Grid *G) {
 
+    Point P;
+
+    boolean Valid = false;
+    boolean V;
+    int X, Y;
     
+    // CARRIER
+    Ship Carrier;
+
+    scanf("%f %f", &X, &Y);
+    createPoint(&P, X, Y);
+
+    scanf("%c", &V);
+
+    createShip(&Carrier,"Carrier",P,V,5);
+    
+    Valid = shipPosValid(*G,P,Carrier);
+    
+    while (!Valid) {
+
+        printf("Posisi kapal tidak valid! Ulangi input");
+
+        scanf("%f %f", &X, &Y);
+        createPoint(&P, X, Y);
+
+        scanf("%c",&V);
+
+        createShip(&Carrier,"Carrier",P,V,5);
+
+        Valid = shipPosValid(*G,P,Carrier);
+
+    }
 
 }
 

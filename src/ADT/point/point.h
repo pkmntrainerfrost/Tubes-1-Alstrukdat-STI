@@ -11,7 +11,7 @@ typedef struct {
     int y;
 } Point;
 
-#define ABSICSSA(p) (p).x
+#define ABSCISSA(p) (p).x
 #define ORDINATE(p) (p).y
 
 void createPoint(Point *p , int x, int y);
@@ -19,10 +19,6 @@ void createPoint(Point *p , int x, int y);
 boolean isOrigin(Point p);
 
 boolean isFirstQuadrant(Point p);
-
-void readPoint(Point *p);
-
-void displayPoint(Point *p);
 
 Point translate(Point p, int dx, int dy);
 

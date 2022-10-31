@@ -38,11 +38,8 @@ typedef struct {
     boolean enemy;
 } Grid;
 
-#define TILE(g,p) (g).tiles[((ABSICSSA(p) - 1) * 10 + (ORDINATE(p)) - 1)]
+#define TILE(g,p) (g).tiles[((ABSICSSA(p)) * 10 + (ORDINATE(p)))]
 #define SHIP(g,i) (g).ships[i]
 #define ENEMY(g)  (g).enemy
-
-
-
 
 #endif
