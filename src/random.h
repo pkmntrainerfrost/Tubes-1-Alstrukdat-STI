@@ -1,1 +1,1 @@
-long random_range(long Min, long Max);
+int random_range(int Min, int Max);
