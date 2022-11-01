@@ -157,7 +157,14 @@ void updateCapacity(List *l, boolean condition, int newCapacity) {
 
         free(l->buffer);
 
-        l->buffer = newBuffer;
+        l->buffer = (LElType*) malloc (newCapacity * sizeof(LElType));
+
+        for (int i = 0; i < length(*l); i++) {
+            l->buffer[i] = newBuffer[i];
+        }
+
+        free(newBuffer);
+
         l->capacity = newCapacity;
 
     }
