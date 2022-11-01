@@ -31,6 +31,7 @@ int intInput(int *i);
 
 int charInput(char *c);
 
-int stringInput(char *s);
+/* Meminta user untuk memasukkan sebuah string dengan panjang (length) tertentu. Apabila jumlah karakter melebihi panjang, input akan dipotong. Hasil input disimpan di s. */
+int stringInput(char *s, int length);
 
 #endif

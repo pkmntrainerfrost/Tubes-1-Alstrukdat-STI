@@ -1,3 +1,6 @@
+/* File         : io.c */
+/* Deskripsi    : Implementasi library io buatan gweh */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "io.h"
@@ -110,8 +113,16 @@ int intInput(int *i) {
 
 }
 
-int charInput(char *c) {
-    
-}
+int stringInput(char *s, int length) {
 
-int stringInput(char *s);
+    char result[length + 1];
+
+    for (int i = 0; i < length; i++) {
+        scanf("%c",result[i]);
+    }
+
+    result[length] = '\0';
+
+    return VALID_INPUT;
+
+}
