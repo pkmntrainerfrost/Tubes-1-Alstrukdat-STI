@@ -2,6 +2,26 @@
 #include <stdlib.h>
 #include "io.h"
 
+char lower(char c) {
+
+    if (isLowercase(c)) {
+        return (c);
+    } else {
+        return (c - 32);
+    }
+
+}
+
+char upper(char c) {
+
+    if (isUppercase(c)) {
+        return (c);
+    } else {
+        return (c + 32);
+    }
+
+}
+
 boolean isUppercase(char c) {
 
     return (c >= 65 && c <= 90);
@@ -23,6 +43,12 @@ boolean isCharAlpha(char c) {
 boolean isCharNumeric(char c) {
 
     return (c >= 48 && c <= 57);
+
+}
+
+boolean isCharInRange(char c, char a, char b) {
+
+    return ((c >= a) && (c <= b));
 
 }
 
