@@ -28,6 +28,8 @@ void createList(List *l);
 
 void deleteList(List *l);
 
+boolean isLElTypeEqual(LElType l1, LElType l2);
+
 boolean isEmpty(List l);
 
 boolean length(List l);
@@ -49,5 +51,7 @@ void deleteFirst(List *l, LElType *v);
 void deleteAt(List *l, LElType *v, int i);
 
 void deleteLast(List *l, LElType *v);
+
+void updateCapacity(List *l, boolean condition, int newCapacity);
 
 #endif
