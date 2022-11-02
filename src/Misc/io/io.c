@@ -5,6 +5,13 @@
 #include <stdlib.h>
 #include "io.h"
 
+char ord(char c) {
+
+    int i = c;
+    return i;
+
+}
+
 char lower(char c) {
 
     if (isLowercase(c)) {
@@ -37,13 +44,13 @@ boolean isLowercase(char c) {
 
 }
 
-boolean isCharAlpha(char c) {
+boolean isAlpha(char c) {
 
     return (isUppercase(c) && isLowercase(c));
 
 }
 
-boolean isCharNumeric(char c) {
+boolean isNumeric(char c) {
 
     return (c >= 48 && c <= 57);
 
@@ -55,15 +62,29 @@ boolean isCharInRange(char c, char a, char b) {
 
 }
 
-boolean isAlpha(char *s);
+boolean isStringAlpha(char *s) {
 
-boolean isNumeric(char *s) {
+    boolean alpha = true;
+    int i = 0;
+
+    while (alpha && i < stringLength(s)) {
+        if (!isAlpha(s[i])) {
+            alpha = false;
+        }
+        i = i + 1;
+    }
+
+    return alpha;
+
+}   
+
+boolean isStringNumeric(char *s) {
 
     boolean numeric = true;
     int i = 0;
 
     while (numeric && i < stringLength(s)) {
-        if (!isCharNumeric(s[i])) {
+        if (!isNumeric(s[i])) {
             numeric = false;
         }
         i = i + 1;
@@ -73,7 +94,7 @@ boolean isNumeric(char *s) {
 
 }
 
-boolean isAlphaNumeric(char *s);
+boolean isStringAlphaNumeric(char *s);
 
 int charToInt(char c) {
 
@@ -117,12 +138,39 @@ int stringInput(char *s, int length) {
 
     char result[length + 1];
 
-    for (int i = 0; i < length; i++) {
+    int i = 0;
+    boolean newline = false;
+    while (i < length && !newline) {
         scanf("%c",result[i]);
+        if (result[i] == '\n') {
+            newline = true;
+        } else {
+            i = i + 1;
+        }
     }
 
-    result[length] = '\0';
+    result[i] = '\0';
 
     return VALID_INPUT;
+
+}
+
+int stringLength(char *s) {
+
+    int i = 0;
+    boolean end = false;
+    while (!end && i < sizeof(s)) {
+        if (s[i] == '\0') {
+            end = true;
+        } else {
+            i = i + 1;
+        }
+    }
+
+    if (!end) {
+        return sizeof(s);
+    } else {
+        return i;
+    }
 
 }
