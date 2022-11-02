@@ -1,4 +1,5 @@
 #include "battleship.h"
+#include "../Misc/io/io.h"
 
 // AI
 // Yor Forger -> nembak asal (kalo gk sempet, implement yg ini aja)
@@ -34,46 +35,111 @@ void createShip(Ship *S, char *N, Point P, boolean V, int L) {
 
 }
 
-void placeShipPlayer(Grid *G) {
+void placeShipsPlayer(Grid *G) {
 
-    Point P;
-
-    boolean Valid = false;
-    boolean V;
-    int X, Y;
-    
     // CARRIER
     Ship Carrier;
-
-    scanf("%f %f", &X, &Y);
-    createPoint(&P, X, Y);
-
-    scanf("%c", &V);
-
-    createShip(&Carrier,"Carrier",P,V,5);
     
-    Valid = shipPosValid(*G,P,Carrier);
     
+
+}
+
+void shipInput(Grid *G, Ship *S, char *N, int L) {
+
+    int InvalidInputs = 0;
+    boolean Valid = false;
+
     while (!Valid) {
+        
+        if (InvalidInputs == 0) {
+            printf("Silahkan masukkan posisi dan orientasi kapal.\n");
+        } else {
+            printf("Posisi kapal tidak valid!\n");
+        }
 
-        printf("Posisi kapal tidak valid! Ulangi input");
+        Point P;
+        boolean V;
 
-        scanf("%f %f", &X, &Y);
-        createPoint(&P, X, Y);
+        posInput(&P);
+        verticalInput(&V);
 
-        scanf("%c",&V);
+        createShip(S,N,P,V,L);
 
-        createShip(&Carrier,"Carrier",P,V,5);
-
-        Valid = shipPosValid(*G,P,Carrier);
+        if (shipPosValid(*G,*S)) {
+            Valid = true;
+        } else {
+            InvalidInputs = InvalidInputs + 1;
+        }
 
     }
 
 }
 
-boolean shipPosValid(Grid G, Point P, Ship S) {
+void posInput(Point *P) {
+
+    int InvalidInputs = 0;
+    boolean Valid = false;
+    char Input[3];
+
+    while (!Valid) {
+        
+        if (InvalidInputs == 0) {
+            printf("Silahkan masukkan koordinat kapal. Contoh: A0\n");
+        } else {
+            printf("Masukan bukan merupakan koordinat yang valid! Ulangi Input!\n");
+        }
+
+        stringInput(Input,2);
+
+        if ((isAlpha(Input[0]) && isCharInRange(lower(Input[0]), 'a', 'j')) && (isNumeric(Input[1]))) {
+            Valid = true;
+        } else {
+            InvalidInputs = InvalidInputs + 1;
+        }
+
+    }
+
+    ABSCISSA(*P) = alphabeticalOrd(Input[0]);
+    ORDINATE(*P) = charToInt(Input[1]);
+
+}
+
+void verticalInput(boolean *V) {
+
+    int InvalidInputs = 0;
+    boolean Valid = false;
+    char Input[2];
+
+    while (!Valid) {
+        
+        if (InvalidInputs == 0) {
+            printf("Apakah kapal berorientasi vertikal? [Y/N]\n");
+        } else {
+            printf("Ulangi input!\n");
+        }
+
+        stringInput(Input,2);
+
+        if (lower(Input[0]) == 'y' || lower(Input[0]) == 'n') {
+            Valid = true;
+        } else {
+            InvalidInputs = InvalidInputs + 1;
+        }
+
+    }
+
+    if (lower(Input[0]) == 'y') {
+        *V = true;
+    } else {
+        *V = false;
+    }
+
+}
+
+boolean shipPosValid(Grid G, Ship S) {
 
     boolean Valid = false;
+    Point P = copyPoint(POSITION(S));
 
     if (VERTICAL(S)) {
         if (ORDINATE(P) + LENGTH(S) - 1 <= 10 && ABSICSSA(P) <= 10 && isFirstQuadrant(P)) {

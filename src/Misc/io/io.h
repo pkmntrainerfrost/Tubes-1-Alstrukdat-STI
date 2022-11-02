@@ -27,6 +27,8 @@ boolean isAlpha(char c);
 
 boolean isNumeric(char c);
 
+boolean isCharInRange(char c, char a, char b);
+
 boolean isStringAlpha(char *s);
 
 boolean isStringNumeric(char *s);

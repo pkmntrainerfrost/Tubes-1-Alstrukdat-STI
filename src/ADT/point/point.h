@@ -22,6 +22,8 @@ boolean isFirstQuadrant(Point p);
 
 Point translate(Point p, int dx, int dy);
 
+Point copyPoint(Point P);
+
 void movePoint(Point *p, int dx, int dy);
 
 #endif
