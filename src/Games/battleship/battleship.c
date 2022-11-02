@@ -201,7 +201,20 @@ boolean shipPosValid(Grid G, Ship S) {
 
 void shoot(Grid *G) {
 
+    boolean Valid = false;
+    Point P;
+
+    while (!Valid) {
+
+        posInput(&P);
+
+        if (!WAS_SHOT(TILE(*G,P))) {
+            Valid = true;
+        }
+
+    }
     
+    WAS_SHOT(TILE(*G,P)) = true;
 
 }
 
@@ -241,6 +254,25 @@ void endTurn(Grid *G, boolean *Winner) {
 }
 
 /*
+
+------------------BATTLESHIP-------------------
+
+        PAPAN ANYA           PAPAN ANDA
+   A B C D E F G H I J | A B C D E F G H I J
+0)                     |                   # (0
+1)                     |                   # (1 
+2)                     |                     (2               
+3)                     |                     (3
+4)                     |                     (4
+5)                     |                     (5
+6)                     |                     (6
+7)                     |                     (7
+8)                     |                     (8
+9)                     |                     (9
+   A B C D E F G H I J | A B C D E F G H I J
+        2/5 KAPAL             2/5 KAPAL
+
+
 
 void initializeGrid(Grid *G) {
 

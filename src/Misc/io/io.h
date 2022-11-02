@@ -41,7 +41,7 @@ int charToInt(char c);
 int intInput(int *i);
 
 /* Meminta user untuk memasukkan sebuah string dengan panjang (length) tertentu. Apabila jumlah karakter melebihi panjang, input akan dipotong. Hasil input disimpan di s. */
-/* DEKLARASIKAN STRING TERLEBIH DAHULU DENGAN KAPASITAS LENGTH + 1!!!! */
+/* DEKLARASIKAN STRING DULU DENGAN KAPASITAS LENGTH + 1!!!! */
 int stringInput(char *s, int length);
 
 /* Mengembalikan panjang string. */

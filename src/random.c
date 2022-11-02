@@ -4,16 +4,15 @@
 
 int random_range(int Min, int Max) {
 
-    return (Min + (rand() % (Min + Max)));
+    int div = RAND_MAX / (Max + 1);
+    int result = rand();
 
-}
+    printf("%d",RAND_MAX);
 
-int main() {
+    while (result > Max) {
+        result = rand() / div;
+    }
 
-    char a;
-
-    scanf("%c",&a);
-
-    printf("char yang diinput adalah '%c'\n", a);
+    return (Min + result);
 
 }

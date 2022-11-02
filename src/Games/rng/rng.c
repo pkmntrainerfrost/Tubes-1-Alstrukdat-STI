@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <time.h>
 
-#include "../random.h"
-#include "../boolean.h"
+#include "../../boolean.h"
+#include "../../random.h"
 
 void rng() {
 
@@ -31,8 +31,6 @@ void rng() {
 }
 
 int main() {
-
-    srand(5);
 
     rng();
 
