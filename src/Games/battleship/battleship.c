@@ -259,8 +259,8 @@ void endTurn(Grid *G, boolean *Winner) {
 
                 PAPAN ANYA           PAPAN ANDA
            A B C D E F G H I J | A B C D E F G H I J
-##### C 0)                     |                   # (0 C #####
-        1)                     |                   # (1 
+##### C 0)                     |                     (0 C #####
+        1)                     |                     (1 
 ####. B 2)                     |                     (2 B .####            
         3)                     |                     (3
 ###.. D 4)                     |                     (4 D ..###
