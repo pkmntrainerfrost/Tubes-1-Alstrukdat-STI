@@ -135,7 +135,7 @@ int intInput(int *i) {
 
     scanf("%s",s);
 
-    if (isNumeric(s)) {
+    if (isStringNumeric(s)) {
 
         long int result = 0;
 
@@ -161,21 +161,25 @@ int intInput(int *i) {
 
 int stringInput(char *s, int length) {
 
-    char result[length + 1];
+    if (sizeof(s) < length) {
+        length = sizeof(s);
+    }
 
     int i = 0;
     boolean newline = false;
     while (i < length && !newline) {
-        scanf("%c",result[i]);
-        if (result[i] == '\n') {
+        scanf("%c",s[i]);
+        if (s[i] == '\n') {
             newline = true;
         } else {
             i = i + 1;
         }
     }
-
-    result[i] = '\0';
-
+    
+    if (newline || length != sizeof(s)) {
+        s[i] = '\0';
+    }
+    
     return VALID_INPUT;
 
 }
