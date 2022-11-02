@@ -255,22 +255,22 @@ void endTurn(Grid *G, boolean *Winner) {
 
 /*
 
-------------------BATTLESHIP-------------------
+------------------KAPALPERANG-------------------
 
-        PAPAN ANYA           PAPAN ANDA
-   A B C D E F G H I J | A B C D E F G H I J
-0)                     |                   # (0
-1)                     |                   # (1 
-2)                     |                     (2               
-3)                     |                     (3
-4)                     |                     (4
-5)                     |                     (5
-6)                     |                     (6
-7)                     |                     (7
-8)                     |                     (8
-9)                     |                     (9
-   A B C D E F G H I J | A B C D E F G H I J
-        2/5 KAPAL             2/5 KAPAL
+                PAPAN ANYA           PAPAN ANDA
+           A B C D E F G H I J | A B C D E F G H I J
+##### C 0)                     |                   # (0 C #####
+        1)                     |                   # (1 
+####. B 2)                     |                     (2 B .####            
+        3)                     |                     (3
+###.. D 4)                     |                     (4 D ..###
+        5)                     |                     (5
+###.. S 6)                     |                     (6 S ..###
+        7)                     |                     (7
+##... P 8)                     |                     (8 P ...##
+        9)                     |                     (9 
+           A B C D E F G H I J | A B C D E F G H I J
+                2/5 KAPAL             2/5 KAPAL
 
 
 
