@@ -110,7 +110,7 @@ void posInput(Point *P) {
     while (!Valid) {
         
         if (InvalidInputs == 0) {
-            printf("Silahkan masukkan koordinat kapal. Contoh: A0\n");
+            printf("Silahkan masukkan koordinat. Contoh: A0\n");
         } else {
             printf("Masukan bukan merupakan koordinat yang valid! Ulangi Input!\n");
         }
@@ -199,7 +199,13 @@ boolean shipPosValid(Grid G, Ship S) {
 
 }
 
-void endTurn(Grid *G, boolean *EndGame) {
+void shoot(Grid *G) {
+
+    
+
+}
+
+void endTurn(Grid *G, boolean *Winner) {
 
     boolean AllShipsSunk = true;
 
@@ -229,7 +235,7 @@ void endTurn(Grid *G, boolean *EndGame) {
     }
 
     if (AllShipsSunk) {
-        *EndGame = true;
+        *Winner = true;
     }
 
 }
