@@ -4,7 +4,7 @@
 
 int random_range(int Min, int Max) {
 
-    return (Min + rand() % Max);
+    return (Min + (rand() % (Min + Max)));
 
 }
 
