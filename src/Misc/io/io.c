@@ -12,6 +12,16 @@ char ord(char c) {
 
 }
 
+char alphabeticalOrd(char c) {
+
+    // a = 0
+
+    c = lower(c);
+    int i = c;
+    return (i - 65);
+
+}
+
 char lower(char c) {
 
     if (isLowercase(c)) {
@@ -94,7 +104,22 @@ boolean isStringNumeric(char *s) {
 
 }
 
-boolean isStringAlphaNumeric(char *s);
+boolean isStringAlphaNumeric(char *s) {
+
+    boolean alphanumeric = true;
+    int i = 0;
+
+    while (alphanumeric && i < stringLength(s)) {
+        if (!isNumeric(s[i]) || !isAlpha(s[i])) {
+            alphanumeric = false;
+        }
+        i = i + 1;
+    }
+
+    return alphanumeric;
+
+
+}
 
 int charToInt(char c) {
 
