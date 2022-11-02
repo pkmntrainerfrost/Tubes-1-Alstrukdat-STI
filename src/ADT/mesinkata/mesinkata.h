@@ -5,6 +5,7 @@
 #define __MESINKATA__
 
 #include "mesinkar.h"
+
 #define N_MAX 50
 #define BLANK ' '
 
