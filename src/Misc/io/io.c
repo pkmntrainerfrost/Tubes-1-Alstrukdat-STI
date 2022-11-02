@@ -118,7 +118,6 @@ boolean isStringAlphaNumeric(char *s) {
 
     return alphanumeric;
 
-
 }
 
 int charToInt(char c) {
