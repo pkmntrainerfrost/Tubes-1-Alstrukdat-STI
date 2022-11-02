@@ -35,12 +35,38 @@ void createShip(Ship *S, char *N, Point P, boolean V, int L) {
 
 }
 
+void copyShip(Ship *S1, Ship *S2) {
+
+    NAME(*S1) = NAME(*S2);
+    POSITION(*S1) = POSITION(*S2);
+    VERTICAL(*S1) = VERTICAL(*S2);
+    SHIPLENGTH(*S1) = SHIPLENGTH(*S2);
+    SUNK(*S1) = SUNK(*S2);
+
+}
+
 void placeShipsPlayer(Grid *G) {
 
-    // CARRIER
     Ship Carrier;
+    Ship Battleship;
+    Ship Cruiser;
+    Ship Submarine;
+    Ship Destroyer;
     
+    shipInput(G,&Carrier,"Carrier",5);
+    copyShip(&Carrier,&SHIP(*G,0));
+
+    shipInput(G,&Battleship,"Battleship",4);
+    copyShip(&Battleship,&SHIP(*G,0));
     
+    shipInput(G,&Battleship,"Cruiser",3);
+    copyShip(&Cruiser,&SHIP(*G,0));
+
+    shipInput(G,&Submarine,"Submarine",3);
+    copyShip(&Submarine,&SHIP(*G,0));
+
+    shipInput(G,&Destroyer,"Destroyer",2);
+    copyShip(&Destroyer,&SHIP(*G,0));
 
 }
 
