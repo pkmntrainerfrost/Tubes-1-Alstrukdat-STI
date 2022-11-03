@@ -20,7 +20,7 @@ boolean isSame(char kata1[], char kata2[]){
     return check;    
 }
 
-void dinerDash(){ //prodedur dinerdash
+void dinerDash(){ //prosedur dinerdash
 
     char input[100];
     char cook[] = "COOK";
@@ -54,5 +54,30 @@ void dinerDash(){ //prodedur dinerdash
     for (i = 1; i<=5;i++){
         printf("M0%-5d| %-15d| %-9d | %-6d \n", order[i].foodId+1, order[i].cookTime, order[i].stayTime, order[i].price);
     }
+
+    printf("Daftar Makanan yang sedang dimasak\n");
+    printf("Makanan | Sisa durasi memasak\n");
+    printf("—-----------------------------");
+    if (!isEmptyPQ(pq)){
+        PQElType val;
+        int i = IDX_HEAD(pq);
+        while (i != IDX_TAIL(pq)){
+            printf("M%d      | %d              ", pq.buffer[i].foodId, pq.buffer[i].cookTime);
+        }
+    }else{
+        printf("\n");
+    }
+
+    printf("Daftar Makanan yang dapat disajikan\n");
+    printf("Makanan | Sisa ketahanan makanan\n");
+    printf("—-----------------------------\n");
+    printf("M%d      | %d                \n", HEAD(pq).foodId, HEAD(pq).stayTime);
+
+//INPUT COMMAND SEMENTARA PAKE SCANF, BELOM SELESAI//
+    char command[6];
+    char orderId[5];
+    printf("MASUKKAN COMMAND: %s %s\n", command, orderId);
+    scanf("%s %s", command, orderId);
+    printf("\n");
 
 }

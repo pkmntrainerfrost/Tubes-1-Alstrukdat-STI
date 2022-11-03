@@ -10,13 +10,8 @@
 #include "../../ADT/mesinkata/mesinkata.h"
 #include "../../ADT/queue/prioqueue.h"
 
-boolean isSame(Kata kata1, Kata kata2){
-// mengembalikan true jika str1 sama dengan str2
-    boolean check = false;
-    int i = kata1.length;
-    int j = kata2.length;
-    return (str1 == str2);    
-}
+boolean isSame(char kata1[], char kata2[]);
+// mengembalikan true jika kata1 sama dengan kata2
 
 void DinerDash();
 /*
