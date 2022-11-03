@@ -49,13 +49,10 @@ void dinerDash(){ //prodedur dinerdash
 
     printf("SALDO: %d\n", saldo);
     printf("Daftar Pesanan: \n");
-    printf("Makanan | Durasi memasak | Ketahanan | Harga\n");
-    printf("—---------------------------------------------\n");
+    printf("Makanan| Durasi memasak | Ketahanan | Harga\n");
+    printf("--------------------------------------------\n");
     for (i = 1; i<=5;i++){
-        printf("M%d      | %d              | %d         | %d\n", order[i].foodId+1, 
-        order[i].cookTime, order[i].stayTime, order[i].price);
+        printf("M0%-5d| %-15d| %-9d | %-6d \n", order[i].foodId+1, order[i].cookTime, order[i].stayTime, order[i].price);
     }
-
-    
 
 }
