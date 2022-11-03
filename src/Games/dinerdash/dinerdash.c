@@ -20,7 +20,7 @@ boolean isSame(char kata1[], char kata2[]){
     return check;    
 }
 
-void dinerDash(){
+void dinerDash(){ //prodedur dinerdash
 
     char input[100];
     char cook[] = "COOK";
