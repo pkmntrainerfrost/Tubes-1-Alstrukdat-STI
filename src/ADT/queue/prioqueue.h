@@ -13,7 +13,7 @@
 typedef struct
 {
         /* data */
-        int foodID;
+        int foodId;
         int cookTime;
         int stayTime;
         int price;

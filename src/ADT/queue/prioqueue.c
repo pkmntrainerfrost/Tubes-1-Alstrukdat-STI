@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "prioqueue.h"
-#include "../../boolean.h"
+#include "../boolean.h"
 
 void createQueuePQ(PrioQueue *pq){
     IDX_HEAD(*pq) = IDX_UNDEF;
