@@ -1,7 +1,7 @@
 #ifndef __LIST__
 #define __LIST__
 
-#include "../boolean.h"
+#include "../../boolean.h"
 #include <stdlib.h>
 
 #define DEFAULT_CAPACITY 10
@@ -10,7 +10,7 @@
 typedef union {
 
     int integer;
-    char character;
+    char *character;
 
     // definisikan jenis2 elemen2 list lainnya yang dibutuhkan
 
