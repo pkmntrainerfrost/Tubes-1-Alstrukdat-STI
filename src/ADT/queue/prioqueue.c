@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "prioqueue.h"
-#include "../boolean.h"
+#include "../../boolean.h"
 
 void createQueuePQ(PrioQueue *pq){
     IDX_HEAD(*pq) = IDX_UNDEF;
@@ -23,15 +23,14 @@ int lengthPQ(PrioQueue pq){
     }
 }
 
-void enqueue(PrioQueue *pq, PQElType val){
+void enqueuePQ(PrioQueue *pq, PQElType val){
     if (isEmptyPQ(*pq)){
         IDX_HEAD(*pq) = 0;
         IDX_TAIL(*pq) = 0;
     }else{
 		IDX_TAIL(*pq) = (IDX_TAIL(*pq) + 1) % PQCAPACITY;
 		int idx = IDX_HEAD(*pq);
-		while (((*pq).buffer[IDX_HEAD(*pq)].cookTime > val.cookTime) && (IDX_HEAD(*pq) != (IDX_TAIL(*pq))))
-		{
+		while (((*pq).buffer[IDX_HEAD(*pq)].cookTime > val.cookTime) && (IDX_HEAD(*pq) != (IDX_TAIL(*pq)))){
 			PQElType temp = (*pq).buffer[IDX_HEAD(*pq)];
 			(*pq).buffer[IDX_HEAD(*pq)] = (*pq).buffer[IDX_HEAD(*pq) + 1];
 			(*pq).buffer[IDX_HEAD(*pq) + 1] = temp;
@@ -39,7 +38,18 @@ void enqueue(PrioQueue *pq, PQElType val){
 		}
 
 		IDX_HEAD(*pq) = idx;
-
 		(*pq).buffer[IDX_HEAD(*pq)] = val;
 	}
+}
+
+void dequeuePQ(PrioQueue *pq, PQElType *val){
+    *val = HEAD(*pq);
+    if (IDX_HEAD(*pq) == IDX_TAIL(*pq)){
+        IDX_HEAD(*pq) = IDX_UNDEF;
+        IDX_TAIL(*pq) = IDX_UNDEF;
+    }
+
+    else{
+        IDX_HEAD(*pq) = (IDX_HEAD(*pq) + 1) % PQCAPACITY;
+    }
 }
