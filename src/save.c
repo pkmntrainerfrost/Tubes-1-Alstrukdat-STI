@@ -6,11 +6,12 @@ static FILE *saveFile;
 void savetoFile(char saveFilename[], List L)
 {
     saveFile = fopen(saveFilename, "w");
-    fprintf("%d\n", L.nEff);
+    fprintf(saveFile, "%d\n", L.nEff);
     int i;
     for(i=0; i<L.nEff; i++){
         fprintf(saveFile, "%d. %s\n", i+1, L.buffer[i].character);
     }
 
     fclose(saveFile);
+    printf("Save file berhasil disimpan\n");
 }
