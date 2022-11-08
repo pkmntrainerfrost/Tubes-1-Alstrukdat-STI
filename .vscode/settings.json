@@ -4,7 +4,8 @@
         "random.h": "c",
         "boolean.h": "c",
         "quit.h": "c",
-        "help.h": "c"
+        "help.h": "c",
+        "commandlain.h": "c"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }
