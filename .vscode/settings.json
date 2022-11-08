@@ -2,7 +2,9 @@
     "files.associations": {
         "point.h": "c",
         "random.h": "c",
-        "boolean.h": "c"
+        "boolean.h": "c",
+        "quit.h": "c",
+        "help.h": "c"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }
