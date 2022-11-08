@@ -59,4 +59,6 @@ void TulisIsi (ArrayGame T);
 
 void insertArrayGame (ArrayGame T);
 
-#endi
+int compareString(char arr1[], char arr2[]);
+
+#endif
