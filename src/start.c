@@ -6,12 +6,12 @@
 
 void START(List *ListGame){
     createList(ListGame);
-    char *configfile = "fileconfig.txt";
-    STARTWORD(configfile);
+    char file[] = "fileconfig.txt";
+    char *configfile = file;
     int i;
     int idx = currentKata.buffer[0] - 48;
     for (i=0; i < idx; i++){
-        ADVWORD();
+        advKata();
         insertLast(ListGame, currentKata);
     }
     printf("File konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan.\n");

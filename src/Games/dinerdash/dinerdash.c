@@ -20,11 +20,20 @@ boolean isSame(char kata1[], char kata2[]){
     return check;    
 }
 
+PQElType addQueue(int i){
+    PQElType addOrder;
+    addOrder.foodId = i;
+    addOrder.cookTime = (rand() % 5) + 1;
+    addOrder.stayTime = (rand() % 5) + 1;
+    addOrder.price = (rand() % 5 ) * 5000 + 10000;
+    return addOrder;
+}
 void dinerDash(){
 
     char input[100];
     char cook[] = "COOK";
     char serve[] = "SERVE";
+    char skip[] = "SKIP";
     int queue = 0;
     int served = 0;
     int saldo = 0;
@@ -34,103 +43,134 @@ void dinerDash(){
     PQElType order[20];
 
     srand(time(NULL));
-    for (int i = 0; i < 6; i++){ //batas memasak 5 makanan dalam satu waktu
+    PrioQueue pq, cookQ, serveQ;      
+    createQueuePQ(&pq);  
+    createQueuePQ(&cookQ);
+    createQueuePQ(&serveQ);
+    for (int i = 0; i < 3; i++){ //3 makanan default awal 
         order[i].foodId = i;
-        order[i].cookTime = (rand() % 6) + 1;
-        order[i].stayTime = ((rand() * 10) + 1 + rand() * 2) % 6;
-        order[i].price = ((rand() % 3) + 1) * 10000 + rand() % 4 * 1000;
-    }
-
-    PrioQueue pq;
-    createQueuePQ(&pq);
-    for (i=0;i<3;i++){
-        enqueuePQ(&pq, order[i]);        
-    }
+        order[i].cookTime = (rand() % 5) + 1;
+        order[i].stayTime = (rand() % 5) + 1;
+        order[i].price = (rand() % 5 ) * 5000 + 10000;
+        enqueuePQ(&pq, order[i]); 
+    }   
 
     printf("SALDO: %d\n", saldo);
     printOrders(pq);
-    printCooking(pq);
-    printServing(pq);
 
-//INPUT COMMAND SEMENTARA PAKE SCANF, BELOM SELESAI//
-    char command[6];
-    char orderId[5];
+    int idx;
+    idx = 3;
+    while (!isFullPQ(pq) && served <= 15){
+        //INPUT COMMAND SEMENTARA PAKE SCANF, BELOM SELESAI//
+        char command[6];
+        char orderId[5];
 
-    printf("Masukkan command:");
-    scanf("%s %s", command, orderId);
-
-//Cek inputan 
-
-    printf("Command: %s\n", command);
-    printf("orderId: %s\n", orderId);
-
-/*
-    printf("MASUKKAN COMMAND: %s %s\n", command, readyToServe);
-    scanf("%s %s", command, readyToServe);
-    printf("\n");
-*/
-
-    //  handle input command
-    while (!(isSame(command, cook) || isSame(command, serve)))
-    {
-        printf("Masukkan command: ");
+        printf("\n \n");
+        printf("Masukkan command:");
         scanf("%s %s", command, orderId);
-    }
 
-    while (!(isSame(orderId, "M0") || isSame(orderId, "M1") || isSame(orderId, "M2") || isSame(orderId, "M3") || isSame(orderId, "M4") || isSame(orderId, "M5")))
-    {
-        printf("Masukkan command: ");
-        scanf("%s %s", command, orderId);
-    }
+        //Cek inputan 
 
-    // mengubah orderId menjadi int
+        printf("Command: %s\n", command);
+        printf("orderId: %s\n", orderId);
 
-    int id = 0;
-    for (int i = 1; orderId[i] != '\0'; i++)
-    {
-        id = id * 10 + (orderId[i] - '0');
-    }
-
-    printf("id: %d\n", id);
-
-// tambahin looping
-// enqueue setiap putaran 
-// dequeue saat cook time = 0
-// enqueue jika bisa diserve 
-// conditional kalau makanan hangus 
-
-    if (isSame(command, cook))
-    {
-        enqueuePQ(&pq, order[id]);
-        printf("Makanan %s telah dimasukkan ke dalam antrian\n", orderId);
-
-        queue++;
-    }
-
-    else if (isSame(command, serve))
-    {
-        if (HEAD(pq).foodId == id)
+        // handle input command
+        while (!(isSame(command, cook) || isSame(command, serve) || isSame(command,skip)))
         {
-            // kurang-kurangin dari array,
-            // tampilin ke daftar masakan yang sedang dimasak
-            // print queue
+            printf("Masukkan command: ");
+            scanf("%s %s", command, orderId);
+        }
 
-            if (HEAD(pq).cookTime == 0)
+        // mengubah str to int id dan looping jika input tidak sesuai
+        int id = 0;
+        for (int i = 1; orderId[i] != '\0'; i++)
+        {
+            id = id * 10 + (orderId[i] - '0');
+        }
+        while (id < HEAD(pq).foodId || id > TAIL(pq).foodId)
+        {
+            printf("Masukkan command: ");
+            scanf("%s %s", command, orderId);
+
+            id = 0;
+            for (int i = 1; orderId[i] != '\0'; i++)
             {
-                printf("Makanan %d telah selesai dimasak\n", HEAD(pq).foodId);
+                id = id * 10 + (orderId[i] - '0');
             }
-            served++;
         }
+        printf("id: %d\n", id);
 
-        else
+    // tambahin looping
+    // enqueue setiap putaran 
+    // dequeue saat cook time = 0
+    // enqueue jika bisa diserve 
+    // conditional kalau makanan hangus 
+
+        if (isSame(command, cook))
         {
-            printf("Makanan %s tidak dapat disajikan karena M%d belum selesai\n", orderId, HEAD(pq).foodId);
+            enqueuePQ(&pq, addQueue(idx));
+            enqueuePQ(&cookQ, pq.buffer[id]);
+            printf("Makanan %s telah dimasukkan ke dalam antrian\n", orderId);
+            queue++;
+            idx++;
         }
-        // print queue
-        // print makanan yang sedang dimasak
-        // print makanan yang dapat disajikan
-        // print saldo
-    }
+        //belum ada kondisi kalau cookTIme == 0 -> enqueue to serve
 
+        else if (isSame(command, serve))
+        {
+            if (HEAD(pq).foodId == id)
+            {
+                printf("Berhasil mengantar %s\n", orderId);
+                enqueuePQ(&pq, addQueue(idx));
+                served++;
+                idx++;
+
+            }
+
+            else
+            {
+                printf("Makanan %s tidak dapat disajikan karena M%d belum selesai\n", orderId, HEAD(pq).foodId);
+            }
+            // print queue
+            // print makanan yang sedang dimasak
+            // print makanan yang dapat disajikan
+            // print saldo
+        }
+        else if (isSame(command, skip))
+        {
+            enqueuePQ(&pq, addQueue(idx));
+            idx++;
+        }
+        
+        printf("\n \n");
+        printOrders(pq);
+        printCooking(cookQ);
+        printServing(serveQ);
+
+        printf("\n \n");        
         printf("=================================================================\n");
+        int ctr = IDX_HEAD(cookQ);
+        while (ctr < IDX_TAIL(cookQ) + 1){ //untuk mengurangi waktu masak 
+            cookQ.buffer[ctr].cookTime -= 1;
+            if (cookQ.buffer[ctr].cookTime == 0){
+                PQElType vall;
+                dequeuePQ(&cookQ, &vall);
+                enqueuePQ(&serveQ,vall);
+                //printf("Berhasil memasak M%d\n", cookQ.buffer[ctr].foodId);
+            }
+            ctr++;    
+        }
+        ctr = IDX_HEAD(serveQ);
+
+        while (ctr < IDX_TAIL(serveQ)+1){ //untuk mengurangi waktu masak 
+            serveQ.buffer[ctr].stayTime -= 1;
+            ctr++;   
+        }
+    }
+    printf("========== GAME OVER ==========\n");
+}
+
+
+int main(){
+    dinerDash();
 }
