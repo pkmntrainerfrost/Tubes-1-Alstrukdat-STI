@@ -31,6 +31,7 @@ void deleteGame(List *L, Queue Q)
                 deleteAt(L, num-1);
                 printf("Game berhasil dihapus\n");
             } else {
+                printf("Game ada di queue game\n");
                 printf("Game gagal dihapus\n");
             }
         }

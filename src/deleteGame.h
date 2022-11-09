@@ -2,7 +2,7 @@
 #define DELETEGAME_H
 
 #include "ADT/list/array.h"
-#include "ADT/queue/circularqueue.h"
+#include "ADT/queue/queue2.h"
 #include "Misc/io/io.h"
 #include "listGame.h"
 

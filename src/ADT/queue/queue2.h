@@ -9,30 +9,19 @@
 #include "../mesinkar/mesinkata_input.h"
 
 /* Nilai untuk indeks yang tidak terdefinisi */
-#define NIL -999
-#define defaultCapacity 10
+#define IDX_UNDEF -1
+#define defaultCapacity 1
 
 /* Definisi tipe elemen dan indeks pada Queue */
-typedef Word ElType;
+typedef Word QElType;
 typedef int IdxType;
 
-typedef struct { ElType * Tab;  /* tabel penyimpan elemen */
+typedef struct { QElType * Tab;  /* tabel penyimpan elemen */
                  IdxType HEAD;  /* indeks elemen paling awal (terdepan) */
                  IdxType TAIL;  /* indeks tempat menambah elemen baru */
                  int MaxEl;     /* kapasitas jumlah elemen */
                } Queue;
 /* Definisi Queue kosong: HEAD=NIL; TAIL=NIL. */
-
-/* ********* Prototype ********* */
-boolean IsEmpty (Queue Q);
-/* Mengirim true jika Q kosong: lihat definisi di atas */
-boolean IsFull (Queue Q);
-/* Mengirim true jika tabel penampung elemen Q sudah penuh */
-/* yaitu mengandung elemen sebanyak MaxEl */
-int Length (Queue Q);
-/* Mengirimkan banyaknya elemen Q, 0 jika kosong */
-int MaxLength (Queue Q);
-/* Mengirimkan kapasitas jumlah elemen Q */
 
 /* *** Kreator *** */
 void createQueue (Queue *Q);
@@ -42,31 +31,46 @@ void createQueue (Queue *Q);
 /*   Jika alokasi berhasil, Tab dialokasi berukuran Max */
 /*   Jika alokasi gagal, Q kosong dengan MaxEl=0 */
 
+/* ********* Prototype ********* */
+boolean IsEmpty (Queue Q);
+/* Mengirim true jika Q kosong: lihat definisi di atas */
+boolean IsFull (Queue Q);
+/* Mengirim true jika tabel penampung elemen Q sudah penuh */
+/* yaitu mengandung elemen sebanyak MaxEl */
+int Length (Queue Q);
+/* Mengirimkan banyaknya elemen Q, 0 jika kosong */
+
 /* *** Destruktor *** */
 void DeleteQueue (Queue * Q);
 /* Proses: Mengembalikan memori Q */
 /* I.S. Q pernah dialokasi */
 /* F.S. membebaskan memori Tab, Q.MaxEl di-set 0 */
 
+void updateCapacity(Queue *Q);
+
 /* *** Primitif Add/Delete *** */
-void enqueue (Queue * Q, ElType X);
+void enqueue (Queue * Q, QElType X);
 /* Proses: Menambahkan X pada Q dengan aturan FIFO */
 /* I.S. Q mungkin kosong, tabel penampung elemen Q TIDAK penuh */
 /* F.S. X menjadi TAIL yang baru,
         TAIL "maju" dengan mekanisme circular buffer
         Jika Q kosong, HEAD dimulai dari 0 */
-ElType dequeue (Queue * Q);
+void dequeue (Queue * Q, QElType *X);
 /* Proses: Menghapus indeks HEAD pada Q dengan aturan FIFO, lalu mengembalikan nilainya */
 /* I.S. Q tidak mungkin kosong */
 /* F.S. mengembalikan nilai Q pada indeks HEAD;
         HEAD "maju" dengan mekanisme circular buffer;
         Q mungkin kosong */
-ElType Front (Queue Q);
+QElType Front (Queue Q);
 /* Proses: Mengembalikan nilai Q pada indeks HEAD tanpa penghapusan */
 /* I.S. Q tidak mungkin kosong */
 /* F.S. mengembalikan nilai Q pada indeks HEAD;
         Q pasti tetap tidak kosong */
 
-boolean isMember(Queue Q, ElType X);
+boolean isSameWord(QElType X, QElType Y);
+
+boolean isMember(Queue Q, QElType X);
+
+void displayQueue(Queue Q);
 
 #endif
