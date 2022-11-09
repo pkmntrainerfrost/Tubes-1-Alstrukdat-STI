@@ -3,18 +3,13 @@
 
 #include "../../boolean.h"
 #include <stdlib.h>
+#include "../mesinkar/mesinkar.h"
+#include "../mesinkar/mesinkata.h"
 
 #define DEFAULT_CAPACITY 10
 #define IDX_UNDEF -1
 
-typedef union {
-
-    int integer;
-    char *character;
-
-    // definisikan jenis2 elemen2 list lainnya yang dibutuhkan
-
-} LElType;
+#define LElType Kata
 
 typedef struct {
 

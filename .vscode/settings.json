@@ -5,7 +5,9 @@
         "boolean.h": "c",
         "quit.h": "c",
         "help.h": "c",
-        "commandlain.h": "c"
+        "commandlain.h": "c",
+        "stdlib.h": "c",
+        "mesinkar.h": "c"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }

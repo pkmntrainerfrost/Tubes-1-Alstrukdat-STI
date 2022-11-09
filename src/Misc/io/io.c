@@ -1,9 +1,146 @@
 /* File         : io.c */
-/* Deskripsi    : Implementasi library io buatan gweh */
+/* Deskripsi    : Implementasi mesin karakter-kata untuk input/output + stringops */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "../ADT/mesinkar/mesinkar_input.h"
 #include "io.h"
+
+/* MESIN KARAKTER INPUT */
+
+static FILE *inputRibbon;
+static int inputRetval;
+
+char inputcc;
+boolean eoi;
+
+void start() {
+
+    inputRibbon = stdin;
+    adv();
+
+}
+
+void adv() {
+
+    inputRetval = fscanf(stdin, "%c", &inputcc);
+    eoi = (inputcc == INPUTMARK);
+
+}
+
+boolean endKata;
+Kata currentKata;
+
+void ignoreBlank() {
+
+    while (inputcc == BLANK) {
+        adv();
+    }
+
+}
+
+void startKata() {
+
+    start();
+    ignoreBlank();
+
+    if (inputcc == INPUTMARK) {
+        endKata = true;
+    } else {
+        endKata = false;
+        salinKata();
+    }
+
+}
+
+void advKata() {
+
+    ignoreBlank();
+
+    if (inputcc == INPUTMARK) {
+        endKata = true;
+    } else {
+        salinKata();
+    }
+
+}
+
+void salinKata() {
+
+    int i = 0;
+
+    while ((inputcc != INPUTMARK) && (inputcc != BLANK)) {
+        currentKata.buffer[i] = inputcc;
+        adv();
+        i = i + 1;
+    }
+
+    currentKata.length = i;
+
+}
+
+/* MESIN KATA INPUT */
+
+
+
+/* INPUT */
+
+int intInput(int *i) {
+
+    char s[11];
+
+    scanf("%s",s);
+
+    if (isStringNumeric(s)) {
+
+        long int result = 0;
+
+        for (int j = 0; j < stringLength(s); j++) {
+            result = (result * 10) + charToInt(s[j]);
+        }
+
+        if (result > INT_MAX) {
+            return INVALID_INPUT;
+        }
+
+        *i = result;
+
+        return VALID_INPUT;
+
+    } else {
+
+        return INVALID_INPUT;
+
+    }
+
+}
+
+int stringInput(char *s, int length) {
+
+    if (sizeof(s) < length) {
+        length = sizeof(s);
+    }
+
+    int i = 0;
+    boolean newline = false;
+    while (i < length && !newline) {
+        scanf("%c",s[i]);
+        if (s[i] == '\n') {
+            newline = true;
+        } else {
+            i = i + 1;
+        }
+    }
+    
+    if (newline || length != sizeof(s)) {
+        s[i] = '\0';
+    }
+    
+    return VALID_INPUT;
+
+}
+
+/* STRING + CHAR OPS */
 
 char ord(char c) {
 
@@ -128,58 +265,13 @@ int charToInt(char c) {
 
 }
 
-int intInput(int *i) {
+void stringCopy(char *s1, char *s2) {
 
-    char s[11];
+    for (int i = 0; i < stringLength(s1) && i < sizeof(s2); i++) {
 
-    scanf("%s",s);
-
-    if (isStringNumeric(s)) {
-
-        long int result = 0;
-
-        for (int j = 0; j < stringLength(s); j++) {
-            result = (result * 10) + charToInt(s[j]);
-        }
-
-        if (result > INT_MAX) {
-            return INVALID_INPUT;
-        }
-
-        *i = result;
-
-        return VALID_INPUT;
-
-    } else {
-
-        return INVALID_INPUT;
+        s2[i] = s1[i];
 
     }
-
-}
-
-int stringInput(char *s, int length) {
-
-    if (sizeof(s) < length) {
-        length = sizeof(s);
-    }
-
-    int i = 0;
-    boolean newline = false;
-    while (i < length && !newline) {
-        scanf("%c",s[i]);
-        if (s[i] == '\n') {
-            newline = true;
-        } else {
-            i = i + 1;
-        }
-    }
-    
-    if (newline || length != sizeof(s)) {
-        s[i] = '\0';
-    }
-    
-    return VALID_INPUT;
 
 }
 

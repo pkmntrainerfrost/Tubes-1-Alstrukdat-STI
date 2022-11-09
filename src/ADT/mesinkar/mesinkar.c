@@ -10,7 +10,7 @@ static int retval;
 
 void start(char *filename) {
 
-    file = fopen(filename,"r");
+    file = stdin;
     adv();
 
 }

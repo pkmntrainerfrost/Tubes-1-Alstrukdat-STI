@@ -11,6 +11,21 @@
 #define VALID_INPUT 0;
 #define INVALID_INPUT 1;
 
+#define INPUTMARK '\n'
+
+#define BLANK ' '
+
+extern char inputcc; // Current Character
+extern boolean eoi; // End of File
+
+typedef struct {
+    char *buffer;
+    int length;
+} Kata;
+
+extern boolean endKata;
+extern Kata currentKata;
+
 char ord(char c);
 
 char alphabeticalOrd(char c);

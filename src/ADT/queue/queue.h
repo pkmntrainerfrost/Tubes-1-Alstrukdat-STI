@@ -13,10 +13,18 @@ typedef union {
 
     int integer;
     char character;
+    info ingfo;
 
     // definisikan elemen2 queue lainnya yang dibutuhkan
 
 } QElType;
+
+typedef struct {
+
+    char *nama;
+    int harga;
+
+} info;
 
 typedef struct node* Address;
 
