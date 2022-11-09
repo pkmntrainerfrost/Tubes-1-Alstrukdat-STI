@@ -2,7 +2,7 @@
 #include "mesinkar_input.h"
 
 boolean endKataInput;
-Kata currentKataInput;
+Word currentKataInput;
 
 void ignoreBlankInput() {
 
@@ -43,11 +43,11 @@ void salinKata() {
     int i = 0;
 
     while ((inputcc != INPUTMARK) && (inputcc != BLANK)) {
-        currentKataInput.buffer[i] = inputcc;
+        currentKataInput.TabWord[i] = inputcc;
         adv();
         i = i + 1;
     }
 
-    currentKataInput.length = i;
+    currentKataInput.Length = i;
 
 }
