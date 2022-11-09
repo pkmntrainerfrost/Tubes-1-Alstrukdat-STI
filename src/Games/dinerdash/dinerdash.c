@@ -38,7 +38,7 @@ void dinerDash(){
     int served = 0;
     int saldo = 0;
     int i;
-    printf("Welcome to diner dash!\n");
+    printf("Welcome to diner dash!\n\n");
 
     PQElType order[20];
 
@@ -55,8 +55,10 @@ void dinerDash(){
         enqueuePQ(&pq, order[i]); 
     }   
 
-    printf("SALDO: %d\n", saldo);
+    printf("SALDO: %d\n\n", saldo);
     printOrders(pq);
+    printCooking(cookQ);
+    printServing(serveQ);
 
     int idx;
     idx = 3;
@@ -122,8 +124,13 @@ void dinerDash(){
             {
                 printf("Berhasil mengantar %s\n", orderId);
                 enqueuePQ(&pq, addQueue(idx));
+                PQElType vals;
+                dequeuePQ(&pq, &vals);
+                dequeuePQ(&serveQ, &vals);
+                // enqueuePQ(&serveQ, pq.buffer[id]);
                 served++;
                 idx++;
+                saldo += HEAD(pq).price;
 
             }
 
@@ -143,6 +150,7 @@ void dinerDash(){
         }
         
         printf("\n \n");
+        printf("SALDO: %d\n\n", saldo);
         printOrders(pq);
         printCooking(cookQ);
         printServing(serveQ);
