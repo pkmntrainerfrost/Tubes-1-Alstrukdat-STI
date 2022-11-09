@@ -10,7 +10,7 @@
 #define ElType Word
 
 typedef struct {
-    ElType *buffer;
+    ElType *A;
     int nEff;
     int capacity;
 } List;

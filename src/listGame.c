@@ -9,7 +9,7 @@ void listGame(List L)
         printf("Berikut adalah daftar game yang tersedia\n");
         int i;
         for (i=0; i<L.nEff; i++){
-            printf("%d. %s\n", i+1, L.buffer[i].TabWord);
+            printf("%d. %s\n", i+1, L.A[i].buffer);
         }
     }
 }

@@ -6,10 +6,34 @@
 #ifndef __IO__
 #define __IO__
 
-#include "../boolean.h"
+#include "../../boolean.h"
 
 #define VALID_INPUT 0;
 #define INVALID_INPUT 1;
+
+int charToInt(char c);
+
+void commandInput();
+
+void wordInput(Word *w);
+
+void multiWordInput(List *l);
+
+int wordToInt(int *i, Word w);
+
+char intToChar(int i);
+
+Word stringToWord(char *s);
+
+void createWord(Word *w);
+
+void concateWord(Word w1, Word w2, Word *w3);
+
+void copyWord(Word *w1, Word *w2);
+
+boolean isWordEqual(Word w1, Word w2);
+
+int wordLength(Word w);
 
 char ord(char c);
 
@@ -35,7 +59,6 @@ boolean isStringNumeric(char *s);
 
 boolean isStringAlphaNumeric(char *s);
 
-int charToInt(char c);
 
 /* Meminta user untuk memasukkan sebuah integer. Akan mengembalikan INVALID_INPUT bila masukan tidak valid. */
 int intInput(int *i);
@@ -46,5 +69,7 @@ int stringInput(char *s, int length);
 
 /* Mengembalikan panjang string. */
 int stringLength(char *s);
+
+void stringCopy(char *s1, char *s2);
 
 #endif

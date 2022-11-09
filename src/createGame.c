@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include "createGame.h"
-#include "Misc/io/io.h"
 
 void createGame(List *L)
 {
@@ -23,6 +22,9 @@ void createGame(List *L)
         }
         advInput();
     }
+
+    GameName.length = i;
+    insertLast(L, GameName);
 }
 
 // int main()
@@ -30,10 +32,10 @@ void createGame(List *L)
 //     List L;
 //     createList(&L);
 //     ElType test;
-//     test.Length = 3;
-//     test.TabWord[0] = 'h';
-//     test.TabWord[1] = 'a';
-//     test.TabWord[2] = 'i';
+//     test.length = 3;
+//     test.buffer[0] = 'h';
+//     test.buffer[1] = 'a';
+//     test.buffer[2] = 'i';
 //     insertLast(&L, test);
 //     createGame(&L);
 //     printList(L);

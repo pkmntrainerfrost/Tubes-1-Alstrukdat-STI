@@ -10,8 +10,8 @@
 #define BLANK ' '
 
 typedef struct {
-    char TabWord[N_MAX];
-    int Length;
+    char buffer[N_MAX];
+    int length;
 } Word;
 
 extern boolean endKata;

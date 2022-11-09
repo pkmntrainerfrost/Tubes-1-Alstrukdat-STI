@@ -42,11 +42,11 @@ void salinKata() {
     int i = 0;
 
     while ((cc != MARK) && (cc != BLANK)) {
-        currentKata.TabWord[i] = cc;
+        currentKata.buffer[i] = cc;
         adv();
         i = i + 1;
     }
 
-    currentKata.Length = i;
+    currentKata.length = i;
 
 }
