@@ -4,143 +4,172 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../ADT/mesinkar/mesinkar_input.h"
+#include "../ADT/mesinkar/mesinkata_input.h"
 #include "io.h"
+#include "../commandlain.h"
+#include "../ADT/list/array.h"
+#include <math.h>
 
-/* MESIN KARAKTER INPUT */
+/* COMMAND INPUT + PARSER */
 
-static FILE *inputRibbon;
-static int inputRetval;
+void commandInput() {
 
-char inputcc;
-boolean eoi;
+    List command;
 
-void start() {
+    multiWordInput(&command);
 
-    inputRibbon = stdin;
-    adv();
+    if (isEmpty(command)) {
 
-}
-
-void adv() {
-
-    inputRetval = fscanf(stdin, "%c", &inputcc);
-    eoi = (inputcc == INPUTMARK);
-
-}
-
-boolean endKata;
-Kata currentKata;
-
-void ignoreBlank() {
-
-    while (inputcc == BLANK) {
-        adv();
-    }
-
-}
-
-void startKata() {
-
-    start();
-    ignoreBlank();
-
-    if (inputcc == INPUTMARK) {
-        endKata = true;
     } else {
-        endKata = false;
-        salinKata();
+        if
     }
 
 }
-
-void advKata() {
-
-    ignoreBlank();
-
-    if (inputcc == INPUTMARK) {
-        endKata = true;
-    } else {
-        salinKata();
-    }
-
-}
-
-void salinKata() {
-
-    int i = 0;
-
-    while ((inputcc != INPUTMARK) && (inputcc != BLANK)) {
-        currentKata.buffer[i] = inputcc;
-        adv();
-        i = i + 1;
-    }
-
-    currentKata.length = i;
-
-}
-
-/* MESIN KATA INPUT */
-
-
 
 /* INPUT */
 
-int intInput(int *i) {
+void wordInput(Word *w) {
 
-    char s[11];
+    startKataInput();
 
-    scanf("%s",s);
-
-    if (isStringNumeric(s)) {
-
-        long int result = 0;
-
-        for (int j = 0; j < stringLength(s); j++) {
-            result = (result * 10) + charToInt(s[j]);
-        }
-
-        if (result > INT_MAX) {
-            return INVALID_INPUT;
-        }
-
-        *i = result;
-
-        return VALID_INPUT;
-
-    } else {
-
-        return INVALID_INPUT;
-
+    if (!endKataInput) {
+        copyWord(&currentKataInput,w);
     }
 
 }
 
-int stringInput(char *s, int length) {
+void multiWordInput(List *l) {
 
-    if (sizeof(s) < length) {
-        length = sizeof(s);
+    startKataInput();
+
+    Word w;
+    while (!endKataInput) {
+        copyWord(&currentKataInput,&w);
+        insertLast(l,w);
+        advKataInput();
     }
+
+}
+
+/* TYPE CONVERSION */
+
+int charToInt(char c) {
+
+    int i = c - 48;
+
+    return i;
+
+}
+
+int wordToInt(int *i, Word w) {
+
+    *i = 0;
+
+    int j = 0;
+    boolean valid = true;
+
+    while (j < wordLength(w) && valid) {
+        if (!isNumeric(w.buffer[j])) {
+            valid = false;
+        } else {
+            *i = *i + (charToInt(w.buffer[j]) * pow(10,wordLength(w) - 1));
+        }
+    }
+
+    if (!valid) {
+        return INVALID_INPUT;
+    } else {
+        return VALID_INPUT;
+    }
+
+}
+
+char intToChar(int i) {
+
+    int c = i + 48;
+
+    return c;
+
+}
+
+Word stringToWord(char *s) {
+
+    Word w;
+    createWord(&w);
 
     int i = 0;
-    boolean newline = false;
-    while (i < length && !newline) {
-        scanf("%c",s[i]);
-        if (s[i] == '\n') {
-            newline = true;
+    boolean end = false;
+    while (i < sizeof(s) && !end) {
+        if (s[i] == "\0") {
+            end = true;
         } else {
-            i = i + 1;
+            w.buffer[i] = s[i];
+            i++;
         }
     }
-    
-    if (newline || length != sizeof(s)) {
-        s[i] = '\0';
-    }
-    
-    return VALID_INPUT;
+
+    return w;
 
 }
 
-/* STRING + CHAR OPS */
+/* WORD OPS */
+
+void createWord(Word *w) {
+
+    w->length = 0;
+
+}
+
+void concateWord(Word w1, Word w2, Word *w3) {
+
+    for (int i = 0; i < wordLength(w1); i++) {
+        w3->buffer[i] = w1.buffer[i];
+    }
+
+    for (int i = 0; i < wordLength(w2); i++) {
+        w3->buffer[i] = w2.buffer[i];
+    }
+
+    w3->length = wordLength(w1) + wordLength(w2);
+
+}
+
+void copyWord(Word *w1, Word *w2) {
+
+    for (int i = 0; i < w1->length; i++) {
+        w2->buffer[i] = w1->buffer[i];
+    }
+
+    w2->length = w1->length;
+
+}
+
+boolean isWordEqual(Word w1, Word w2) {
+
+    boolean equal = true;
+
+    if (wordLength(w1) != wordLength(w2)) {
+        equal = false;
+    } else {
+        int i = 0;
+        while (i < wordLength(w1) && equal) {
+            if (w1.buffer[i] != w2.buffer[i]) {
+                equal = false;
+            }
+            i++;
+        }
+    }
+    return equal;
+
+}
+
+int wordLength(Word w) {
+
+    return (w).length;
+
+}
+
+/* CHAR OPS */
 
 char ord(char c) {
 
@@ -209,6 +238,63 @@ boolean isCharInRange(char c, char a, char b) {
 
 }
 
+/* IGNORE */
+
+int intInput(int *i) {
+
+    char s[11];
+
+    scanf("%s",s);
+
+    if (isStringNumeric(s)) {
+
+        long int result = 0;
+
+        for (int j = 0; j < stringLength(s); j++) {
+            result = (result * 10) + charToInt(s[j]);
+        }
+
+        if (result > INT_MAX) {
+            return INVALID_INPUT;
+        }
+
+        *i = result;
+
+        return VALID_INPUT;
+
+    } else {
+
+        return INVALID_INPUT;
+
+    }
+
+}
+
+int stringInput(char *s, int length) {
+
+    if (sizeof(s) < length) {
+        length = sizeof(s);
+    }
+
+    int i = 0;
+    boolean newline = false;
+    while (i < length && !newline) {
+        scanf("%c",s[i]);
+        if (s[i] == '\n') {
+            newline = true;
+        } else {
+            i = i + 1;
+        }
+    }
+    
+    if (newline || length != sizeof(s)) {
+        s[i] = '\0';
+    }
+    
+    return VALID_INPUT;
+
+}
+
 boolean isStringAlpha(char *s) {
 
     boolean alpha = true;
@@ -257,13 +343,6 @@ boolean isStringAlphaNumeric(char *s) {
 
 }
 
-int charToInt(char c) {
-
-    int i = c - 48;
-
-    return i;
-
-}
 
 void stringCopy(char *s1, char *s2) {
 
@@ -294,3 +373,4 @@ int stringLength(char *s) {
     }
 
 }
+

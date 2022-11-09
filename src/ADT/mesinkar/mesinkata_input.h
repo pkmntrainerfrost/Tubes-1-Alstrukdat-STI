@@ -12,10 +12,10 @@
 typedef struct {
     char buffer[N_MAX];
     int length;
-} Kata;
+} Word;
 
 extern boolean endKataInput;
-extern Kata currentKataInput;
+extern Word currentKataInput;
 
 void ignoreBlankInput();
 

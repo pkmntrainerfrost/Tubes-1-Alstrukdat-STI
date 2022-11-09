@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "createGame.h"
+#include "Misc/io/io.h"
 
 void createGame(List *L)
 {
@@ -9,10 +10,18 @@ void createGame(List *L)
         updateCapacity(L);
     }   
 
-    STARTWORD();
-    while (!EndWord){
-        insertLast(L, currentWord);
-        STARTWORD();
+    Word GameName;
+    createWord(&GameName);
+
+    int i = 0;
+    startInput();
+
+    while (!eoi) {
+        if (i < N_MAX) {
+            GameName.buffer[i] = inputcc;
+            i++;
+        }
+        advInput();
     }
 }
 

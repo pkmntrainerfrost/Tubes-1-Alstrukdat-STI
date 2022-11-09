@@ -8,8 +8,8 @@
 extern char inputcc; // Current Character
 extern boolean eoi; // End of File
 
-void start();
+void startInput();
 
-void adv();
+void advInput();
 
 #endif

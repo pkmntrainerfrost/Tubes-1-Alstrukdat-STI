@@ -1,50 +1,51 @@
 #include "mesinkata_input.h"
 #include "mesinkar_input.h"
+#include <stdio.h>
 
 boolean endKataInput;
-Kata currentKataInput;
+Word currentKataInput;
 
 void ignoreBlankInput() {
 
     while (inputcc == BLANK) {
-        adv();
+        advInput();
     }
 
 }
 
-void startKata() {
+void startKataInput() {
 
-    start();
-    ignoreBlank();
+    startInput();
+    ignoreBlankInput();
 
     if (inputcc == INPUTMARK) {
         endKataInput = true;
     } else {
         endKataInput = false;
-        salinKata();
+        salinKataInput();
     }
 
 }
 
-void advKata() {
+void advKataInput() {
 
-    ignoreBlank();
+    ignoreBlankInput();
 
     if (inputcc == INPUTMARK) {
         endKataInput = true;
     } else {
-        salinKata();
+        salinKataInput();
     }
 
 }
 
-void salinKata() {
+void salinKataInput() {
 
     int i = 0;
 
     while ((inputcc != INPUTMARK) && (inputcc != BLANK)) {
         currentKataInput.buffer[i] = inputcc;
-        adv();
+        advInput();
         i = i + 1;
     }
 

@@ -11,7 +11,7 @@ static int inputRetval;
 void startInput() {
 
     inputRibbon = stdin;
-    adv();
+    advInput();
 
 }
 
@@ -22,6 +22,7 @@ void advInput() {
 
 }
 
+/*
 int main() {
 
     for (int i = 0; i < 10; i++) {
@@ -30,7 +31,7 @@ int main() {
 
         while (inputcc != INPUTMARK) {
             printf("%c",inputcc);
-            adv();
+            advInput();
         }
 
         printf("\n");
@@ -40,3 +41,4 @@ int main() {
     }
 
 }
+*/

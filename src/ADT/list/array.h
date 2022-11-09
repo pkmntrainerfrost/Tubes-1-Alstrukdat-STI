@@ -2,12 +2,13 @@
 #define __ARRAY_H__
 
 #include "../../boolean.h"
-#include "../mesin/mesinKata.h"
+#include "../mesinkar/mesinkata_input.h"
 
 #define Nil NULL
 #define initialSize 10
 
-typedef Word ElType;
+#define ElType Word
+
 typedef struct {
     ElType *buffer;
     int nEff;
