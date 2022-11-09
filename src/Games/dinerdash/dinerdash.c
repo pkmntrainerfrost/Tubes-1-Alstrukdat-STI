@@ -20,7 +20,7 @@ boolean isSame(char kata1[], char kata2[]){
     return check;    
 }
 
-void dinerDash(){ //prosedur dinerdash
+void dinerDash(){
 
     char input[100];
     char cook[] = "COOK";
@@ -34,50 +34,103 @@ void dinerDash(){ //prosedur dinerdash
     PQElType order[20];
 
     srand(time(NULL));
-    for (int i = 0; i <= 5; i++){ //batas memasak 5 makanan dalam satu waktu
+    for (int i = 0; i < 6; i++){ //batas memasak 5 makanan dalam satu waktu
         order[i].foodId = i;
-        order[i].cookTime = rand() % 5;
-        order[i].stayTime = (rand() * 5 + rand() * 2) % 5;
-        order[i].price = rand() % 3 * 10000 + rand() % 4 * 1000;
+        order[i].cookTime = (rand() % 6) + 1;
+        order[i].stayTime = ((rand() * 10) + 1 + rand() * 2) % 6;
+        order[i].price = ((rand() % 3) + 1) * 10000 + rand() % 4 * 1000;
     }
 
     PrioQueue pq;
     createQueuePQ(&pq);
     for (i=0;i<3;i++){
-    enqueuePQ(&pq, order[i]);        
+        enqueuePQ(&pq, order[i]);        
     }
 
     printf("SALDO: %d\n", saldo);
-    printf("Daftar Pesanan: \n");
-    printf("Makanan| Durasi memasak | Ketahanan | Harga\n");
-    printf("--------------------------------------------\n");
-    for (i = 1; i<=5;i++){
-        printf("M0%-5d| %-15d| %-9d | %-6d \n", order[i].foodId+1, order[i].cookTime, order[i].stayTime, order[i].price);
-    }
-
-    printf("Daftar Makanan yang sedang dimasak\n");
-    printf("Makanan | Sisa durasi memasak\n");
-    printf("—-----------------------------");
-    if (!isEmptyPQ(pq)){
-        PQElType val;
-        int i = IDX_HEAD(pq);
-        while (i != IDX_TAIL(pq)){
-            printf("M%d      | %d              ", pq.buffer[i].foodId, pq.buffer[i].cookTime);
-        }
-    }else{
-        printf("\n");
-    }
-
-    printf("Daftar Makanan yang dapat disajikan\n");
-    printf("Makanan | Sisa ketahanan makanan\n");
-    printf("—-----------------------------\n");
-    printf("M%d      | %d                \n", HEAD(pq).foodId, HEAD(pq).stayTime);
+    printOrders(pq);
+    printCooking(pq);
+    printServing(pq);
 
 //INPUT COMMAND SEMENTARA PAKE SCANF, BELOM SELESAI//
     char command[6];
     char orderId[5];
-    printf("MASUKKAN COMMAND: %s %s\n", command, orderId);
-    scanf("%s %s", command, orderId);
-    printf("\n");
 
+    printf("Masukkan command:");
+    scanf("%s %s", command, orderId);
+
+//Cek inputan 
+
+    printf("Command: %s\n", command);
+    printf("orderId: %s\n", orderId);
+
+/*
+    printf("MASUKKAN COMMAND: %s %s\n", command, readyToServe);
+    scanf("%s %s", command, readyToServe);
+    printf("\n");
+*/
+
+    //  handle input command
+    while (!(isSame(command, cook) || isSame(command, serve)))
+    {
+        printf("Masukkan command: ");
+        scanf("%s %s", command, orderId);
+    }
+
+    while (!(isSame(orderId, "M0") || isSame(orderId, "M1") || isSame(orderId, "M2") || isSame(orderId, "M3") || isSame(orderId, "M4") || isSame(orderId, "M5")))
+    {
+        printf("Masukkan command: ");
+        scanf("%s %s", command, orderId);
+    }
+
+    // mengubah orderId menjadi int
+
+    int id = 0;
+    for (int i = 1; orderId[i] != '\0'; i++)
+    {
+        id = id * 10 + (orderId[i] - '0');
+    }
+
+    printf("id: %d\n", id);
+
+// tambahin looping
+// enqueue setiap putaran 
+// dequeue saat cook time = 0
+// enqueue jika bisa diserve 
+// conditional kalau makanan hangus 
+
+    if (isSame(command, cook))
+    {
+        enqueuePQ(&pq, order[id]);
+        printf("Makanan %s telah dimasukkan ke dalam antrian\n", orderId);
+
+        queue++;
+    }
+
+    else if (isSame(command, serve))
+    {
+        if (HEAD(pq).foodId == id)
+        {
+            // kurang-kurangin dari array,
+            // tampilin ke daftar masakan yang sedang dimasak
+            // print queue
+
+            if (HEAD(pq).cookTime == 0)
+            {
+                printf("Makanan %d telah selesai dimasak\n", HEAD(pq).foodId);
+            }
+            served++;
+        }
+
+        else
+        {
+            printf("Makanan %s tidak dapat disajikan karena M%d belum selesai\n", orderId, HEAD(pq).foodId);
+        }
+        // print queue
+        // print makanan yang sedang dimasak
+        // print makanan yang dapat disajikan
+        // print saldo
+    }
+
+        printf("=================================================================\n");
 }

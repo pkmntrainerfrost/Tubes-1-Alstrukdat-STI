@@ -27,40 +27,59 @@ typedef struct
 } PrioQueue;
 
 /* ********* AKSES (Selektor) ********* */
-/* Jika q adalah Queue, maka akses elemen : */
-#define IDX_HEAD(q) (q).idxHead
-#define IDX_TAIL(q) (q).idxTail
-#define HEAD(q) (q).buffer[(q).idxHead]
-#define TAIL(q) (q).buffer[(q).idxTail]
+/* Jika pq adalah Queue, maka akses elemen : */
+#define IDX_HEAD(pq) (pq).idxHead
+#define IDX_TAIL(pq) (pq).idxTail
+#define HEAD(pq) (pq).buffer[(pq).idxHead]
+#define TAIL(pq) (pq).buffer[(pq).idxTail]
 
 /* *** Kreator *** */
-void createQueuePQ(PrioQueue *q);
+void createQueuePQ(PrioQueue *pq);
 /* I.S. sembarang */
-/* F.S. Sebuah q kosong terbentuk dengan kondisi sbb: */
+/* F.S. Sebuah pq kosong terbentuk dengan kondisi sbb: */
 /* - Index head bernilai IDX_UNDEF */
 /* - Index tail bernilai IDX_UNDEF */
-/* Proses : Melakukan alokasi, membuat sebuah q kosong */
+/* Proses : Melakukan alokasi, membuat sebuah pq kosong */
 
 /* ********* Prototype ********* */
-boolean isEmptyPQ(PrioQueue q);
-/* Mengirim true jika q kosong: lihat definisi di atas */
-boolean isFullPQ(PrioQueue q);
-/* Mengirim true jika tabel penampung elemen q sudah penuh */
+boolean isEmptyPQ(PrioQueue pq);
+/* Mengirim true jika pq kosong: lihat definisi di atas */
+boolean isFullPQ(PrioQueue pq);
+/* Mengirim true jika tabel penampung elemen pq sudah penuh */
 /* yaitu IDX_TAIL akan selalu di belakang IDX_HEAD dalam buffer melingkar*/
 
-int lengthPQ(PrioQueue q);
-/* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
+int lengthPQ(PrioQueue pq);
+/* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika pq kosong. */
 
 /* *** Primitif Add/Delete *** */
-void enqueuePQ(PrioQueue *q, PQElType val);
-/* Proses: Menambahkan val pada q dengan aturan FIFO */
-/* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
+void enqueuePQ(PrioQueue *pq, PQElType val);
+/* Proses: Menambahkan val pada pq dengan aturan FIFO */
+/* I.S. pq mungkin kosong, tabel penampung elemen pq TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam buffer melingkar. */
 
-void dequeuePQ(PrioQueue *q, PQElType *val);
-/* Proses: Menghapus val pada q dengan aturan FIFO */
-/* I.S. q tidak mungkin kosong */
+void dequeuePQ(PrioQueue *pq, PQElType *val);
+/* Proses: Menghapus val pada pq dengan aturan FIFO */
+/* I.S. pq tidak mungkin kosong */
 /* F.S. val = nilai elemen HEAD pd I.S., IDX_HEAD "mundur";
-        q mungkin kosong */
+        pq mungkin kosong */
 
+void printOrders(PrioQueue pq);
+/* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung
+   siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan
+   karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
+/* I.S. pq di awal berisi tiga pesanan, default saat memulai game */
+
+void printCooking(PrioQueue pq);
+/* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung
+   siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan
+   karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
+/* I.S. pq boleh kosong */
+/* F.S. Jika pq tidak kosong: [e1,e2,...,en] */
+/* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
+/* Jika Queue kosong : menulis [] */
+
+void printServing(PrioQueue pq);
+/* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung
+   siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan
+   karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
 #endif
