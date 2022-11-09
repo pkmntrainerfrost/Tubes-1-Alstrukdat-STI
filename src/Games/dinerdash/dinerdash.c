@@ -120,8 +120,10 @@ void dinerDash(){
 
         else if (isSame(command, serve))
         {
-            if (HEAD(pq).foodId == id)
+            if (!isEmptyPQ(serveQ))
             {
+                if (HEAD(pq).foodId == id)
+                {
                 printf("Berhasil mengantar %s\n", orderId);
                 enqueuePQ(&pq, addQueue(idx));
                 PQElType vals;
@@ -132,16 +134,20 @@ void dinerDash(){
                 idx++;
                 saldo += HEAD(pq).price;
 
-            }
+                }
 
-            else
-            {
+                else
+                {
                 printf("Makanan %s tidak dapat disajikan karena M%d belum selesai\n", orderId, HEAD(pq).foodId);
-            }
+                }
             // print queue
             // print makanan yang sedang dimasak
             // print makanan yang dapat disajikan
             // print saldo
+            }else{
+                printf("Tidak ada makanan yang siap disajikan\n");
+            }
+            
         }
         else if (isSame(command, skip))
         {
@@ -176,6 +182,7 @@ void dinerDash(){
         }
     }
     printf("========== GAME OVER ==========\n");
+    printf("SKOR AKHIR : %d\n", saldo);
 }
 
 
