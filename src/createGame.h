@@ -2,7 +2,7 @@
 #define __CREATE_GAME_H__
 
 #include "ADT/list/array.h"
-#include "ADT/mesin/mesinKata.h"
+#include "ADT/mesinkar/mesinkar_input.h"
 
 void createGame(List *L);
 // I.S. List game tidak kosong
