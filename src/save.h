@@ -5,7 +5,7 @@
 #define SAVE_H
 
 /* ADT lain yang dipakai */
-#include "ADT/list/list.h"
+#include "ADT/list/array.h"
 
 void savetoFile(char saveFilename[], List L);
 // I.S. saveFilename terdefinisi, L terdefinisi

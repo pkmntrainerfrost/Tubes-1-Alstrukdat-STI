@@ -10,12 +10,12 @@
 #define BLANK ' '
 
 typedef struct {
-    char buffer[N_MAX];
-    int length;
-} Kata;
+    char TabWord[N_MAX];
+    int Length;
+} Word;
 
 extern boolean endKata;
-extern Kata currentKata;
+extern Word currentKata;
 
 void ignoreBlank();
 

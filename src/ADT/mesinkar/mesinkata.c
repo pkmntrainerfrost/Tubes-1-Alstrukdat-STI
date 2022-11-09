@@ -1,7 +1,7 @@
 #include "mesinkata.h"
 
 boolean endKata;
-Kata currentKata;
+Word currentKata;
 
 void ignoreBlank() {
 
@@ -42,11 +42,11 @@ void salinKata() {
     int i = 0;
 
     while ((cc != MARK) && (cc != BLANK)) {
-        currentKata.buffer[i] = cc;
+        currentKata.TabWord[i] = cc;
         adv();
         i = i + 1;
     }
 
-    currentKata.length = i;
+    currentKata.Length = i;
 
 }
