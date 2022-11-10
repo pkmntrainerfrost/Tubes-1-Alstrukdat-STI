@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "quit.h"
 
-void quit(Queue q){
+void quit(){
     printf("Anda keluar dari game BNMO.\n");
     printf("Bye bye ...\n");
 }

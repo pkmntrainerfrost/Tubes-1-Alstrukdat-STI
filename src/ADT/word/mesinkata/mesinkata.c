@@ -2,9 +2,7 @@
 /* Deskripsi    : Implementasi ADT Mesin Kata */
 
 #include <stdio.h>
-#include "../word.h"
 #include "mesinkata.h"
-#include "../mesinkarakter/mesinkarakter.h"
 
 boolean endKata;
 Word currentKata;

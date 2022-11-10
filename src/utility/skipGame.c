@@ -17,6 +17,6 @@ void skipGame(Queue *Q, int n)
         for (i=0; i<n; i++){
             dequeue(Q, &X);
         }
-        printf("Loading %s ...\n", Front(*Q).buffer);      
+        playGame(Q);     
     }
 }
