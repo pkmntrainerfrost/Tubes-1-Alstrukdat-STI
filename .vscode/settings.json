@@ -7,7 +7,10 @@
         "help.h": "c",
         "commandlain.h": "c",
         "stdlib.h": "c",
-        "mesinkar.h": "c"
+        "mesinkar.h": "c",
+        "*.tcc": "c",
+        "fstream": "c",
+        "mesinkarakter.h": "c"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }

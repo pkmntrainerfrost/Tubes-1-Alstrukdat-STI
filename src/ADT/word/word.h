@@ -8,7 +8,6 @@
 #include "../../Misc/ascii/ascii.h"
 
 #define N_MAX 64
-#define BLANK ' '
 
 typedef struct {
     char buffer[N_MAX];

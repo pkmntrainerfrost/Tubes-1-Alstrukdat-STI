@@ -5,6 +5,9 @@
 #include <stdlib.h>
 #include "mesinkar.h"
 
+char cc;
+boolean eoi;
+
 static FILE *file;
 static int retval;
 
@@ -18,8 +21,8 @@ void start(char *filename) {
 void adv() {
 
     retval = fscanf(file, "%c", &cc);
-    eof = (cc == MARK);
-    if (eof) {
+    eoi = (cc == MARK);
+    if (eoi) {
         fclose(file);
     }
 
