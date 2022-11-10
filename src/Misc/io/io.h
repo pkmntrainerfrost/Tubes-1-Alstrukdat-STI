@@ -11,53 +11,53 @@
 #define VALID_INPUT 0;
 #define INVALID_INPUT 1;
 
-int charToInt(char c);
+// int charToInt(char c);
 
-char intToChar(int i);
+// char intToChar(int i);
 
-void commandInput();
+// void commandInput();
 
-/*
-void wordInput(Word *w);
+// /*
+// void wordInput(Word *w);
 
-void multiWordInput(List *l);
-*/
+// void multiWordInput(List *l);
+// */
 
-char ord(char c);
+// char ord(char c);
 
-char alphabeticalOrd(char c);
+// char alphabeticalOrd(char c);
 
-char lower(char c);
+// char lower(char c);
 
-char upper(char c);
+// char upper(char c);
 
-boolean isUppercase(char c);
+// boolean isUppercase(char c);
 
-boolean isLowercase(char c);
+// boolean isLowercase(char c);
 
-boolean isAlpha(char c);
+// boolean isAlpha(char c);
 
-boolean isNumeric(char c);
+// boolean isNumeric(char c);
 
-boolean isCharInRange(char c, char a, char b);
+// boolean isCharInRange(char c, char a, char b);
 
-boolean isStringAlpha(char *s);
+// boolean isStringAlpha(char *s);
 
-boolean isStringNumeric(char *s);
+// boolean isStringNumeric(char *s);
 
-boolean isStringAlphaNumeric(char *s);
+// boolean isStringAlphaNumeric(char *s);
 
 
-/* Meminta user untuk memasukkan sebuah integer. Akan mengembalikan INVALID_INPUT bila masukan tidak valid. */
-int intInput(int *i);
+// /* Meminta user untuk memasukkan sebuah integer. Akan mengembalikan INVALID_INPUT bila masukan tidak valid. */
+// int intInput(int *i);
 
-/* Meminta user untuk memasukkan sebuah string dengan panjang (length) tertentu. Apabila jumlah karakter melebihi panjang, input akan dipotong. Hasil input disimpan di s. */
-/* DEKLARASIKAN STRING DULU DENGAN KAPASITAS LENGTH + 1!!!! */
-int stringInput(char *s, int length);
+// /* Meminta user untuk memasukkan sebuah string dengan panjang (length) tertentu. Apabila jumlah karakter melebihi panjang, input akan dipotong. Hasil input disimpan di s. */
+// /* DEKLARASIKAN STRING DULU DENGAN KAPASITAS LENGTH + 1!!!! */
+// int stringInput(char *s, int length);
 
-/* Mengembalikan panjang string. */
-int stringLength(char *s);
+// /* Mengembalikan panjang string. */
+// int stringLength(char *s);
 
-void stringCopy(char *s1, char *s2);
+// void stringCopy(char *s1, char *s2);
 
 #endif

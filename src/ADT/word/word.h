@@ -5,6 +5,8 @@
 #define __WORD__
 
 #include "../boolean.h"
+#include "../../Misc/ascii/ascii.h"
+
 #define N_MAX 64
 #define BLANK ' '
 

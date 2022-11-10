@@ -1,10 +1,9 @@
-/* FILE         : word.h */
+/* FILE         : word.c */
 /* DESKRIPSI    : Implementasi ADT Word (pengganti string) */
 
 #include <stdio.h>
 #include <math.h>
 #include "word.h"
-#include "../../Misc/ascii/ascii.h"
 
 /* Membuat kata kosong dengan panjang 0 */
 void createWord(Word *w) {
@@ -92,19 +91,30 @@ Word stringToWord(char *s) {
 /* Merubah sebuah kata menjadi suatu integer, apabila word bukan integer yang valid maka akan mengembalikan INT_INVALID */
 int wordToInt(Word w) {
 
-    int i = 0;
-    boolean valid = false;
+    long i = 0;
+    boolean valid = true;
+    boolean neg = false;
     
     int j = 0;
-    while (j < wordLength(w) && !valid) {
+    while (j < wordLength(w) && valid) {
         if (isNumeric(w.buffer[j])) {
             i = i + (charToInt(w.buffer[j]) * pow(10,(wordLength(w) - 1 - j)));
+            if (i > 0x7FFFFFFF || (neg && i > 0x7FFFFFFF + 1)) {
+                i = INVALID_INT;
+                valid = false;
+            }
+            j = j + 1;
+        } else if (j == 0 && w.buffer[j] == '-') {
+            neg = true;
         } else {
             i = INVALID_INT;
+            valid = false;
         }
     }
 
-    return i;
+    int result = i;
+
+    return result;
 
 }
 

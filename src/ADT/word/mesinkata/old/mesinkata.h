@@ -4,8 +4,15 @@
 #ifndef __MESINKATA__
 #define __MESINKATA__
 
-#include "../mesinkarakter/mesinkarakter.h"
-#include "../word.h"
+#include "mesinkar.h"
+
+#define N_MAX 50
+#define BLANK ' '
+
+typedef struct {
+    char buffer[N_MAX];
+    int length;
+} Word;
 
 extern boolean endKata;
 extern Word currentKata;
