@@ -9,9 +9,8 @@
 #include "../../ADT/queue/queue2.h"
 #include "../../ADT/word/mesinkata/mesinkata.h"
 #include "../listGame/listGame.h"
-
-void clearQueue(Queue *Q);
-// List dalam queue akan hilang ketika pemain menjalankan command QUIT
+#include "../../Misc/io/io.h"
+#include "../../Misc/ascii/ascii.h"
 
 void queueGame(Queue *Q, List L);
 // mendaftarkan permainan ke dalam list
