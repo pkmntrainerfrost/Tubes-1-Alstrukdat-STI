@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "array.h"
-#include "../mesinkar/mesinkata_input.h"
-#include "../../Misc/io/io.h"
+#include "../word/word.h"
 
 int main()
 {
@@ -19,37 +18,21 @@ int main()
     } else {
         printf("Tidak sama\n");
     }
-    insertLast(&L, test);
+    insertAt(&L, test, 0);
     printf("%d\n", length(L));
-    if (isEmpty(L)) {
-        printf("List kosong\n");
-    }
     if (isFull(L)) {
         printf("List penuh\n");
     } else {
         printf("List tidak penuh\n");
     }
-    insertFirst(&L, test1);
-    printf("%d\n", indexOf(L, test1));
+    insertAt(&L, test1, 1);
     printf("%d\n", length(L));
     updateCapacity(&L);
     printf("%d\n", length(L));
-    printf("%s\n", wordToString(getElmt(L, 0)));
-    setElmt(&L, 0, test2);
-    ElType get;
-    get = getElmt(L, 0);
-    printf("%s\n", get.buffer);
-    displayList(L);
-    test1 = stringToWord("hai");
-    if (isElTypeEqual(test, test1)) {
-        printf("Sama\n");
-    } else {
-        printf("Tidak sama\n");
-    }
-    displayList(L);
-    deleteFirst(&L);
-    displayList(L);
-    deleteLast(&L);
+    char *s;
+    wordToString(getElmt(L, 0), s);
+    printf("%s\n", s);
+    deleteAt(&L, 0);
     displayList(L);
     deallocateList(&L);
     displayList(L);

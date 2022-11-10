@@ -6,10 +6,9 @@
 
 /* ADT lain yang dipakai */
 #include "boolean.h"
-#include "listGame.h"
 #include "queueGame.h"
 
-void playGame(Queue *Q, List L);
+void playGame(Queue *Q);
 // Game yang dimainkan adalah game dengan antrian pertama di antrian game
 // Game yang dapat dimainkan adalah game yang ada di spek game
 

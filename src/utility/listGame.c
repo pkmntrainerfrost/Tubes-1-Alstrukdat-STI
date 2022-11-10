@@ -10,17 +10,3 @@ void listGame(List L)
         displayList(L);
     }
 }
-
-// int main()
-// {
-//     List L;
-//     createList(&L);
-//     // listGame(L);
-//     ElType test;
-//     test = stringToWord("hai");
-//     insertLast(&L, test);
-//     test = stringToWord("halo");
-//     insertLast(&L, test); 
-//     listGame(L);
-//     return 0;
-// }

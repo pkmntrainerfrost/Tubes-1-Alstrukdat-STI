@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "dinerdash.h"
-#include "../Misc/io/io.h"
+#include "../../Misc/io/io.h"
 #include "../../boolean.h"
 
 boolean isSame(char kata1[], char kata2[]){

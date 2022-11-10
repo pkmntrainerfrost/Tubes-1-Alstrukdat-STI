@@ -23,15 +23,15 @@ void queueGame(Queue *Q, List L)
     createWord(&GameNum);
     startKataInput();
     int i = 0;
-    while (!endKataInput){
-        GameNum.buffer[i] = inputcc;
+    while (!endKata){
+        GameNum.buffer[i] = cc;
         startKataInput();
     }
 
     GameNum.length = i;
 
     int num;
-    wordToInt(&num, GameNum); 
+    num = wordToInt(GameNum);
 
     if (num>length(L)){
         printf("Nomor permainan tidak valid, silahkan masukkan nomor game pada list\n");

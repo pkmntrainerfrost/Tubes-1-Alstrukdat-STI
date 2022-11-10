@@ -1,9 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include <time.h>
-#include"../mesinkata/mesinkata.h"
-#include"../mesinkar/mesinkar.h"
-#include"../array/arrayGame.h"
+#include"arrayGame.h"
 
 void MakeEmpty (ArrayGame *T){
 /* I.S. sembarang */
@@ -46,7 +44,8 @@ void TulisIsi (ArrayGame T){
 }
 
 void copyString(char arr1[], char arr2[]){
-	for(int i=0; arr2[i]!='\0'; i++){
+	int i;
+	for(i=0; arr2[i]!='\0'; i++){
 		arr1[i] = arr2[i];
 	}
 	arr1[i] = '\0';
@@ -54,14 +53,15 @@ void copyString(char arr1[], char arr2[]){
 
 void insertArrayGame (ArrayGame *T, char game[]){
 	if(!IsFull(*T)){
-		copyString(T.Elmt[*T.Neff], game);
-		*T.Neff++; 
+		copyString((*T).Elmt[(*T).Neff], game);
+		(*T).Neff++; 
 	}
 } 
 
 int compareString(char arr1[], char arr2[]){
 	int same = true;
-	for(int i=0; arr1[i]!='\0' && arr2[i]!='\0' && same; i++){
+	int i;
+	for(i=0; arr1[i]!='\0' && arr2[i]!='\0' && same; i++){
 		if (arr1[i]!=arr2[i])
 			same = false;
 	}
@@ -73,8 +73,8 @@ int compareString(char arr1[], char arr2[]){
 
 void addToQueueGame(ArrayGame *QGame, char game[]){ // bintang
 	int found = false;
-	for(int i=0; i<*QGame.Neff && !found; i++){
-		if (compareString(*QGame.Elmt[i], game)) // game berada di queue
+	for(int i=0; i<(*QGame).Neff && !found; i++){
+		if (compareString((*QGame).Elmt[i], game)) // game berada di queue
 			found = true;	
 	}
 	if (!found){

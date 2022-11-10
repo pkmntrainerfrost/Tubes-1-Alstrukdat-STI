@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <time.h>
 
-#include "../../boolean.h"
-#include "../../random.h"
+#include "../../ADT/boolean.h"
+#include "../random.h"
 
 void rng() {
 

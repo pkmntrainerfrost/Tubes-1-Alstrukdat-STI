@@ -17,14 +17,14 @@ void createGame(List *L)
 
     while (!eoi) {
         if (i < N_MAX) {
-            GameName.buffer[i] = inputcc;
+            GameName.buffer[i] = cc;
             i++;
         }
         advInput();
     }
 
     GameName.length = i;
-    insertLast(L, GameName);
+    insertAt(L, GameName, length(*L));
 }
 
 // int main()

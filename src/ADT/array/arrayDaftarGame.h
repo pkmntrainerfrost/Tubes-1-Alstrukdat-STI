@@ -5,7 +5,7 @@
 #define ARRAYDAFTARGAME_H
 
 /* ADT lain yang dipakai */
-#include "../../arrayGame.h"
+#include "arrayGame.h"
 
 void arrayDaftarGame(ArrayGame L);
 // I.S. ArrayGame L terdefinisi

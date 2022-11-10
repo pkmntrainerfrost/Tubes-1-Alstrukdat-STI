@@ -9,16 +9,15 @@ void deleteGame(List *L, Queue Q)
     createWord(&GameNum);
     startKataInput();
     int i = 0;
-    while (!endKataInput){
-        GameNum.buffer[i] = inputcc;
+    while (!endKata){
+        GameNum.buffer[i] = cc;
         startKataInput();
     }
 
     GameNum.length = i;
 
     int num;
-    wordToInt(&num, GameNum);   
-    // scanf("%d", num);
+    num = wordToInt(GameNum); 
 
     if (num>=1 && num<=5){
         // 5 game pertama pada file konfigurasi tidak dapat dihapus
@@ -43,19 +42,3 @@ void deleteGame(List *L, Queue Q)
     }
 }
 
-// int main()
-// {
-//     List L;
-//     createList(&L);
-//     Queue Q;
-//     createQueue(&Q);
-//     QElType satu;
-//     satu = stringToWord("satu");
-//     enqueue(&Q,satu);
-//     insertLast(&L,satu);
-//     displayQueue(Q);
-//     deleteGame(&L,Q);
-//     displayList(L);
-
-//     return 0;
-// }

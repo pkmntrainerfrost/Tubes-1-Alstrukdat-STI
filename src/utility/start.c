@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "boolean.h"
-#include "mesinkar.h"
-#include "../ADT/mesinkar/mesinkata.h"
+#include "../ADT/word/mesinkata/mesinkata.h"
 #include "../ADT/list/array.h"
 
 void START(List *ListGame){

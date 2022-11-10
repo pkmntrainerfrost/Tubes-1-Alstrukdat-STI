@@ -1,4 +1,6 @@
 #include "../../boolean.h"
+#include"../word/mesinkata/mesinkata.h"
+#include"../word/mesinkarakter/mesinkarakter.h"
 
 #ifndef ARRAYGAME_H
 #define ARRAYGAME_H
@@ -57,7 +59,7 @@ void TulisIsi (ArrayGame T);
 */
 /* Jika T kosong : Hanya menulis "Tabel kosong" */
 
-void insertArrayGame (ArrayGame T);
+void insertArrayGame (ArrayGame *T, char game[]);
 
 int compareString(char arr1[], char arr2[]);
 

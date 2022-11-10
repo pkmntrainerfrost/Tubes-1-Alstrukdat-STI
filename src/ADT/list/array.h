@@ -2,7 +2,7 @@
 #define __ARRAY_H__
 
 #include "../../boolean.h"
-#include "../mesinkar/mesinkata_input.h"
+#include "../word/mesinkata/mesinkata.h"
 
 #define Nil NULL
 #define initialSize 10
@@ -29,23 +29,11 @@ int length(List L);
 
 ElType getElmt(List L, int i);
 
-void setElmt(List *L, int i, ElType X);
-
-int indexOf(List L, ElType X);
-
 void updateCapacity(List *L);
-
-void insertFirst(List *L, ElType X);
 
 void insertAt(List *L, ElType X, int idx);
 
-void insertLast(List *L, ElType X);
-
-void deleteFirst(List *L);
-
 void deleteAt(List *L, int idx);
-
-void deleteLast(List *L);
 
 void displayList(List L);
 
