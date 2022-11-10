@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <math.h>
 #include "word.h"
-#include "../../Misc/io/io.h"
+#include "../../Misc/ascii/ascii.h"
 
 /* Membuat kata kosong dengan panjang 0 */
 void createWord(Word *w) {

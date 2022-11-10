@@ -15,7 +15,7 @@ typedef struct {
 
 #define wordLength(w) (w).length
 
-#define INVALID_INT -0xDEADBEEF
+#define INVALID_INT 0xDEADBEEF
 
 /* Membuat kata kosong dengan panjang 0 */
 void createWord(Word *w);
