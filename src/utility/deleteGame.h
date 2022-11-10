@@ -1,10 +1,10 @@
 #ifndef DELETEGAME_H
 #define DELETEGAME_H
 
-#include "ADT/list/array.h"
-#include "ADT/queue/queue2.h"
-#include "ADT/mesinkar/mesinkata_input.h"
-#include "Misc/io/io.h"
+#include "../ADT/list/array.h"
+#include "../ADT/queue/queue2.h"
+#include "../ADT/mesinkar/mesinkata_input.h"
+#include "../Misc/io/io.h"
 #include "listGame.h"
 
 void deleteGame(List *L, Queue Q);

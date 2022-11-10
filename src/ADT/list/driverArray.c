@@ -14,6 +14,11 @@ int main()
     test = stringToWord("hai");
     test1 = stringToWord("halo");
     test2 = stringToWord("oit");
+    if (isElTypeEqual(test, test1)) {
+        printf("Sama\n");
+    } else {
+        printf("Tidak sama\n");
+    }
     insertLast(&L, test);
     printf("%d\n", length(L));
     if (isEmpty(L)) {
@@ -24,32 +29,29 @@ int main()
     } else {
         printf("List tidak penuh\n");
     }
-    insertLast(&L, test1);
+    insertFirst(&L, test1);
+    printf("%d\n", indexOf(L, test1));
+    printf("%d\n", length(L));
+    updateCapacity(&L);
     printf("%d\n", length(L));
     printf("%s\n", wordToString(getElmt(L, 0)));
     setElmt(&L, 0, test2);
+    ElType get;
+    get = getElmt(L, 0);
+    printf("%s\n", get.buffer);
+    displayList(L);
+    test1 = stringToWord("hai");
+    if (isElTypeEqual(test, test1)) {
+        printf("Sama\n");
+    } else {
+        printf("Tidak sama\n");
+    }
+    displayList(L);
+    deleteFirst(&L);
+    displayList(L);
+    deleteLast(&L);
+    displayList(L);
+    deallocateList(&L);
     displayList(L);
     return 0;
 }
-
-// void deallocateList(List *L);
-
-// boolean isElTypeEqual(ElType l1, ElType l2);
-
-// void setElmt(List *L, int i, ElType X);
-
-// int indexOf(List L, ElType X);
-
-// void updateCapacity(List *L);
-
-// void insertFirst(List *L, ElType X);
-
-// void insertAt(List *L, ElType X, int idx);
-
-// void insertLast(List *L, ElType X);
-
-// void deleteFirst(List *L);
-
-// void deleteAt(List *L, int idx);
-
-// void deleteLast(List *L);

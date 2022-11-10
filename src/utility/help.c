@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include "../../help.h"
+#include "help.h"
 
 void help(){
     printf("berikut command-command yang tersedia:\n");
