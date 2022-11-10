@@ -108,6 +108,7 @@ int wordToInt(Word w) {
     while (j < wordLength(w) && valid) {
         if (isNumeric(w.buffer[j])) {
             printf("%d\n",charToInt(w.buffer[j]));
+            printf("hasil pow %d\n",(charToInt(w.buffer[j]) * pow(10,(wordLength(w) - 1 - j))));
             long x = i + (charToInt(w.buffer[j]) * pow(10,(wordLength(w) - 1 - j)));
             if (x > 0x7FFFFFFF) {
                 i = INVALID_INT;
