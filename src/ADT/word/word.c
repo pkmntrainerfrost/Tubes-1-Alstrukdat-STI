@@ -64,7 +64,7 @@ Word intToWord(int i) {
     int k = 0;
 
     do {
-        w.buffer[j-1-k] = i % 10;
+        w.buffer[j-1-k] = intToChar(i % 10);
         i = i / 10;
         k = k + 1;
     } while (i != 0);
