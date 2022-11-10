@@ -60,7 +60,7 @@ void dequeuePQ(PrioQueue *pq, PQElType *val){
 void printOrders(PrioQueue pq){
 	printf("Daftar Pesanan: \n");
     printf("Makanan | Durasi memasak | Ketahanan | Harga\n");
-    printf("—---------------------------------------------\n");
+    printf("---------------------------------------------\n");
 	if (isEmptyPQ(pq)){
 		printf("\n");
 	}else{
@@ -79,7 +79,7 @@ void printCooking(PrioQueue pq){
     printf("\n \n");
     printf("Daftar Makanan yang sedang dimasak\n");
     printf("Makanan | Sisa durasi memasak\n");
-    printf("—-----------------------------\n");
+    printf("-----------------------------\n");
 	if (isEmptyPQ(pq)){
 		printf("        |                 \n");;
 	}else{
@@ -96,7 +96,7 @@ void printServing(PrioQueue pq){
     printf("\n \n");
     printf("Daftar Makanan yang dapat disajikan\n");
     printf("Makanan | Sisa ketahanan makanan\n");
-    printf("—-----------------------------\n");
+    printf("-----------------------------\n");
 	if (isEmptyPQ(pq))
 	{
 		printf("        |                 \n");
