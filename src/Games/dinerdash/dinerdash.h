@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "../../boolean.h"
+#include "../../ADT/boolean.h"
 #include "../../ADT/word/mesinkarakter/mesinkarakter.h"
 #include "../../ADT/word/mesinkata/mesinkata.h"
 #include "../../ADT/queue/prioqueue.h"
