@@ -25,7 +25,6 @@ int main()
         printf("List tidak penuh\n");
     }
     insertLast(&L, test1);
-    displayList(L);
     printf("%d\n", L.capacity);
     updateCapacity(&L);
     printf("%d\n", L.capacity);

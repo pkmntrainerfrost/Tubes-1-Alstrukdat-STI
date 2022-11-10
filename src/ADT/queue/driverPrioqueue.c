@@ -39,3 +39,5 @@ int main()
     printServing(pq);
     return 0;
 }
+
+// compile: gcc ADT/queue/driverPrioqueue.c ADT/queue/prioqueue.c -o driver
