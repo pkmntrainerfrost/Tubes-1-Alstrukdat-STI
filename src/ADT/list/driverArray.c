@@ -25,15 +25,19 @@ int main()
         printf("List tidak penuh\n");
     }
     insertLast(&L, test1);
-    printf("%d\n", length(L));
+    displayList(L);
+    printf("%d\n", L.capacity);
     updateCapacity(&L);
-    printf("%d\n", length(L));
-    char *s;
-    wordToString(getElmt(L, 0), s);
-    printf("%s\n", s);
-    deleteAt(&L, 0);
+    printf("%d\n", L.capacity);
+    test = getElmt(L, 1);
+    printWord(test);
+    printf("\n");
+    deleteLast(&L);
     displayList(L);
     deallocateList(&L);
+    printf("%d\n", L.capacity);
     displayList(L);
     return 0;
 }
+
+// compile: gcc ADT/list/driverArray.c ADT/list/array.c ADT/word/word.c Misc/ascii/ascii.c -o driver
