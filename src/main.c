@@ -20,7 +20,7 @@ int main() {
 
     while (!Started) {
 
-        splash(Tries,InvalidFile);
+        splash(Tries);
 
         List Input;
         createList(&Input);
@@ -29,16 +29,16 @@ int main() {
         if (Valid) {
             if (isWordEqual(getElmt(Input,0),stringToWord("START")) && length(Input) == 1) {
                 START(&ListGame);
-                printWord(getElmt(ListGame,0));
+                printf("File konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan.\n");
                 Started = true;
             } else if (isWordEqual(getElmt(Input,0),stringToWord("LOAD")) && length(Input) == 2) {
                 InvalidFile = CHECKFILE(getElmt(Input,1));
                 if (!InvalidFile) {
                     LOAD(getElmt(Input,1),&ListGame);
-                    printWord(getElmt(ListGame,0));
+                    printf("Save file berhasil dibaca. BNMO berhasil dijalankan.\n");
                     Started = true;
                 } else {
-                    Tries = tries + 1;
+                    Tries = Tries + 1;
                 }
             } else {
                 Tries = Tries + 1;

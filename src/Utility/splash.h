@@ -3,8 +3,8 @@
 
 #include "../ADT/boolean.h"
 
-void splash(int tries, boolean invalidFile);
+void splash(int tries);
 
-void selamatDatang(int tries, boolean invalidFile);
+void selamatDatang(int tries);
 
 #endif

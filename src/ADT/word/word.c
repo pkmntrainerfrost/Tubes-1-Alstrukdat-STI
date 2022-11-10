@@ -107,10 +107,12 @@ int wordToInt(Word w) {
     int j = 0;
     while (j < wordLength(w) && valid) {
         if (isNumeric(w.buffer[j])) {
-            i = i + (charToInt(w.buffer[j]) * pow(10,(wordLength(w) - 1 - j)));
-            if (i > 0x7FFFFFFF) {
+            long x = i + (charToInt(w.buffer[j]) * pow(10,(wordLength(w) - 1 - j)));
+            if (x > 0x7FFFFFFF) {
                 i = INVALID_INT;
                 valid = false;
+            } else {
+                i = i + (charToInt(w.buffer[j]) * pow(10,(wordLength(w) - 1 - j)));
             }
             j = j + 1;
         } else if (j == 0 && w.buffer[j] == '-') {
@@ -121,10 +123,7 @@ int wordToInt(Word w) {
         }
     }
 
-    int result = i;
-
-    return result;
-
+    return i;
 }
 
 /* Merubah sebuah word menjadi suatu string dan menyimpannya di s. PENTING: DEFINISIKAN S TERLEBIH DAHULU DENGAN KAPASITAS WORDLENGTH + 1 */
