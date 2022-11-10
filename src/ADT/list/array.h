@@ -1,7 +1,7 @@
 #ifndef __ARRAY_H__
 #define __ARRAY_H__
 
-#include "../../boolean.h"
+#include "../boolean.h"
 #include "../word/mesinkata/mesinkata.h"
 
 #define Nil NULL

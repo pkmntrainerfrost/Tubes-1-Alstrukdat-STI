@@ -1,6 +1,8 @@
-#include <stdio.h>
+#include <stdio.h> 
+#include "../ADT/boolean.h" 
+#include "splash.h"
 
-void splash() {
+void splash(int tries, boolean invalidFile) {
 
     printf("            *#%%(                :::::::::  ::::    ::: ::::    ::::   :::::::: \n");
     printf("/((******/#%%&@@@&%%##((((#       :+:    :+: :+:+:   :+: +:+:+: :+:+:+ :+:    :+:\n");
@@ -18,10 +20,25 @@ void splash() {
     printf("\n");
     printf("- Tugas Besar 1 IF2111 Algoritma dan Struktur Data STI - Kelompok 06 Kelas 02 -\n");
     printf("\n");
-    printf("Selamat Datang di BNMO!\n");
-    printf("INPUT [START] ATAU [LOAD]...\n");
+    selamatDatang(tries, invalidFile);
+    printf("INPUT [START] ATAU [LOAD <FILENAME>]...\n");
     printf("root@BNMO:~$ ");
     
+}
+
+void selamatDatang(int tries, boolean invalidFile) {
+
+    if (tries == 0) {
+        printf("Selamat Datang di BNMO!\n");
+    } else if (tries < 10) {
+        printf("Command tidak valid! Mohon ulangi input...\n");
+    } else if (invalidFile) {
+        printf("File tidak ditemukan di folder data! Mohon ulangi input...\n");
+    } else {
+        printf("Melihatmu sudah gagal menginput perintah sebanyak ini, BNMO tertawa kecil.\n");
+    }
+    
+
 }
 
 //             *#%(                :::::::::  ::::    ::: ::::    ::::   ::::::::  

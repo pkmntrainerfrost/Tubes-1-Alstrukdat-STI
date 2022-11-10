@@ -17,7 +17,7 @@ void concateWord(Word w1, Word w2, Word *w3) {
 
     int length = wordLength(w1) + wordLength(w2);
 
-    if (length < N_MAX) {
+    if (length > N_MAX) {
         length = N_MAX;
     }
 
@@ -50,15 +50,21 @@ Word intToWord(int i) {
     Word w;
     createWord(&w);
 
+    int temp = i;
+
     int j = 0;
 
     do {
-        w.buffer[j] = intToChar(i % 10);
-        i = i / 10;
+        temp = temp / 10;
         j = j + 1;
-    } while (i != 0);
+    } while (temp != 0);
 
     wordLength(w) = j;
+
+    do {
+        w.buffer[j-1] = i % 10;
+        i = i / 10;
+    } while (i != 0);
 
     return w;
 

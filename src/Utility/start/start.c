@@ -1,5 +1,7 @@
 #include <stdio.h>
+
 #include "../../ADT/boolean.h"
+#include "../../ADT/array/list.h"
 #include "../../ADT/word/word.h"
 #include "../../ADT/word/mesinkata/mesinkata.h"
 

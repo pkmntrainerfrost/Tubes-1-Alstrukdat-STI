@@ -7,6 +7,8 @@
 #define __IO__
 
 #include "../../ADT/boolean.h"
+#include "../../ADT/word/word.h"
+#include "../../ADT/list/array.h"
 
 #define INVALID_INPUT 0
 #define VALID_INPUT 1
