@@ -111,7 +111,7 @@ void dinerDash(){
         if (isSame(command, cook))
         {
             enqueuePQ(&pq, addQueue(idx));
-            enqueuePQ(&cookQ, pq.buffer[id]);
+            enqueuePQ(&cookQ, pq.buffer[id-served]);
             printf("Makanan %s telah dimasukkan ke dalam antrian\n", orderId);
             queue++;
             idx++;
