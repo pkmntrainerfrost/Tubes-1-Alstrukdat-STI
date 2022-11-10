@@ -26,15 +26,3 @@ void createGame(List *L)
     GameName.length = i;
     insertLast(L, GameName);
 }
-
-// int main()
-// {
-//     List L;
-//     createList(&L);
-//     ElType test;
-//     test = stringToWord("hai");
-//     insertLast(&L, test);
-//     createGame(&L);
-//     printList(L);
-//     return 0;
-// }
