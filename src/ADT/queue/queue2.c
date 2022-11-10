@@ -71,7 +71,7 @@ void enqueue (Queue * Q, QElType X)
     } else {
         if ((*Q).TAIL == ((*Q).MaxEl - 1)){
             if (IsFull(*Q)){
-                updateCapacity(Q);
+                UpdateCapacity(Q);
             } else {        // queue penuh semu
                 int i;
                 for (i = (*Q).HEAD; i<=(*Q).TAIL; i++){
@@ -132,14 +132,18 @@ boolean isMember(Queue Q, QElType X)
 void displayQueue(Queue Q)
 {
     if (IsEmpty(Q)){
-        printf("Queue kosong\n");
+        printf("List kosong\n");
     } else {
-        int i = Q.HEAD;
-        while (i <= Q.TAIL){
-            printf("%d. ", i+1);
-            printKata(Q.Tab[i]);
+        int i;
+        int num = 1;
+        for(i=Q.HEAD; i<=Q.TAIL; i++){
+            printf("%d. ", num);
+            int j;
+            for(j=0; j<Q.Tab[i].length; j++){
+                printf("%c", Q.Tab[i].buffer[j]);
+            }
             printf("\n");
-            i++;
+            num++;
         }
     }
 }

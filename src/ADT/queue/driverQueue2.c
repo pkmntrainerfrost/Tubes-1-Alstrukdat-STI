@@ -8,15 +8,21 @@ int main()
     QElType X, Y;
     createQueue(&Q);
     X = stringToWord("hai");
+    Y = stringToWord("halo");
     enqueue(&Q, X);
     displayQueue(Q);
     printf("%d\n", Q.MaxEl);
-    Y = stringToWord("halo");
     enqueue(&Q, Y);
-    printf("%d\n", Q.MaxEl);
-    dequeue(&Q, &X);
-    displayQueue(Q);
-    printf("%s\n", Front(Q).buffer);
+    printf("%d\n", Length(Q));
+    QElType Z;
+    dequeue(&Q, &Z);
+    if (isSameWord(Z, X)){
+        printf("Sama\n");
+    } else {
+        printf("Tidak sama\n");
+    }
+    printWord(Front(Q));
+    printf("\n");
     if (isMember(Q, X)){
         printf("hai ada\n");
     } else {
@@ -24,3 +30,5 @@ int main()
     }
     return 0;
 }
+
+// compile: gcc ADT/queue/driverQueue2.c ADT/queue/queue2.c ADT/word/word.c Misc/ascii/ascii.c -o driver

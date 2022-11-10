@@ -120,14 +120,18 @@ void deleteLast(List *L)
 
 void displayList(List L)
 {
-    int i;
-    for(i=0; i<length(L); i++){
-        printf("%d. ", i+1);
-        int j;
-        for(j=0; j<L.A[i].length; j++){
-            printf("%c", L.A[i].buffer[j]);
+    if (isEmpty(L)){
+        printf("List kosong\n");
+    } else {
+        int i;
+        for(i=0; i<length(L); i++){
+            printf("%d. ", i+1);
+            int j;
+            for(j=0; j<L.A[i].length; j++){
+                printf("%c", L.A[i].buffer[j]);
+            }
+            printf("\n");
         }
-        printf("\n");
     }
 }
 

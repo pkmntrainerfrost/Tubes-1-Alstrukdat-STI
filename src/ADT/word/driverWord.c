@@ -28,10 +28,10 @@ int main()
     // printf("%s\n", s);
     test = intToWord(123);
     int num = wordToInt(test);
-    printf("print word ");
+    printf("print inttoword ");
     printWord(test);
     printf("\n");
-    printf("print int %d\n", num);
+    printf("print wordtoint %d\n", num);
     return 0;
 }
 

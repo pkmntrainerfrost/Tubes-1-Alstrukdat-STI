@@ -5,12 +5,12 @@
 #ifndef __queue2_h__
 #define __queue2_h__
 
-#include "../../boolean.h"
+#include "../boolean.h"
 #include "../word/mesinkata/mesinkata.h"
 
 /* Nilai untuk indeks yang tidak terdefinisi */
 #define IDX_UNDEF -1
-#define defaultCapacity 1
+#define defaultCapacity 10
 
 /* Definisi tipe elemen dan indeks pada Queue */
 #define QElType Word
