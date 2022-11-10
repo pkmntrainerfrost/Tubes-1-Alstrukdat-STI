@@ -28,6 +28,7 @@ boolean isElTypeEqual(ElType l1, ElType l2)
         }
         return true;
     }
+    return false;
 }
 
 boolean isEmpty(List L)
@@ -120,7 +121,14 @@ void deleteLast(List *L)
 void displayList(List L)
 {
     int i;
-    for (i=0; i<length(L); i++){
-        printf("%d. %s\n", i+1, L.A[i].buffer);
+    for(i=0; i<length(L); i++){
+        printf("%d. ", i+1);
+        int j;
+        for(j=0; j<L.A[i].length; j++){
+            printf("%c", L.A[i].buffer[j]);
+        }
+        printf("\n");
     }
 }
+
+// compile: gcc ADT/list/array.c ADT/word/word.c Misc/ascii/ascii.c -o driver
