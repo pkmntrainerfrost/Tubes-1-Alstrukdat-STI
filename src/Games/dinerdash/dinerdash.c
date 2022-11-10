@@ -38,7 +38,7 @@ void dinerDash(){
     int served = 0;
     int saldo = 0;
     int i;
-    printf("Welcome to diner dash!\n");
+    printf("Welcome to diner dash!\n\n");
 
     PQElType order[20];
 
@@ -55,8 +55,10 @@ void dinerDash(){
         enqueuePQ(&pq, order[i]); 
     }   
 
-    printf("SALDO: %d\n", saldo);
+    printf("SALDO: %d\n\n", saldo);
     printOrders(pq);
+    printCooking(cookQ);
+    printServing(serveQ);
 
     int idx;
     idx = 3;
@@ -118,23 +120,34 @@ void dinerDash(){
 
         else if (isSame(command, serve))
         {
-            if (HEAD(pq).foodId == id)
+            if (!isEmptyPQ(serveQ))
             {
+                if (HEAD(pq).foodId == id)
+                {
                 printf("Berhasil mengantar %s\n", orderId);
                 enqueuePQ(&pq, addQueue(idx));
+                PQElType vals;
+                dequeuePQ(&pq, &vals);
+                dequeuePQ(&serveQ, &vals);
+                // enqueuePQ(&serveQ, pq.buffer[id]);
                 served++;
                 idx++;
+                saldo += HEAD(pq).price;
 
-            }
+                }
 
-            else
-            {
+                else
+                {
                 printf("Makanan %s tidak dapat disajikan karena M%d belum selesai\n", orderId, HEAD(pq).foodId);
-            }
+                }
             // print queue
             // print makanan yang sedang dimasak
             // print makanan yang dapat disajikan
             // print saldo
+            }else{
+                printf("Tidak ada makanan yang siap disajikan\n");
+            }
+            
         }
         else if (isSame(command, skip))
         {
@@ -143,6 +156,7 @@ void dinerDash(){
         }
         
         printf("\n \n");
+        printf("SALDO: %d\n\n", saldo);
         printOrders(pq);
         printCooking(cookQ);
         printServing(serveQ);
@@ -168,6 +182,7 @@ void dinerDash(){
         }
     }
     printf("========== GAME OVER ==========\n");
+    printf("SKOR AKHIR : %d\n", saldo);
 }
 
 

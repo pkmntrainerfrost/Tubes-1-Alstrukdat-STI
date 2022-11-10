@@ -81,7 +81,7 @@ void printCooking(PrioQueue pq){
     printf("Makanan | Sisa durasi memasak\n");
     printf("—-----------------------------\n");
 	if (isEmptyPQ(pq)){
-		printf("\n");
+		printf("        |                 \n");;
 	}else{
 		PQElType val;
 		int i = IDX_HEAD(pq);
@@ -99,7 +99,7 @@ void printServing(PrioQueue pq){
     printf("—-----------------------------\n");
 	if (isEmptyPQ(pq))
 	{
-		printf("\n");
+		printf("        |                 \n");
 	}
 	else
 	{

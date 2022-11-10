@@ -4,7 +4,7 @@
 #ifndef __QUEUE__
 #define __QUEUE__
 
-#include "../boolean.h"
+#include "../../boolean.h"
 #include <stdlib.h>
 
 #define NIL NULL
