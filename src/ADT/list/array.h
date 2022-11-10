@@ -1,8 +1,8 @@
 #ifndef __ARRAY_H__
 #define __ARRAY_H__
 
-#include "../../boolean.h"
-#include "../mesinkar/mesinkata_input.h"
+#include "../boolean.h"
+#include "../word/mesinkata/mesinkata.h"
 
 #define Nil NULL
 #define initialSize 10
@@ -28,10 +28,6 @@ boolean isFull(List L);
 int length(List L);
 
 ElType getElmt(List L, int i);
-
-void setElmt(List *L, int i, ElType X);
-
-int indexOf(List L, ElType X);
 
 void updateCapacity(List *L);
 

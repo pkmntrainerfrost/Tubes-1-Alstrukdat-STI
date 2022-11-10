@@ -1,25 +1,22 @@
-/* File         : mesinkar.h */
+/* File         : mesinkata.h */
 /* Deskripsi    : Header ADT Mesin Kata */
 
 #ifndef __MESINKATA__
 #define __MESINKATA__
 
-#include "mesinkar.h"
+#include "../mesinkarakter/mesinkarakter.h"
+#include "../word.h"
 
-#define N_MAX 50
-#define BLANK ' '
-
-typedef struct {
-    char buffer[N_MAX];
-    int length;
-} Word;
+#define FILEBLANK '\n'
+#define INPUTBLANK ' '
 
 extern boolean endKata;
 extern Word currentKata;
 
 void ignoreBlank();
 
-void startKata();
+/* Memulai mesin kata. Apabila fileInput bernilai true, mesin kata akan membaca dari file; apabila false, dari stdin. Kosongkan filename apabila input dari stdin. */
+void startKata(boolean fileInput, char *filename);
 
 void advKata();
 

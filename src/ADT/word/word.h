@@ -5,8 +5,9 @@
 #define __WORD__
 
 #include "../boolean.h"
+#include "../../Misc/ascii/ascii.h"
+
 #define N_MAX 64
-#define BLANK ' '
 
 typedef struct {
     char buffer[N_MAX];
@@ -23,7 +24,7 @@ void createWord(Word *w);
 /* Menggabung w1 dan w2 dan menyimpannya di w3 */
 void concateWord(Word w1, Word w2, Word *w3);
 
-/* Menggabung w1 dan w2 dan menyimpannya di w3 */
+/* Menyalin w1 ke w3 */
 void copyWord(Word w1, Word *w2);
 
 /* Merubah sebuah integer menjadi sebuah word */

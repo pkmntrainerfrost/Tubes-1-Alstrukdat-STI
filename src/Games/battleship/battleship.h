@@ -4,8 +4,8 @@
 #ifndef __BATTLESHIP__
 #define __BATTLESHIP__
 
-#include "../ADT/point/point.h"
-#include "../boolean.h"
+#include "../../ADT/point/point.h"
+#include "../../ADT/boolean.h"
 
 #define TILECOUNT 100
 #define SHIPCOUNT 5

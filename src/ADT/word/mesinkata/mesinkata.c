@@ -1,25 +1,31 @@
+/* File         : mesinkata.c */
+/* Deskripsi    : Implementasi ADT Mesin Kata */
+
+#include <stdio.h>
+#include "../word.h"
 #include "mesinkata.h"
+#include "../mesinkarakter/mesinkarakter.h"
 
 boolean endKata;
 Word currentKata;
 
 void ignoreBlank() {
 
-    while (cc == BLANK) {
+    while ((cc == INPUTBLANK && !isFile) || (cc == FILEBLANK && isFile)) {
         adv();
     }
 
 }
 
-void startKata() {
+void startKata(boolean fileInput, char *filename) {
 
-    start();
+    endKata = false;
+    start(fileInput, filename);
     ignoreBlank();
 
-    if (cc == MARK) {
+    if (eoi) {
         endKata = true;
     } else {
-        endKata = false;
         salinKata();
     }
 
@@ -29,7 +35,7 @@ void advKata() {
 
     ignoreBlank();
 
-    if (cc == MARK) {
+    if (eoi) {
         endKata = true;
     } else {
         salinKata();
@@ -41,10 +47,12 @@ void salinKata() {
 
     int i = 0;
 
-    while ((cc != MARK) && (cc != BLANK)) {
-        currentKata.buffer[i] = cc;
+    while (!eoi && ((isFile && cc != FILEBLANK) || (!isFile && cc != INPUTBLANK))) {
+        if (i < N_MAX) {
+            currentKata.buffer[i] = cc;
+            i = i + 1;
+        }
         adv();
-        i = i + 1;
     }
 
     currentKata.length = i;

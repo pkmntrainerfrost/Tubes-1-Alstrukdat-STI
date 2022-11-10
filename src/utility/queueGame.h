@@ -7,8 +7,8 @@
 /* ADT lain yang dipakai */
 #include "boolean.h"
 #include "../ADT/queue/queue2.h"
-#include "../ADT/mesinkar/mesinkata_input.h"
-#include "../Misc/io/io.h"
+#include "../ADT/word/mesinkata/mesinkata.h"
+#include "../ADT/word/word.h"
 #include "listGame.h"
 
 void clearQueue(Queue *Q);

@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "array.h"
-#include "../mesinkar/mesinkata_input.h"
-#include "../../Misc/io/io.h"
+#include "../word/word.h"
 
 int main()
 {
@@ -10,48 +9,35 @@ int main()
     if (isEmpty(L)) {
         printf("List kosong\n");
     }
-    ElType test, test1, test2;
+    ElType test, test1;
     test = stringToWord("hai");
     test1 = stringToWord("halo");
-    test2 = stringToWord("oit");
     if (isElTypeEqual(test, test1)) {
         printf("Sama\n");
     } else {
         printf("Tidak sama\n");
     }
-    insertLast(&L, test);
+    insertFirst(&L, test);
     printf("%d\n", length(L));
-    if (isEmpty(L)) {
-        printf("List kosong\n");
-    }
     if (isFull(L)) {
         printf("List penuh\n");
     } else {
         printf("List tidak penuh\n");
     }
-    insertFirst(&L, test1);
-    printf("%d\n", indexOf(L, test1));
-    printf("%d\n", length(L));
+    insertLast(&L, test1);
+    displayList(L);
+    printf("%d\n", L.capacity);
     updateCapacity(&L);
-    printf("%d\n", length(L));
-    printf("%s\n", wordToString(getElmt(L, 0)));
-    setElmt(&L, 0, test2);
-    ElType get;
-    get = getElmt(L, 0);
-    printf("%s\n", get.buffer);
-    displayList(L);
-    test1 = stringToWord("hai");
-    if (isElTypeEqual(test, test1)) {
-        printf("Sama\n");
-    } else {
-        printf("Tidak sama\n");
-    }
-    displayList(L);
-    deleteFirst(&L);
-    displayList(L);
+    printf("%d\n", L.capacity);
+    test = getElmt(L, 1);
+    printWord(test);
+    printf("\n");
     deleteLast(&L);
     displayList(L);
     deallocateList(&L);
+    printf("%d\n", L.capacity);
     displayList(L);
     return 0;
 }
+
+// compile: gcc ADT/list/driverArray.c ADT/list/array.c ADT/word/word.c Misc/ascii/ascii.c -o driver

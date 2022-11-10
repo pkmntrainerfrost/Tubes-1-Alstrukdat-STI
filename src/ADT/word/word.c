@@ -1,10 +1,9 @@
-/* FILE         : word.h */
+/* FILE         : word.c */
 /* DESKRIPSI    : Implementasi ADT Word (pengganti string) */
 
 #include <stdio.h>
 #include <math.h>
 #include "word.h"
-#include "../../Misc/ascii/ascii.h"
 
 /* Membuat kata kosong dengan panjang 0 */
 void createWord(Word *w) {
@@ -18,7 +17,7 @@ void concateWord(Word w1, Word w2, Word *w3) {
 
     int length = wordLength(w1) + wordLength(w2);
 
-    if (length < N_MAX) {
+    if (length > N_MAX) {
         length = N_MAX;
     }
 
@@ -26,8 +25,8 @@ void concateWord(Word w1, Word w2, Word *w3) {
         w3->buffer[i] = w1.buffer[i];
     }
 
-    for (int i = wordLength(w1); i < length; i++) {
-        w3->buffer[i] = w2.buffer[i];
+    for (int i = 0; i < wordLength(w2); i++) {
+        w3->buffer[wordLength(w1) + i] = w2.buffer[i];
     }
 
     wordLength(*w3) = length;
@@ -51,15 +50,24 @@ Word intToWord(int i) {
     Word w;
     createWord(&w);
 
+    int temp = i;
+
     int j = 0;
 
     do {
-        w.buffer[j] = intToChar(i % 10);
-        i = i / 10;
+        temp = temp / 10;
         j = j + 1;
-    } while (i != 0);
+    } while (temp != 0);
 
     wordLength(w) = j;
+
+    int k = 0;
+
+    do {
+        w.buffer[j-1-k] = intToChar(i % 10);
+        i = i / 10;
+        k = k + 1;
+    } while (i != 0);
 
     return w;
 
@@ -75,7 +83,7 @@ Word stringToWord(char *s) {
     int i = 0;
 
     while (i < sizeof(s) && !end) {
-        if (s[i] == "\0") {
+        if (s[i] == '\0') {
             end = true;
         } else {
             w.buffer[i] = s[i];
@@ -92,36 +100,47 @@ Word stringToWord(char *s) {
 /* Merubah sebuah kata menjadi suatu integer, apabila word bukan integer yang valid maka akan mengembalikan INT_INVALID */
 int wordToInt(Word w) {
 
-    int i = 0;
-    boolean valid = false;
+    long i = 0;
+    boolean valid = true;
+    boolean neg = false;
     
     int j = 0;
-    while (j < wordLength(w) && !valid) {
+    while (j < wordLength(w) && valid) {
         if (isNumeric(w.buffer[j])) {
-            i = i + (charToInt(w.buffer[j]) * pow(10,(wordLength(w) - 1 - j)));
+            printf("%d\n",charToInt(w.buffer[j]));
+            printf("hasil pow %d\n",(charToInt(w.buffer[j]) * pow(10,(wordLength(w) - 1 - j))));
+            long x = i + (charToInt(w.buffer[j]) * pow(10,(wordLength(w) - 1 - j)));
+            if (x > 0x7FFFFFFF) {
+                i = INVALID_INT;
+                valid = false;
+            } else {
+                i = i + (charToInt(w.buffer[j]) * pow(10,(wordLength(w) - 1 - j)));
+            }
+            j = j + 1;
+        } else if (j == 0 && w.buffer[j] == '-') {
+            neg = true;
         } else {
             i = INVALID_INT;
+            valid = false;
         }
     }
 
     return i;
-
 }
 
 /* Merubah sebuah word menjadi suatu string dan menyimpannya di s. PENTING: DEFINISIKAN S TERLEBIH DAHULU DENGAN KAPASITAS WORDLENGTH + 1 */
+/* JANGAN DIPAKE KECUALI LU TAU LAGI NGAPAIN */
 void wordToString(Word w, char *s) {
 
     int length = wordLength(w);
-
-    if (sizeof(s) < length + 1) {
-        length = sizeof(s);
-    }
 
     int i = 0;
     while (i < length) {
         s[i] = w.buffer[i];
         i = i + 1;
     }
+
+    s[length] = '\0';
 
 }
 

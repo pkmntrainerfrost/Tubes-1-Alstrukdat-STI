@@ -17,7 +17,7 @@ void createGame(List *L)
 
     while (!eoi) {
         if (i < N_MAX) {
-            GameName.buffer[i] = inputcc;
+            GameName.buffer[i] = cc;
             i++;
         }
         advInput();

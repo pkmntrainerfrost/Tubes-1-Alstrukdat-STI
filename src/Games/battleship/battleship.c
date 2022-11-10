@@ -1,5 +1,5 @@
 #include "battleship.h"
-#include "../Misc/io/io.h"
+#include "../../Misc/io/io.h"
 
 // AI
 // Yor Forger -> nembak asal (kalo gk sempet, implement yg ini aja)

@@ -28,6 +28,7 @@ boolean isElTypeEqual(ElType l1, ElType l2)
         }
         return true;
     }
+    return false;
 }
 
 boolean isEmpty(List L)
@@ -48,31 +49,6 @@ int length(List L)
 ElType getElmt(List L, int i)
 {
     return (L.A[i]);
-}
-
-void setElmt(List *L, int i, ElType X)
-{
-    (*L).A[i] = X;
-}
-
-int indexOf(List L, ElType X)
-{
-    boolean found = false;
-    int i = 0;
-
-    while (i < length(L) && !found) {
-        if (isElTypeEqual(getElmt(L,i),X)) {
-            found = true;
-        } else {
-            i++;
-        }
-    }
-
-    if (found) {
-        return i;
-    } else {
-        return -1;
-    }
 }
 
 void updateCapacity(List *L)
@@ -101,10 +77,6 @@ void updateCapacity(List *L)
 
 void insertFirst(List *L, ElType X)
 {
-    if (isFull(*L)) {
-        updateCapacity(L);
-    }
-    
     insertAt(L, X, 0);
 }
 
@@ -148,8 +120,19 @@ void deleteLast(List *L)
 
 void displayList(List L)
 {
-    int i;
-    for (i=0; i<length(L); i++){
-        printf("%d. %s\n", i+1, L.A[i].buffer);
+    if (isEmpty(L)){
+        printf("List kosong\n");
+    } else {
+        int i;
+        for(i=0; i<length(L); i++){
+            printf("%d. ", i+1);
+            int j;
+            for(j=0; j<L.A[i].length; j++){
+                printf("%c", L.A[i].buffer[j]);
+            }
+            printf("\n");
+        }
     }
 }
+
+// compile: gcc ADT/list/array.c ADT/word/word.c Misc/ascii/ascii.c -o driver

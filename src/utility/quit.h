@@ -1,5 +1,5 @@
 // file quit.h
-#include "queue.h"
+#include "../ADT/queue/queue2.h"
 
 #ifndef QUIT_H
 #define QUIT_H

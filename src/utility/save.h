@@ -6,8 +6,6 @@
 
 /* ADT lain yang dipakai */
 #include "../ADT/list/array.h"
-#include "../ADT/mesinkar/mesinkata_input.h"
-#include "../Misc/io/io.h"
 
 void savetoFile(char saveFilename[], List L);
 // I.S. saveFilename terdefinisi, L terdefinisi
