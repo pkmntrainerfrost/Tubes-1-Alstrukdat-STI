@@ -25,8 +25,8 @@ void concateWord(Word w1, Word w2, Word *w3) {
         w3->buffer[i] = w1.buffer[i];
     }
 
-    for (int i = wordLength(w1); i < length; i++) {
-        w3->buffer[i] = w2.buffer[i];
+    for (int i = 0; i < wordLength(w2); i++) {
+        w3->buffer[wordLength(w1) + i] = w2.buffer[i];
     }
 
     wordLength(*w3) = length;
