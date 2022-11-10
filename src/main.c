@@ -3,10 +3,15 @@
 #include "ADT/boolean.h"
 #include "ADT/word/word.h"
 #include "ADT/list/array.h"
+#include "Utility/start/start.h"
+#include "Utility/load/load.h"
 
 #include <stdio.h>
 
 int main() {
+
+    List ListGame;
+    createList(&ListGame);
 
     boolean Started = false;
 
@@ -23,11 +28,18 @@ int main() {
 
         if (Valid) {
             if (isWordEqual(getElmt(Input,0),stringToWord("START")) && length(Input) == 1) {
-                printf("valid");
+                START(&ListGame);
+                printWord(getElmt(ListGame,0));
                 Started = true;
             } else if (isWordEqual(getElmt(Input,0),stringToWord("LOAD")) && length(Input) == 2) {
-                printf("valid");
-                Started = true;
+                InvalidFile = CHECKFILE(getElmt(Input,1));
+                if (!InvalidFile) {
+                    LOAD(getElmt(Input,1),&ListGame);
+                    printWord(getElmt(ListGame,0));
+                    Started = true;
+                } else {
+                    Tries = tries + 1;
+                }
             } else {
                 Tries = Tries + 1;
             }

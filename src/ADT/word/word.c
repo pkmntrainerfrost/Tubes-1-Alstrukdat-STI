@@ -61,9 +61,12 @@ Word intToWord(int i) {
 
     wordLength(w) = j;
 
+    int k = 0;
+
     do {
-        w.buffer[j-1] = i % 10;
+        w.buffer[j-1-k] = i % 10;
         i = i / 10;
+        k = k + 1;
     } while (i != 0);
 
     return w;
@@ -125,19 +128,18 @@ int wordToInt(Word w) {
 }
 
 /* Merubah sebuah word menjadi suatu string dan menyimpannya di s. PENTING: DEFINISIKAN S TERLEBIH DAHULU DENGAN KAPASITAS WORDLENGTH + 1 */
+/* JANGAN DIPAKE KECUALI LU TAU LAGI NGAPAIN */
 void wordToString(Word w, char *s) {
 
     int length = wordLength(w);
-
-    if (sizeof(s) < length + 1) {
-        length = sizeof(s);
-    }
 
     int i = 0;
     while (i < length) {
         s[i] = w.buffer[i];
         i = i + 1;
     }
+
+    s[length] = '\0';
 
 }
 
