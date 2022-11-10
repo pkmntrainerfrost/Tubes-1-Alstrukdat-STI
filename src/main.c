@@ -3,10 +3,18 @@
 #include "ADT/boolean.h"
 #include "ADT/word/word.h"
 #include "ADT/list/array.h"
+#include "ADT/queue/queue2.h"
 #include "utility/start/start.h"
 #include "utility/load/load.h"
 #include "utility/help/help.h"
-#include "Utility/commandlain/commandlain.h"
+#include "utility/commandlain/commandlain.h"
+#include "utility/quit/quit.h"
+#include "utility/listGame/listGame.h"
+#include "utility/deleteGame/deleteGame.h"
+#include "utility/playGame/playGame.h"
+#include "utility/queuegame/queueGame.h"
+#include "utility/skipGame/skipGame.h"
+#include "utility/save/save.h"
 
 #include <stdio.h>
 
@@ -14,6 +22,9 @@ int main() {
 
     List ListGame;
     createList(&ListGame);
+
+    Queue QueueGame;
+    createQueue(&QueueGame);
 
     boolean Started = false;
 
@@ -27,8 +38,8 @@ int main() {
 
         List Input;
         createList(&Input);
-        boolean Valid = multiWordInput(&Input,1,2);
         help();
+        boolean Valid = multiWordInput(&Input,1,2);
 
         if (Valid) {
             if (isWordEqual(getElmt(Input,0),stringToWord("START")) && length(Input) == 1) {
@@ -46,7 +57,7 @@ int main() {
                     Tries = Tries + 1;
                 }
             } else {
-                printf("Masukan tidak valid! Silahkan ulangi input.\n");
+                commandlain();
                 Tries = Tries + 1;
             }
         } else {
@@ -77,9 +88,23 @@ int main() {
 
         if (Valid) {
             if (length(Input) == 1) { 
+                if (isWordEqual(getElmt(Input,0),stringToWord("QUIT"))){
+                    quit();
+                }
+            } else if (length(Input) == 2){
+                if (isWordEqual(getElmt(Input,1),stringToWord("GAME"))){
+                    if (isWordEqual(getElmt(Input,0),stringToWord("LIST"))){
+                        listGame(ListGame);
+                    } else if (isWordEqual(getElmt(Input,0),stringToWord("DELETE"))){
+                        deleteGame(&ListGame, QueueGame);
+                    } else if (isWordEqual(getElmt(Input,0),stringToWord("PLAY"))){
+                        playGame(&QueueGame, ListGame);
+                    } else if (isWordEqual(getElmt(Input,0),stringToWord("QUEUE"))){
+                        queueGame(&QueueGame, ListGame);
+                    } 
+                } else {
 
-            } else {
-                
+                }
             }
         } else {
             if (length(Input) > 0) {

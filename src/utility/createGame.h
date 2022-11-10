@@ -4,6 +4,7 @@
 #include "../ADT/list/array.h"
 #include "../ADT/word/mesinkarakter/mesinkarakter.h"
 #include "../ADT/word/word.h"
+#include "../Misc/io/io.h"
 
 void createGame(List *L);
 // I.S. List game tidak kosong
