@@ -38,12 +38,15 @@ int main() {
                     printf("Save file berhasil dibaca. BNMO berhasil dijalankan.\n");
                     Started = true;
                 } else {
+                    printf("Save file tidak ditemukan! Silahkan ulangi input.\n");
                     Tries = Tries + 1;
                 }
             } else {
+                printf("Perintah tidak dikenali! Silahkan ulangi input.\n");
                 Tries = Tries + 1;
             }
         } else {
+            printf("Masukan tidak boleh kosong! Silahkan ulangi input.\n");
             Tries = Tries + 1;
         }
 
