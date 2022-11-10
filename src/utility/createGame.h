@@ -1,9 +1,9 @@
 #ifndef __CREATE_GAME_H__
 #define __CREATE_GAME_H__
 
-#include "ADT/list/array.h"
-#include "ADT/mesinkar/mesinkar_input.h"
-#include "Misc/io/io.h"
+#include "../ADT/list/array.h"
+#include "../ADT/mesinkar/mesinkar_input.h"
+#include "../Misc/io/io.h"
 
 void createGame(List *L);
 // I.S. List game tidak kosong
