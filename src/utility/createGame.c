@@ -32,10 +32,7 @@ void createGame(List *L)
 //     List L;
 //     createList(&L);
 //     ElType test;
-//     test.length = 3;
-//     test.buffer[0] = 'h';
-//     test.buffer[1] = 'a';
-//     test.buffer[2] = 'i';
+//     test = stringToWord("hai");
 //     insertLast(&L, test);
 //     createGame(&L);
 //     printList(L);

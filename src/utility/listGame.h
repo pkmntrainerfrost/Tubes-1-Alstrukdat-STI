@@ -6,6 +6,8 @@
 
 /* ADT lain yang dipakai */
 #include "ADT/list/array.h"
+#include "ADT/mesinkar/mesinkata_input.h"
+#include "Misc/io/io.h"
 
 void listGame(List L);
 // I.S. List L terdefinisi

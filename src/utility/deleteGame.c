@@ -4,7 +4,6 @@
 void deleteGame(List *L, Queue Q)
 {
     listGame(*L);
-    int num;
     printf("Masukkan nomor game yang akan dihapus: ");
     Word GameNum;
     createWord(&GameNum);
@@ -19,20 +18,26 @@ void deleteGame(List *L, Queue Q)
 
     int num;
     wordToInt(&num, GameNum);   
+    // scanf("%d", num);
 
     if (num>=1 && num<=5){
         // 5 game pertama pada file konfigurasi tidak dapat dihapus
         printf("Game gagal dihapus\n");
     } else {
         if (!(IsEmpty(Q))){
-            // jika queue game tidak kosong
-            if (!(isMember(Q, (*L).A[num-1]))){
-                // jika game yang akan dihapus tidak ada di queue
-                deleteAt(L, num-1);
-                printf("Game berhasil dihapus\n");
+            if (num>length(*L)){   
+                printf("Nomor game tidak valid.\n");
+                printf("Game gagal dihapus.\n");
             } else {
-                printf("Game ada di queue game\n");
-                printf("Game gagal dihapus\n");
+                // jika queue game tidak kosong
+                if (!(isMember(Q, (*L).A[num-1]))){
+                    // jika game yang akan dihapus tidak ada di queue
+                    deleteAt(L, num-1);
+                    printf("Game berhasil dihapus\n");
+                } else {
+                    printf("Game ada di queue game\n");
+                    printf("Game gagal dihapus\n");
+                }
             }
         }
     }
@@ -44,17 +49,13 @@ void deleteGame(List *L, Queue Q)
 //     createList(&L);
 //     Queue Q;
 //     createQueue(&Q);
-//     Word satu;
-//     satu.length = 4;
-//     satu.buffer[0] = 's';
-//     satu.buffer[1] = 'a';
-//     satu.buffer[2] = 't';
-//     satu.buffer[3] = 'u';
+//     QElType satu;
+//     satu = stringToWord("satu");
 //     enqueue(&Q,satu);
 //     insertLast(&L,satu);
-//     printQueue(Q);
+//     displayQueue(Q);
 //     deleteGame(&L,Q);
-//     printList(L);
+//     displayList(L);
 
 //     return 0;
 // }

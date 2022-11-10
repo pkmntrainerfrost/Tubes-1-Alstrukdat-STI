@@ -1,7 +1,7 @@
 #ifndef __ARRAY_H__
 #define __ARRAY_H__
 
-#include "../utility/boolean.h"
+#include "../../boolean.h"
 #include "../mesinkar/mesinkata_input.h"
 
 #define Nil NULL
@@ -25,7 +25,7 @@ boolean isEmpty(List L);
 
 boolean isFull(List L);
 
-int Length(List L);
+int length(List L);
 
 ElType getElmt(List L, int i);
 
@@ -47,6 +47,6 @@ void deleteAt(List *L, int idx);
 
 void deleteLast(List *L);
 
-void printList(List L);
+void displayList(List L);
 
 #endif // __ARRAY_H__

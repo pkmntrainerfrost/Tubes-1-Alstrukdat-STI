@@ -46,7 +46,7 @@ void DeleteQueue (Queue * Q);
 /* I.S. Q pernah dialokasi */
 /* F.S. membebaskan memori Tab, Q.MaxEl di-set 0 */
 
-void updateCapacity(Queue *Q);
+void UpdateCapacity(Queue *Q);
 
 /* *** Primitif Add/Delete *** */
 void enqueue (Queue * Q, QElType X);

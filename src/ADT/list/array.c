@@ -146,13 +146,10 @@ void deleteLast(List *L)
     deleteAt(L, length(*L)-1);
 }
 
-void printList(List L)
+void displayList(List L)
 {
     int i;
-    printf("[");
-    printf("%d", L.A[0]);
-    for (i = 0; i < length(L); i++) {
-        printf(", %d", L.A[i]);
+    for (i=0; i<length(L); i++){
+        printf("%d. %s\n", i+1, L.A[i].buffer);
     }
-    printf("]");
 }

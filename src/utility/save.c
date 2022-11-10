@@ -21,16 +21,9 @@ void savetoFile(char saveFilename[], List L)
 //     List L;
 //     createList(&L);
 //     ElType test;
-//     test.Length = 3;
-//     test.TabWord[0] = 'h';
-//     test.TabWord[1] = 'a';
-//     test.TabWord[2] = 'i';
+//     test = stringToWord("hai");
 //     insertLast(&L, test);
-//     test.Length = 4;
-//     test.TabWord[0] = 'h';
-//     test.TabWord[1] = 'a';
-//     test.TabWord[2] = 'l'; 
-//     test.TabWord[3] = 'o';
+//     test = stringToWord("halo");
 //     insertLast(&L, test); 
 //     // blm bikin scanf buat saveFilename
 //     savetoFile("test.txt", L);

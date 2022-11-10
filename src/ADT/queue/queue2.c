@@ -37,7 +37,7 @@ void DeleteQueue (Queue *Q)
     free((*Q).Tab);
 }
 
-void updateCapacity(Queue *Q)
+void UpdateCapacity(Queue *Q)
 {
     int newCapacity = (*Q).MaxEl * 2;
     QElType *newTab = (QElType *) malloc (newCapacity * sizeof(QElType));
@@ -134,13 +134,13 @@ void displayQueue(Queue Q)
     if (IsEmpty(Q)){
         printf("Queue kosong\n");
     } else {
-        int i;
-        printf("[");
-        printf("%s", Q.Tab[Q.HEAD].buffer);
-        for (i = Q.HEAD+1; i<=Q.TAIL; i++){
-            printf(", %s", Q.Tab[i].buffer);
+        int i = Q.HEAD;
+        while (i <= Q.TAIL){
+            printf("%d. ", i+1);
+            printKata(Q.Tab[i]);
+            printf("\n");
+            i++;
         }
-        printf("]\n");
     }
 }
 
