@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include "boolean.h"
 #include "mesinkar.h"
-#include "mesinkata.h"
-#include "list.h"
+#include "../ADT/mesinkar/mesinkata.h"
+#include "../ADT/list/array.h"
 
 void START(List *ListGame){
     createList(ListGame);

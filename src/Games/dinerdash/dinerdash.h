@@ -7,7 +7,7 @@
 
 #include "../../boolean.h"
 #include "../../ADT/mesinkar/mesinkar.h"
-#include "../../ADT/mesinkata/mesinkata.h"
+#include "../ADT/mesinkar/mesinkata.h"
 #include "../../ADT/queue/prioqueue.h"
 
 boolean isSame(char kata1[], char kata2[]);

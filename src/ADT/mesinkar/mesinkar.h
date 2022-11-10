@@ -4,7 +4,7 @@
 #ifndef __MESINKAR__
 #define __MESINKAR__
 
-#include "../boolean.h"
+#include "../utility/boolean.h"
 
 #define MARK '.'
 
