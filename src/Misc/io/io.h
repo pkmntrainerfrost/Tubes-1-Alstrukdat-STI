@@ -6,34 +6,22 @@
 #ifndef __IO__
 #define __IO__
 
-#include "../../boolean.h"
+#include "../../ADT/boolean.h"
 
 #define VALID_INPUT 0;
 #define INVALID_INPUT 1;
 
 int charToInt(char c);
 
+char intToChar(int i);
+
 void commandInput();
 
+/*
 void wordInput(Word *w);
 
 void multiWordInput(List *l);
-
-int wordToInt(int *i, Word w);
-
-char intToChar(int i);
-
-Word stringToWord(char *s);
-
-void createWord(Word *w);
-
-void concateWord(Word w1, Word w2, Word *w3);
-
-void copyWord(Word *w1, Word *w2);
-
-boolean isWordEqual(Word w1, Word w2);
-
-int wordLength(Word w);
+*/
 
 char ord(char c);
 

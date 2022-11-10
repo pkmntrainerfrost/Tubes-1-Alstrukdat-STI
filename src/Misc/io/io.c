@@ -3,53 +3,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "../../ADT/mesinkar/mesinkar_input.h"
-#include "../../ADT/mesinkar/mesinkata_input.h"
 #include "io.h"
-#include "../commandlain.h"
-#include "../../ADT/list/array.h"
 #include <math.h>
-
-/* COMMAND INPUT + PARSER */
-
-void commandInput() {
-
-    List command;
-
-    multiWordInput(&command);
-
-    if (isEmpty(command)) {
-
-    } else {
-        
-    }
-
-}
-
-/* INPUT */
-
-void wordInput(Word *w) {
-
-    startKataInput();
-
-    if (!endKataInput) {
-        copyWord(&currentKataInput,w);
-    }
-
-}
-
-void multiWordInput(List *l) {
-
-    startKataInput();
-
-    Word w;
-    while (!endKataInput) {
-        copyWord(&currentKataInput,&w);
-        insertLast(l,w);
-        advKataInput();
-    }
-
-}
 
 /* TYPE CONVERSION */
 
