@@ -1,9 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-
-#include "../../ADT/boolean.h"
-#include "../random.h"
+#include "rng.h"
 
 void rng() {
 

@@ -18,6 +18,8 @@ int main()
     }
     createWord(&concat);
     concateWord(test, test1, &concat);
+    printWord(concat);
+    printf("\n");
     char *s;
     wordToString(concat, s);
     printf("%s\n", s);
@@ -28,3 +30,4 @@ int main()
 
 // compile: gcc ADT/word/driverWord.c ADT/word/word.c Misc/ascii/ascii.c -o driver
 // wordToString sama intToWord belum jalan
+// concat g jalan
