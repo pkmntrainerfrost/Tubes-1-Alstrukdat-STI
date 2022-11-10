@@ -9,23 +9,22 @@ int main()
     if (isEmpty(L)) {
         printf("List kosong\n");
     }
-    ElType test, test1, test2;
+    ElType test, test1;
     test = stringToWord("hai");
     test1 = stringToWord("halo");
-    test2 = stringToWord("oit");
     if (isElTypeEqual(test, test1)) {
         printf("Sama\n");
     } else {
         printf("Tidak sama\n");
     }
-    insertAt(&L, test, 0);
+    insertFirst(&L, test);
     printf("%d\n", length(L));
     if (isFull(L)) {
         printf("List penuh\n");
     } else {
         printf("List tidak penuh\n");
     }
-    insertAt(&L, test1, 1);
+    insertLast(&L, test1);
     printf("%d\n", length(L));
     updateCapacity(&L);
     printf("%d\n", length(L));

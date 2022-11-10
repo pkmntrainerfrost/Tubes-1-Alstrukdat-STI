@@ -24,7 +24,7 @@ void createGame(List *L)
     }
 
     GameName.length = i;
-    insertAt(L, GameName, length(*L));
+    insertLast(L, GameName);
 }
 
 // int main()

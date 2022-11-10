@@ -31,9 +31,17 @@ ElType getElmt(List L, int i);
 
 void updateCapacity(List *L);
 
+void insertFirst(List *L, ElType X);
+
 void insertAt(List *L, ElType X, int idx);
 
+void insertLast(List *L, ElType X);
+
+void deleteFirst(List *L);
+
 void deleteAt(List *L, int idx);
+
+void deleteLast(List *L);
 
 void displayList(List L);
 

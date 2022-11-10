@@ -74,6 +74,11 @@ void updateCapacity(List *L)
     (*L).capacity = newCapacity;
 }
 
+void insertFirst(List *L, ElType X)
+{
+    insertAt(L, X, 0);
+}
+
 void insertAt(List *L, ElType X, int idx)
 {
     if (isFull(*L)) {
@@ -88,6 +93,16 @@ void insertAt(List *L, ElType X, int idx)
     (*L).nEff++;
 }
 
+void insertLast(List *L, ElType X)
+{
+    insertAt(L, X, length(*L));
+}
+
+void deleteFirst(List *L)
+{
+    deleteAt(L, 0);
+}
+
 void deleteAt(List *L, int idx)
 {
     int i;
@@ -95,6 +110,11 @@ void deleteAt(List *L, int idx)
         (*L).A[i] = (*L).A[i+1];
     }
     (*L).nEff--;
+}
+
+void deleteLast(List *L)
+{
+    deleteAt(L, length(*L)-1);
 }
 
 void displayList(List L)
