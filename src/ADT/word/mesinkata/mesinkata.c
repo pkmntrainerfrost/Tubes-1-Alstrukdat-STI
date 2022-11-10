@@ -12,20 +12,21 @@ Word currentKata;
 void ignoreBlank() {
 
     while ((cc == INPUTBLANK && !isFile) || (cc == FILEBLANK && isFile)) {
-        adv;
+        adv();
     }
 
 }
 
 void startKata(boolean fileInput, char *filename) {
 
+    endKata = false;
     start(fileInput, filename);
     ignoreBlank();
 
     if (eoi) {
         endKata = true;
     } else {
-        salinKata;
+        salinKata();
     }
 
 }
@@ -37,7 +38,7 @@ void advKata() {
     if (eoi) {
         endKata = true;
     } else {
-        salinKata;
+        salinKata();
     }
 
 }

@@ -15,6 +15,7 @@ extern Word currentKata;
 
 void ignoreBlank();
 
+/* Memulai mesin kata. Apabila fileInput bernilai true, mesin kata akan membaca dari file; apabila false, dari stdin. Kosongkan filename apabila input dari stdin. */
 void startKata(boolean fileInput, char *filename);
 
 void advKata();

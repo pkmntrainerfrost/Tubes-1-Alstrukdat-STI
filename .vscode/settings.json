@@ -10,7 +10,8 @@
         "mesinkar.h": "c",
         "*.tcc": "c",
         "fstream": "c",
-        "mesinkarakter.h": "c"
+        "mesinkarakter.h": "c",
+        "mesinkata.h": "c"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }

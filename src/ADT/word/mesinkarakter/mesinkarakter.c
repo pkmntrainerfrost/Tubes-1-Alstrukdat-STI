@@ -26,12 +26,12 @@ void start(boolean fileInput, char *filename) {
 
 }
 
-void adv() {
+void adv() {    
 
     retval = fscanf(file, "%c", &cc);
 
     if (isFile) {
-        eoi = (retval == 0);
+        eoi = (retval != 1);
     } else {
         eoi = (cc == INPUTMARK);
     }

@@ -74,7 +74,7 @@ Word stringToWord(char *s) {
     int i = 0;
 
     while (i < sizeof(s) && !end) {
-        if (s[i] == "\0") {
+        if (s[i] == '\0') {
             end = true;
         } else {
             w.buffer[i] = s[i];
@@ -99,7 +99,7 @@ int wordToInt(Word w) {
     while (j < wordLength(w) && valid) {
         if (isNumeric(w.buffer[j])) {
             i = i + (charToInt(w.buffer[j]) * pow(10,(wordLength(w) - 1 - j)));
-            if (i > 0x7FFFFFFF || (neg && i > 0x7FFFFFFF + 1)) {
+            if (i > 0x7FFFFFFF) {
                 i = INVALID_INT;
                 valid = false;
             }
