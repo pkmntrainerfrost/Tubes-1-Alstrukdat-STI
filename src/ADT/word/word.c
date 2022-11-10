@@ -124,6 +124,11 @@ int wordToInt(Word w) {
     }
 
     return i;
+    // int num = 0, i;
+    // for (i = 0; i < wordLength(w); i++) {
+    //     num = num*10 + (w.buffer[i] - '0');
+    // }
+    // return num;
 }
 
 /* Merubah sebuah word menjadi suatu string dan menyimpannya di s. PENTING: DEFINISIKAN S TERLEBIH DAHULU DENGAN KAPASITAS WORDLENGTH + 1 */

@@ -5,11 +5,10 @@
 #define QUEUEGAME_H
 
 /* ADT lain yang dipakai */
-#include "boolean.h"
+#include "../ADT/boolean.h"
 #include "../ADT/queue/queue2.h"
 #include "../ADT/word/mesinkata/mesinkata.h"
-#include "../ADT/word/word.h"
-#include "listGame.h"
+#include "listGame/listGame.h"
 
 void clearQueue(Queue *Q);
 // List dalam queue akan hilang ketika pemain menjalankan command QUIT

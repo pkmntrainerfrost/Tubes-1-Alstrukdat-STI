@@ -3,8 +3,10 @@
 #include "ADT/boolean.h"
 #include "ADT/word/word.h"
 #include "ADT/list/array.h"
-#include "Utility/start/start.h"
-#include "Utility/load/load.h"
+#include "utility/start/start.h"
+#include "utility/load/load.h"
+#include "utility/help/help.h"
+#include "Utility/commandlain/commandlain.h"
 
 #include <stdio.h>
 
@@ -26,6 +28,7 @@ int main() {
         List Input;
         createList(&Input);
         boolean Valid = multiWordInput(&Input,1,2);
+        help();
 
         if (Valid) {
             if (isWordEqual(getElmt(Input,0),stringToWord("START")) && length(Input) == 1) {

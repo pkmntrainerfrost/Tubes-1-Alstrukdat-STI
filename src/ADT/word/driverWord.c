@@ -36,4 +36,3 @@ int main()
 }
 
 // compile: gcc ADT/word/driverWord.c ADT/word/word.c Misc/ascii/ascii.c -o driver
-// intToWord wordtoint belum jalan
