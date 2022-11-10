@@ -3,8 +3,12 @@
 
 #include "../ADT/boolean.h"
 
-void splash(int tries);
+void header();
+
+void splash(int tries, boolean started);
 
 void selamatDatang(int tries);
+
+void suruhInput(boolean started);
 
 #endif

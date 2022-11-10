@@ -20,7 +20,8 @@ int main() {
 
     while (!Started) {
 
-        splash(Tries);
+        header();
+        splash(Tries,Started);
 
         List Input;
         createList(&Input);
@@ -42,15 +43,49 @@ int main() {
                     Tries = Tries + 1;
                 }
             } else {
-                printf("Perintah tidak dikenali! Silahkan ulangi input.\n");
+                printf("Masukan tidak valid! Silahkan ulangi input.\n");
                 Tries = Tries + 1;
             }
         } else {
-            printf("Masukan tidak boleh kosong! Silahkan ulangi input.\n");
+            if (length(Input) > 0) {
+                printf("Masukan tidak valid! Silahkan ulangi input.\n");
+            } else {
+                printf("Masukan tidak boleh kosong! Silahkan ulangi input.\n");
+            }
             Tries = Tries + 1;
         }
 
+        printf("\nTekan [ENTER] untuk melanjutkan...\n");
+
+        blankInput();
+
         deallocateList(&Input);
+
+    }
+
+    while (Started) {
+
+        header();
+        splash(Tries,Started);
+
+        List Input;
+        createList(&Input);
+        int Valid = multiWordInput(&Input,1,2);
+
+        if (Valid) {
+            if (length(Input) == 1) { 
+
+            } else {
+                
+            }
+        } else {
+            if (length(Input) > 0) {
+                printf("Masukan tidak valid! Silahkan ulangi input.\n");
+            } else {
+                printf("Masukan tidak boleh kosong! Silahkan ulangi input.\n");
+            }
+            Tries = Tries + 1;
+        }
 
     }
 

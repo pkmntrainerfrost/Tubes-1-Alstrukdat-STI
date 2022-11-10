@@ -1,7 +1,13 @@
+#include "../splash.h"
+#include "../../Misc/io/io.h"
+
 #include <stdio.h>
 #include "help.h"
 
 void help(){
+
+    header();
+
     printf("Berikut command-command yang tersedia:\n");
     printf("1. START - Membaca file konfigurasi default berisi game yang dapat dimainkan\n");
     printf("2. LOAD - Input save file yang ingin dibaca\n");
@@ -13,4 +19,9 @@ void help(){
     printf("8. PLAYGAME - Memainkan sebuah permainan di urutan pertama antrian game\n");
     printf("9. SKIPGAME - Melewatkan permainan dalam antrian game sebanyak n\n");
     printf("10. QUIT - Keluar dari program\n");
+
+    printf("Tekan [ENTER] untuk kembali ke menu utama...\n");
+
+    blankInput();
+
 }

@@ -82,7 +82,7 @@ Word stringToWord(char *s) {
     boolean end = false;
     int i = 0;
 
-    while (i < sizeof(s) && !end) {
+    while (!end) {
         if (s[i] == '\0') {
             end = true;
         } else {
@@ -107,14 +107,12 @@ int wordToInt(Word w) {
     int j = 0;
     while (j < wordLength(w) && valid) {
         if (isNumeric(w.buffer[j])) {
-            printf("%d\n",charToInt(w.buffer[j]));
-            printf("hasil pow %d\n",(charToInt(w.buffer[j]) * pow(10,(wordLength(w) - 1 - j))));
-            long x = i + (charToInt(w.buffer[j]) * pow(10,(wordLength(w) - 1 - j)));
+            long x = i*10 + (charToInt(w.buffer[j]));
             if (x > 0x7FFFFFFF) {
                 i = INVALID_INT;
                 valid = false;
             } else {
-                i = i + (charToInt(w.buffer[j]) * pow(10,(wordLength(w) - 1 - j)));
+                i = i*10 + (charToInt(w.buffer[j]));
             }
             j = j + 1;
         } else if (j == 0 && w.buffer[j] == '-') {

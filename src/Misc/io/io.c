@@ -35,21 +35,31 @@ int wordInput(Word *w, int min, int max) {
 
 }
 
-int multiWordInput(List *input, int min, int count) {
+int multiWordInput(List *input, int min, int max) {
 
     startKata(false,"");
 
     int i = 0;
-    while (!endKata && i < count) {
+    while (!endKata) {
         insertAt(input,currentKata,i);
         advKata();
         i = i + 1;
     }
 
-    if (length(*input) < min) {
+    if (length(*input) < min || length(*input) > max) {
         return INVALID_INPUT;
     } else {
         return VALID_INPUT;
+    }
+
+}
+
+void blankInput() {
+
+    startKata(false,"");
+
+    while (!endKata) {
+        advKata();
     }
 
 }

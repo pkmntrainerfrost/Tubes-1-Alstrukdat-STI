@@ -2,7 +2,14 @@
 #include "../ADT/boolean.h" 
 #include "splash.h"
 
-void splash(int tries) {
+void header() {
+
+    printf("=====================================BNMO=====================================\n");
+    printf("\n");
+
+}
+
+void splash(int tries, boolean started) {
 
     printf("            *#%%(                :::::::::  ::::    ::: ::::    ::::   :::::::: \n");
     printf("/((******/#%%&@@@&%%##((((#       :+:    :+: :+:+:   :+: +:+:+: :+:+:+ :+:    :+:\n");
@@ -21,7 +28,7 @@ void splash(int tries) {
     printf("- Tugas Besar 1 IF2111 Algoritma dan Struktur Data STI - Kelompok 06 Kelas 02 -\n");
     printf("\n");
     selamatDatang(tries);
-    printf("INPUT [START] ATAU [LOAD <FILENAME>]...\n");
+    suruhInput(started);
     printf("root@BNMO:~$ ");
     
 }
@@ -34,6 +41,15 @@ void selamatDatang(int tries) {
         printf("Melihatmu sudah gagal menginput perintah sebanyak ini, BNMO tertawa kecil.\n");
     }
     
+}
+
+void suruhInput(boolean started) {
+
+    if (started) {
+        printf("Silahkan input perintah atau lihat daftarnya menggunakan [HELP]...\n");
+    } else {
+        printf("Silahkan input [START] atau [LOAD <FILENAME>]...\n");
+    }
 
 }
 
