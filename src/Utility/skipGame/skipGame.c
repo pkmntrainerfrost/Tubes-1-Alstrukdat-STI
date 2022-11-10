@@ -1,19 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "playGame.h"
+#include "skipGame.h"
 // #include "../../Games/rng/rng.h"
 // #include "../../Games/dinerdash/dinerdash.h"
 // #include "../../Games/battleship/battleship.h"
 
-void playGame(Queue *Q, List L)
+void skipGame(Queue *Q, List L, int n)
 {
-    if (IsEmpty(*Q)){
-        printf("Tidak ada permainan lagi dalam daftar Game-mu\n");
+    printf("Berikut adalah daftar Game-mu\n");
+    displayQueue(*Q);
+    printf("\n");
+    int i;
+    QElType X;
+    if (n>Length(*Q)){
+        for(i=0; i<Length(*Q); i++){
+            dequeue(Q, &X);
+        }
+        printf("Tidak ada permainan lagi dalam daftar game-mu.\n");
     } else {
-        printf("Berikut adalah daftar Game-mu\n");
-        displayQueue(*Q);
-        printf("\n");
+        for (i=0; i<n; i++){
+            dequeue(Q, &X);
+        }
 
         // jadinya pake idx apa string?
         if (isSameWord(Front(*Q), stringToWord("RNG")) || isSameWord(Front(*Q), stringToWord("Diner DASH")) || isSameWord(Front(*Q), stringToWord("Battleship"))){
@@ -64,14 +72,16 @@ void playGame(Queue *Q, List L)
 //     insertLast(&L, stringToWord("EIFFEL TOWER"));
 //     insertLast(&L, stringToWord("Battleship")); 
 //     insertLast(&L, stringToWord("Tetris"));
-//     displayList(L);
+//     // listGame(L);
 //     Queue Q;
 //     createQueue(&Q);
-//     enqueue(&Q, stringToWord("Tetris"));
-//     enqueue(&Q, stringToWord("Diner DASH"));
 //     enqueue(&Q, stringToWord("RNG"));
-//     playGame(&Q, L);
-//     displayQueue(Q);
+//     enqueue(&Q, stringToWord("Diner DASH"));
+//     enqueue(&Q, stringToWord("Battleship"));
+//     enqueue(&Q, stringToWord("RISEWOMAN"));
+//     enqueue(&Q, stringToWord("Tetris"));
+//     skipGame(&Q, L, 4);
+//     return 0;
 // }
 
-// compile: gcc utility/playGame/playGame.c utility/queuegame/queueGame.c utility/listGame/listGame.c ADT/list/array.c ADT/queue/queue2.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c Misc/ascii/ascii.c -o driver
+// compile: gcc utility/skipGame/skipGame.c utility/playGame/playGame.c utility/queuegame/queueGame.c utility/listGame/listGame.c ADT/list/array.c ADT/queue/queue2.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c Misc/ascii/ascii.c Misc/io/io.c -o driver

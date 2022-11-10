@@ -5,10 +5,10 @@
 #define SKIPGAME_H
 
 /* ADT lain yang dipakai */
-#include "boolean.h"
-#include "queueGame.h"
+#include "../../ADT/boolean.h"
+#include "../playGame/playGame.h"
 
-void skipGame(Queue *Q, int n);
+void skipGame(Queue *Q, List L, int n);
 // melewatkan permainan sebanyak n kali
 
 #endif
