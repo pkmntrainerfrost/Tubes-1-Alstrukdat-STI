@@ -4,8 +4,8 @@
 
 void header() {
 
-    printf("\e[1;1H\e[2J");
-    printf("======================================BNMO=======================================\n");
+    System("Clear");
+    printf("======================================BNMO======================================\n");
     printf("\n");
 
 }
@@ -26,7 +26,7 @@ void splash(int tries, boolean started) {
     printf("     &&**(((((((((&(((#&( &(.&   18221166 - Erensi Ratu Chelsia\n");
     printf("          *& /#(((((             18221168 - Rania Sasi Kirana\n");
     printf(" \n");
-    printf("-- Tugas Besar 1 IF2111 Algoritma dan Struktur Data STI - Kelompok 06 Kelas 02 --\n");
+    printf(" - Tugas Besar 1 IF2111 Algoritma dan Struktur Data STI - Kelompok 06 Kelas 02 -\n");
     printf("\n");
     selamatDatang(tries);
     suruhInput(started);
