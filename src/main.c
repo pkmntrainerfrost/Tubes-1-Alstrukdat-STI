@@ -33,12 +33,12 @@ int main() {
 
     while (!Started) {
 
+        printf("\e[1;1H\e[2J");
         header();
         splash(Tries,Started);
 
         List Input;
         createList(&Input);
-        help();
         boolean Valid = multiWordInput(&Input,1,2);
 
         if (Valid) {
@@ -57,7 +57,7 @@ int main() {
                     Tries = Tries + 1;
                 }
             } else {
-                commandlain();
+                printf("Masukan tidak valid! Silahkan ulangi input.\n");
                 Tries = Tries + 1;
             }
         } else {
@@ -114,6 +114,7 @@ int main() {
             }
             Tries = Tries + 1;
         }
+        
 
     }
 

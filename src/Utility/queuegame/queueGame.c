@@ -4,32 +4,54 @@
 
 void queueGame(Queue *queueGame, List L) {
 
-    if (IsEmpty(*queueGame)) {
-        printf("Antrian anda kosong\n");
-    } else {
-        printf("Berikut adalah daftar antrian game-mu\n");
-        displayQueue(*queueGame);
-        printf("\n");
+    boolean repeat = true;
 
+    while (repeat) {
+
+        header();
+
+        if (IsEmpty(*queueGame)) {
+            printf("Antrian anda kosong\n");
+        } else {
+            printf("Berikut adalah daftar antrian game-mu\n");
+            displayQueue(*queueGame);
+            printf("\n");
+        }
+        
         listGame(L);
         printf("\n");
 
         printf("Nomor Game yang mau ditambahkan ke antrian: ");
         Word input;
-        createWord(&input);
         boolean valid = wordInput(&input,1,10);
-        if (wordToInt(input) > 0 && wordToInt(input) <= length(L)) {
+        if (valid && wordToInt(input) > 0 && wordToInt(input) <= length(L)) {
             Word game;
             createWord(&game);
             copyWord(getElmt(L,wordToInt(input) - 1),&game);
             enqueue(queueGame,game);
             printf("Game berhasil ditambahkan ke dalam daftar antrian\n");
         } else {
-            printf("Nomor permainan tidak valid, silahkan masukkan nomor game pada list\n");
+            if (wordLength(input) == 0) {
+                printf("Nomor game tidak boleh kosong!\n");
+            } else {
+                printf("Nomor permainan tidak valid, silahkan masukkan nomor game pada list\n");
+            }
+        }
+
+        printf("\nApakah Anda ingin kembali melakukan input [Y/N]?\n");
+
+        valid = wordInput(&input,1,1);
+        
+        if (valid && (isWordEqual(input,stringToWord("Y")) || isWordEqual(input,stringToWord("y")))) {
+            repeat = true;
+        } else {
+            repeat = false;
         }
 
     }
+    
 }
+
 
 // int main()
 // {

@@ -132,7 +132,7 @@ boolean isMember(Queue Q, QElType X)
 void displayQueue(Queue Q)
 {
     if (IsEmpty(Q)){
-        printf("List kosong\n");
+        printf("Queue kosong\n");
     } else {
         int i;
         int num = 1;

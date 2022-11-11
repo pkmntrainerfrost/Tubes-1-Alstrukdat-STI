@@ -36,7 +36,7 @@ void splash(int tries, boolean started) {
 void selamatDatang(int tries) {
 
     if (tries < 10) {
-        printf("Selamat Datang di BNMO!\n");
+        printf("Selamat Datang di BNMO! Jalankan dalam Linux; jangan ubah ukuran terminal.\n");
     } else {
         printf("Melihatmu sudah gagal menginput perintah sebanyak ini, BNMO tertawa kecil.\n");
     }

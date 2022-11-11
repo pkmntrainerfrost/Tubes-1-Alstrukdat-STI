@@ -20,16 +20,20 @@ int wordInput(Word *w, int min, int max) {
     while (!eoi) {
         if (i < N_MAX && i < max) {
             w->buffer[i] = cc;
-            i = i + 1;
         }
+        i = i + 1;
         adv();
     }
 
-    wordLength(*w) = i; 
-
-    if (wordLength(*w) < min) {
+    if (i < min || i > max || i > N_MAX) {
+        if (i <= N_MAX) {
+            wordLength(*w) = i; 
+        } else {
+            wordLength(*w) = N_MAX;
+        }
         return INVALID_INPUT;
     } else {
+        wordLength(*w) = i; 
         return VALID_INPUT;
     }
 

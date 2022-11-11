@@ -1,8 +1,56 @@
 #include <stdio.h>
 #include "createGame.h"
 
-void createGame(List *L)
-{
+void createGame(List *L) {
+
+    boolean repeat = true;
+
+    while (!repeat) {
+
+        header();
+
+        printf("Masukkan nama game yang akan ditambahkan: ");
+
+        Word name;
+        boolean valid = wordInput(&name,1,N_MAX);
+
+        if (valid) {
+            boolean unique = true;
+            int i = 0;
+            while (i < length(*L) && unique) {
+                if (isWordEqual(getElmt(*L,i),name)) {
+                    unique = false;
+                }
+                i = i + 1;
+            }
+            if (!unique) {
+                printf("Nama game sudah ada dalam daftar game!\n");
+            } else {
+                insertLast(L,name);
+                printf("Game berhasil ditambahkan.\n");
+            }
+        } else {
+            if (wordLength(name) == 0) {
+                printf("Nama game tidak boleh kosong!\n");
+            } else {
+                printf("Nama game melebihi batas karakter!\n");
+            }
+        }
+
+        printf("\nApakah Anda ingin kembali melakukan input [Y/N]?\n");
+
+        valid = wordInput(&name,1,1);
+        
+        if (valid && (isWordEqual(name,stringToWord("Y")) || isWordEqual(name,stringToWord("y")))) {
+            repeat = true;
+        } else {
+            repeat = false;
+        }
+
+    }
+
+
+    /*
     printf("Masukkan nama game yang akan ditambahkan: ");
     List input;
     createList(&input);
@@ -26,6 +74,7 @@ void createGame(List *L)
         deleteFirst(&input);
     }
     printWord(temp);
+    */
     // ???????
     // Word GameName;
     // createWord(&GameName);

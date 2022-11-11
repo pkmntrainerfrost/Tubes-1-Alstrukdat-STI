@@ -9,9 +9,9 @@
 void playGame(Queue *Q, List L)
 {
     if (IsEmpty(*Q)){
-        printf("Tidak ada permainan lagi dalam daftar Game-mu\n");
+        printf("Antrian Anda kosong.\n");
     } else {
-        printf("Berikut adalah daftar Game-mu\n");
+        printf("Berikut adalah daftar Game di dalam antrian Anda.\n");
         displayQueue(*Q);
         printf("\n");
 
@@ -31,7 +31,7 @@ void playGame(Queue *Q, List L)
                 // fungsi utamanya mana?
                 printf("jalan Battleship\n");
             }
-        } else if (isSameWord(Front(*Q), L.A[2]) || isSameWord(Front(*Q), L.A[3]) || isSameWord(Front(*Q), L.A[4])){
+        } else if (isSameWord(Front(*Q), stringToWord("EIFFEL TOWER")) || isSameWord(Front(*Q), stringToWord("RISEWOMAN")) || isSameWord(Front(*Q), stringToWord("DINOSAUR IN EARTH"))){
             // Game di file config default selain RNG dan diner DASH
             printf("Game ");
             printWord(Front(*Q));

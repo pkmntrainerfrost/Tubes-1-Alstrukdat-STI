@@ -5,6 +5,14 @@
 #include "../ADT/word/mesinkarakter/mesinkarakter.h"
 #include "../ADT/word/word.h"
 #include "../Misc/io/io.h"
+#include "../../ADT/boolean.h"
+#include "../../ADT/queue/queue2.h"
+#include "../../ADT/word/mesinkata/mesinkata.h"
+#include "../listGame/listGame.h"
+#include "../../Misc/io/io.h"
+#include "../../Misc/ascii/ascii.h"
+#include "../splash.h"
+
 
 void createGame(List *L);
 // I.S. List game tidak kosong

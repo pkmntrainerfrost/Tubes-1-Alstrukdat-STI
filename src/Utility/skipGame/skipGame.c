@@ -6,8 +6,10 @@
 // #include "../../Games/dinerdash/dinerdash.h"
 // #include "../../Games/battleship/battleship.h"
 
-void skipGame(Queue *Q, List L, int n)
-{
+void skipGame(Queue *Q, List L, int n) {
+
+    header();
+
     printf("Berikut adalah daftar Game-mu\n");
     displayQueue(*Q);
     printf("\n");
@@ -19,6 +21,7 @@ void skipGame(Queue *Q, List L, int n)
         }
         printf("Tidak ada permainan lagi dalam daftar game-mu.\n");
     } else {
+        
         for (i=0; i<n; i++){
             dequeue(Q, &X);
         }
@@ -39,7 +42,7 @@ void skipGame(Queue *Q, List L, int n)
                 // fungsi utamanya mana?
                 printf("jalan Battleship\n");
             }
-        } else if (isSameWord(Front(*Q), L.A[2]) || isSameWord(Front(*Q), L.A[3]) || isSameWord(Front(*Q), L.A[4])){
+        } else if (isSameWord(Front(*Q), stringToWord("EIFFEL TOWER")) || isSameWord(Front(*Q), stringToWord("RISEWOMAN")) || isSameWord(Front(*Q), stringToWord("DINOSAUR IN EARTH"))){
             // Game di file config default selain RNG dan diner DASH
             printf("Game ");
             printWord(Front(*Q));

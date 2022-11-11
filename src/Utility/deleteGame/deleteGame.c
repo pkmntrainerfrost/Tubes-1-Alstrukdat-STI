@@ -1,35 +1,52 @@
 #include <stdio.h>
 #include "deleteGame.h"
 
-void deleteGame(List *L, Queue Q)
-{
-    listGame(*L);
-    printf("\n");
+void deleteGame(List *L, Queue Q) {
 
-    printf("Masukkan nomor game yang akan dihapus: ");
-    Word input;
-    createWord(&input);
-    boolean valid = wordInput(&input,1,10);
-    if (wordToInt(input) > 0 && wordToInt(input) <= length(*L)) {
-        if (wordToInt(input)>=1 && wordToInt(input)<=5){
-            // 5 game pertama pada file konfigurasi tidak dapat dihapus
-            printf("Game gagal dihapus\n");
-        } else if (wordToInt(input) > 5 && wordToInt(input) <= length(*L)) {
-            if (!(IsEmpty(Q))){
-                if (!(isMember(Q, getElmt(*L,wordToInt(input)-1)))){
+    boolean repeat = true;
+
+    while (repeat) {
+
+        header();
+
+        listGame(*L);
+
+        printf("\nMasukkan nomor game yang akan dihapus: ");
+        Word input;
+        createWord(&input);
+
+        boolean valid = wordInput(&input,1,10);
+        if (valid && wordToInt(input) > 0 && wordToInt(input) <= length(*L)) {
+            if (wordToInt(input)>=1 && wordToInt(input)<=6){
+                printf("Game gagal dihapus.\n");
+            } else if (wordToInt(input) > 6) {
+                if (!(IsEmpty(Q))){
+                    if (!(isMember(Q, getElmt(*L,wordToInt(input)-1)))){
+                        deleteAt(L, wordToInt(input)-1);
+                        printf("Game berhasil dihapus\n");
+                    } else {
+                        printf("Game ada di antrian game-mu; game gagal dihapus.");
+                    }
+                } else {
                     deleteAt(L, wordToInt(input)-1);
                     printf("Game berhasil dihapus\n");
-                } else {
-                    printf("Game ada di antrian game-mu\n");
-                    printf("Game gagal dihapus\n");
                 }
             }
+        } else {    // wordToInt(input) <= 0 || wordToInt(input) > length(*L)
+            printf("Nomor game tidak valid; game gagal dihapus.\n");
         }
-    } else {    // wordToInt(input) <= 0 || wordToInt(input) > length(*L)
-        printf("Nomor game tidak valid\n");
-        printf("Game gagal dihapus\n");
+
+        printf("\nApakah Anda ingin kembali melakukan input [Y/N]?\n");
+
+        valid = wordInput(&input,1,1);
+        
+        if (valid && (isWordEqual(input,stringToWord("Y")) || isWordEqual(input,stringToWord("y")))) {
+            repeat = true;
+        } else {
+            repeat = false;
+    
     }
-    printf("\n");
+
 }
 
 // int main()
