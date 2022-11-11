@@ -13,7 +13,8 @@
     "mesinkarakter.h": "c",
     "mesinkata.h": "c",
     "word.h": "c",
-    "array.h": "c"
+    "array.h": "c",
+    "ascii.h": "c"
   },
   "C_Cpp.errorSquiggles": "Enabled"
 }

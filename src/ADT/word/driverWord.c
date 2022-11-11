@@ -27,7 +27,8 @@ int main()
     wordToString(test, s);
     printf("%s\n", s);
     test = intToWord(123);
-    int num = wordToInt(test);
+    Word a = stringToWord("123a");
+    int num = wordToInt(a);
     printf("print inttoword ");
     printWord(test);
     printf("\n");

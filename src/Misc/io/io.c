@@ -63,3 +63,45 @@ void blankInput() {
     }
 
 }
+
+int main() {
+
+    Word WordInput;
+
+    boolean Valid = wordInput(&WordInput,1,5);
+
+    if (Valid) {
+        // ngapain
+    } else {
+        // ngapain
+    }
+
+    List Input;
+    createList(&Input);
+
+    Valid = multiWordInput(&Input,1,2);
+
+    if (Valid) {
+        // ngapain
+    } else {
+        // ngapain
+    }
+
+    // contoh dalem while
+    Valid = false;
+    while (!Valid) {
+        Valid = multiWordInput(&Input,1,2);
+        if (Valid) {
+            // CONTOH: BANDING COMMAND
+            if (length(Input) == 1 && isWordEqual(getElmt(Input,0),stringToWord("SERVE"))) {
+                // ngapain
+            } else { // input salah
+                Valid = false;
+                // ngapain
+            }
+        } else {
+            // ngapain
+        }
+    }
+
+}
