@@ -12,6 +12,10 @@ void helpStart()
     printf("Berikut command-command yang tersedia:\n");
     printf("1. START - Membaca file konfigurasi default yang berisi list game yang dapat dimainkan\n");
     printf("2. LOAD - Membaca save file yang ingin dibuka berisi list game yang dapat dimainkan\n");
+
+    printf("\nTekan [ENTER] untuk kembali ke menu utama...\n");
+
+    blankInput();
 }
 
 void help(){

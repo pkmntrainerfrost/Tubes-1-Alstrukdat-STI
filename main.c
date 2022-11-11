@@ -91,7 +91,26 @@ int main() {
         if (Valid) {
             if (length(Input) == 1) { 
                 if (isWordEqual(getElmt(Input,0),stringToWord("QUIT"))){
-                    quit();
+                    printf("Apakah anda sudah melakukan save untuk menyimpan state game anda? (Y/N)\n");
+                    Word check;
+                    boolean cek = wordInput(&check,1,10);
+                    char s[wordLength(check) + 1];
+                    wordToString(check, s);
+                    if (s == 'Y'){
+                        quit();
+                    } else {
+                        printf("Apakah anda ingin melakukan save? (Y/N)\n");
+                        cek = wordInput(&check,1,10);
+                        wordToString(check, s);
+                        if (s == 'Y'){
+                            printf("Masukkan nama save file anda: \n");
+                            wordInput(&check,1,10);
+                            wordToString(check, s);
+                            save(s, &ListGame);
+                        }
+                        printf("\n");
+                        quit();
+                    }
                 } else {
                     commandlain();
                 }
@@ -112,15 +131,25 @@ int main() {
                     } else {
                         commandlain();
                     }
+                } else if (isWordEqual(getElmt(Input,0),stringToWord("SAVE"))){
+                    char file[wordLength(getElmt(Input,1)) + 1];
+                    wordToString(getElmt(Input,1), file);
+                    save(file, &ListGame);
                 } else {
-                    commandlain();      
+                    commandlain();
+                }
+            } else if (length(Input) == 3){
+                if (isWordEqual(getElmt(Input,0),stringToWord("SKIP")) && isWordEqual(getElmt(Input,1),stringToWord("GAME")) && wordToInt(getElmt(Input,2)) != INVALID_INT && wordToInt(getElmt(Input,2)) >= 0){
+                    skipGame(&QueueGame,ListGame,wordToInt(getElmt(Input,2)));
+                } else {
+                    commandlain();
                 }
             } else {
                 commandlain();
-            }
+            } 
         } else {
             if (length(Input) > 0) {
-                printf("Masukan tidak valid! Silahkan ulangi input.\n");
+                commandlain();
             } else {
                 printf("Masukan tidak boleh kosong! Silahkan ulangi input.\n");
             }
