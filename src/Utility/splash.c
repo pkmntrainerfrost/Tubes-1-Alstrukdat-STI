@@ -1,9 +1,13 @@
 #include <stdio.h> 
 #include "../ADT/boolean.h" 
 #include "splash.h"
+#include "../Misc/io/colors.h"
 
 void header() {
 
+    printf(RESET);
+    printf(BG_BLACK);
+    printf(WHITE);
     printf("\e[1;1H\e[2J");
     printf("======================================BNMO======================================\n");
     printf("\n");

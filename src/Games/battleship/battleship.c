@@ -635,7 +635,7 @@ void battleshipSplash() {
     printf("  ##   ## ##   ##    ##       ##    ##      ##           ## ##   ## ## ##       \n");
     printf("  ######  ##   ##    ##       ##    ####### ####### ####### ##   ## ## ##       \n");
     printf("\n");
-    printf("==========================Selamat datang, Laksamana.===========================\n");
+    printf("==========================Selamat datang, Laksamana.============================\n");
     printf("\n");
 
 }

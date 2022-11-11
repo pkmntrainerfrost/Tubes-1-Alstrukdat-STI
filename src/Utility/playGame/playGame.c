@@ -5,6 +5,7 @@
 
 void playGame(Queue *Q, List L)
 {
+    header();
     if (IsEmpty(*Q)){
         printf("Antrian Anda kosong.\n");
     } else {

@@ -63,9 +63,9 @@ void rngSplash() {
     printf("                       +#+    +#+ +#+  +#+#+# +#+   +#+# \n");
     printf("                       #+#    #+# #+#   #+#+# #+#    #+# \n");
     printf("                       ###    ### ###    ####  ########  \n");
-    printf("                               Uji keberuntungan Anda... \n");
+    printf("                                        Are you lucky..? \n");
     printf("\n");
-    printf("=========RNG telah dimulai. Uji keberuntungan Anda dengan menebak X.==========\n\n");
+    printf("==========RNG telah dimulai. Uji keberuntungan Anda dengan menebak X.===========\n\n");
 
 }
 // compile: gcc Games/rng/rng.c Games/random.c Misc/io/io.c Misc/ascii/ascii.c ADT/list/array.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c -o driver
