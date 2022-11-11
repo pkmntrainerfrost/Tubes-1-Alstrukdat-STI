@@ -24,9 +24,7 @@ void playGame(Queue *Q, List L)
             } else if (isSameWord(x, stringToWord("Diner DASH"))){
                 dinerDash();
             } else if (isSameWord(x, stringToWord("Battleship"))){
-                // Battleship();
-                // fungsi utamanya mana? 
-                printf("jalan Battleship\n");
+                battleship();
             }
         } else if (isSameWord(x, stringToWord("EIFFEL TOWER")) || isSameWord(x, stringToWord("RISEWOMAN")) || isSameWord(x, stringToWord("DINOSAUR IN EARTH"))){
             // Game di file config default selain RNG dan diner DASH

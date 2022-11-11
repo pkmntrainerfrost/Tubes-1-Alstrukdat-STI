@@ -4,6 +4,16 @@
 #include <stdio.h>
 #include "help.h"
 
+void helpStart()
+{
+
+    header();
+
+    printf("Berikut command-command yang tersedia:\n");
+    printf("1. START - Membaca file konfigurasi default yang berisi list game yang dapat dimainkan\n");
+    printf("2. LOAD - Membaca save file yang ingin dibuka berisi list game yang dapat dimainkan\n");
+}
+
 void help(){
 
     header();

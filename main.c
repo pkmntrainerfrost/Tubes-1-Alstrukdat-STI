@@ -36,6 +36,7 @@ int main() {
         printf("\e[1;1H\e[2J");
         header();
         splash(Tries,Started);
+        helpStart();
 
         List Input;
         createList(&Input);
@@ -81,6 +82,7 @@ int main() {
 
         header();
         splash(Tries,Started);
+        help();
 
         List Input;
         createList(&Input);

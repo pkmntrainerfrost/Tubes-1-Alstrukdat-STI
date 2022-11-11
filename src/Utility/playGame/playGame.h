@@ -9,7 +9,7 @@
 #include "../queuegame/queueGame.h"
 #include "../../Games/rng/rng.h"
 #include "../../Games/dinerdash/dinerdash.h"
-// #include "../../Games/battleship/battleship.h"
+#include "../../Games/battleship/battleship.h"
 
 void playGame(Queue *Q, List L);
 // Game yang dimainkan adalah game dengan antrian pertama di antrian game
