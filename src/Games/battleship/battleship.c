@@ -697,7 +697,7 @@ void printBothGrids(Grid PlayerGrid, Grid EnemyGrid, int Enemy) {
                 printf("X ");
             } else if ((EnemyGrid.tiles[i*10 + j].shot == true)) {
                 printf("@ ");
-            } else if (PlayerGrid.tiles[i*10 + j].ship == true) {
+            } else if (EnemyGrid.tiles[i*10 + j].ship == true) {
                 printf("# ");
             } else {
                 printf(". ");
