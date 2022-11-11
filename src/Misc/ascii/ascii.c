@@ -38,10 +38,10 @@ int alphabeticalOrd(char c) {
 /* Mengembalikan huruf kecil dari suatu karakter apabila karakter merupakan huruf kapital */
 char lower(char c) {
 
-    if (isLowercase(c)) {
-        return (c);
+    if (isUppercase(c)) {
+        return (c + 32);
     } else {
-        return (c - 32);
+        return (c);
     }
 
 }
@@ -49,10 +49,10 @@ char lower(char c) {
 /* Mengembalikan huruf kapital dari suatu karakter apabila karakter merupakan huruf kecil */
 char upper(char c) {
 
-    if (isUppercase(c)) {
-        return (c);
+    if (isLowercase(c)) {
+        return (c - 32);
     } else {
-        return (c + 32);
+        return (c);
     }
 
 }

@@ -29,6 +29,13 @@ Point translate(Point p, int dx, int dy) {
 
 }
 
+Point copyPoint(Point P) {
+    Point Q;
+    ABSCISSA(Q) = ABSCISSA(P);
+    ORDINATE(Q) = ORDINATE(P);
+    return Q;
+}
+
 void movePoint(Point *p, int dx, int dy) {
 
     ABSCISSA(*p) = ABSCISSA(*p) + dx;

@@ -42,8 +42,28 @@ typedef struct {
     boolean enemy;
 } Grid;
 
-#define TILE(g,p) (g).tiles[((ABSICSSA(p)) * 10 + (ORDINATE(p)))]
+#define TILE(g,p) (g).tiles[((ABSCISSA(p)) * 10 + (ORDINATE(p)))]
 #define SHIP(g,i) (g).ships[i]
 #define ENEMY(g)  (g).enemy
+
+void battleship();
+
+void battleshipSplash();
+
+void initializeGrid(Grid *G, boolean Enemy);
+
+void createShip(Ship *S, char *N, Point P, boolean V, int L);
+
+void copyShip(Ship *S1, Ship *S2);
+
+void placeShipsPlayer(Grid *G);
+
+void shipInput(Grid *G, Ship *S, char *N, int L);
+
+void posInput(Point *P);
+
+void verticalInput(boolean *V);
+
+boolean shipPosValid(Grid G, Ship S);
 
 #endif

@@ -1,10 +1,81 @@
 #include "battleship.h"
 #include "../../Misc/io/io.h"
+#include <stdio.h>
 
 // AI
 // Yor Forger -> nembak asal (kalo gk sempet, implement yg ini aja)
 // Loid Forger -> lebih pinter, strategi 
 // Anya Forger -> hax (baca pikiran), harus bener terus ato nggak auto kalah
+
+int main() {
+
+    battleship();
+
+    return 0;
+
+}
+
+void battleship() {
+
+    Word inputEnemy;
+    int enemy;
+    boolean validEnemy = false;
+    boolean inGame = false;
+
+    while (!validEnemy) {
+
+        header();
+
+        battleshipSplash();
+
+        printf("Silahkan pilih lawan Anda [YOR/LOID/ANYA/QUIT]: ");
+
+        validEnemy = wordInput(&inputEnemy,3,4);
+
+        if (validEnemy) {
+            if (isWordEqual(inputEnemy,stringToWord("YOR"))) {
+                inGame = true;
+                enemy = 1;
+                printf("Tekan [ENTER] untuk memulai permainan.\n");
+            } else if (isWordEqual(inputEnemy,stringToWord("LOID"))) {
+                inGame = true;
+                enemy = 2;
+                printf("Tekan [ENTER] untuk memulai permainan.\n");
+            } else if (isWordEqual(inputEnemy,stringToWord("ANYA"))) {
+                inGame = true;
+                enemy = 3;
+                printf("Tekan [ENTER] untuk memulai permainan.\n");
+            } else if (isWordEqual(inputEnemy,stringToWord("QUIT"))) {
+                inGame = false;
+                printf("Pengecut. Tekan [ENTER] untuk kembali ke menu utama.\n");
+            } else {
+                validEnemy = false;
+            }
+        } 
+
+        if (!validEnemy) {
+            printf("Masukan tidak valid. Tekan [ENTER] dan ulangi masukan.\n");
+        }
+
+        blankInput();
+
+    }
+
+    if (inGame) {
+
+        header();
+
+        Grid PlayerGrid;
+        Grid EnemyGrid;
+
+        initializeGrid(&PlayerGrid,false);
+        initializeGrid(&PlayerGrid,true);
+
+        placeShipsPlayer(&PlayerGrid);
+
+    }
+
+}
 
 void initializeGrid(Grid *G, boolean Enemy) {
 
@@ -78,9 +149,9 @@ void shipInput(Grid *G, Ship *S, char *N, int L) {
     while (!Valid) {
         
         if (InvalidInputs == 0) {
-            printf("Silahkan masukkan posisi dan orientasi kapal.\n");
+            printf("Silahkan masukkan posisi dan orientasi kapal %s.\n",N);
         } else {
-            printf("Posisi kapal tidak valid!\n");
+            printf("Posisi kapal tidak valid! Ulangi masukan.\n");
         }
 
         Point P;
@@ -105,28 +176,35 @@ void posInput(Point *P) {
 
     int InvalidInputs = 0;
     boolean Valid = false;
-    char Input[3];
+
+    Word Input;
 
     while (!Valid) {
         
         if (InvalidInputs == 0) {
-            printf("Silahkan masukkan koordinat. Contoh: A0\n");
+            printf("Silahkan masukkan koordinat [A-J][0-9]. Contoh: A0, D8\n");
         } else {
             printf("Masukan bukan merupakan koordinat yang valid! Ulangi Input!\n");
         }
+        
+        boolean InputValid = wordInput(&Input,2,2);
 
-        stringInput(Input,2);
-
-        if ((isAlpha(Input[0]) && isCharInRange(lower(Input[0]), 'a', 'j')) && (isNumeric(Input[1]))) {
-            Valid = true;
-        } else {
-            InvalidInputs = InvalidInputs + 1;
+        if (InputValid) {
+            printf("%d,%d,%d\n",isAlpha(Input.buffer[0]),isCharInRange(lower(Input.buffer[0]), ord('a'), ord('j')),isNumeric(Input.buffer[1]));
+            if ((isAlpha(Input.buffer[0]) && isCharInRange(lower(Input.buffer[0]), ord('a'), ord('j'))) && (isNumeric(Input.buffer[1]))) {
+                Valid = true;
+            } else {
+                InvalidInputs = InvalidInputs + 1;
+            }
         }
 
     }
 
-    ABSCISSA(*P) = alphabeticalOrd(Input[0]);
-    ORDINATE(*P) = charToInt(Input[1]);
+    ABSCISSA(*P) = alphabeticalOrd(Input.buffer[0]);
+    
+    ORDINATE(*P) = charToInt(Input.buffer[1]);
+
+    printf("%d,%d\n",ABSCISSA(*P),ORDINATE(*P));
 
 }
 
@@ -134,7 +212,8 @@ void verticalInput(boolean *V) {
 
     int InvalidInputs = 0;
     boolean Valid = false;
-    char Input[2];
+
+    Word Input;
 
     while (!Valid) {
         
@@ -144,17 +223,19 @@ void verticalInput(boolean *V) {
             printf("Ulangi input!\n");
         }
 
-        stringInput(Input,2);
+        boolean InputValid = wordInput(&Input,1,2);
 
-        if (lower(Input[0]) == 'y' || lower(Input[0]) == 'n') {
-            Valid = true;
-        } else {
-            InvalidInputs = InvalidInputs + 1;
+        if (InputValid) {
+            if (isAlpha(Input.buffer[0]) && (lower(Input.buffer[0]) == 'y' || lower(Input.buffer[0]) == 'n')) {
+                Valid = true;
+            } else {
+                InvalidInputs = InvalidInputs + 1;
+            }
         }
 
     }
 
-    if (lower(Input[0]) == 'y') {
+    if (lower(Input.buffer[0]) == 'y') {
         *V = true;
     } else {
         *V = false;
@@ -168,10 +249,10 @@ boolean shipPosValid(Grid G, Ship S) {
     Point P = copyPoint(POSITION(S));
 
     if (VERTICAL(S)) {
-        if (ORDINATE(P) + LENGTH(S) - 1 <= 10 && ABSICSSA(P) <= 10 && isFirstQuadrant(P)) {
+        if (ORDINATE(P) + SHIPLENGTH(S) - 1 <= 10 && ABSCISSA(P) <= 10 && isFirstQuadrant(P)) {
             int i = 0;
             boolean Overlap = false;
-            while (!Overlap && i <= LENGTH(S)) {
+            while (!Overlap && i <= SHIPLENGTH(S)) {
                 if (HAS_SHIP(TILE(G,P))) {
                     Overlap = true;
                 }
@@ -181,10 +262,10 @@ boolean shipPosValid(Grid G, Ship S) {
             Valid = !Overlap;
         }
     } else {
-        if (ABSICSSA(P) + LENGTH(S) - 1 <= 10 && ORDINATE(P) <= 10 && isFirstQuadrant(P)) {
+        if (ABSCISSA(P) + SHIPLENGTH(S) - 1 <= 10 && ORDINATE(P) <= 10 && isFirstQuadrant(P)) {
             int i = 0;
             boolean Overlap = false;
-            while (!Overlap && i <= LENGTH(S)) {
+            while (!Overlap && i <= SHIPLENGTH(S)) {
                 if (HAS_SHIP(TILE(G,P))) {
                     Overlap = true;
                 }
@@ -253,6 +334,31 @@ void endTurn(Grid *G, boolean *Winner) {
 
 }
 
+void battleshipSplash() {
+
+    printf("                                             #.                                 \n");
+    printf("                                             @ #                                \n");
+    printf("                                             .@ ,                               \n");
+    printf("                                           @. @                                 \n");
+    printf("                       &@             @@*     @#                                \n");
+    printf("                      @@@           @@@       @  @@@@@@                         \n");
+    printf("                       @        &@@ @@@  @    @@@@@@@@@                         \n");
+    printf("                @@@@ @@@     @@@@@@@@@@@@@@@@@@@@@@@@@@ @@@@@. @((@@@,@@@    @& \n");
+    printf(" @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ \n");
+    printf(" @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ \n");
+    printf("\n");
+    printf("  ######   #####  ######## ######## ##      ####### ####### ##   ## ## ######   \n");
+    printf("  ##   ## ##   ##    ##       ##    ##      ##      ##      ##   ## ## ##   ##  \n");
+    printf("  ######  #######    ##       ##    ##      #####   ####### ####### ## ######   \n");
+    printf("  ##   ## ##   ##    ##       ##    ##      ##           ## ##   ## ## ##       \n");
+    printf("  ##   ## ##   ##    ##       ##    ##      ##           ## ##   ## ## ##       \n");
+    printf("  ######  ##   ##    ##       ##    ####### ####### ####### ##   ## ## ##       \n");
+    printf("\n");
+    printf("==========================Selamat datang, Laksamana.===========================\n");
+    printf("\n");
+
+}
+
 /* 
 
                                                                                 
@@ -269,11 +375,11 @@ void endTurn(Grid *G, boolean *Winner) {
  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 
  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-  ██████   █████  ████████ ████████ ██      ███████ ███████ ██   ██ ██ ██████  
-  ██   ██ ██   ██    ██       ██    ██      ██      ██      ██   ██ ██ ██   ██ 
-  ██████  ███████    ██       ██    ██      █████   ███████ ███████ ██ ██████  
-  ██   ██ ██   ██    ██       ██    ██      ██           ██ ██   ██ ██ ██      
-  ██████  ██   ██    ██       ██    ███████ ███████ ███████ ██   ██ ██ ██       
+  ######   #####  ######## ######## ##      ####### ####### ##   ## ## ######  
+  ##   ## ##   ##    ##       ##    ##      ##      ##      ##   ## ## ##   ## 
+  ######  #######    ##       ##    ##      #####   ####### ####### ## ######  
+  ##   ## ##   ##    ##       ##    ##      ##           ## ##   ## ## ##      
+  ######  ##   ##    ##       ##    ####### ####### ####### ##   ## ## ##       
 
 ===========================Selamat datang, Laksamana.===========================
 
