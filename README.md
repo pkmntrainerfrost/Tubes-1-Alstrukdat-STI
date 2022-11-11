@@ -4,7 +4,7 @@ Tugas Besar Alstrukdat IF2110
 
 ### Anggota Kelompok
 | Nama | NIM |
-| ----------- |  ----------: |
+| :-----------: |  :----------: |
 | Agnes Tamara Putri | 18220010 |
 | Salman Ma'arif Achsien | 18221102 |
 | Reswara Trista Aulia C. | 18221122 |
