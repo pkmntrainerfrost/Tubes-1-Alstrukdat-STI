@@ -20,21 +20,21 @@ void savetoFile(char saveFilename[], List L)
     printf("Save file berhasil disimpan\n");
 }
 
-int main()
-{
-    List L;
-    createList(&L);
-    insertLast(&L, stringToWord("RNG"));
-    insertLast(&L, stringToWord("Diner DASH"));
-    insertLast(&L, stringToWord("DINOSAUR IN EARTH"));
-    insertLast(&L, stringToWord("RISEWOMAN"));
-    insertLast(&L, stringToWord("EIFFEL TOWER"));
-    insertLast(&L, stringToWord("Battleship")); 
-    insertLast(&L, stringToWord("Tetris"));
-    displayList(L);
-    // blm bikin scanf buat saveFilename
-    savetoFile("test.txt", L);
-    return 0;
-}
+// int main()
+// {
+//     List L;
+//     createList(&L);
+//     insertLast(&L, stringToWord("RNG"));
+//     insertLast(&L, stringToWord("Diner DASH"));
+//     insertLast(&L, stringToWord("DINOSAUR IN EARTH"));
+//     insertLast(&L, stringToWord("RISEWOMAN"));
+//     insertLast(&L, stringToWord("EIFFEL TOWER"));
+//     insertLast(&L, stringToWord("Battleship")); 
+//     insertLast(&L, stringToWord("Tetris"));
+//     displayList(L);
+//     // blm bikin scanf buat saveFilename
+//     savetoFile("test.txt", L);
+//     return 0;
+// }
 
 //compile: gcc utility/save/save.c ADT/list/array.c ADT/word/word.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c Misc/io/io.c Misc/ascii/ascii.c -o driver

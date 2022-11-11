@@ -11,10 +11,10 @@ void deleteGame(List *L, Queue Q)
     createWord(&input);
     boolean valid = wordInput(&input,1,10);
     if (wordToInt(input) > 0 && wordToInt(input) <= length(*L)) {
-        if (wordToInt(input)>=1 && wordToInt(input)<=5){
-            // 5 game pertama pada file konfigurasi tidak dapat dihapus
+        if (wordToInt(input)>=1 && wordToInt(input)<=6){
+            // 5 game pertama gan game bonus pada urutan ke 6 pada file konfigurasi tidak dapat dihapus
             printf("Game gagal dihapus\n");
-        } else if (wordToInt(input) > 5 && wordToInt(input) <= length(*L)) {
+        } else if (wordToInt(input) > 6 && wordToInt(input) <= length(*L)) {
             if (!(IsEmpty(Q))){
                 if (!(isMember(Q, getElmt(*L,wordToInt(input)-1)))){
                     deleteAt(L, wordToInt(input)-1);
@@ -47,7 +47,7 @@ void deleteGame(List *L, Queue Q)
 //     printf("\n");
 //     Queue Q;
 //     createQueue(&Q);
-//     enqueue(&Q, stringToWord("Tetris"));
+//     enqueue(&Q, stringToWord("RNG"));
 //     enqueue(&Q, stringToWord("Diner DASH"));
 //     enqueue(&Q, stringToWord("RNG"));
 //     displayQueue(Q);

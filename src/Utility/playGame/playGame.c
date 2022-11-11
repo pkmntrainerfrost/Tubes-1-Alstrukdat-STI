@@ -2,9 +2,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include "playGame.h"
-// #include "../../Games/rng/rng.h"
-// #include "../../Games/dinerdash/dinerdash.h"
-// #include "../../Games/battleship/battleship.h"
 
 void playGame(Queue *Q, List L)
 {
@@ -15,24 +12,21 @@ void playGame(Queue *Q, List L)
         displayQueue(*Q);
         printf("\n");
 
-        // jadinya pake idx apa string?
-        if (isSameWord(Front(*Q), stringToWord("RNG")) || isSameWord(Front(*Q), stringToWord("Diner DASH")) || isSameWord(Front(*Q), stringToWord("Battleship"))){
+        if (isSameWord(Front(*Q), stringToWord("RNG")) || isSameWord(Front(*Q), L.A[0]) || isSameWord(Front(*Q), stringToWord("Diner DASH")) || isSameWord(Front(*Q), L.A[1]) || isSameWord(Front(*Q), stringToWord("Battleship")) || isSameWord(Front(*Q),L.A[5])){
             printf("Loading ");
             printWord(Front(*Q));
             printf(" ...\n");
-            if (isSameWord(Front(*Q), stringToWord("RNG"))){
-                // rng();
-                printf("jalan RNG\n");
-            } else if (isSameWord(Front(*Q), stringToWord("Diner DASH"))){
-                // DinerDash();
-                printf("jalan Diner DASH\n");
-            } else if (isSameWord(Front(*Q), stringToWord("Battleship"))){
+            if (isSameWord(Front(*Q), stringToWord("RNG")) || isSameWord(Front(*Q), L.A[0])){
+                rng();
+            } else if (isSameWord(Front(*Q), stringToWord("Diner DASH")) || isSameWord(Front(*Q), L.A[1])){
+                dinerDash();
+            } else if (isSameWord(Front(*Q), stringToWord("Battleship")) || isSameWord(Front(*Q), L.A[5])){
                 // Battleship();
-                // fungsi utamanya mana?
+                // fungsi utamanya mana? 
                 printf("jalan Battleship\n");
             }
         } else if (isSameWord(Front(*Q), L.A[2]) || isSameWord(Front(*Q), L.A[3]) || isSameWord(Front(*Q), L.A[4])){
-            // Game di file config default selain RNG dan diner DASH
+            // Game di file config default selain RNG dan diner DASH dan battleship
             printf("Game ");
             printWord(Front(*Q));
             printf(" masih dalam maintenance, belum dapat dimainkan.\n");
@@ -67,7 +61,7 @@ void playGame(Queue *Q, List L)
 //     displayList(L);
 //     Queue Q;
 //     createQueue(&Q);
-//     enqueue(&Q, stringToWord("Tetris"));
+//     enqueue(&Q, stringToWord("RNG"));
 //     enqueue(&Q, stringToWord("Diner DASH"));
 //     enqueue(&Q, stringToWord("RNG"));
 //     playGame(&Q, L);
@@ -75,4 +69,5 @@ void playGame(Queue *Q, List L)
 //     return 0;
 // }
 
-// compile: gcc utility/playGame/playGame.c utility/queuegame/queueGame.c utility/listGame/listGame.c ADT/list/array.c ADT/queue/queue2.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c Misc/ascii/ascii.c -o driver
+// compile: gcc utility/playGame/playGame.c utility/queuegame/queueGame.c utility/listGame/listGame.c Games/rng/rng.c Games/random.c Games/dinerdash/dinerdash.c ADT/list/array.c ADT/queue/queue2.c ADT/queue/prioqueue.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c Misc/io/io.c Misc/ascii/ascii.c -o driver
+// battleship blm jalan

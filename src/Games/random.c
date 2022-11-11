@@ -16,16 +16,16 @@ int random_range(int Min, int Max) {
 
 }
 
-int main() {
+// int main() {
 
-    srand(time(NULL));
+//     srand(time(NULL));
 
-    for (int i = 0; i < 100; i++) {
+//     for (int i = 0; i < 100; i++) {
 
-        int x = random_range(0,100);
-        printf("%d\n",x);
+//         int x = random_range(0,100);
+//         printf("%d\n",x);
 
-    }
+//     }
 
 
-}
+// }
