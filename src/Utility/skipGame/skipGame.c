@@ -2,9 +2,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include "skipGame.h"
-// #include "../../Games/rng/rng.h"
-// #include "../../Games/dinerdash/dinerdash.h"
-// #include "../../Games/battleship/battleship.h"
 
 void skipGame(Queue *Q, List L, int n) {
 
@@ -26,18 +23,15 @@ void skipGame(Queue *Q, List L, int n) {
             dequeue(Q, &X);
         }
 
-        // jadinya pake idx apa string?
-        if (isSameWord(Front(*Q), stringToWord("RNG")) || isSameWord(Front(*Q), stringToWord("Diner DASH")) || isSameWord(Front(*Q), stringToWord("Battleship"))){
+        if (isSameWord(Front(*Q), stringToWord("RNG")) || isSameWord(Front(*Q), L.A[0]) || isSameWord(Front(*Q), stringToWord("Diner DASH")) || isSameWord(Front(*Q), L.A[1]) || isSameWord(Front(*Q), stringToWord("Battleship")) || isSameWord(Front(*Q),L.A[5])){
             printf("Loading ");
             printWord(Front(*Q));
             printf(" ...\n");
-            if (isSameWord(Front(*Q), stringToWord("RNG"))){
-                // rng();
-                printf("jalan RNG\n");
-            } else if (isSameWord(Front(*Q), stringToWord("Diner DASH"))){
-                // DinerDash();
-                printf("jalan Diner DASH\n");
-            } else if (isSameWord(Front(*Q), stringToWord("Battleship"))){
+            if (isSameWord(Front(*Q), stringToWord("RNG")) || isSameWord(Front(*Q), L.A[0])){
+                rng();
+            } else if (isSameWord(Front(*Q), stringToWord("Diner DASH")) || isSameWord(Front(*Q), L.A[1])){
+                dinerDash();
+            } else if (isSameWord(Front(*Q), stringToWord("Battleship")) || isSameWord(Front(*Q), L.A[5])){
                 // Battleship();
                 // fungsi utamanya mana?
                 printf("jalan Battleship\n");
@@ -82,9 +76,9 @@ void skipGame(Queue *Q, List L, int n) {
 //     enqueue(&Q, stringToWord("Diner DASH"));
 //     enqueue(&Q, stringToWord("Battleship"));
 //     enqueue(&Q, stringToWord("RISEWOMAN"));
-//     enqueue(&Q, stringToWord("Tetris"));
+//     enqueue(&Q, stringToWord("RNG"));
 //     skipGame(&Q, L, 4);
 //     return 0;
 // }
 
-// compile: gcc utility/skipGame/skipGame.c utility/playGame/playGame.c utility/queuegame/queueGame.c utility/listGame/listGame.c ADT/list/array.c ADT/queue/queue2.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c Misc/ascii/ascii.c Misc/io/io.c -o driver
+// compile: gcc utility/skipGame/skipGame.c utility/playGame/playGame.c Games/rng/rng.c Games/random.c Games/dinerdash/dinerdash.c ADT/queue/prioqueue.c utility/queuegame/queueGame.c utility/listGame/listGame.c ADT/list/array.c ADT/queue/queue2.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c Misc/ascii/ascii.c Misc/io/io.c -o driver

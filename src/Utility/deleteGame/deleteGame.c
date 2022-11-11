@@ -64,7 +64,7 @@ void deleteGame(List *L, Queue Q) {
 //     printf("\n");
 //     Queue Q;
 //     createQueue(&Q);
-//     enqueue(&Q, stringToWord("Tetris"));
+//     enqueue(&Q, stringToWord("RNG"));
 //     enqueue(&Q, stringToWord("Diner DASH"));
 //     enqueue(&Q, stringToWord("RNG"));
 //     displayQueue(Q);

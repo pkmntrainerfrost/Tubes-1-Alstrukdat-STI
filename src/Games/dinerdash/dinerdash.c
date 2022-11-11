@@ -11,23 +11,6 @@
 #include "../../Misc/ascii/ascii.h"
 #include "../../ADT/list/array.h"
 
-/*
-boolean isElTypeEqual(Word kata1, Word kata2){
-// mengembalikan true jika str1 sama dengan str2
-    boolean check = true;
-    int i;
-
-    if (wordLength(kata1) == wordLength(kata2)){
-        for(i=0;i<wordLength(kata1);i++){
-            if (kata1.buffer[i] != kata2.buffer[i]){
-                check = false;
-            }
-        }
-    }
-    return check;    
-}
-*/
-
 PQElType addQueue(int i){
     PQElType addOrder;
     addOrder.foodId = i;
@@ -36,28 +19,6 @@ PQElType addQueue(int i){
     addOrder.price = (rand() % 5 ) * 5000 + 10000;
     return addOrder;
 }
-
-void dequeueAt(PrioQueue *pq, int idx,PQElType * val){
-    (*val).foodId = (*pq).buffer[idx].foodId;
-	(*val).cookTime = (*pq).buffer[idx].cookTime;
-	(*val).stayTime = (*pq).buffer[idx].stayTime;
-	(*val).price = (*pq).buffer[idx].price;
-    if (IDX_HEAD(*pq) == IDX_TAIL(*pq)){
-        IDX_HEAD(*pq) = IDX_UNDEF;
-        IDX_TAIL(*pq) = IDX_UNDEF;
-    }else{
-		int i;
-		for(i = idx; i < IDX_TAIL(*pq); i++){
-			(*pq).buffer[i].foodId = (*pq).buffer[i + 1].foodId;	
-			(*pq).buffer[i].cookTime = (*pq).buffer[i + 1].cookTime;
-			(*pq).buffer[i].stayTime = (*pq).buffer[i + 1].stayTime;
-			(*pq).buffer[i].price = (*pq).buffer[i + 1].price;	
-		}
-        IDX_TAIL(*pq)--;
-    }
-
-}
-
 
 void dinerDash(){
 
@@ -97,14 +58,20 @@ void dinerDash(){
     idx = 3;
     while (!isFullPQ(pq) && served <= 15){
         List usr;
+        createList(&usr);
         Word orderId;
         Word command;
+        int valid;
 
         printf("\n \n");
         printf("Masukkan command:");
-        multiWordInput(&usr, 1, 2);
-        command = usr.A[0];
-        orderId = usr.A[1];
+        valid = multiWordInput(&usr, 1, 2);
+
+        if (valid){
+            command = usr.A[0];
+            orderId = usr.A[1];            
+        }
+
 
         //Cek inputan 
         //printf("Command: %s\n", command);
@@ -114,28 +81,34 @@ void dinerDash(){
         while (!(isElTypeEqual(command, cooks) || isElTypeEqual(command, serves) || isElTypeEqual(command,skips)))
         {
             printf("Masukkan command: ");
-            multiWordInput(&usr, 1, 2);
-            command = usr.A[0];
-            orderId = usr.A[1];
+            valid = multiWordInput(&usr, 1, 2);
+
+            if (valid){
+                command = usr.A[0];
+                orderId = usr.A[1];            
+            }
         }
 
         // mengubah str to int id dan looping jika input tidak sesuai
         int id = 0;
-        for (int i = 1; usr.A[i].buffer != '\0'; i++)
+        for (int i = 1; i < usr.A[1].length; i++)
         {
-            id = id * 10 + (usr.A[i].buffer - '0');
+            id = id * 10 + (usr.A[1].buffer[i] - '0');
         }
         while (id < HEAD(pq).foodId || id > TAIL(pq).foodId)
         {
             printf("Masukkan command: ");
-            multiWordInput(&usr, 1, 2);
-            command = usr.A[0];
-            orderId = usr.A[1];
+            valid = multiWordInput(&usr, 1, 2);
+
+            if (valid){
+                command = usr.A[0];
+                orderId = usr.A[1];            
+            }
 
             id = 0;
-            for (int i = 1; usr.A[i].buffer != '\0'; i++)
+            for (int i = 1; i < usr.A[1].length; i++)
             {
-                id = id * 10 + (usr.A[i].buffer - '0');
+                id = id * 10 + (usr.A[1].buffer[i] - '0');
             }
         }
         printf("id: %d\n", id);
@@ -155,7 +128,7 @@ void dinerDash(){
             {
                 if (HEAD(pq).foodId == id)
                 {
-                printf("Berhasil mengantar %d\n", id);
+                printf("Berhasil mengantar M%d\n", id);
                 enqueuePQ(&pq, addQueue(idx));
                 PQElType vals;
                 dequeuePQ(&pq, &vals);
@@ -208,15 +181,19 @@ void dinerDash(){
                 dequeueAt(&cookQ, ctr, &vall);
                 enqueuePQ(&serveQ,vall);
                 //printf("Berhasil memasak M%d\n", cookQ.buffer[ctr].foodId);
-            }
-            ctr++;    
+            }else{
+                ctr++;  
+            }  
         }
     }
     printf("========== GAME OVER ==========\n");
     printf("SKOR AKHIR : %d\n", saldo);
 }
 
-
+/*
 int main(){
     dinerDash();
 }
+compile:
+gcc /Users/trista/Documents/GitHub/Tubes-1-Alstrukdat-STI/src/Games/dinerdash/dinerdash.c /Users/trista/Documents/GitHub/Tubes-1-Alstrukdat-STI/src/ADT/word/mesinkarakter/mesinkarakter.c /Users/trista/Documents/GitHub/Tubes-1-Alstrukdat-STI/src/ADT/word/mesinkata/mesinkata.c /Users/trista/Documents/GitHub/Tubes-1-Alstrukdat-STI/src/ADT/queue/prioqueue.c /Users/trista/Documents/GitHub/Tubes-1-Alstrukdat-STI/src/ADT/queue/queue2.c /Users/trista/Documents/GitHub/Tubes-1-Alstrukdat-STI/src/Misc/io/io.c /Users/trista/Documents/GitHub/Tubes-1-Alstrukdat-STI/src/ADT/word/word.c /Users/trista/Documents/GitHub/Tubes-1-Alstrukdat-STI/src/Misc/ascii/ascii.c /Users/trista/Documents/GitHub/Tubes-1-Alstrukdat-STI/src/ADT/list/array.c -o try_DD
+*/

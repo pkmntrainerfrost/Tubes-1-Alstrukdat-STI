@@ -60,7 +60,13 @@ void enqueuePQ(PrioQueue *pq, PQElType val);
 void dequeuePQ(PrioQueue *pq, PQElType *val);
 /* Proses: Menghapus val pada pq dengan aturan FIFO */
 /* I.S. pq tidak mungkin kosong */
-/* F.S. val = nilai elemen HEAD pd I.S., IDX_HEAD "mundur";
+/* F.S. val = nilai elemen HEAD pd I.S., isi elemen mundur;
+        pq mungkin kosong */
+
+void dequeueAt(PrioQueue *pq, int idx,PQElType * val);
+/* Proses: Menghapus val pada pq */
+/* I.S. pq tidak mungkin kosong */
+/* F.S. val = nilai elemen HEAD pd I.S., isi elemen mundur;
         pq mungkin kosong */
 
 void printOrders(PrioQueue pq);
