@@ -12,7 +12,7 @@ void skipGame(Queue *Q, List L, int n) {
     printf("\n");
     int i;
     QElType X;
-    if (n>Length(*Q)){
+    if (n>=Length(*Q)){
         for(i=0; i<Length(*Q); i++){
             dequeue(Q, &X);
         }
