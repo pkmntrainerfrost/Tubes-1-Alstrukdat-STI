@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "queueGame.h"
+#include "../splash.h"
 
 void queueGame(Queue *queueGame, List L) {
 

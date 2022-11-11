@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "deleteGame.h"
+#include "../splash.h"
 
 void deleteGame(List *L, Queue Q) {
 
@@ -44,6 +45,7 @@ void deleteGame(List *L, Queue Q) {
             repeat = true;
         } else {
             repeat = false;
+        }
     
     }
 
