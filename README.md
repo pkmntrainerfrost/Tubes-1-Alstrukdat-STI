@@ -17,6 +17,8 @@ BNMO merupakan suatu robot game console yang diprogram menggunakan bahasa C, den
 
 ### Kompilasi Program
 
+
+### Struktur Program
 ```
 │   .gitignore
 │   README.md
