@@ -64,11 +64,15 @@ void blankInput() {
 
 }
 
+/*
 int main() {
 
     Word WordInput;
 
-    boolean Valid = wordInput(&WordInput,1,5);
+    boolean Valid = wordInput(&WordInput,1,5); 
+    // input pake mesinkar, berhenti pas ketemu newline (enter), hasil disimpen di satu kata
+    // minimal input 1 karakter, maksimal 5; lebih ato kurang bakal balikin 0 (false)
+    // kalo bener (sesuai min sama max) bakal balikin 1 (true)
 
     if (Valid) {
         // ngapain
@@ -80,6 +84,10 @@ int main() {
     createList(&Input);
 
     Valid = multiWordInput(&Input,1,2);
+    // input pake mesinkata, berhenti pas ketemu newline (enter), hasil disimpen di array of kata
+    // kata dipisah berdasarkan spasi
+    // minimal input 1 kata, maksimal 2; lebih ato kurang bakal balikin 0 (false)
+    // kalo bener (sesuai min sama max) bakal balikin 1 (true)
 
     if (Valid) {
         // ngapain
@@ -96,7 +104,7 @@ int main() {
             if (length(Input) == 1 && isWordEqual(getElmt(Input,0),stringToWord("SERVE"))) {
                 // ngapain
             } else { // input salah
-                Valid = false;
+                Valid = false; // intinya set variabel yang ngatur loop ke false biar ngulang lagi
                 // ngapain
             }
         } else {
@@ -105,3 +113,5 @@ int main() {
     }
 
 }
+
+*/
