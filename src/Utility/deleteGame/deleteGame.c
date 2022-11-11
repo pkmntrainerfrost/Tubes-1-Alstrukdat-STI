@@ -36,7 +36,7 @@ void deleteGame(List *L, Queue Q) {
             printf("Nomor game tidak valid; game gagal dihapus.\n");
         }
 
-        printf("\n Apakah Anda ingin kembali melakukan input? [Y/N]: ");
+        printf("Apakah Anda ingin kembali melakukan input? [Y/N]: ");
 
         valid = wordInput(&input,1,1);
         

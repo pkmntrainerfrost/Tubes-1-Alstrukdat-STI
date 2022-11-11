@@ -120,22 +120,31 @@ int main() {
                         commandlain();
                     }
                 } else if (isWordEqual(getElmt(Input,0),stringToWord("SAVE"))){
-                    char file[wordLength(getElmt(Input,1)) + 1];
-                    wordToString(getElmt(Input,1), file);
-                    savetoFile(file, ListGame);
-                    printf("Tekan [ENTER] untuk melanjutkan...\n");
-                    blankInput();
+                    Word Check = getElmt(Input,1);
+                    if (lower(Check.buffer[wordLength(Check)-4]) == '.' && lower(Check.buffer[wordLength(Check)-3]) == 't' && lower(Check.buffer[wordLength(Check)-2]) == 'x' && lower(Check.buffer[wordLength(Check)-1]) == 't') {
+                            char a[wordLength(Check) + 1];
+                            wordToString(Check,a);
+                            savetoFile(a, ListGame);
+                    } else {
+                        printf("Nama file tidak valid!\n");
+                    } 
                 } else {
                     commandlain();
                 }
+                printf("Tekan [ENTER] untuk melanjutkan...");
+                blankInput();
             } else if (length(Input) == 3){
                 if (isWordEqual(getElmt(Input,0),stringToWord("SKIP")) && isWordEqual(getElmt(Input,1),stringToWord("GAME")) && wordToInt(getElmt(Input,2)) != INVALID_INT && wordToInt(getElmt(Input,2)) >= 0){
                     skipGame(&QueueGame,ListGame,wordToInt(getElmt(Input,2)));
                 } else {
                     commandlain();
+                    printf("Tekan [ENTER] untuk melanjutkan...");
+                    blankInput();
                 }
             } else {
                 commandlain();
+                printf("Tekan [ENTER] untuk melanjutkan...");
+                blankInput();
             } 
         } else {
             if (length(Input) > 0) {
@@ -143,6 +152,8 @@ int main() {
             } else {
                 printf("Masukan tidak boleh kosong! Silahkan ulangi input.\n");
             }
+            printf("Tekan [ENTER] untuk melanjutkan...");
+            blankInput();
             Tries = Tries + 1;
         }
 
