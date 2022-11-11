@@ -41,28 +41,25 @@ int main() {
         List Input;
         createList(&Input);
         boolean Valid = multiWordInput(&Input,1,2);
+        boolean noEnter = false;
 
         if (Valid) {
             if (isWordEqual(getElmt(Input,0),stringToWord("START")) && length(Input) == 1) {
                 START(&ListGame);
                 printf("File konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan.\n");
-                printf("Tekan [ENTER] untuk melanjutkan...\n");
-                blankInput();
                 Started = true;
             } else if (isWordEqual(getElmt(Input,0),stringToWord("HELP")) && length(Input) == 1) {
+                noEnter = true;
                 helpStart();
             } else if (isWordEqual(getElmt(Input,0),stringToWord("LOAD")) && length(Input) == 2) {
                 InvalidFile = CHECKFILE(getElmt(Input,1));
                 if (!InvalidFile) {
                     LOAD(getElmt(Input,1),&ListGame);
                     printf("Save file berhasil dibaca. BNMO berhasil dijalankan.\n");
-                    printf("Tekan [ENTER] untuk melanjutkan...\n");
-                    blankInput();
                     Started = true;
                 } else {
                     printf("Save file tidak ditemukan! Silahkan ulangi input.\n");
-                    printf("Tekan [ENTER] untuk melanjutkan...\n");
-                    blankInput();
+                    
                     Tries = Tries + 1;
                 }
             } else {
@@ -77,7 +74,12 @@ int main() {
             }
             Tries = Tries + 1;
         }
-
+        
+        if (!noEnter) {
+            printf("Tekan [ENTER] untuk melanjutkan...");
+            blankInput();
+        }
+        
         deallocateList(&Input);
 
     }
@@ -143,6 +145,8 @@ int main() {
             }
             Tries = Tries + 1;
         }
+
+        deallocateList(&Input);
         
 
     }
