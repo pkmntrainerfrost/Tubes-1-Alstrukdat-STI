@@ -103,6 +103,10 @@ int main() {
                         playGame(&QueueGame, ListGame);
                     } else if (isWordEqual(getElmt(Input,0),stringToWord("QUEUE"))){
                         queueGame(&QueueGame, ListGame);
+                    } else if (isWordEqual(getElmt(Input,0),stringToWord("CREATE"))){
+                        createGame(&ListGame);
+                    } else if (isWordEqual(getElmt(Input,0),stringToWord("SKIP")) && wordToInt(getElmt(Input,2)) != INVALID_INT && wordToInt(getElmt(Input,2)) >= 0){
+                        skipGame(&QueueGame,ListGame,wordToInt(getElmt(Input,2)));
                     } else {
                         commandlain();
                     }
@@ -110,11 +114,7 @@ int main() {
                     commandlain();      
                 }
             } else {
-                if (isWordEqual(getElmt(Input,0),stringToWord("SKIP")) && isWordEqual(getElmt(Input,1),stringToWord("GAME")) && wordToInt(getElmt(Input,2)) != INVALID_INT && wordToInt(getElmt(Input,2)) >= 0) {
-                    skipGame(&QueueGame,ListGame,wordToInt(getElmt(Input,2)));
-                } else {
-                    commandlain();
-                }   
+                commandlain();
             }
         } else {
             if (length(Input) > 0) {
