@@ -5,7 +5,7 @@ void createGame(List *L) {
 
     boolean repeat = true;
 
-    while (!repeat) {
+    while (repeat) {
 
         header();
 

@@ -7,6 +7,7 @@
 #include "../listGame/listGame.h"
 #include "../../Misc/io/io.h"
 #include "../../Misc/ascii/ascii.h"
+#include "../splash.h"
 
 void deleteGame(List *L, Queue Q);
 // I.S.

@@ -11,6 +11,7 @@
 #include "../listGame/listGame.h"
 #include "../../Misc/io/io.h"
 #include "../../Misc/ascii/ascii.h"
+#include "../splash.h"
 
 void queueGame(Queue *Q, List L);
 // mendaftarkan permainan ke dalam list

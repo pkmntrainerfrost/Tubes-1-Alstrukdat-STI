@@ -48,7 +48,7 @@ void suruhInput(boolean started) {
     if (started) {
         printf("Silahkan input perintah atau lihat daftarnya menggunakan [HELP]...\n");
     } else {
-        printf("Silahkan input [START] atau [LOAD <FILENAME>]...\n");
+        printf("Silahkan input [START], [LOAD <FILENAME>], atau [HELP]...\n");
     }
 
 }

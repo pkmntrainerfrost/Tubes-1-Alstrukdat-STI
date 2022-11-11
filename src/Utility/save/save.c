@@ -5,7 +5,13 @@ static FILE *saveFile;
 // bikin file baru
 void savetoFile(char saveFilename[], List L)
 {
-    saveFile = fopen(saveFilename, "w");
+    Word file;
+    concateWord(stringToWord("Config/"),stringToWord(saveFilename),&file);
+    
+    char a[wordLength(file) + 1];
+    wordToString(file, a);
+
+    saveFile = fopen(a, "w");
     fprintf(saveFile, "%d\n", L.nEff);
     int i;
     for(i=0; i<length(L); i++){
@@ -13,7 +19,9 @@ void savetoFile(char saveFilename[], List L)
         for(j=0; j<L.A[i].length; j++){
             fprintf(saveFile, "%c", L.A[i].buffer[j]);
         }
-        fprintf(saveFile, "\n");
+        if (i < length(L)-1) {
+            fprintf(saveFile, "\n");
+        }
     }
 
     fclose(saveFile);

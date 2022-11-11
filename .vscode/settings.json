@@ -22,7 +22,10 @@
     "deletegame.h": "c",
     "queuegame.h": "c",
     "skipgame.h": "c",
-    "save.h": "c"
+    "save.h": "c",
+    "queue2.h": "c",
+    "playgame.h": "c",
+    "listgame.h": "c"
   },
   "C_Cpp.errorSquiggles": "Enabled"
 }

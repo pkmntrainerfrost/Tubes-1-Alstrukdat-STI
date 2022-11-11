@@ -48,6 +48,7 @@ void deleteGame(List *L, Queue Q) {
     }
 
 }
+}
 
 // int main()
 // {

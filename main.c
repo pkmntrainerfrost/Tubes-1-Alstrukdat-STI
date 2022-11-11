@@ -11,6 +11,7 @@
 #include "src/utility/quit/quit.h"
 #include "src/utility/listGame/listGame.h"
 #include "src/utility/deleteGame/deleteGame.h"
+#include "src/utility/creategame/createGame.h"
 #include "src/utility/playGame/playGame.h"
 #include "src/utility/queuegame/queueGame.h"
 #include "src/utility/skipGame/skipGame.h"
@@ -36,7 +37,6 @@ int main() {
         printf("\e[1;1H\e[2J");
         header();
         splash(Tries,Started);
-        helpStart();
 
         List Input;
         createList(&Input);
@@ -46,15 +46,23 @@ int main() {
             if (isWordEqual(getElmt(Input,0),stringToWord("START")) && length(Input) == 1) {
                 START(&ListGame);
                 printf("File konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan.\n");
+                printf("\nTekan [ENTER] untuk melanjutkan...\n");
+                blankInput();
                 Started = true;
+            } else if (isWordEqual(getElmt(Input,0),stringToWord("HELP")) && length(Input) == 1) {
+                helpStart();
             } else if (isWordEqual(getElmt(Input,0),stringToWord("LOAD")) && length(Input) == 2) {
                 InvalidFile = CHECKFILE(getElmt(Input,1));
                 if (!InvalidFile) {
                     LOAD(getElmt(Input,1),&ListGame);
                     printf("Save file berhasil dibaca. BNMO berhasil dijalankan.\n");
+                    printf("\nTekan [ENTER] untuk melanjutkan...\n");
+                    blankInput();
                     Started = true;
                 } else {
                     printf("Save file tidak ditemukan! Silahkan ulangi input.\n");
+                    printf("\nTekan [ENTER] untuk melanjutkan...\n");
+                    blankInput();
                     Tries = Tries + 1;
                 }
             } else {
@@ -70,10 +78,6 @@ int main() {
             Tries = Tries + 1;
         }
 
-        printf("\nTekan [ENTER] untuk melanjutkan...\n");
-
-        blankInput();
-
         deallocateList(&Input);
 
     }
@@ -82,7 +86,6 @@ int main() {
 
         header();
         splash(Tries,Started);
-        help();
 
         List Input;
         createList(&Input);
@@ -91,28 +94,9 @@ int main() {
         if (Valid) {
             if (length(Input) == 1) { 
                 if (isWordEqual(getElmt(Input,0),stringToWord("QUIT"))){
-                    printf("Apakah anda sudah melakukan save untuk menyimpan state game anda? (Y/N)\n");
-                    Word check;
-                    boolean cek = wordInput(&check,1,10);
-                    char s[wordLength(check) + 1];
-                    wordToString(check, s);
-                    if (s == 'Y'){
-                        quit();
-                    } else {
-                        printf("Apakah anda ingin melakukan save? (Y/N)\n");
-                        cek = wordInput(&check,1,10);
-                        wordToString(check, s);
-                        if (s == 'Y'){
-                            printf("Masukkan nama save file anda: \n");
-                            Word check2;
-                            cek = wordInput(&check2,1,10);
-                            char s2[wordLength(check2) + 1];
-                            wordToString(check2, s2);
-                            savetoFile(s2, ListGame);
-                        }
-                        printf("\n");
-                        quit();
-                    }
+                    quit(ListGame);
+                } else if (isWordEqual(getElmt(Input,0),stringToWord("HELP"))) {
+                    help();
                 } else {
                     commandlain();
                 }
@@ -137,6 +121,8 @@ int main() {
                     char file[wordLength(getElmt(Input,1)) + 1];
                     wordToString(getElmt(Input,1), file);
                     savetoFile(file, ListGame);
+                    printf("\nTekan [ENTER] untuk melanjutkan...\n");
+                    blankInput();
                 } else {
                     commandlain();
                 }

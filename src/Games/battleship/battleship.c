@@ -4,16 +4,8 @@
 
 // AI
 // Yor Forger -> nembak asal (kalo gk sempet, implement yg ini aja)
-// Loid Forger -> lebih pinter, strategi 
+// Loid Forger -> lebih hoki 
 // Anya Forger -> hax (baca pikiran), harus bener terus ato nggak auto kalah
-
-int main() {
-
-    battleship();
-
-    return 0;
-
-}
 
 void battleship() {
 
