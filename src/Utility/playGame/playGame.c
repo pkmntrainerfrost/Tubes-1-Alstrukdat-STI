@@ -11,39 +11,43 @@ void playGame(Queue *Q, List L)
         printf("Berikut adalah daftar Game di dalam antrian Anda.\n");
         displayQueue(*Q);
         printf("\n");
-
-        if (isSameWord(Front(*Q), stringToWord("RNG")) || isSameWord(Front(*Q), L.A[0]) || isSameWord(Front(*Q), stringToWord("Diner DASH")) || isSameWord(Front(*Q), L.A[1]) || isSameWord(Front(*Q), stringToWord("Battleship")) || isSameWord(Front(*Q),L.A[5])){
+        QElType x;
+        dequeue(Q, &x);
+        if (isSameWord(x, stringToWord("RNG")) || isSameWord(x, stringToWord("Diner DASH")) || isSameWord(x, stringToWord("Battleship"))){
             printf("Loading ");
-            printWord(Front(*Q));
+            printWord(x);
             printf(" ...\n");
-            if (isSameWord(Front(*Q), stringToWord("RNG")) || isSameWord(Front(*Q), L.A[0])){
+            printf("\nLoading selesai! Tekan [ENTER] untuk memasuki permainan...\n");
+            blankInput();
+            if (isSameWord(x, stringToWord("RNG"))){
                 rng();
-            } else if (isSameWord(Front(*Q), stringToWord("Diner DASH")) || isSameWord(Front(*Q), L.A[1])){
+            } else if (isSameWord(x, stringToWord("Diner DASH"))){
                 dinerDash();
-            } else if (isSameWord(Front(*Q), stringToWord("Battleship")) || isSameWord(Front(*Q), L.A[5])){
+            } else if (isSameWord(x, stringToWord("Battleship"))){
                 // Battleship();
                 // fungsi utamanya mana? 
                 printf("jalan Battleship\n");
             }
-        } else if (isSameWord(Front(*Q), stringToWord("EIFFEL TOWER")) || isSameWord(Front(*Q), stringToWord("RISEWOMAN")) || isSameWord(Front(*Q), stringToWord("DINOSAUR IN EARTH"))){
+        } else if (isSameWord(x, stringToWord("EIFFEL TOWER")) || isSameWord(x, stringToWord("RISEWOMAN")) || isSameWord(x, stringToWord("DINOSAUR IN EARTH"))){
             // Game di file config default selain RNG dan diner DASH
             printf("Game ");
-            printWord(Front(*Q));
+            printWord(x);
             printf(" masih dalam maintenance, belum dapat dimainkan.\n");
             printf("Silahkan pilih game lain.\n");
+            printf("\nTekan [ENTER] untuk kembali ke menu utama...\n");
+            blankInput();
         } else {
             // tidak ada di spek game, atau hasil createGame
             printf("Loading ");
-            printWord(Front(*Q));
+            printWord(x);
             printf(" ...\n");
             printf("GAME OVER\n");
-            srand(time(NULL));
-			int r = rand();
+			int r = random_range(0,100);
 			printf("Score: %d\n", r);
+            printf("\nTekan [ENTER] untuk kembali ke menu utama...\n");
+            blankInput();
         }
-
-        QElType x;
-        dequeue(Q, &x);
+        
     }
 }
 

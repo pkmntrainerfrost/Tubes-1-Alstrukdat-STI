@@ -11,5 +11,6 @@ void listGame(List L);
 // I.S. List L terdefinisi
 // F.S. Jika List kosong menampilkan pesan list kosong
 // Jika List tidak kosong, menampilkan daftar game yang disediakan oleh sistem
+void listGameMain(List L);
 
 #endif

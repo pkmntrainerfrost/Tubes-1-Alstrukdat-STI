@@ -6,6 +6,10 @@
 
 #include "../../ADT/point/point.h"
 #include "../../ADT/boolean.h"
+#include "../random.h"
+#include "../../ADT/word/word.h"
+#include "../../Misc/io/io.h"
+#include "../../Utility/splash.h"
 
 #define TILECOUNT 100
 #define SHIPCOUNT 5

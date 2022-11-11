@@ -123,6 +123,10 @@ int wordToInt(Word w) {
         }
     }
 
+    if (neg) {
+        i = i * -1;
+    }
+
     return i;
     // int num = 0, i;
     // for (i = 0; i < wordLength(w); i++) {

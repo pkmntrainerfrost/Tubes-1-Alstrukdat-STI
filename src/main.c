@@ -84,27 +84,37 @@ int main() {
 
         List Input;
         createList(&Input);
-        int Valid = multiWordInput(&Input,1,2);
+        int Valid = multiWordInput(&Input,1,3);
 
         if (Valid) {
             if (length(Input) == 1) { 
                 if (isWordEqual(getElmt(Input,0),stringToWord("QUIT"))){
                     quit();
+                } else {
+                    commandlain();
                 }
-            } else if (length(Input) == 2){
+            } else if (length(Input) == 2) {
                 if (isWordEqual(getElmt(Input,1),stringToWord("GAME"))){
                     if (isWordEqual(getElmt(Input,0),stringToWord("LIST"))){
-                        listGame(ListGame);
+                        listGameMain(ListGame);
                     } else if (isWordEqual(getElmt(Input,0),stringToWord("DELETE"))){
                         deleteGame(&ListGame, QueueGame);
                     } else if (isWordEqual(getElmt(Input,0),stringToWord("PLAY"))){
                         playGame(&QueueGame, ListGame);
                     } else if (isWordEqual(getElmt(Input,0),stringToWord("QUEUE"))){
                         queueGame(&QueueGame, ListGame);
-                    } 
+                    } else {
+                        commandlain();
+                    }
                 } else {
-
+                    commandlain();      
                 }
+            } else {
+                if (isWordEqual(getElmt(Input,0),stringToWord("SKIP")) && isWordEqual(getElmt(Input,1),stringToWord("GAME")) && wordToInt(getElmt(Input,2)) != INVALID_INT && wordToInt(getElmt(Input,2)) >= 0) {
+                    skipGame(&QueueGame,ListGame,wordToInt(getElmt(Input,2)));
+                } else {
+                    commandlain();
+                }   
             }
         } else {
             if (length(Input) > 0) {

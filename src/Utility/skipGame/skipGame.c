@@ -7,7 +7,7 @@ void skipGame(Queue *Q, List L, int n) {
 
     header();
 
-    printf("Berikut adalah daftar Game-mu\n");
+    printf("Berikut adalah daftar game dalam antrian Anda.\n");
     displayQueue(*Q);
     printf("\n");
     int i;
@@ -23,39 +23,49 @@ void skipGame(Queue *Q, List L, int n) {
             dequeue(Q, &X);
         }
 
-        if (isSameWord(Front(*Q), stringToWord("RNG")) || isSameWord(Front(*Q), L.A[0]) || isSameWord(Front(*Q), stringToWord("Diner DASH")) || isSameWord(Front(*Q), L.A[1]) || isSameWord(Front(*Q), stringToWord("Battleship")) || isSameWord(Front(*Q),L.A[5])){
+        QElType y;
+        dequeue(Q, &y);
+
+        if (isSameWord(y, stringToWord("RNG")) || isSameWord(y, stringToWord("Diner DASH")) || isSameWord(y, stringToWord("Battleship"))){
             printf("Loading ");
-            printWord(Front(*Q));
+            printWord(y);
             printf(" ...\n");
-            if (isSameWord(Front(*Q), stringToWord("RNG")) || isSameWord(Front(*Q), L.A[0])){
+            printf("\nLoading selesai! Tekan [ENTER] untuk memasuki permainan...\n");
+            blankInput();
+            if (isSameWord(y, stringToWord("RNG"))){
                 rng();
-            } else if (isSameWord(Front(*Q), stringToWord("Diner DASH")) || isSameWord(Front(*Q), L.A[1])){
+            } else if (isSameWord(y, stringToWord("Diner DASH"))){
                 dinerDash();
-            } else if (isSameWord(Front(*Q), stringToWord("Battleship")) || isSameWord(Front(*Q), L.A[5])){
+            } else if (isSameWord(y, stringToWord("Battleship"))){
                 // Battleship();
                 // fungsi utamanya mana?
                 printf("jalan Battleship\n");
             }
-        } else if (isSameWord(Front(*Q), stringToWord("EIFFEL TOWER")) || isSameWord(Front(*Q), stringToWord("RISEWOMAN")) || isSameWord(Front(*Q), stringToWord("DINOSAUR IN EARTH"))){
+        } else if (isSameWord(y, stringToWord("EIFFEL TOWER")) || isSameWord(y, stringToWord("RISEWOMAN")) || isSameWord(y, stringToWord("DINOSAUR IN EARTH"))){
             // Game di file config default selain RNG dan diner DASH
             printf("Game ");
-            printWord(Front(*Q));
+            printWord(y);
             printf(" masih dalam maintenance, belum dapat dimainkan.\n");
             printf("Silahkan pilih game lain.\n");
+            printf("\nTekan [ENTER] untuk kembali ke menu utama...\n");
+            blankInput();
         } else {
             // tidak ada di spek game, atau hasil createGame
             printf("Loading ");
-            printWord(Front(*Q));
+            printWord(y);
             printf(" ...\n");
             printf("GAME OVER\n");
-            srand(time(NULL));
-			int r = rand();
+			int r = random_range(0,100);
 			printf("Score: %d\n", r);
+            printf("\nTekan [ENTER] untuk kembali ke menu utama...\n");
+            blankInput();
         }
 
-        QElType x;
-        dequeue(Q, &x);
+        
     }
+
+
+
 }
 
 // int main()
