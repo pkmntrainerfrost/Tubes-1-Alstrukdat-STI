@@ -12,7 +12,7 @@
 #include "../splash.h"
 #include "../save/save.h"
 
-void quit(List ListGame);
+void quit(List *ListGame, Queue *QGame);
 // prosedur quit untuk keluar dari game
 
 #endif

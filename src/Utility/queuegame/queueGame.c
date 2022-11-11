@@ -38,7 +38,7 @@ void queueGame(Queue *queueGame, List L) {
             }
         }
 
-        printf("\nApakah Anda ingin kembali melakukan input [Y/N]?\n");
+        printf("Apakah Anda ingin kembali melakukan input? [Y/N]: ");
 
         valid = wordInput(&input,1,1);
         

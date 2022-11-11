@@ -37,7 +37,7 @@ void createGame(List *L) {
             }
         }
 
-        printf("\nApakah Anda ingin kembali melakukan input [Y/N]?\n");
+        printf("\nApakah Anda ingin kembali melakukan input? [Y/N]: ");
 
         valid = wordInput(&name,1,1);
         

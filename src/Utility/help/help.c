@@ -13,7 +13,7 @@ void helpStart()
     printf("1. START - Membaca file konfigurasi default yang berisi list game yang dapat dimainkan\n");
     printf("2. LOAD - Membaca save file yang ingin dibuka berisi list game yang dapat dimainkan\n");
 
-    printf("\nTekan [ENTER] untuk kembali ke menu utama...\n");
+    printf("\nTekan [ENTER] untuk kembali ke menu utama...");
 
     blankInput();
 }
@@ -32,7 +32,7 @@ void help(){
     printf("7. SKIPGAME - Melewatkan permainan dalam antrian game sebanyak n\n");
     printf("8. QUIT - Keluar dari program\n");
 
-    printf("\nTekan [ENTER] untuk kembali ke menu utama...\n");
+    printf("\nTekan [ENTER] untuk kembali ke menu utama...");
 
     blankInput();
 

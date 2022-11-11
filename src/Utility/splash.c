@@ -5,9 +5,6 @@
 
 void header() {
 
-    printf(RESET);
-    printf(BG_BLACK);
-    printf(WHITE);
     printf("\e[1;1H\e[2J");
     printf("======================================BNMO======================================\n");
     printf("\n");

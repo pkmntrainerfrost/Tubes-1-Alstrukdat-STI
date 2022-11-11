@@ -12,7 +12,7 @@ void listGameMain(List L) {
         displayList(L);
     }
 
-    printf("\nTekan [ENTER] untuk kembali ke menu utama...\n");
+    printf("\nTekan [ENTER] untuk kembali ke menu utama...");
 
     blankInput();
 

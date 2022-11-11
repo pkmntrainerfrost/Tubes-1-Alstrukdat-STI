@@ -8,6 +8,8 @@ void playGame(Queue *Q, List L)
     header();
     if (IsEmpty(*Q)){
         printf("Antrian Anda kosong.\n");
+        printf("\nTekan [ENTER] untuk kembali ke menu utama...");
+        blankInput();
     } else {
         printf("Berikut adalah daftar Game di dalam antrian Anda.\n");
         displayQueue(*Q);
@@ -18,7 +20,7 @@ void playGame(Queue *Q, List L)
             printf("Loading ");
             printWord(x);
             printf(" ...\n");
-            printf("\nLoading selesai! Tekan [ENTER] untuk memasuki permainan...\n");
+            printf("\nLoading selesai! Tekan [ENTER] untuk memasuki permainan...");
             blankInput();
             if (isSameWord(x, stringToWord("RNG"))){
                 rng();
@@ -33,7 +35,7 @@ void playGame(Queue *Q, List L)
             printWord(x);
             printf(" masih dalam maintenance, belum dapat dimainkan.\n");
             printf("Silahkan pilih game lain.\n");
-            printf("\nTekan [ENTER] untuk kembali ke menu utama...\n");
+            printf("\nTekan [ENTER] untuk kembali ke menu utama...");
             blankInput();
         } else {
             // tidak ada di spek game, atau hasil createGame
@@ -43,7 +45,7 @@ void playGame(Queue *Q, List L)
             printf("GAME OVER\n");
 			int r = random_range(0,100);
 			printf("Score: %d\n", r);
-            printf("\nTekan [ENTER] untuk kembali ke menu utama...\n");
+            printf("\nTekan [ENTER] untuk kembali ke menu utama...");
             blankInput();
         }
         

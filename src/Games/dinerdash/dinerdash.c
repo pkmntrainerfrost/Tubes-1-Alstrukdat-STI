@@ -186,6 +186,15 @@ void dinerDash(){
                 ctr++;  
             }  
         }
+
+        deallocateList(&usr);
+
+        if (isFullPQ(pq) || served > 15) {
+            createQueuePQ(&pq);  
+            createQueuePQ(&cookQ);
+            createQueuePQ(&serveQ);
+        }
+
     }
     printf("========== GAME OVER ==========\n");
     printf("SKOR AKHIR : %d\n", saldo);

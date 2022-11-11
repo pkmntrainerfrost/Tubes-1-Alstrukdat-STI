@@ -682,8 +682,10 @@ void printBothGrids(Grid PlayerGrid, Grid EnemyGrid, int Enemy) {
     for (int i = 0; i < 10; i++) {
         printf("                 %d)",i);
         for (int j = 0; j < 10; j++) {
-            if ((PlayerGrid.tiles[i*10 + j].shot == true)) {
+            if ((PlayerGrid.tiles[i*10 + j].shot == true && PlayerGrid.tiles[i*10 + j].ship == true)) {
                 printf("X ");
+            } else if ((PlayerGrid.tiles[i*10 + j].shot == true)) {
+                printf("@ ");
             } else if (PlayerGrid.tiles[i*10 + j].ship == true) {
                 printf("# ");
             } else {
@@ -692,8 +694,10 @@ void printBothGrids(Grid PlayerGrid, Grid EnemyGrid, int Enemy) {
         }
         printf("| ");
         for (int j = 0; j < 10; j++) {
-            if ((EnemyGrid.tiles[i*10 + j].shot == true)) {
+            if ((EnemyGrid.tiles[i*10 + j].shot == true && EnemyGrid.tiles[i*10 + j].ship == true)) {
                 printf("X ");
+            } else if ((EnemyGrid.tiles[i*10 + j].shot == true)) {
+                printf("@ ");
             } else {
                 printf(". ");
             }
