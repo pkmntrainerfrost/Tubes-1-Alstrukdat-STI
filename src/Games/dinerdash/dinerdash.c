@@ -1,24 +1,32 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "./dinerdash.h"
+#include "../../ADT/boolean.h"
+#include "../../ADT/word/mesinkarakter/mesinkarakter.h"
+#include "../../ADT/word/mesinkata/mesinkata.h"
+#include "../../ADT/queue/prioqueue.h"
+#include "../../ADT/queue/queue2.h"
 #include "../../Misc/io/io.h"
-#include "../../ADT/boolean.h""
+#include "../../ADT/word/word.h"
+#include "../../Misc/ascii/ascii.h"
+#include "../../ADT/list/array.h"
 
-boolean isSame(char kata1[], char kata2[]){
+/*
+boolean isElTypeEqual(Word kata1, Word kata2){
 // mengembalikan true jika str1 sama dengan str2
     boolean check = true;
     int i;
 
-    if (stringLength(kata1) == stringLength(kata2)){
-        for(i=0;i<stringLength(kata1);i++){
-            if (kata1[i] != kata2[i]){
+    if (wordLength(kata1) == wordLength(kata2)){
+        for(i=0;i<wordLength(kata1);i++){
+            if (kata1.buffer[i] != kata2.buffer[i]){
                 check = false;
             }
         }
     }
     return check;    
 }
+*/
 
 PQElType addQueue(int i){
     PQElType addOrder;
@@ -28,6 +36,29 @@ PQElType addQueue(int i){
     addOrder.price = (rand() % 5 ) * 5000 + 10000;
     return addOrder;
 }
+
+void dequeueAt(PrioQueue *pq, int idx,PQElType * val){
+    (*val).foodId = (*pq).buffer[idx].foodId;
+	(*val).cookTime = (*pq).buffer[idx].cookTime;
+	(*val).stayTime = (*pq).buffer[idx].stayTime;
+	(*val).price = (*pq).buffer[idx].price;
+    if (IDX_HEAD(*pq) == IDX_TAIL(*pq)){
+        IDX_HEAD(*pq) = IDX_UNDEF;
+        IDX_TAIL(*pq) = IDX_UNDEF;
+    }else{
+		int i;
+		for(i = idx; i < IDX_TAIL(*pq); i++){
+			(*pq).buffer[i].foodId = (*pq).buffer[i + 1].foodId;	
+			(*pq).buffer[i].cookTime = (*pq).buffer[i + 1].cookTime;
+			(*pq).buffer[i].stayTime = (*pq).buffer[i + 1].stayTime;
+			(*pq).buffer[i].price = (*pq).buffer[i + 1].price;	
+		}
+        IDX_TAIL(*pq)--;
+    }
+
+}
+
+
 void dinerDash(){
 
     char input[100];
@@ -39,7 +70,9 @@ void dinerDash(){
     int saldo = 0;
     int i;
     printf("Welcome to diner dash!\n\n");
-
+    Word cooks = stringToWord(cook);
+    Word serves = stringToWord(serve);
+    Word skips = stringToWord(skip);
     PQElType order[20];
 
     srand(time(NULL));
@@ -63,68 +96,66 @@ void dinerDash(){
     int idx;
     idx = 3;
     while (!isFullPQ(pq) && served <= 15){
-        //INPUT COMMAND SEMENTARA PAKE SCANF, BELOM SELESAI//
-        char command[6];
-        char orderId[5];
+        List usr;
+        Word orderId;
+        Word command;
 
         printf("\n \n");
         printf("Masukkan command:");
-        scanf("%s %s", command, orderId);
+        multiWordInput(&usr, 1, 2);
+        command = usr.A[0];
+        orderId = usr.A[1];
 
         //Cek inputan 
-
-        printf("Command: %s\n", command);
-        printf("orderId: %s\n", orderId);
+        //printf("Command: %s\n", command);
+        //printf("orderId: %s\n", orderId);
 
         // handle input command
-        while (!(isSame(command, cook) || isSame(command, serve) || isSame(command,skip)))
+        while (!(isElTypeEqual(command, cooks) || isElTypeEqual(command, serves) || isElTypeEqual(command,skips)))
         {
             printf("Masukkan command: ");
-            scanf("%s %s", command, orderId);
+            multiWordInput(&usr, 1, 2);
+            command = usr.A[0];
+            orderId = usr.A[1];
         }
 
         // mengubah str to int id dan looping jika input tidak sesuai
         int id = 0;
-        for (int i = 1; orderId[i] != '\0'; i++)
+        for (int i = 1; usr.A[i].buffer != '\0'; i++)
         {
-            id = id * 10 + (orderId[i] - '0');
+            id = id * 10 + (usr.A[i].buffer - '0');
         }
         while (id < HEAD(pq).foodId || id > TAIL(pq).foodId)
         {
             printf("Masukkan command: ");
-            scanf("%s %s", command, orderId);
+            multiWordInput(&usr, 1, 2);
+            command = usr.A[0];
+            orderId = usr.A[1];
 
             id = 0;
-            for (int i = 1; orderId[i] != '\0'; i++)
+            for (int i = 1; usr.A[i].buffer != '\0'; i++)
             {
-                id = id * 10 + (orderId[i] - '0');
+                id = id * 10 + (usr.A[i].buffer - '0');
             }
         }
         printf("id: %d\n", id);
 
-    // tambahin looping
-    // enqueue setiap putaran 
-    // dequeue saat cook time = 0
-    // enqueue jika bisa diserve 
-    // conditional kalau makanan hangus 
-
-        if (isSame(command, cook))
+        if (isElTypeEqual(command, cooks) == true)
         {
             enqueuePQ(&pq, addQueue(idx));
             enqueuePQ(&cookQ, pq.buffer[id-served]);
-            printf("Makanan %s telah dimasukkan ke dalam antrian\n", orderId);
+            printf("Makanan M%d sedang dimasak\n", id);
             queue++;
             idx++;
         }
-        //belum ada kondisi kalau cookTIme == 0 -> enqueue to serve
 
-        else if (isSame(command, serve))
+        else if (isElTypeEqual(command, serves) == true)
         {
             if (!isEmptyPQ(serveQ))
             {
                 if (HEAD(pq).foodId == id)
                 {
-                printf("Berhasil mengantar %s\n", orderId);
+                printf("Berhasil mengantar %d\n", id);
                 enqueuePQ(&pq, addQueue(idx));
                 PQElType vals;
                 dequeuePQ(&pq, &vals);
@@ -138,18 +169,15 @@ void dinerDash(){
 
                 else
                 {
-                printf("Makanan %s tidak dapat disajikan karena M%d belum selesai\n", orderId, HEAD(pq).foodId);
+                printf("Makanan M%d tidak dapat disajikan karena M%d belum selesai\n", id, HEAD(pq).foodId);
                 }
-            // print queue
-            // print makanan yang sedang dimasak
-            // print makanan yang dapat disajikan
-            // print saldo
+
             }else{
                 printf("Tidak ada makanan yang siap disajikan\n");
             }
             
         }
-        else if (isSame(command, skip))
+        else if (isElTypeEqual(command, skips) == true)
         {
             enqueuePQ(&pq, addQueue(idx));
             idx++;
@@ -163,22 +191,25 @@ void dinerDash(){
 
         printf("\n \n");        
         printf("=================================================================\n");
-        int ctr = IDX_HEAD(cookQ);
-        while (ctr < IDX_TAIL(cookQ) + 1){ //untuk mengurangi waktu masak 
-            cookQ.buffer[ctr].cookTime -= 1;
-            if (cookQ.buffer[ctr].cookTime == 0){
-                PQElType vall;
-                dequeuePQ(&cookQ, &vall);
-                enqueuePQ(&serveQ,vall);
-                //printf("Berhasil memasak M%d\n", cookQ.buffer[ctr].foodId);
-            }
-            ctr++;    
-        }
+        
+        int ctr;
         ctr = IDX_HEAD(serveQ);
 
         while (ctr < IDX_TAIL(serveQ)+1){ //untuk mengurangi waktu masak 
             serveQ.buffer[ctr].stayTime -= 1;
             ctr++;   
+        }
+
+        ctr = IDX_HEAD(cookQ);
+        while (ctr < IDX_TAIL(cookQ) + 1){ //untuk mengurangi waktu masak 
+            cookQ.buffer[ctr].cookTime -= 1;
+            if (cookQ.buffer[ctr].cookTime == 0){
+                PQElType vall;
+                dequeueAt(&cookQ, ctr, &vall);
+                enqueuePQ(&serveQ,vall);
+                //printf("Berhasil memasak M%d\n", cookQ.buffer[ctr].foodId);
+            }
+            ctr++;    
         }
     }
     printf("========== GAME OVER ==========\n");
