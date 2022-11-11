@@ -17,6 +17,8 @@ void skipGame(Queue *Q, List L, int n) {
             dequeue(Q, &X);
         }
         printf("Tidak ada permainan lagi dalam daftar game-mu.\n");
+        printf("Tekan [ENTER] untuk kembali ke menu utama...");
+        blankInput();
     } else {
         
         for (i=0; i<n; i++){
