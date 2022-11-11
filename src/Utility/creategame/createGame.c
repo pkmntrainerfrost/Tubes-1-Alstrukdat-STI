@@ -94,12 +94,5 @@ void createGame(List *L) {
     // insertLast(L, GameName);
 }
 
-int main()
-{
-    List L;
-    createList(&L);
-    createGame(&L);
-    return 0;
-}
 
 // compile: gcc utility/createGame.c utility/listGame/listGame.c ADT/list/array.c ADT/queue/queue2.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c Misc/io/io.c Misc/ascii/ascii.c -o driver 

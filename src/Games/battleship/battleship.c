@@ -22,6 +22,8 @@ void battleship() {
     boolean validEnemy = false;
     boolean inGame = false;
 
+    int shots = 0;
+
     while (!validEnemy) {
 
         header();
@@ -81,17 +83,41 @@ void battleship() {
 
             header();
 
-            printBothGrids(PlayerGrid,EnemyGrid);
+            printBothGrids(PlayerGrid,EnemyGrid, enemy);
 
             playerShoot(&EnemyGrid);
             endTurn(&EnemyGrid,&playerWinner);
-            enemyShoot(&PlayerGrid,enemy);
-            endTurn(&PlayerGrid,&enemyWinner);
+
+            if (!playerWinner) {
+                enemyShoot(&PlayerGrid,enemy);
+                endTurn(&PlayerGrid,&enemyWinner);
+            }
+            
+            shots = shots + 1;
 
         }
 
-    }
+        int score;
+        header();   
 
+        printBothGrids(PlayerGrid,EnemyGrid, enemy);
+
+        if (playerWinner) {
+            printf("Musuh berhasil dikalahkan. Selamat, Laksamana.\n");
+            score = 50000 + (enemy * 50000) - (shots - 16);
+        } else {
+            printf("Mundur, Laksamana! Seluruh kapal tenggelam!\n");
+            score = 0;
+        }
+
+        printf("Skor Anda: %d\n",score);
+
+        printf("\nTekan [ENTER] untuk kembali ke menu utama...\n");
+
+        blankInput();
+
+    }
+    
 }
 
 void initializeGrid(Grid *G, boolean Enemy) {
@@ -247,7 +273,7 @@ void placeShipsEnemy(Grid *G) {
     shipInputEnemy(G,&Battleship,"Battleship",4);
     setShip(G,1,Battleship);
 
-    shipInputEnemy(G,&Battleship,"Cruiser",3);
+    shipInputEnemy(G,&Cruiser,"Cruiser",3);
     setShip(G,2,Cruiser);
 
     shipInputEnemy(G,&Submarine,"Submarine",3);
@@ -465,9 +491,11 @@ void playerShoot(Grid *G) {
 
 void enemyShoot(Grid *G, int Enemy) {
 
+    Point P;
+    boolean Valid = false;
+
+
     if (Enemy == 1) { // Yor
-        boolean Valid = false;
-        Point P;
 
         while (!Valid) {
 
@@ -480,8 +508,64 @@ void enemyShoot(Grid *G, int Enemy) {
             }
 
         }
-        shoot(G,P);
+        
+    } else if (Enemy == 2) {
+
+            int luck = random_range(1,10);
+
+            if (luck > 8) {
+                int i = 0, j = 0;
+                while (!Valid) {
+
+                    createPoint(&P,random_range(1,10),random_range(1,10));
+
+                    if ((WAS_SHOT(TILE(*G,P)) || !HAS_SHIP(TILE(*G,P)))) {
+                        Valid = false;
+                    } else {
+                        Valid = true;
+                    }
+
+                    i = i + 1;
+                    if (i == 10) {
+                        j = j + 1;
+                        i = 0;
+                    }
+
+                }
+            } else {
+                while (!Valid) {
+                    createPoint(&P,random_range(0,9),random_range(0,9));
+                    if ((WAS_SHOT(TILE(*G,P)))) {
+                        Valid = false;
+                    } else {
+                        Valid = true;
+                    }
+                }
+            }
+        
+
+    } else { // ANYA
+        int i = 0, j = 0;
+        while (!Valid) {
+
+            createPoint(&P,j,i);
+
+            if ((WAS_SHOT(TILE(*G,P)) || !HAS_SHIP(TILE(*G,P)))) {
+                Valid = false;
+            } else {
+                Valid = true;
+            }
+
+            i = i + 1;
+            if (i == 10) {
+                j = j + 1;
+                i = 0;
+            }
+
+        } 
     }
+
+    shoot(G,P);
 
 }
 
@@ -493,15 +577,11 @@ void shoot(Grid *G, Point P) {
 
 void endTurn(Grid *G, boolean *Winner) {
 
-    boolean AllShipsSunk = true;
-
     for (int i = 0; i < SHIPCOUNT; i++) {
 
         boolean sunk = SUNK(SHIP(*G,i));
 
         if (!sunk) {
-
-            AllShipsSunk = false;
 
             boolean AllTilesShot = true;
             Point CheckPos = POSITION(SHIP(*G,i));
@@ -513,12 +593,26 @@ void endTurn(Grid *G, boolean *Winner) {
                     AllTilesShot = false;
                 }
                 ShipLength = ShipLength - 1;
+                boolean V = VERTICAL(SHIP(*G,i));
+                movePoint(&CheckPos,V,!V);
             }
 
             if (AllTilesShot) {
                 SUNK(SHIP(*G,i)) = true;
             }
 
+        }
+
+    }
+
+    boolean AllShipsSunk = true;
+
+    for (int i = 0; i < SHIPCOUNT; i++) {
+
+        boolean sunk = SUNK(SHIP(*G,i));
+
+        if (!sunk) {
+            AllShipsSunk = false;
         }
 
     }
@@ -579,9 +673,18 @@ void printSingleGrid(Grid G) {
 
 }
 
-void printBothGrids(Grid PlayerGrid, Grid EnemyGrid) {
+void printBothGrids(Grid PlayerGrid, Grid EnemyGrid, int Enemy) {
 
-    printf("                   PAPAN ANDA                     PAPAN LOID\n");
+    printf("                   PAPAN ANDA                     PAPAN ");
+
+    if (Enemy == 1) {
+        printf(" Yor\n");
+    } else if (Enemy == 2) {
+        printf("Loid\n");
+    } else {
+        printf("Anya\n");
+    }
+
     printf("                   A B C D E F G H I J | A B C D E F G H I J                   \n");
     
     for (int i = 0; i < 10; i++) {

@@ -24,6 +24,15 @@
 #define B_CYAN   "\x1b[96m"
 #define B_WHITE  "\x1b[97m"
 
+#define BG_BLACK  "\x1b[40m"
+#define BG_RED    "\x1b[41m"
+#define BG_GREEN  "\x1b[42m"
+#define BG_YELLOW "\x1b[43m"
+#define BG_BLUE   "\x1b[44m"
+#define BG_PURPLE "\x1b[45m"
+#define BG_CYAN   "\x1b[46m"
+#define BG_WHITE  "\x1b[47m"
+
 #define RESET    "\x1b[0m"
 
 #endif

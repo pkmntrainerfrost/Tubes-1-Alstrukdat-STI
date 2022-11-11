@@ -72,7 +72,7 @@ void placeShipsEnemy(Grid *G);
 
 void shipInputEnemy(Grid *G, Ship *S, char *N, int L);
 
-void printBothGrids(Grid PlayerGrid, Grid EnemyGrid);
+void printBothGrids(Grid PlayerGrid, Grid EnemyGrid, int Enemy);
 
 void playerShoot(Grid *G);
 
