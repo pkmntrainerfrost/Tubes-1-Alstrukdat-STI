@@ -74,4 +74,4 @@ void queueGame(Queue *queueGame, List L) {
 //     return 0;  
 // }
 
-// compile: gcc utility/queuegame/queueGame.c Misc/io/io.c Misc/ascii/ascii.c utility/L/L.c ADT/list/array.c ADT/queue/queue2.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c -o driver
+// compile: gcc Utility/queuegame/queueGame.c Misc/io/io.c Misc/ascii/ascii.c Utility/L/L.c ADT/list/array.c ADT/queue/queue2.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c -o driver

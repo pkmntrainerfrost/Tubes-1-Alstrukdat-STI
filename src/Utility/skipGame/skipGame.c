@@ -89,4 +89,4 @@ void skipGame(Queue *Q, List L, int n) {
 //     return 0;
 // }
 
-// compile: gcc utility/skipGame/skipGame.c utility/playGame/playGame.c Games/rng/rng.c Games/random.c Games/dinerdash/dinerdash.c ADT/queue/prioqueue.c utility/queuegame/queueGame.c utility/listGame/listGame.c ADT/list/array.c ADT/queue/queue2.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c Misc/ascii/ascii.c Misc/io/io.c -o driver
+// compile: gcc Utility/skipGame/skipGame.c Utility/playGame/playGame.c Games/rng/rng.c Games/random.c Games/dinerdash/dinerdash.c ADT/queue/prioqueue.c Utility/queuegame/queueGame.c Utility/listGame/listGame.c ADT/list/array.c ADT/queue/queue2.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c Misc/ascii/ascii.c Misc/io/io.c -o driver

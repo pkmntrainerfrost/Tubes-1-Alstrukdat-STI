@@ -41,4 +41,4 @@ void savetoFile(char saveFilename[], List L)
 //     return 0;
 // }
 
-//compile: gcc utility/save/save.c ADT/list/array.c ADT/word/word.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c Misc/io/io.c Misc/ascii/ascii.c -o driver
+//compile: gcc Utility/save/save.c ADT/list/array.c ADT/word/word.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c Misc/io/io.c Misc/ascii/ascii.c -o driver

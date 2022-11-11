@@ -42,4 +42,4 @@ void listGame(List L)
 //     return 0;
 // }
 
-// compile: gcc utility/listGame/listGame.c ADT/list/array.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c Misc/ascii/ascii.c -o driver
+// compile: gcc Utility/listGame/listGame.c ADT/list/array.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c Misc/ascii/ascii.c -o driver

@@ -71,5 +71,5 @@ void playGame(Queue *Q, List L)
 //     return 0;
 // }
 
-// compile: gcc utility/playGame/playGame.c utility/queuegame/queueGame.c utility/listGame/listGame.c Games/rng/rng.c Games/random.c Games/dinerdash/dinerdash.c ADT/list/array.c ADT/queue/queue2.c ADT/queue/prioqueue.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c Misc/io/io.c Misc/ascii/ascii.c -o driver
+// compile: gcc Utility/playGame/playGame.c Utility/queuegame/queueGame.c Utility/listGame/listGame.c Games/rng/rng.c Games/random.c Games/dinerdash/dinerdash.c ADT/list/array.c ADT/queue/queue2.c ADT/queue/prioqueue.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c Misc/io/io.c Misc/ascii/ascii.c -o driver
 // battleship blm jalan
