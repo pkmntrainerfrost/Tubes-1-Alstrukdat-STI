@@ -46,7 +46,7 @@ int main() {
             if (isWordEqual(getElmt(Input,0),stringToWord("START")) && length(Input) == 1) {
                 START(&ListGame);
                 printf("File konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan.\n");
-                printf("\nTekan [ENTER] untuk melanjutkan...\n");
+                printf("Tekan [ENTER] untuk melanjutkan...\n");
                 blankInput();
                 Started = true;
             } else if (isWordEqual(getElmt(Input,0),stringToWord("HELP")) && length(Input) == 1) {
@@ -56,12 +56,12 @@ int main() {
                 if (!InvalidFile) {
                     LOAD(getElmt(Input,1),&ListGame);
                     printf("Save file berhasil dibaca. BNMO berhasil dijalankan.\n");
-                    printf("\nTekan [ENTER] untuk melanjutkan...\n");
+                    printf("Tekan [ENTER] untuk melanjutkan...\n");
                     blankInput();
                     Started = true;
                 } else {
                     printf("Save file tidak ditemukan! Silahkan ulangi input.\n");
-                    printf("\nTekan [ENTER] untuk melanjutkan...\n");
+                    printf("Tekan [ENTER] untuk melanjutkan...\n");
                     blankInput();
                     Tries = Tries + 1;
                 }
@@ -121,7 +121,7 @@ int main() {
                     char file[wordLength(getElmt(Input,1)) + 1];
                     wordToString(getElmt(Input,1), file);
                     savetoFile(file, ListGame);
-                    printf("\nTekan [ENTER] untuk melanjutkan...\n");
+                    printf("Tekan [ENTER] untuk melanjutkan...\n");
                     blankInput();
                 } else {
                     commandlain();
