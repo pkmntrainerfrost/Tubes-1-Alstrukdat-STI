@@ -103,7 +103,7 @@ int charToInt(char c) {
     } else {
         i = INVALID;
     }
-
+    return i;
 }
 
 /* Mengubah sebuah integer antara 0-9 menjadi sebuah karakter; apabila integer lebih dari 9 atau kurang dari 0, akan dikembalikan integer % 10 */
