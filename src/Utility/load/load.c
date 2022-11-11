@@ -9,8 +9,6 @@ void LOAD(Word filename, List *ListGame){
     
     Word filepath;
     concateWord(stringToWord("Config/"),filename,&filepath);
-
-    printWord(filepath);
     
     char filepathstr[wordLength(filepath) + 1];
     wordToString(filepath,filepathstr);
