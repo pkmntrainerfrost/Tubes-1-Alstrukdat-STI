@@ -69,9 +69,26 @@ void battleship() {
         Grid EnemyGrid;
 
         initializeGrid(&PlayerGrid,false);
-        initializeGrid(&PlayerGrid,true);
+        initializeGrid(&EnemyGrid,true);
 
         placeShipsPlayer(&PlayerGrid);
+        placeShipsEnemy(&EnemyGrid);
+
+        boolean playerWinner = false;
+        boolean enemyWinner = false;
+
+        while (!playerWinner && !enemyWinner) {
+
+            header();
+
+            printBothGrids(PlayerGrid,EnemyGrid);
+
+            playerShoot(&EnemyGrid);
+            endTurn(&EnemyGrid,&playerWinner);
+            enemyShoot(&PlayerGrid,enemy);
+            endTurn(&PlayerGrid,&enemyWinner);
+
+        }
 
     }
 
@@ -116,6 +133,28 @@ void copyShip(Ship *S1, Ship *S2) {
 
 }
 
+int shipsAlive(Grid G) {
+
+    int alive = 0;
+    for (int i = 0; i < 5; i++) {
+        if (G.ships[i].sunk != true) {
+            alive = alive + 1;
+        }
+    }
+    return alive;
+
+}
+
+void setShip (Grid *G, int i, Ship S) {
+
+    NAME(G->ships[i]) = NAME(S);
+    POSITION(G->ships[i]) = POSITION(S);
+    VERTICAL(G->ships[i]) = VERTICAL(S);
+    SHIPLENGTH(G->ships[i]) = SHIPLENGTH(S);
+    SUNK(G->ships[i]) = SUNK(S);
+
+}
+
 void placeShipsPlayer(Grid *G) {
 
     Ship Carrier;
@@ -124,25 +163,126 @@ void placeShipsPlayer(Grid *G) {
     Ship Submarine;
     Ship Destroyer;
     
-    shipInput(G,&Carrier,"Carrier",5);
-    copyShip(&Carrier,&SHIP(*G,0));
-    printSingleGrid(*G);
+    boolean Repeat = true;
 
-    shipInput(G,&Battleship,"Battleship",4);
-    copyShip(&Battleship,&SHIP(*G,1));
-    printSingleGrid(*G);
-    
-    shipInput(G,&Battleship,"Cruiser",3);
-    copyShip(&Cruiser,&SHIP(*G,2));
-    printSingleGrid(*G);
+    while (Repeat) {
 
-    shipInput(G,&Submarine,"Submarine",3);
-    copyShip(&Submarine,&SHIP(*G,3));
-    printSingleGrid(*G);
+        initializeGrid(G,false);
 
-    shipInput(G,&Destroyer,"Destroyer",2);
-    copyShip(&Destroyer,&SHIP(*G,4));
-    printSingleGrid(*G);
+        header();
+        printSingleGrid(*G);
+        shipInput(G,&Carrier,"Carrier",5);
+        setShip(G,0,Carrier);
+
+        header();
+        printSingleGrid(*G);
+        shipInput(G,&Battleship,"Battleship",4);
+        setShip(G,1,Battleship);
+
+        header();
+        printSingleGrid(*G);
+        shipInput(G,&Cruiser,"Cruiser",3);
+        setShip(G,2,Cruiser);
+
+        header();
+        printSingleGrid(*G);
+        shipInput(G,&Submarine,"Submarine",3);
+        setShip(G,3,Submarine);
+
+        header();
+        printSingleGrid(*G);
+        shipInput(G,&Destroyer,"Destroyer",2);
+        setShip(G,4,Destroyer);
+
+        header();
+        printSingleGrid(*G);
+        
+        Word RepeatInput;
+        boolean Valid = false;
+        boolean InputValid = false;
+        int InvalidInputs = 0;
+
+        while (!InputValid) {
+        
+            if (InvalidInputs == 0) {
+                printf("Apakah Anda ingin mengulangi input? [Y/N]: ");
+            } else {
+                printf("Ulangi input!: ");
+            }
+
+            Valid = wordInput(&RepeatInput,1,1);
+
+            if (Valid) {
+                if (isAlpha(RepeatInput.buffer[0]) && (lower(RepeatInput.buffer[0]) == 'y' || lower(RepeatInput.buffer[0]) == 'n')) {
+                    if (lower(RepeatInput.buffer[0]) == 'y') {
+                        Repeat = true;
+                    } else {
+                        Repeat = false;
+                    }
+                    InputValid = true;
+                } else {
+                    InvalidInputs = InvalidInputs + 1;
+                }
+            } else {
+                InvalidInputs = InvalidInputs + 1; 
+            }
+
+        }
+
+    }
+
+}
+
+void placeShipsEnemy(Grid *G) {
+
+    Ship Carrier;
+    Ship Battleship;
+    Ship Cruiser;
+    Ship Submarine;
+    Ship Destroyer;
+
+    shipInputEnemy(G,&Carrier,"Carrier",5);
+    setShip(G,0,Carrier);
+
+    shipInputEnemy(G,&Battleship,"Battleship",4);
+    setShip(G,1,Battleship);
+
+    shipInputEnemy(G,&Battleship,"Cruiser",3);
+    setShip(G,2,Cruiser);
+
+    shipInputEnemy(G,&Submarine,"Submarine",3);
+    setShip(G,3,Submarine);
+
+    shipInputEnemy(G,&Destroyer,"Destroyer",2);
+    setShip(G,4,Destroyer);
+
+}
+
+void shipInputEnemy(Grid *G, Ship *S, char *N, int L) {
+
+    boolean Valid = false;
+    Point P;
+    boolean V;
+
+    while (!Valid) {
+
+        createPoint(&P,random_range(0,10),random_range(0,10));
+        V = random_range(0,1);
+
+        createShip(S,N,P,V,L);
+
+        if (shipPosValid(*G,*S)) {
+            Valid = true;
+        }
+
+    }
+
+    for (int i = 0; i < L; i++) {
+
+        HAS_SHIP(TILE(*G,P)) = true;
+        movePoint(&P,V,!V);
+
+    }
 
 }
 
@@ -197,9 +337,9 @@ void posInput(Point *P) {
     while (!Valid) {
         
         if (InvalidInputs == 0) {
-            printf("Silahkan masukkan koordinat [A-J][0-9]. Contoh: A0, D8\n");
+            printf("Silahkan masukkan koordinat dengan format [A-J][0-9]: ");
         } else {
-            printf("Masukan bukan merupakan koordinat yang valid! Ulangi Input!\n");
+            printf("Masukan bukan merupakan koordinat yang valid! Ulangi Input!: ");
         }
         
         boolean InputValid = wordInput(&Input,2,2);
@@ -216,9 +356,9 @@ void posInput(Point *P) {
 
     }
 
-    ABSCISSA(*P) = alphabeticalOrd(Input.buffer[0]);
+    ORDINATE(*P) = alphabeticalOrd(Input.buffer[0]);
     
-    ORDINATE(*P) = charToInt(Input.buffer[1]);
+    ABSCISSA(*P) = charToInt(Input.buffer[1]);
 }
 
 void verticalInput(boolean *V) {
@@ -231,12 +371,12 @@ void verticalInput(boolean *V) {
     while (!Valid) {
         
         if (InvalidInputs == 0) {
-            printf("Apakah kapal berorientasi vertikal? [Y/N]\n");
+            printf("Apakah kapal berorientasi vertikal? [Y/N]: ");
         } else {
-            printf("Ulangi input!\n");
+            printf("Ulangi input!: ");
         }
 
-        boolean InputValid = wordInput(&Input,1,2);
+        boolean InputValid = wordInput(&Input,1,1);
 
         if (InputValid) {
             if (isAlpha(Input.buffer[0]) && (lower(Input.buffer[0]) == 'y' || lower(Input.buffer[0]) == 'n')) {
@@ -261,44 +401,30 @@ void verticalInput(boolean *V) {
 boolean shipPosValid(Grid G, Ship S) {
 
     boolean Valid = false;
-    Point P = copyPoint(POSITION(S));
-
-    for (int i = 0; i < 100; i++) {
-        if (i % 10 == 0) {
-            printf("\n");
-        }
-
-        if ((G.tiles[i].ship == true)) {
-            printf("#");
-        } else {
-            printf("X");
-        }
-    }
-
-    printf("\n");
+    Point P = POSITION(S);
 
     if (VERTICAL(S)) {
-        if (ORDINATE(P) + SHIPLENGTH(S) - 1 <= 10 && ABSCISSA(P) <= 10 && isFirstQuadrant(P)) {
+        if (ORDINATE(P) + SHIPLENGTH(S) - 1 < 10 && ABSCISSA(P) < 10 && isFirstQuadrant(P)) {
             int i = 0;
             boolean Overlap = false;
             while (!Overlap && i < SHIPLENGTH(S)) {
                 if (HAS_SHIP(TILE(G,P))) {
                     Overlap = true;
                 }
-                movePoint(&P,0,1);
+                movePoint(&P,1,0);
                 i = i + 1;
             }
             Valid = !Overlap;
         }
     } else {
-        if (ABSCISSA(P) + SHIPLENGTH(S) - 1 <= 10 && ORDINATE(P) <= 10 && isFirstQuadrant(P)) {
+        if (ABSCISSA(P) + SHIPLENGTH(S) - 1 < 10 && ORDINATE(P) < 10 && isFirstQuadrant(P)) {
             int i = 0;
             boolean Overlap = false;
             while (!Overlap && i <= SHIPLENGTH(S)) {
                 if (HAS_SHIP(TILE(G,P))) {
                     Overlap = true;
                 }
-                movePoint(&P,1,0);
+                movePoint(&P,0,1);
                 i = i + 1;
             }
             Valid = !Overlap;
@@ -309,20 +435,57 @@ boolean shipPosValid(Grid G, Ship S) {
 
 }
 
-void shoot(Grid *G) {
+void playerShoot(Grid *G) {
 
+    int InvalidInputs = 0;
     boolean Valid = false;
     Point P;
 
     while (!Valid) {
+        
+        if (InvalidInputs == 0) {
+            printf("Silahkan tembak salah satu koordinat lawan.\n");
+        } else {
+            printf("Koordinat tidak valid! Ulangi masukan.\n");
+        }
 
         posInput(&P);
 
-        if (!WAS_SHOT(TILE(*G,P))) {
+        if ((WAS_SHOT(TILE(*G,P)))) {
+            Valid = false;
+        } else {
             Valid = true;
         }
 
     }
+
+    shoot(G,P);
+
+}
+
+void enemyShoot(Grid *G, int Enemy) {
+
+    if (Enemy == 1) { // Yor
+        boolean Valid = false;
+        Point P;
+
+        while (!Valid) {
+
+            createPoint(&P,random_range(0,9),random_range(0,9));
+
+            if ((WAS_SHOT(TILE(*G,P)))) {
+                Valid = false;
+            } else {
+                Valid = true;
+            }
+
+        }
+        shoot(G,P);
+    }
+
+}
+
+void shoot(Grid *G, Point P) {
     
     WAS_SHOT(TILE(*G,P)) = true;
 
@@ -334,7 +497,9 @@ void endTurn(Grid *G, boolean *Winner) {
 
     for (int i = 0; i < SHIPCOUNT; i++) {
 
-        if (!SUNK(SHIP(*G,i))) {
+        boolean sunk = SUNK(SHIP(*G,i));
+
+        if (!sunk) {
 
             AllShipsSunk = false;
 
@@ -343,7 +508,8 @@ void endTurn(Grid *G, boolean *Winner) {
             int ShipLength = SHIPLENGTH(SHIP(*G,i));
 
             while (AllTilesShot && ShipLength > 0) {
-                if (!WAS_SHOT(TILE(*G,CheckPos))) {
+                boolean tileshot = WAS_SHOT(TILE(*G,CheckPos));
+                if (!tileshot) {
                     AllTilesShot = false;
                 }
                 ShipLength = ShipLength - 1;
@@ -390,7 +556,8 @@ void battleshipSplash() {
 
 void printSingleGrid(Grid G) {
 
-    printf("\n   A B C D E F G H I J\n");
+    printf("   PAPAN ANDA SAAT INI\n");
+    printf("   A B C D E F G H I J\n");
 
     for (int i = 0; i < 10; i++) {
 
@@ -400,13 +567,50 @@ void printSingleGrid(Grid G) {
             if ((G.tiles[i*10 + j].ship == true)) {
                 printf(" #");
             } else {
-                printf(" X");
+                printf(" .");
             }
         }
 
         printf("\n");
 
     }
+
+    printf("\n");
+
+}
+
+void printBothGrids(Grid PlayerGrid, Grid EnemyGrid) {
+
+    printf("                   PAPAN ANDA                     PAPAN LOID\n");
+    printf("                   A B C D E F G H I J | A B C D E F G H I J                   \n");
+    
+    for (int i = 0; i < 10; i++) {
+        printf("                 %d)",i);
+        for (int j = 0; j < 10; j++) {
+            if ((PlayerGrid.tiles[i*10 + j].shot == true)) {
+                printf("X ");
+            } else if (PlayerGrid.tiles[i*10 + j].ship == true) {
+                printf("# ");
+            } else {
+                printf(". ");
+            }
+        }
+        printf("| ");
+        for (int j = 0; j < 10; j++) {
+            if ((EnemyGrid.tiles[i*10 + j].shot == true)) {
+                printf("X ");
+            } else {
+                printf(". ");
+            }
+        }
+        printf("(%d\n",i);
+    }
+
+    printf("                   A B C D E F G H I J | A B C D E F G H I J                   \n");
+    printf("                   %d/5           KAPAL TERSISA           %d/5\n",shipsAlive(PlayerGrid),shipsAlive(EnemyGrid));
+    printf("\n");
+    printf("===============================================================================\n");
+    printf("\n");
 
 }
 

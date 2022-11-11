@@ -66,4 +66,20 @@ void verticalInput(boolean *V);
 
 boolean shipPosValid(Grid G, Ship S);
 
+void printSingleGrid();
+
+void placeShipsEnemy(Grid *G);
+
+void shipInputEnemy(Grid *G, Ship *S, char *N, int L);
+
+void printBothGrids(Grid PlayerGrid, Grid EnemyGrid);
+
+void playerShoot(Grid *G);
+
+void enemyShoot(Grid *G, int Enemy);
+
+void shoot(Grid *G, Point P);
+
+void endTurn(Grid *G, boolean *Winner);
+
 #endif
