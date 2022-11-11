@@ -15,7 +15,7 @@ boolean isOrigin(Point p) {
 
 boolean isFirstQuadrant(Point p) {
 
-    return (ABSCISSA(p) > 0 && ORDINATE(p) > 0);
+    return (ABSCISSA(p) >= 0 && ORDINATE(p) >= 0);
 
 }
 

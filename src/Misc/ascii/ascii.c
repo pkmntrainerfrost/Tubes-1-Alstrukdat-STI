@@ -22,7 +22,7 @@ int ord(char c) {
 /* Mengembalikan indeks karakter dalam alfabet, dengan a = 0; apabila bukan alfabet, akan mengembalikan INVALID */
 int alphabeticalOrd(char c) {
 
-    c = lower(c);
+    c = upper(c);
     int i;
 
     if (isAlpha(c)) {

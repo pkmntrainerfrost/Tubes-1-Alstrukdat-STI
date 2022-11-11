@@ -81,8 +81,8 @@ void initializeGrid(Grid *G, boolean Enemy) {
 
     int i = 0;
 
-    for (int x = 1; x < 11; x++) {
-        for (int y = 1; y < 11; y++) {
+    for (int x = 0; x < 10; x++) {
+        for (int y = 0; y < 10; y++) {
 
             Point P;
             createPoint(&P,x,y);
@@ -126,18 +126,23 @@ void placeShipsPlayer(Grid *G) {
     
     shipInput(G,&Carrier,"Carrier",5);
     copyShip(&Carrier,&SHIP(*G,0));
+    printSingleGrid(*G);
 
     shipInput(G,&Battleship,"Battleship",4);
-    copyShip(&Battleship,&SHIP(*G,0));
+    copyShip(&Battleship,&SHIP(*G,1));
+    printSingleGrid(*G);
     
     shipInput(G,&Battleship,"Cruiser",3);
-    copyShip(&Cruiser,&SHIP(*G,0));
+    copyShip(&Cruiser,&SHIP(*G,2));
+    printSingleGrid(*G);
 
     shipInput(G,&Submarine,"Submarine",3);
-    copyShip(&Submarine,&SHIP(*G,0));
+    copyShip(&Submarine,&SHIP(*G,3));
+    printSingleGrid(*G);
 
     shipInput(G,&Destroyer,"Destroyer",2);
-    copyShip(&Destroyer,&SHIP(*G,0));
+    copyShip(&Destroyer,&SHIP(*G,4));
+    printSingleGrid(*G);
 
 }
 
@@ -170,6 +175,16 @@ void shipInput(Grid *G, Ship *S, char *N, int L) {
 
     }
 
+    Point P = POSITION(*S);
+    boolean V = VERTICAL(*S);
+
+    for (int i = 0; i < L; i++) {
+
+        HAS_SHIP(TILE(*G,P)) = true;
+        movePoint(&P,V,!V);
+
+    }
+
 }
 
 void posInput(Point *P) {
@@ -190,12 +205,13 @@ void posInput(Point *P) {
         boolean InputValid = wordInput(&Input,2,2);
 
         if (InputValid) {
-            printf("%d,%d,%d\n",isAlpha(Input.buffer[0]),isCharInRange(lower(Input.buffer[0]), ord('a'), ord('j')),isNumeric(Input.buffer[1]));
             if ((isAlpha(Input.buffer[0]) && isCharInRange(lower(Input.buffer[0]), ord('a'), ord('j'))) && (isNumeric(Input.buffer[1]))) {
                 Valid = true;
             } else {
                 InvalidInputs = InvalidInputs + 1;
             }
+        } else {
+            InvalidInputs = InvalidInputs + 1;
         }
 
     }
@@ -203,9 +219,6 @@ void posInput(Point *P) {
     ABSCISSA(*P) = alphabeticalOrd(Input.buffer[0]);
     
     ORDINATE(*P) = charToInt(Input.buffer[1]);
-
-    printf("%d,%d\n",ABSCISSA(*P),ORDINATE(*P));
-
 }
 
 void verticalInput(boolean *V) {
@@ -231,6 +244,8 @@ void verticalInput(boolean *V) {
             } else {
                 InvalidInputs = InvalidInputs + 1;
             }
+        } else {
+           InvalidInputs = InvalidInputs + 1; 
         }
 
     }
@@ -248,11 +263,25 @@ boolean shipPosValid(Grid G, Ship S) {
     boolean Valid = false;
     Point P = copyPoint(POSITION(S));
 
+    for (int i = 0; i < 100; i++) {
+        if (i % 10 == 0) {
+            printf("\n");
+        }
+
+        if ((G.tiles[i].ship == true)) {
+            printf("#");
+        } else {
+            printf("X");
+        }
+    }
+
+    printf("\n");
+
     if (VERTICAL(S)) {
         if (ORDINATE(P) + SHIPLENGTH(S) - 1 <= 10 && ABSCISSA(P) <= 10 && isFirstQuadrant(P)) {
             int i = 0;
             boolean Overlap = false;
-            while (!Overlap && i <= SHIPLENGTH(S)) {
+            while (!Overlap && i < SHIPLENGTH(S)) {
                 if (HAS_SHIP(TILE(G,P))) {
                     Overlap = true;
                 }
@@ -356,6 +385,28 @@ void battleshipSplash() {
     printf("\n");
     printf("==========================Selamat datang, Laksamana.===========================\n");
     printf("\n");
+
+}
+
+void printSingleGrid(Grid G) {
+
+    printf("\n   A B C D E F G H I J\n");
+
+    for (int i = 0; i < 10; i++) {
+
+        printf("%d)",i);
+        
+        for (int j = 0; j < 10; j++) {
+            if ((G.tiles[i*10 + j].ship == true)) {
+                printf(" #");
+            } else {
+                printf(" X");
+            }
+        }
+
+        printf("\n");
+
+    }
 
 }
 
