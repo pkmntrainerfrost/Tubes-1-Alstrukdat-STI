@@ -295,6 +295,9 @@ void shipInputEnemy(Grid *G, Ship *S, char *N, int L) {
 
     }
 
+    Point P = POSITION(*S);
+    boolean V = VERTICAL(*S);
+
     for (int i = 0; i < L; i++) {
 
         HAS_SHIP(TILE(*G,P)) = true;
@@ -697,8 +700,6 @@ void printBothGrids(Grid PlayerGrid, Grid EnemyGrid, int Enemy) {
                 printf("X ");
             } else if ((EnemyGrid.tiles[i*10 + j].shot == true)) {
                 printf("@ ");
-            } else if (EnemyGrid.tiles[i*10 + j].ship == true) {
-                printf("# ");
             } else {
                 printf(". ");
             }
