@@ -10,6 +10,7 @@
 #include "../../ADT/word/word.h"
 #include "../../Misc/ascii/ascii.h"
 #include "../../ADT/list/array.h"
+#include "../../Games/random.h"
 
 PQElType addQueue(int i){
     PQElType addOrder;
@@ -43,9 +44,9 @@ void dinerDash(){
     createQueuePQ(&serveQ);
     for (int i = 0; i < 3; i++){ //3 makanan default awal 
         order[i].foodId = i;
-        order[i].cookTime = (rand() % 5) + 1;
-        order[i].stayTime = (rand() % 5) + 1;
-        order[i].price = (rand() % 5 ) * 5000 + 10000;
+        order[i].cookTime = random_range(1,4) + 1;
+        order[i].stayTime = random_range(1,5) + 1;
+        order[i].price = random_range(1,8) * 5000 + 10000;
         enqueuePQ(&pq, order[i]); 
     }   
 
