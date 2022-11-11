@@ -14,7 +14,15 @@
     "mesinkata.h": "c",
     "word.h": "c",
     "array.h": "c",
-    "ascii.h": "c"
+    "ascii.h": "c",
+    "splash.h": "c",
+    "io.h": "c",
+    "load.h": "c",
+    "start.h": "c",
+    "deletegame.h": "c",
+    "queuegame.h": "c",
+    "skipgame.h": "c",
+    "save.h": "c"
   },
   "C_Cpp.errorSquiggles": "Enabled"
 }
