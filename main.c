@@ -15,6 +15,7 @@
 #include "src/Utility/queuegame/queueGame.h"
 #include "src/Utility/skipGame/skipGame.h"
 #include "src/Utility/save/save.h"
+#include "src/Utility/creategame/createGame.h"
 
 #include <stdio.h>
 

@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include "listGame.h"
-#include "../splash.h"
 
 void listGameMain(List L) {
 

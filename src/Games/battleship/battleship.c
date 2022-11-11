@@ -7,13 +7,13 @@
 // Loid Forger -> lebih pinter, strategi 
 // Anya Forger -> hax (baca pikiran), harus bener terus ato nggak auto kalah
 
-int main() {
+//int main() {
 
-    battleship();
+//    battleship();
 
-    return 0;
+//    return 0;
 
-}
+//}
 
 void battleship() {
 

@@ -1,10 +1,10 @@
 #ifndef __CREATE_GAME_H__
 #define __CREATE_GAME_H__
 
-#include "../ADT/list/array.h"
-#include "../ADT/word/mesinkarakter/mesinkarakter.h"
-#include "../ADT/word/word.h"
-#include "../Misc/io/io.h"
+#include "../../ADT/list/array.h"
+#include "../../ADT/word/mesinkarakter/mesinkarakter.h"
+#include "../../ADT/word/word.h"
+#include "../../Misc/io/io.h"
 #include "../../ADT/boolean.h"
 #include "../../ADT/queue/queue2.h"
 #include "../../ADT/word/mesinkata/mesinkata.h"

@@ -7,6 +7,8 @@
 /* ADT lain yang dipakai */
 #include "../../ADT/list/array.h"
 #include "../splash.h"
+#include "../../Misc/io/io.h"
+#include "../../Utility/creategame/createGame.h"
 
 void listGame(List L);
 // I.S. List L terdefinisi

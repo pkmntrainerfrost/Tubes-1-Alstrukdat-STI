@@ -69,12 +69,12 @@ void rngSplash() {
 
 }
 
- int main() {
+//int main() {
 
-    rng();
+//    rng();
 
-    return 0;
+//    return 0;
 
-}
+//}
 
 // compile: gcc Games/rng/rng.c Games/random.c Misc/io/io.c Misc/ascii/ascii.c ADT/list/array.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c -o driver
