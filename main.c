@@ -104,9 +104,11 @@ int main() {
                         wordToString(check, s);
                         if (s == 'Y'){
                             printf("Masukkan nama save file anda: \n");
-                            wordInput(&check,1,10);
-                            wordToString(check, s);
-                            save(s, &ListGame);
+                            Word check2;
+                            cek = wordInput(&check2,1,10);
+                            char s2[wordLength(check2) + 1];
+                            wordToString(check2, s2);
+                            savetoFile(s2, ListGame);
                         }
                         printf("\n");
                         quit();
@@ -134,7 +136,7 @@ int main() {
                 } else if (isWordEqual(getElmt(Input,0),stringToWord("SAVE"))){
                     char file[wordLength(getElmt(Input,1)) + 1];
                     wordToString(getElmt(Input,1), file);
-                    save(file, &ListGame);
+                    savetoFile(file, ListGame);
                 } else {
                     commandlain();
                 }

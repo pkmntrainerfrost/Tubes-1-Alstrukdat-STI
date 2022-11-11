@@ -32,8 +32,12 @@ void savetoFile(char saveFilename[], List L)
 //     insertLast(&L, stringToWord("Battleship")); 
 //     insertLast(&L, stringToWord("Tetris"));
 //     displayList(L);
-//     // blm bikin scanf buat saveFilename
-//     savetoFile("test.txt", L);
+//     printf("\n");
+//     Word check2;
+//     boolean cek = wordInput(&check2,1,10);
+//     char s2[wordLength(check2) + 1];
+//     wordToString(check2, s2);
+//     savetoFile(s2, L);
 //     return 0;
 // }
 

@@ -6,6 +6,8 @@
 
 /* ADT lain yang dipakai */
 #include "../../ADT/list/array.h"
+#include "../../ADT/word/word.h"
+#include "../../Misc/io/io.h"
 
 void savetoFile(char saveFilename[], List L);
 // I.S. saveFilename terdefinisi, L terdefinisi
