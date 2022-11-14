@@ -295,8 +295,8 @@ void shipInputEnemy(Grid *G, Ship *S, char *N, int L) {
 
     }
 
-    Point P = POSITION(*S);
-    boolean V = VERTICAL(*S);
+    P = POSITION(*S);
+    V = VERTICAL(*S);
 
     for (int i = 0; i < L; i++) {
 
