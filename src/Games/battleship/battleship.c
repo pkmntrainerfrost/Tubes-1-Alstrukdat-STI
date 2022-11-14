@@ -425,7 +425,7 @@ boolean shipPosValid(Grid G, Ship S) {
     Point P = POSITION(S);
 
     if (VERTICAL(S)) {
-        if (ORDINATE(P) + SHIPLENGTH(S) - 1 < 10 && ABSCISSA(P) < 10 && isFirstQuadrant(P)) {
+        if (ABSCISSA(P) + SHIPLENGTH(S) - 1 < 10 && ORDINATE(P) < 10 && isFirstQuadrant(P)) {
             int i = 0;
             boolean Overlap = false;
             while (!Overlap && i < SHIPLENGTH(S)) {
@@ -438,7 +438,7 @@ boolean shipPosValid(Grid G, Ship S) {
             Valid = !Overlap;
         }
     } else {
-        if (ABSCISSA(P) + SHIPLENGTH(S) - 1 < 10 && ORDINATE(P) < 10 && isFirstQuadrant(P)) {
+        if (ORDINATE(P) + SHIPLENGTH(S) - 1 < 10 && ABSCISSA(P) < 10 && isFirstQuadrant(P)) {
             int i = 0;
             boolean Overlap = false;
             while (!Overlap && i <= SHIPLENGTH(S)) {
