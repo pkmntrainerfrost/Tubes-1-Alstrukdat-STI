@@ -29,6 +29,13 @@ int length(List L);
 
 ElType getElmt(List L, int i);
 
+void setElmt(List *L, int i, ElType v);
+/* I.S. T terdefinisi, sembarang */
+/* F.S. Elemen T yang ke-i bernilai v */
+/* Mengeset nilai elemen tabel yang ke-i sehingga bernilai v */
+
+boolean isMemberList(List L, ElType X);
+
 void updateCapacity(List *L);
 
 void insertFirst(List *L, ElType X);

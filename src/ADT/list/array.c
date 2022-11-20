@@ -51,6 +51,26 @@ ElType getElmt(List L, int i)
     return (L.A[i]);
 }
 
+void setElmt(List *L, int i, ElType v)
+{
+    (*L).A[i] = v;
+    if ((*L).nEff < i){
+        (*L).nEff = i;
+    }   
+}
+
+boolean isMemberList(List L, ElType X)
+{
+    int i = 0;
+    while (i < L.nEff){
+        if (isElTypeEqual(L.A[i], X)){
+            return true;
+        }
+        i++;
+    }
+    return false;
+}
+
 void updateCapacity(List *L)
 {
     int newCapacity = 2 * (*L).capacity;

@@ -73,6 +73,15 @@ Word intToWord(int i) {
 
 }
 
+Word charToWord(char s)
+{
+    Word w;
+    createWord(&w);
+    w.buffer[0] = s;
+    wordLength(w) = 1;
+    return w;
+}
+
 /* Merubah sebuah string menjadi sebuah word */
 Word stringToWord(char *s) {
 
