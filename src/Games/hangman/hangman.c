@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 #include "hangman.h"
 static FILE *saveFileKata;
 
@@ -8,13 +10,14 @@ void inputGuess(List Guesses, Word *guess) {
         printf("Masukkan tebakan Anda: ");
         boolean valid = wordInput(guess,1,1);
         if (valid) {
+            if ((*guess).buffer[0] >= 'a' && (*guess).buffer[0] <= 'z') {
+                (*guess).buffer[0] -= 32;
+            }
+
             if (isMemberList(Guesses, *guess)) {
                 printf("Anda sudah pernah menebak huruf %c\n", (*guess).buffer[0]);
                 printf("Silakan masukkan huruf lain\n");
             } else {
-                if ((*guess).buffer[0] >= 'a' && (*guess).buffer[0] <= 'z') {
-                    (*guess).buffer[0] -= 32;
-                }
                 repeat = false;
             }
         } else {
@@ -22,7 +25,6 @@ void inputGuess(List Guesses, Word *guess) {
                 printf("Tebakan tidak boleh kosong!\n");
                 printf("\n");
             } else {
-                printf("Tebakan melebihi batas karakter!\n");
                 printf("Tebakan hanya boleh 1 huruf!\n");
                 printf("\n");
             }
@@ -36,6 +38,22 @@ void displayKata(List L){
         printf("%c", getElmt(L,i).buffer[0]);
     }
     printf("\n");
+}
+
+Word randomWord(List L){
+    Word randomword;
+    boolean valid = true;
+    int Num;
+    while(valid){
+        srand(time(NULL));
+        Num = random_range(0, length(L)-1);
+        if (Num>=0 && Num<length(L)){
+            valid = false;
+        }
+    }
+    randomword = getElmt(L, Num);
+    
+    return randomword;
 }
 
 void readListKata(List *ListKata){
@@ -63,14 +81,52 @@ void addToListKata(List *L){
             if (isMemberList(*L, kata)) {
                 printf("Kata sudah ada di dalam dictionary kata!\n");
             } else {
-                if (kata.buffer[0] >= 'a' && kata.buffer[0] <= 'z') {
-                    kata.buffer[0] -= 32;
+                // kata yang ada spasinya tidak valid
+                int i=0;
+                boolean cek = true;
+                while (i<wordLength(kata)){
+                    if (kata.buffer[i] == ' '){
+                        cek = false;
+                    }
+                    i++;
                 }
-                insertLast(L, kata);
-                printf("Kata berhasil ditambahkan ke dalam dictionary kata!\n");
-                // tanyain mau nambahin lg ga
-                // kalau iya, repeat = true
-                // tambahin kemungkinan bukan huruf?
+
+                if (cek){
+                    // all uppercase
+                    int k;
+                    for(k=0; k<kata.length; k++){
+                        if (kata.buffer[k] >= 'a' && kata.buffer[k] <= 'z'){
+                            kata.buffer[k] -= 32;
+                        }
+                    }
+
+                    insertLast(L, kata);
+                    printf("Kata berhasil ditambahkan ke dictionary kata!\n");
+                    Word yesnoinput;
+                    boolean loop = true;
+                    while (loop){
+                        printf("Apakah Anda ingin menambahkan kata lain? (Y/N)\n");
+                        printf("Silahkan masukkan pilihan Anda: ");
+                        boolean ans = wordInput(&yesnoinput, 1, 1);
+                        if (ans){
+                            if (yesnoinput.buffer[0] == 'Y' || yesnoinput.buffer[0] == 'y'){
+                                loop = false;
+                                repeat = true;
+                            } else if (yesnoinput.buffer[0] == 'N' || yesnoinput.buffer[0] == 'n'){
+                                loop = false;
+                                repeat = false;
+                            } else {
+                                printf("Input tidak valid!\n");
+                                printf("Masukkan Y/N!\n\n");
+                            }
+                        } else {
+                            printf("Input tidak valid!\n");
+                            printf("Masukkan Y/N!\n\n");
+                        }
+                    }
+                } else {
+                    printf("Kata tidak boleh mengandung spasi!\n\n");
+                }
             }
         } else {
             if (wordLength(kata) == 0) {
@@ -110,11 +166,11 @@ void playHangman(List L)
 {
     int chance = 10;
     Word guess;
-    Word test = stringToWord("HAI");
+    Word randWord;
     int i;
 
-    List Word, kata, Guesses;
-    createList(&Word);
+    List GuessWord, kata, Guesses;
+    createList(&GuessWord);
     createList(&kata);
     createList(&Guesses);
 
@@ -122,16 +178,17 @@ void playHangman(List L)
     int valid;
     int score = 0;
     while (chance != 0){
-        for (i=0; i<wordLength(test); i++){
-            insertLast(&Word, charToWord(test.buffer[i]));
+        randWord = randomWord(L);
+        for (i=0; i<wordLength(randWord); i++){
+            insertLast(&GuessWord, charToWord(randWord.buffer[i]));
         }
 
-        for (i=0; i<length(Word); i++){
+        for (i=0; i<length(GuessWord); i++){
             insertLast(&kata, stringToWord("_"));
         }
 
         valid = 0;
-        while (valid != length(Word) && chance != 0){
+        while (valid != length(GuessWord) && chance != 0){
             if (isEmpty(Guesses)){
                 printf("\nTebakan sebelumnya:-\n");
             } else {
@@ -145,8 +202,8 @@ void playHangman(List L)
             insertLast(&Guesses, guess);
 
             cek = false;
-            for (i=0; i<length(Word); i++){
-                if (isWordEqual(guess, getElmt(Word,i))){
+            for (i=0; i<length(GuessWord); i++){
+                if (isWordEqual(guess, getElmt(GuessWord,i))){
                     setElmt(&kata, i, guess);
                     cek = true;
                     valid++;
@@ -162,9 +219,11 @@ void playHangman(List L)
             }
         }
 
-        if (valid == length(Word)){
+        if (valid == length(GuessWord)){
             printf("Selamat, Anda berhasil menebak kata!\n");
-            printf("Skor Anda bertambah %d poin!\n", valid);
+            printf("Kata yang harus ditebak: ");
+            displayKata(GuessWord);
+            printf("\nSkor Anda bertambah %d poin!\n", valid);
             score += valid;
             printf("Skor Anda: %d\n", score);
             printf("Silahkan lanjut ke kata selanjutnya!\n");
@@ -172,8 +231,8 @@ void playHangman(List L)
 
         // kosonging semua list
         if (chance != 0){
-            while (!isEmpty(Word)){
-                deleteFirst(&Word);
+            while (!isEmpty(GuessWord)){
+                deleteFirst(&GuessWord);
             }
             while (!isEmpty(kata)){
                 deleteFirst(&kata);
@@ -184,25 +243,47 @@ void playHangman(List L)
         }
 
         // benerin newline
-
-        // tambahin list kata (di random keluar kata apa (?))
-        // kata bakal ada spasi nggak?
         printf("\n");
     }
 
     if (chance == 0){
         printf("Anda kalah!\n");
         printf("Kata yang harus ditebak: ");
-        displayKata(Word);
+        displayKata(GuessWord);
         printf("Skor Anda: %d\n", score);
     } else {
         printf("Anda menang!\n");
         printf("Skor Anda: %d\n", score);
     }
+
+    boolean loop = true;
+    Word yesnoinput;
+    while (loop){
+        printf("Apakah Anda ingin bermain lagi? (Y/N)\n");
+        printf("Silahkan masukkan pilihan Anda: ");
+        boolean ans = wordInput(&yesnoinput, 1, 1);
+        if (ans){
+            if (yesnoinput.buffer[0] == 'Y' || yesnoinput.buffer[0] == 'y'){
+                playHangman(L);
+                loop = false;
+            } else if (yesnoinput.buffer[0] == 'N' || yesnoinput.buffer[0] == 'n'){
+                printf("Terima kasih telah bermain!\n");
+                loop = false;
+            } else {
+                printf("Input tidak valid!\n");
+                printf("Masukkan Y/N!\n\n");
+            }
+        } else {
+            printf("Input tidak valid!\n");
+            printf("Masukkan Y/N!\n\n");
+        }
+    }
 }
 
 void hangman()
 {
+    header();
+    // tambahin header di semua e
     printf("Selamat datang di permainan Hangman!\n");
     printf("Silakan pilih mode permainan:\n");
     printf("1. Bermain Hangman\n");
@@ -221,12 +302,33 @@ void hangman()
         if (valid){
             if (input.buffer[0] == '1'){
                 playHangman(L);
-                // tambahin opsi main lagi?
                 repeat = false;
             } else if (input.buffer[0] == '2'){
-                addKata(L);
-                // tambahin mau main game lagi atau selesai
-                // kalo iya, repeat = true + playHangman(L)
+                addToListKata(&L);
+                printf("Apakah Anda ingin bermain Hangman? (Y/N)\n");
+                printf("Silahkan masukkan pilihan Anda: ");
+                Word yesnoinput;
+                boolean loop = true;
+                while (loop){
+                    printf("Apakah Anda ingin bermain Hangman? (Y/N)\n");
+                    printf("Silahkan masukkan pilihan Anda: ");
+                    boolean ans = wordInput(&yesnoinput, 1, 1);
+                    if (ans){
+                        if (yesnoinput.buffer[0] == 'Y' || yesnoinput.buffer[0] == 'y'){
+                            playHangman(L);
+                            loop = false;
+                        } else if (yesnoinput.buffer[0] == 'N' || yesnoinput.buffer[0] == 'n'){
+                            printf("Terima kasih telah bermain!\n");
+                            loop = false;
+                        } else {
+                            printf("Input tidak valid!\n");
+                            printf("Masukkan Y/N!\n\n");
+                        }
+                    } else {
+                        printf("Input tidak valid!\n");
+                        printf("Masukkan Y/N!\n\n");
+                    }
+                }
                 repeat = false;
             } else {
                 printf("Masukan pilihan Anda salah!\n");
@@ -245,9 +347,14 @@ void hangman()
 
 int main()
 {
+    // List L;
+    // createList(&L);
+    // readListKata(&L);
+    // addToListKata(&L);
+    // saveListKata(L);
     hangman();
     return 0;
 }
 
 
-// compile : gcc src/Games/hangman/hangman.c src/ADT/list/array.c src/ADT/word/mesinkata/mesinkata.c src/ADT/word/mesinkarakter/mesinkarakter.c src/ADT/word/word.c src/Misc/ascii/ascii.c src/Misc/io/io.c -o driver
+// compile : gcc src/Utility/splash.c src/Games/random.c src/Games/hangman/hangman.c src/ADT/list/array.c src/ADT/word/mesinkata/mesinkata.c src/ADT/word/mesinkarakter/mesinkarakter.c src/ADT/word/word.c src/Misc/ascii/ascii.c src/Misc/io/io.c -o driver

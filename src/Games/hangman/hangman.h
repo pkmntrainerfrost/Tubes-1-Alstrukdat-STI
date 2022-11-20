@@ -8,11 +8,21 @@
 #include "../../ADT/word/word.h"
 #include "../../Misc/ascii/ascii.h"
 #include "../../Misc/io/io.h"
-
-void hangman();
+#include "../../Utility/splash.h"
+#include "../random.h"
 
 void inputGuess(List Guesses, Word *guess);
 
 void displayKata(List L);
+
+void readListKata(List *ListKata);
+
+void addToListKata(List *L);
+
+void saveListKata(List L);
+
+void playHangman(List L);
+
+void hangman();
 
 #endif
