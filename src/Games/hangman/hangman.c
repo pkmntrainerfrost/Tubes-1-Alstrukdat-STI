@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "hangman.h"
+static FILE *saveFileKata;
 
 void inputGuess(List Guesses, Word *guess) {
     boolean repeat = true;
@@ -37,7 +38,75 @@ void displayKata(List L){
     printf("\n");
 }
 
-void hangman(List L)
+void readListKata(List *ListKata){
+    Word file;
+    concateWord(stringToWord("src/Games/hangman/"), stringToWord("listKata.txt"), &file);
+
+    char a[wordLength(file) + 1];
+    wordToString(file, a);
+
+    startKata(true, a);
+
+    while (!endKata) {
+        insertLast(ListKata, currentKata);
+        advKata();
+    }
+}
+
+void addToListKata(List *L){
+    boolean repeat = true;
+    Word kata;
+    while (repeat){
+        printf("Masukkan kata yang ingin Anda tambahkan ke dictionary kata: ");
+        boolean valid = wordInput(&kata, 1, 50);
+        if (valid){
+            if (isMemberList(*L, kata)) {
+                printf("Kata sudah ada di dalam dictionary kata!\n");
+            } else {
+                if (kata.buffer[0] >= 'a' && kata.buffer[0] <= 'z') {
+                    kata.buffer[0] -= 32;
+                }
+                insertLast(L, kata);
+                printf("Kata berhasil ditambahkan ke dalam dictionary kata!\n");
+                // tanyain mau nambahin lg ga
+                // kalau iya, repeat = true
+                // tambahin kemungkinan bukan huruf?
+            }
+        } else {
+            if (wordLength(kata) == 0) {
+                printf("Kata tidak boleh kosong!\n");
+                printf("\n");
+            } else {
+                printf("Kata melebihi batas karakter!\n");
+                printf("Kata hanya boleh 1-50 huruf!\n");
+                printf("\n");
+            }
+        }
+    }
+}
+
+void saveListKata(List L){
+    Word file;
+    concateWord(stringToWord("src/Games/hangman/"), stringToWord("listKata.txt"), &file);
+
+    char a[wordLength(file) + 1];
+    wordToString(file, a);
+
+    saveFileKata = fopen(a, "w");
+    int i, j;
+    for (i=0; i<length(L); i++){
+        for (j=0; j<L.A[i].length; j++){
+            fprintf(saveFileKata, "%c", L.A[i].buffer[j]);
+        }
+        if (i < length(L)-1) {
+            fprintf(saveFileKata, "\n");
+        }
+    }
+
+    fclose(saveFileKata);
+}
+
+void playHangman(List L)
 {
     int chance = 10;
     Word guess;
@@ -118,7 +187,6 @@ void hangman(List L)
 
         // tambahin list kata (di random keluar kata apa (?))
         // kata bakal ada spasi nggak?
-        // bonus blm
         printf("\n");
     }
 
@@ -133,14 +201,53 @@ void hangman(List L)
     }
 }
 
+void hangman()
+{
+    printf("Selamat datang di permainan Hangman!\n");
+    printf("Silakan pilih mode permainan:\n");
+    printf("1. Bermain Hangman\n");
+    printf("2. Menambah kata ke dictionary kata untuk permainan Hangman\n");
+    printf("Silahkan masukkan pilihan Anda: ");
+
+    // baca list kata dari listKata.txt
+    List L;
+    createList(&L);
+    readListKata(&L);
+
+    Word input;
+    boolean repeat = true;
+    while (repeat){
+        boolean valid = wordInput(&input,1,1);
+        if (valid){
+            if (input.buffer[0] == '1'){
+                playHangman(L);
+                // tambahin opsi main lagi?
+                repeat = false;
+            } else if (input.buffer[0] == '2'){
+                addKata(L);
+                // tambahin mau main game lagi atau selesai
+                // kalo iya, repeat = true + playHangman(L)
+                repeat = false;
+            } else {
+                printf("Masukan pilihan Anda salah!\n");
+                printf("Masukkan 1 atau 2!\n\n");
+                printf("Silakan masukkan pilihan Anda kembali: ");
+            }
+        } else {
+            printf("Masukan pilihan Anda salah!\n");
+            printf("Masukkan 1 atau 2!\n\n");
+            printf("Silakan masukkan pilihan Anda kembali: ");
+        }
+    }
+
+    saveListKata(L);
+}
 
 int main()
 {
-    List L;
-    createList(&L);
-    hangman(L);
+    hangman();
     return 0;
 }
 
 
-// compile : gcc Games/hangman/hangman.c ADT/list/array.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c Misc/ascii/ascii.c Misc/io/io.c -o driver
+// compile : gcc src/Games/hangman/hangman.c src/ADT/list/array.c src/ADT/word/mesinkata/mesinkata.c src/ADT/word/mesinkarakter/mesinkarakter.c src/ADT/word/word.c src/Misc/ascii/ascii.c src/Misc/io/io.c -o driver

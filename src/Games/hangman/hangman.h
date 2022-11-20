@@ -9,7 +9,7 @@
 #include "../../Misc/ascii/ascii.h"
 #include "../../Misc/io/io.h"
 
-void hangman(List L);
+void hangman();
 
 void inputGuess(List Guesses, Word *guess);
 
