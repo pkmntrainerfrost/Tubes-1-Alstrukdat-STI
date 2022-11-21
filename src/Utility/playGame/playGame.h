@@ -10,6 +10,7 @@
 #include "../../Games/rng/rng.h"
 #include "../../Games/dinerdash/dinerdash.h"
 #include "../../Games/battleship/battleship.h"
+#include "../../Games/hangman/hangman.h"
 
 void playGame(Queue *Q, List L, List *listHist);
 // Game yang dimainkan adalah game dengan antrian pertama di antrian game

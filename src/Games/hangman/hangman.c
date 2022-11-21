@@ -67,7 +67,7 @@ void man(int chance){
 }
 
 void toContinue(){
-    printf("Tekan enter untuk melanjutkan!");
+    printf("Tekan [ENTER] untuk melanjutkan...");
     startKata(false, "");
 }
 

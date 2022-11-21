@@ -28,7 +28,7 @@ void skipGame(Queue *Q, List L, int n) {
         QElType y;
         dequeue(Q, &y);
 
-        if (isSameWord(y, stringToWord("RNG")) || isSameWord(y, stringToWord("Diner DASH")) || isSameWord(y, stringToWord("Battleship"))){
+        if (isSameWord(y, stringToWord("RNG")) || isSameWord(y, stringToWord("Diner DASH")) || isSameWord(y, stringToWord("HANGMAN")) || isSameWord(y, stringToWord("TOWER OF HANOI")) || isSameWord(y, stringToWord("SNAKE ON METEOR")) || isSameWord(y, stringToWord("Battleship"))){
             printf("Loading ");
             printWord(y);
             printf(" ...\n");
@@ -38,18 +38,26 @@ void skipGame(Queue *Q, List L, int n) {
                 rng();
             } else if (isSameWord(y, stringToWord("Diner DASH"))){
                 dinerDash();
+            } else if (isSameWord(y, stringToWord("HANGMAN"))){
+                hangman();
+            } else if (isSameWord(y, stringToWord("TOWER OF HANOI"))){
+                // towerOfHanoi();
+            } else if (isSameWord(y, stringToWord("SNAKE ON METEOR"))){
+                // snakeOnMeteor();
             } else if (isSameWord(y, stringToWord("Battleship"))){
                 battleship();
             }
-        } else if (isSameWord(y, stringToWord("EIFFEL TOWER")) || isSameWord(y, stringToWord("RISEWOMAN")) || isSameWord(y, stringToWord("DINOSAUR IN EARTH"))){
-            // Game di file config default selain RNG dan diner DASH
-            printf("Game ");
-            printWord(y);
-            printf(" masih dalam maintenance, belum dapat dimainkan.\n");
-            printf("Silahkan pilih game lain.\n");
-            printf("Tekan [ENTER] untuk kembali ke menu utama...");
-            blankInput();
-        } else {
+        } 
+        // else if (isSameWord(y, stringToWord("EIFFEL TOWER")) || isSameWord(y, stringToWord("RISEWOMAN")) || isSameWord(y, stringToWord("DINOSAUR IN EARTH"))){
+        //     // Game di file config default selain RNG dan diner DASH
+        //     printf("Game ");
+        //     printWord(y);
+        //     printf(" masih dalam maintenance, belum dapat dimainkan.\n");
+        //     printf("Silahkan pilih game lain.\n");
+        //     printf("Tekan [ENTER] untuk kembali ke menu utama...");
+        //     blankInput();
+        // } 
+        else {
             // tidak ada di spek game, atau hasil createGame
             printf("Loading ");
             printWord(y);

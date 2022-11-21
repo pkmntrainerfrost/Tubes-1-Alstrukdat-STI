@@ -16,7 +16,7 @@ void playGame(Queue *Q, List L, List *listHist)
         printf("\n");
         QElType x;
         dequeue(Q, &x);
-        if (isSameWord(x, stringToWord("RNG")) || isSameWord(x, stringToWord("Diner DASH")) || isSameWord(x, stringToWord("Battleship"))){
+        if (isSameWord(x, stringToWord("RNG")) || isSameWord(x, stringToWord("Diner DASH")) || isSameWord(x, stringToWord("HANGMAN")) || isSameWord(x, stringToWord("TOWER OF HANOI")) || isSameWord(x, stringToWord("SNAKE ON METEOR")) || isSameWord(x, stringToWord("Battleship"))){
             printf("Loading ");
             printWord(x);
             printf(" ...\n");
@@ -26,18 +26,26 @@ void playGame(Queue *Q, List L, List *listHist)
                 rng();
             } else if (isSameWord(x, stringToWord("Diner DASH"))){
                 dinerDash();
+            } else if (isSameWord(x, stringToWord("HANGMAN"))){
+                hangman();
+            } else if (isSameWord(x, stringToWord("TOWER OF HANOI"))){
+                // towerOfHanoi();
+            } else if (isSameWord(x, stringToWord("SNAKE ON METEOR"))){
+                // snakeOnMeteor();
             } else if (isSameWord(x, stringToWord("Battleship"))){
                 battleship();
             }
-        } else if (isSameWord(x, stringToWord("EIFFEL TOWER")) || isSameWord(x, stringToWord("RISEWOMAN")) || isSameWord(x, stringToWord("DINOSAUR IN EARTH"))){
-            // Game di file config default selain RNG dan diner DASH
-            printf("Game ");
-            printWord(x);
-            printf(" masih dalam maintenance, belum dapat dimainkan.\n");
-            printf("Silahkan pilih game lain.\n");
-            printf("\nTekan [ENTER] untuk kembali ke menu utama...");
-            blankInput();
-        } else {
+        } 
+        // else if (isSameWord(x, stringToWord("EIFFEL TOWER")) || isSameWord(x, stringToWord("RISEWOMAN")) || isSameWord(x, stringToWord("DINOSAUR IN EARTH"))){
+        //     // Game di file config default selain RNG dan diner DASH
+        //     printf("Game ");
+        //     printWord(x);
+        //     printf(" masih dalam maintenance, belum dapat dimainkan.\n");
+        //     printf("Silahkan pilih game lain.\n");
+        //     printf("\nTekan [ENTER] untuk kembali ke menu utama...");
+        //     blankInput();
+        // } 
+        else {
             // tidak ada di spek game, atau hasil createGame
             printf("Loading ");
             printWord(x);
@@ -75,4 +83,3 @@ void playGame(Queue *Q, List L, List *listHist)
 // }
 
 // compile: gcc utility/playGame/playGame.c utility/queuegame/queueGame.c utility/listGame/listGame.c Games/rng/rng.c Games/random.c Games/dinerdash/dinerdash.c ADT/list/array.c ADT/queue/queue2.c ADT/queue/prioqueue.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c Misc/io/io.c Misc/ascii/ascii.c -o driver
-// battleship blm jalan
