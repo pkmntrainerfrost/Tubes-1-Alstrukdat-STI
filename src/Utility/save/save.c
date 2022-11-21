@@ -3,7 +3,7 @@
 static FILE *saveFile;
 
 // bikin file baru
-void savetoFile(char saveFilename[], List L)
+void savetoFile(char saveFilename[], List L, List listHist)
 {
     Word file;
     concateWord(stringToWord("Config/"),stringToWord(saveFilename),&file);
@@ -20,6 +20,17 @@ void savetoFile(char saveFilename[], List L)
             fprintf(saveFile, "%c", L.A[i].buffer[j]);
         }
         if (i < length(L)-1) {
+            fprintf(saveFile, "\n");
+        }
+    }
+    fprintf(saveFile, "\n");
+    fprintf(saveFile, "%d\n", listHist.nEff);
+    for(i=0; i<length(listHist); i++){
+        int j;
+        for(j=0; j<listHist.A[i].length; j++){
+            fprintf(saveFile, "%c", listHist.A[i].buffer[j]);
+        }
+        if (i < length(listHist)-1) {
             fprintf(saveFile, "\n");
         }
     }

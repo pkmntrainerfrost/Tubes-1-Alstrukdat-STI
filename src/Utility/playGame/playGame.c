@@ -3,7 +3,7 @@
 #include <time.h>
 #include "playGame.h"
 
-void playGame(Queue *Q, List L)
+void playGame(Queue *Q, List L, List *listHist)
 {
     header();
     if (IsEmpty(*Q)){
@@ -48,7 +48,7 @@ void playGame(Queue *Q, List L)
             printf("\nTekan [ENTER] untuk kembali ke menu utama...");
             blankInput();
         }
-        
+        insertLast(listHist, x);
     }
 }
 

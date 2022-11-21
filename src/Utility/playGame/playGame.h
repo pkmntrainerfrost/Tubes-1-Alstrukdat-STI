@@ -11,7 +11,7 @@
 #include "../../Games/dinerdash/dinerdash.h"
 #include "../../Games/battleship/battleship.h"
 
-void playGame(Queue *Q, List L);
+void playGame(Queue *Q, List L, List *listHist);
 // Game yang dimainkan adalah game dengan antrian pertama di antrian game
 // Game yang dapat dimainkan adalah game yang ada di spek game
 

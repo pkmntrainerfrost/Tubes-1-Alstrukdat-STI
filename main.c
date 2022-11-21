@@ -24,6 +24,9 @@ int main() {
     List ListGame;
     createList(&ListGame);
 
+    List listHist;
+    createList(&listHist);
+
     Queue QueueGame;
     createQueue(&QueueGame);
 
@@ -54,7 +57,7 @@ int main() {
             } else if (isWordEqual(getElmt(Input,0),stringToWord("LOAD")) && length(Input) == 2) {
                 InvalidFile = CHECKFILE(getElmt(Input,1));
                 if (!InvalidFile) {
-                    LOAD(getElmt(Input,1),&ListGame);
+                    LOAD(getElmt(Input,1),&ListGame, &listHist);
                     printf("Save file berhasil dibaca. BNMO berhasil dijalankan.\n");
                     Started = true;
                 } else {

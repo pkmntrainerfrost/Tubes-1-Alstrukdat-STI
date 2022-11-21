@@ -7,7 +7,7 @@
 #include "../../ADT/word/mesinkata/mesinkata.h"
 
 
-void LOAD(Word filename, List *ListGame);
+void LOAD(Word filename, List *ListGame, List *listHist);
 
 boolean CHECKFILE(Word filename);
 

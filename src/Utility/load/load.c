@@ -5,7 +5,7 @@
 
 #include <stdio.h>
 
-void LOAD(Word filename, List *ListGame){
+void LOAD(Word filename, List *ListGame, List *listHist){
     
     Word filepath;
     concateWord(stringToWord("Config/"),filename,&filepath);
@@ -14,13 +14,19 @@ void LOAD(Word filename, List *ListGame){
     wordToString(filepath,filepathstr);
 
     startKata(true,filepathstr);
+    int i;
+    int number = wordToInt(currentKata); //baca jumlah listGame
     advKata();
-
-    while (!endKata) {
+    for (i=0; i < number; i++){
         insertLast(ListGame,currentKata);
         advKata();
     }
-
+    number = wordToInt(currentKata); //baca jumlah listHist
+    advKata();
+    for (i=0; i < number; i++){
+        insertLast(listHist,currentKata);
+        advKata();
+    }
 }
 
 boolean CHECKFILE(Word filename) {

@@ -9,7 +9,7 @@
 #include "../../ADT/word/word.h"
 #include "../../Misc/io/io.h"
 
-void savetoFile(char saveFilename[], List L);
+void savetoFile(char saveFilename[], List L, List listHist);
 // I.S. saveFilename terdefinisi, L terdefinisi
 // F.S. Menyimpan state game pemain yang ada di List L ke file bernama saveFilename
 

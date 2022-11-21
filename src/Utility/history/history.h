@@ -1,3 +1,6 @@
+#ifndef HISTORY_H
+#define HISTORY_H
+
 #include <stdio.h>
 #include "../../ADT/list/array.h"
 #include "../../ADT/word/mesinkata/mesinkata.h"
@@ -10,3 +13,5 @@
 
 void history(List listHist, int num);
 void resetHist(List *listHist);
+
+#endif
