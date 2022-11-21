@@ -32,9 +32,9 @@ void Insert(Set *S, infotype Elmt)
         S mungkin sudah beranggotakan Elmt */
 /* F.S. Elmt menjadi anggota dari S. Jika Elmt sudah merupakan anggota, operasi tidak dilakukan */
 {
-    if (!(IsMember(*S, Elmt))){
-        (*S).Countset++;
-        (*S).Elementset[(*S).Countset-1]=Elmt;
+    if(!IsMember(*S, Elmt)){
+        S->Elementset[S->Countset]=Elmt;
+        S->Countset++;
     }
 }
 
