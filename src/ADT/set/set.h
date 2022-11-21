@@ -17,7 +17,7 @@ typedef int address;
 
 typedef struct
 {
-    infotype *Elementset;
+    infotype Elementset[MaxEl];
     address Countset;
 } Set;
 

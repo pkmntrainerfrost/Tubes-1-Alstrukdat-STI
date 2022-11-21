@@ -19,7 +19,6 @@ int main() {
     } else {
         printf("hai bukan anggota set\n");
     }
-    printf("hahaah\n ");
     PrintSet(S);
 
 }
