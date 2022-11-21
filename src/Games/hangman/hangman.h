@@ -1,7 +1,7 @@
 #ifndef __HANGMAN__
 #define __HANGMAN__
 
-
+#include "man.h"
 #include "../../ADT/boolean.h"
 #include "../../ADT/list/array.h"
 #include "../../ADT/word/mesinkata/mesinkata.h"
@@ -14,6 +14,8 @@
 void inputGuess(List Guesses, Word *guess);
 
 void displayKata(List L);
+
+void toContinue();
 
 void readListKata(List *ListKata);
 
