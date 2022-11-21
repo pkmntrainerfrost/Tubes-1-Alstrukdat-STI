@@ -34,28 +34,34 @@ void inputGuess(List Guesses, Word *guess) {
 
 void man(int chance){
     header();
-    if (chance == 9){
-        one();
-    } else if (chance == 8){
-        two();
-    } else if (chance == 7){
-        three();
-    } else if (chance == 6){
-        four();
-    } else if (chance == 5){
-        five();
-    } else if (chance == 4){
-        six();
-    } else if (chance == 3){
-        seven();
-    } else if (chance == 2){
-        eight();
-    } else if (chance == 1){
-        nine();
-    } else if (chance == 0){
-        ten();
-    } else if (chance == 10){
-        zero();
+    if (chance>=1 && chance<=10){
+        printf("THIS HANGED MAN IS ABOUT TO BE YOU!\n\n");
+        if (chance == 9){
+            one();
+        } else if (chance == 8){
+            two();
+        } else if (chance == 7){
+            three();
+        } else if (chance == 6){
+            four();
+        } else if (chance == 5){
+            five();
+        } else if (chance == 4){
+            six();
+        } else if (chance == 3){
+            seven();
+        } else if (chance == 2){
+            eight();
+        } else if (chance == 1){
+            nine();
+        } else if (chance == 10){
+            zero();
+        } 
+    } else {
+        if (chance == 0){
+            printf("YOU'RE DEAD! GOODBYE :D\n\n");
+            ten();
+        }
     }
     // toContinue();
 }
