@@ -112,7 +112,7 @@ int main() {
                     } else if (isWordEqual(getElmt(Input,0),stringToWord("DELETE"))){
                         deleteGame(&ListGame, QueueGame);
                     } else if (isWordEqual(getElmt(Input,0),stringToWord("PLAY"))){
-                        playGame(&QueueGame, ListGame);
+                        playGame(&QueueGame, ListGame, &listHist);
                     } else if (isWordEqual(getElmt(Input,0),stringToWord("QUEUE"))){
                         queueGame(&QueueGame, ListGame);
                     } else if (isWordEqual(getElmt(Input,0),stringToWord("CREATE"))){
@@ -127,7 +127,7 @@ int main() {
                     if (lower(Check.buffer[wordLength(Check)-4]) == '.' && lower(Check.buffer[wordLength(Check)-3]) == 't' && lower(Check.buffer[wordLength(Check)-2]) == 'x' && lower(Check.buffer[wordLength(Check)-1]) == 't') {
                             char a[wordLength(Check) + 1];
                             wordToString(Check,a);
-                            savetoFile(a, ListGame);
+                            savetoFile(a, ListGame, listHist);
                     } else {
                         printf("Nama file tidak valid!\n");
                     } 
