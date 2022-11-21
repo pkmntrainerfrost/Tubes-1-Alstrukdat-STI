@@ -3,18 +3,18 @@
 
 int main() {
     Set S;
-    CreateEmpty(&S);
-    if (IsEmpty(S)){
-        printf("Map kosong\n");
+    CreateEmptySet(&S);
+    if (IsEmptySet(S)){
+        printf("Set kosong\n");
     } else {
-        printf("Map tidak kosong\n");
+        printf("Set tidak kosong\n");
     }
     infotype test, test1;
     test = stringToWord("hai");
     test1 = stringToWord("halo");
-    Insert(&S, test);
-    Insert(&S, test1);
-    if (IsMember(S, test)){
+    InsertSet(&S, test);
+    InsertSet(&S, test1);
+    if (IsMemberSet(S, test)){
         printf("hai adalah anggota set\n");
     } else {
         printf("hai bukan anggota set\n");
