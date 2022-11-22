@@ -16,6 +16,7 @@
 #include "src/Utility/queuegame/queueGame.h"
 #include "src/Utility/skipGame/skipGame.h"
 #include "src/Utility/save/save.h"
+#include "src/Utility/history/history.h"
 
 #include <stdio.h>
 
@@ -131,6 +132,10 @@ int main() {
                     } else {
                         printf("Nama file tidak valid!\n");
                     } 
+                } else if(isWordEqual(getElmt(Input,0),stringToWord("HISTORY"))){
+                    Word many = getElmt(Input,1);
+                    int num = wordToInt(many);
+                    history(listHist,num);
                 } else {
                     commandlain();
                     printf("Tekan [ENTER] untuk melanjutkan...");
