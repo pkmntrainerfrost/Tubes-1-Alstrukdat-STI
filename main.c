@@ -80,7 +80,7 @@ int main() {
         }
         
         if (!noEnter) {
-            printf("Tekan [ENTER] untuk melanjutkan...");
+            printf("\nTekan [ENTER] untuk melanjutkan...");
             blankInput();
         }
         
@@ -122,25 +122,41 @@ int main() {
                         skipGame(&QueueGame,ListGame,wordToInt(getElmt(Input,2)));
                     } else {
                         commandlain();
+                        printf("\n");
+                        toContinue();
                     }
                 } else if (isWordEqual(getElmt(Input,0),stringToWord("SAVE"))){
                     Word Check = getElmt(Input,1);
-                    if (lower(Check.buffer[wordLength(Check)-4]) == '.' && lower(Check.buffer[wordLength(Check)-3]) == 't' && lower(Check.buffer[wordLength(Check)-2]) == 'x' && lower(Check.buffer[wordLength(Check)-1]) == 't') {
+                    if (Check.buffer[wordLength(Check)-3] >= 65 && Check.buffer[wordLength(Check)-3]<=90) {
+                        Check.buffer[wordLength(Check)-3] += 32;
+                    }
+                    if (Check.buffer[wordLength(Check)-2] >= 65 && Check.buffer[wordLength(Check)-2]<=90){
+                        Check.buffer[wordLength(Check)-2] += 32;
+                    }
+                    if (Check.buffer[wordLength(Check)-1] >= 65 && Check.buffer[wordLength(Check)-1]<=90){
+                        Check.buffer[wordLength(Check)-1] += 32;
+                    }
+                    if (lower(Check.buffer[wordLength(Check)-4]) == '.' && Check.buffer[wordLength(Check)-3] == 't' && Check.buffer[wordLength(Check)-2] == 'x' && Check.buffer[wordLength(Check)-1] == 't') {
                             char a[wordLength(Check) + 1];
                             wordToString(Check,a);
                             savetoFile(a, ListGame, listHist);
                     } else {
-                        printf("Nama file tidak valid!\n");
+                        printf("Nama file tidak valid!\n\n");
+                        toContinue();
                     } 
                 } else if(isWordEqual(getElmt(Input,0),stringToWord("HISTORY"))){
                     Word many = getElmt(Input,1);
                     int num = wordToInt(many);
-                    history(listHist,num);
+                    history(listHist, num);
+                    printf("\n");
+                    toContinue();
                 } else if(isWordEqual(getElmt(Input, 0), stringToWord("RESET")) && isWordEqual(getElmt(Input, 1), stringToWord("HISTORY"))){
                     resetHist(&listHist);
+                    printf("\n");
+                    toContinue();
                 } else {
                     commandlain();
-                    printf("Tekan [ENTER] untuk melanjutkan...");
+                    printf("\nTekan [ENTER] untuk melanjutkan...");
                     blankInput();
                 }
             } else if (length(Input) == 3){
@@ -148,12 +164,12 @@ int main() {
                     skipGame(&QueueGame,ListGame,wordToInt(getElmt(Input,2)));
                 } else {
                     commandlain();
-                    printf("Tekan [ENTER] untuk melanjutkan...");
+                    printf("\nTekan [ENTER] untuk melanjutkan...");
                     blankInput();
                 }
             } else {
                 commandlain();
-                printf("Tekan [ENTER] untuk melanjutkan...");
+                printf("\nTekan [ENTER] untuk melanjutkan...");
                 blankInput();
             } 
         } else {
@@ -162,7 +178,7 @@ int main() {
             } else {
                 printf("Masukan tidak boleh kosong! Silahkan ulangi input.\n");
             }
-            printf("Tekan [ENTER] untuk melanjutkan...");
+            printf("\nTekan [ENTER] untuk melanjutkan...");
             blankInput();
             Tries = Tries + 1;
         }

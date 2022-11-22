@@ -328,7 +328,8 @@ void playHangman(List L)
                 playHangman(L);
                 loop = false;
             } else if (yesnoinput.buffer[0] == 'N' || yesnoinput.buffer[0] == 'n'){
-                printf("Terima kasih telah bermain!\n");
+                printf("Terima kasih telah bermain!\n\n");
+                toContinue();
                 loop = false;
             } else {
                 printf("Input tidak valid!\n");
@@ -380,7 +381,8 @@ void hangman()
                             playHangman(L);
                             loop = false;
                         } else if (yesnoinput.buffer[0] == 'N' || yesnoinput.buffer[0] == 'n'){
-                            printf("Terima kasih telah bermain!\n");
+                            printf("Terima kasih telah bermain!\n\n");
+                            toContinue();
                             loop = false;
                         } else {
                             printf("Input tidak valid!\n");
@@ -409,16 +411,16 @@ void hangman()
     saveListKata(L);
 }
 
-int main()
-{
-    // List L;
-    // createList(&L);
-    // readListKata(&L);
-    // addToListKata(&L);
-    // saveListKata(L);
-    hangman();
-    // toContinue();
-    return 0;
-}
+// int main()
+// {
+//     // List L;
+//     // createList(&L);
+//     // readListKata(&L);
+//     // addToListKata(&L);
+//     // saveListKata(L);
+//     hangman();
+//     // toContinue();
+//     return 0;
+// }
 
 // compile : gcc src/Games/hangman/man.c src/Utility/splash.c src/Games/random.c src/Games/hangman/hangman.c src/ADT/list/array.c src/ADT/word/mesinkata/mesinkata.c src/ADT/word/mesinkarakter/mesinkarakter.c src/ADT/word/word.c src/Misc/ascii/ascii.c src/Misc/io/io.c -o driver

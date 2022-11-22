@@ -6,18 +6,18 @@
 void resetHist(List *listHist){
     Word yn;
     printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET HISTORY?[Y/N]\n");
-    boolean yesno = wordInput(&yn, 2, 5);
+    boolean yesno = wordInput(&yn, 1, 1);
     boolean yes = (isSameWord(yn, stringToWord("Y")) || isSameWord(yn, stringToWord("y")));
     boolean no = (isSameWord(yn, stringToWord("N")) || isSameWord(yn, stringToWord("n")));
     while (!yes && !no){
         printf("Masukan salah! Ulangi input!\n");
-        yesno = wordInput(&yn, 2, 5);
+        yesno = wordInput(&yn, 1, 1);
     }
     if (yes){
         deallocateList(listHist);
         printf("History berhasil di-reset.\n");            
     }else if (no){
-        printf("History tidak jadi di-reset. Berikut adalah daftar Game yang telah dimainkan\n");
+        printf("History tidak jadi di-reset. ");
         history(*listHist, length(*listHist));
     }
 }
@@ -45,7 +45,7 @@ void history(List listHist, int num){
                 printf("\n");
             }        
         }     
-    }else{
+    } else { 
         printf("History kosong.\n");
     }
 }
@@ -78,14 +78,15 @@ void history(List listHist, int num){
 //     playGame(&Q, L, &hist);
 //     playGame(&Q, L, &hist);
 //     playGame(&Q, L, &hist);
-//     //dash battle dash battle dash dash dash
+//     //battle dash battle dash dash dash
 //     printf("List history\n");
 //     displayList(hist);
 //     printf("keluarin history\n");
-//     history(hist, 6);
-//     // resetHist(&hist);
-//     // printf("List history\n");
-//     // displayList(hist);
+//     history(hist, 3);
+//     resetHist(&hist);
+//     printf("List history\n");
+//     displayList(hist);
+//     history(hist, 3);
 
 //     // int num;
 //     // history(List, num);
