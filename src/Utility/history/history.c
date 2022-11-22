@@ -5,10 +5,10 @@
 
 void resetHist(List *listHist){
     Word yn;
-    printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET HISTORY?[YA/TIDAK]\n");
+    printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET HISTORY?[Y/N]\n");
     boolean yesno = wordInput(&yn, 2, 5);
-    boolean yes = isSameWord(yn, stringToWord("YA"));
-    boolean no = isSameWord(yn, stringToWord("TIDAK"));
+    boolean yes = (isSameWord(yn, stringToWord("Y")) || isSameWord(yn, stringToWord("y")));
+    boolean no = (isSameWord(yn, stringToWord("N")) || isSameWord(yn, stringToWord("n")));
     while (!yes && !no){
         printf("Masukan salah! Ulangi input!\n");
         yesno = wordInput(&yn, 2, 5);

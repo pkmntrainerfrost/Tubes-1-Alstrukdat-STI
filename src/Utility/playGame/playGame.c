@@ -56,7 +56,7 @@ void playGame(Queue *Q, List L, List *listHist)
             printf("\nTekan [ENTER] untuk kembali ke menu utama...");
             blankInput();
         }
-        insertLast(listHist, x);
+        insertFirst(listHist, x);
     }
 }
 

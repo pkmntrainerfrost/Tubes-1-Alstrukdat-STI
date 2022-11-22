@@ -24,7 +24,7 @@ void LOAD(Word filename, List *ListGame, List *listHist){
     number = wordToInt(currentKata); //baca jumlah listHist
     advKata();
     for (i=0; i < number; i++){
-        insertLast(listHist,currentKata);
+        insertFirst(listHist,currentKata);
         advKata();
     }
 }

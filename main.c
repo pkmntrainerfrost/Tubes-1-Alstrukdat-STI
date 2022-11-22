@@ -136,6 +136,8 @@ int main() {
                     Word many = getElmt(Input,1);
                     int num = wordToInt(many);
                     history(listHist,num);
+                } else if(isWordEqual(getElmt(Input, 0), stringToWord("RESET")) && isWordEqual(getElmt(Input, 1), stringToWord("HISTORY"))){
+                    resetHist(&listHist);
                 } else {
                     commandlain();
                     printf("Tekan [ENTER] untuk melanjutkan...");
