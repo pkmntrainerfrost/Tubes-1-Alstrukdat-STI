@@ -47,3 +47,21 @@ void history(List listHist, int num){
         printf("History kosong.\n");
     }
 }
+
+// int main()
+// {
+//     List List;
+//     createList(&List);
+//     insertLast(&List, stringToWord("RNG"));
+//     insertLast(&List, stringToWord("Diner DASH"));
+//     insertLast(&List, stringToWord("DINOSAUR IN EARTH"));
+//     insertLast(&List, stringToWord("RISEWOMAN"));
+//     insertLast(&List, stringToWord("EIFFEL TOWER"));
+//     insertLast(&List, stringToWord("Battleship")); 
+//     insertLast(&List, stringToWord("Tetris"));
+//     int num;
+//     history(List, num);
+//     displayList(List);
+// }
+
+// src % gcc ADT/list/array.c ADT/word/word.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c Misc/io/io.c Misc/ascii/ascii.c ADT/queue/queue2.h Utility/history/history.c -o driver
