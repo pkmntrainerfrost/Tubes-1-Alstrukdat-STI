@@ -100,7 +100,7 @@ int main() {
         if (Valid) {
             if (length(Input) == 1) { 
                 if (isWordEqual(getElmt(Input,0),stringToWord("QUIT"))){
-                    quit(&ListGame,&QueueGame);
+                    quit(&ListGame,&QueueGame, &listHist);
                 } else if (isWordEqual(getElmt(Input,0),stringToWord("HELP"))) {
                     help();
                 } else {

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "quit.h"
 
-void quit(List *ListGame, Queue *QGame){
+void quit(List *ListGame, Queue *QGame, List *listHist){
 
     header();
 
@@ -63,7 +63,7 @@ void quit(List *ListGame, Queue *QGame){
                 InputValid = true;
                 char a[wordLength(Check) + 1];
                 wordToString(Check,a);
-                savetoFile(a, *ListGame);
+                savetoFile(a, *ListGame, *listHist);
             } else {
                 InvalidInputs = InvalidInputs + 1;
             }
