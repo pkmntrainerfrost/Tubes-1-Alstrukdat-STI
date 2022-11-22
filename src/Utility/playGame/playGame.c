@@ -25,15 +25,15 @@ void playGame(Queue *Q, List L, List *listHist)
             if (isSameWord(x, stringToWord("RNG"))){
                 rng();
             } else if (isSameWord(x, stringToWord("Diner DASH"))){
-                dinerDash();
+                // dinerDash();
             } else if (isSameWord(x, stringToWord("HANGMAN"))){
-                hangman();
+                // hangman();
             } else if (isSameWord(x, stringToWord("TOWER OF HANOI"))){
                 // towerOfHanoi();
             } else if (isSameWord(x, stringToWord("SNAKE ON METEOR"))){
                 // snakeOnMeteor();
             } else if (isSameWord(x, stringToWord("Battleship"))){
-                battleship();
+                // battleship();
             }
         } 
         // else if (isSameWord(x, stringToWord("EIFFEL TOWER")) || isSameWord(x, stringToWord("RISEWOMAN")) || isSameWord(x, stringToWord("DINOSAUR IN EARTH"))){

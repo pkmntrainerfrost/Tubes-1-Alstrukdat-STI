@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include "history.h"
+#include "../playGame/playGame.h"
+#include "../queueGame/queueGame.h"
 
 void resetHist(List *listHist){
     Word yn;
@@ -50,18 +52,44 @@ void history(List listHist, int num){
 
 // int main()
 // {
-//     List List;
-//     createList(&List);
-//     insertLast(&List, stringToWord("RNG"));
-//     insertLast(&List, stringToWord("Diner DASH"));
-//     insertLast(&List, stringToWord("DINOSAUR IN EARTH"));
-//     insertLast(&List, stringToWord("RISEWOMAN"));
-//     insertLast(&List, stringToWord("EIFFEL TOWER"));
-//     insertLast(&List, stringToWord("Battleship")); 
-//     insertLast(&List, stringToWord("Tetris"));
-//     int num;
-//     history(List, num);
-//     displayList(List);
+//     List L;
+//     createList(&L);
+//     insertLast(&L, stringToWord("RNG"));
+//     insertLast(&L, stringToWord("Diner DASH"));
+//     insertLast(&L, stringToWord("DINOSAUR IN EARTH"));
+//     insertLast(&L, stringToWord("RISEWOMAN"));
+//     insertLast(&L, stringToWord("EIFFEL TOWER"));
+//     insertLast(&L, stringToWord("Battleship")); 
+//     insertLast(&L, stringToWord("Tetris"));
+
+//     List hist;
+//     createList(&hist);
+
+//     Queue Q;
+//     createQueue(&Q);
+//     // enqueue(&Q, stringToWord("Tetris"));
+//     // enqueue(&Q, stringToWord("Diner DASH"));
+//     // enqueue(&Q, stringToWord("RNG"));
+//     queueGame(&Q, L);
+//     displayQueue(Q);
+//     playGame(&Q, L, &hist);
+//     playGame(&Q, L, &hist);
+//     playGame(&Q, L, &hist);
+//     playGame(&Q, L, &hist);
+//     playGame(&Q, L, &hist);
+//     playGame(&Q, L, &hist);
+//     //dash battle dash battle dash dash dash
+//     printf("List history\n");
+//     displayList(hist);
+//     printf("keluarin history\n");
+//     history(hist, 6);
+//     // resetHist(&hist);
+//     // printf("List history\n");
+//     // displayList(hist);
+
+//     // int num;
+//     // history(List, num);
+//     // displayList(List);
 // }
 
-// src % gcc ADT/list/array.c ADT/word/word.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c Misc/io/io.c Misc/ascii/ascii.c ADT/queue/queue2.h Utility/history/history.c -o driver
+// gcc utility/splash.c utility/playGame/playGame.c utility/queuegame/queueGame.c utility/listGame/listGame.c Games/rng/rng.c ADT/list/array.c ADT/word/word.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c Games/random.c Games/dinerdash/dinerdash.c Misc/io/io.c Misc/ascii/ascii.c ADT/queue/queue2.c Utility/history/history.c ADT/queue/prioqueue.c -o driver
