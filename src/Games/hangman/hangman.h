@@ -10,6 +10,7 @@
 #include "../../Misc/io/io.h"
 #include "../../Utility/splash.h"
 #include "../random.h"
+#include "../inputnama.h"
 
 void inputGuess(List Guesses, Word *guess);
 // I.S. Guesses terdefinisi, guess terdefinisi

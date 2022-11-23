@@ -1,7 +1,5 @@
 #include <stdio.h>
-#include "../ADT/map/map.h"
-#include "../ADT/word/word.h"
-#include "../Misc/io/io.h"
+#include "inputnama.h"
 
 void inputName(Map *M)
 {
