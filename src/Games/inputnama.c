@@ -31,10 +31,10 @@ void inputName(Map *M)
     }
 }
 
-int main(){
-    Map m;
-    CreateEmptyMap(&m);
-    inputName(&m);
-}
+// int main(){
+//     Map m;
+//     CreateEmptyMap(&m);
+//     inputName(&m);
+// }
 
-// compile : gcc Games/inputnama.c ADT/map/map.c ADT/word/word.c Misc/ascii/ascii.c Misc/io/io.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/mesinkata/mesinkata.c ADT/list/array.c -o driver
+// compile main nya : gcc Games/inputnama.c ADT/map/map.c ADT/word/word.c Misc/ascii/ascii.c Misc/io/io.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/mesinkata/mesinkata.c ADT/list/array.c -o driver
