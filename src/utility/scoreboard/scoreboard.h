@@ -10,7 +10,10 @@
 #include "../../Misc/io/io.h"
 #include "../../Misc/ascii/ascii.h"
 
-void scoreboard(Map daftarsb, int num);
-void resetscoreboard(Map *daftarsb);
+void displayscoreboard(Map M);
+/*untuk menampilkan scoreboard*/
+
+void inserttoscoreboard(Map *M, Word nama, int score);
+/*menambahkan nama serta score*/
 
 #endif

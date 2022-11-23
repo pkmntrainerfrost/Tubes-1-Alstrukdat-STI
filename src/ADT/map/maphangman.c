@@ -43,4 +43,4 @@ void sbHangman(Map h){
 //     return 0;
 // }
 
-// compile main nya: gcc ADT/map/maphangman.c ADT/map/map.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c Misc/ascii/ascii.c -o driver
+// compile main nya: gcc src/ADT/map/maphangman.c src/ADT/map/map.c src/ADT/word/mesinkata/mesinkata.c src/ADT/word/mesinkarakter/mesinkarakter.c src/ADT/word/word.c src/Misc/ascii/ascii.c -o driver
