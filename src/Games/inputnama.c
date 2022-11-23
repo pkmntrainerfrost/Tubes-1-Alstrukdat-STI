@@ -1,5 +1,7 @@
+#include <stdio.h>
 #include "../ADT/map/map.h"
 #include "../ADT/word/word.h"
+#include "../Misc/io/io.h"
 
 void inputName(Map *M)
 {
@@ -28,3 +30,11 @@ void inputName(Map *M)
         }
     }
 }
+
+int main(){
+    Map m;
+    CreateEmptyMap(&m);
+    inputName(&m);
+}
+
+// compile : gcc Games/inputnama.c ADT/map/map.c ADT/word/word.c Misc/ascii/ascii.c Misc/io/io.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/mesinkata/mesinkata.c ADT/list/array.c -o driver

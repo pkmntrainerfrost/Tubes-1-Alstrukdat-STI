@@ -4,7 +4,7 @@
 #include "../boolean.h"
 #include "../word/mesinkata/mesinkata.h"
 
-#define Nil NULL
+#define Nil 0
 #define initialSize 10
 
 #define ElType Word
