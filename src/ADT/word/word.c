@@ -82,6 +82,12 @@ Word charToWord(char s)
     return w;
 }
 
+char wordToChar(Word s){
+    char kar;
+    kar = s.buffer[0];
+    return kar;
+}
+
 /* Merubah sebuah string menjadi sebuah word */
 Word stringToWord(char *s) {
 
