@@ -24,8 +24,8 @@ void resetHist(List *listHist){
 
 void history(List listHist, int num){
     int i;
-    printf("Berikut adalah daftar Game yang telah dimainkan\n");
     if (length(listHist) > 0){
+        printf("Berikut adalah daftar Game yang telah dimainkan\n");
         if (num < length(listHist)){
             for (i = 0; i < num; i++){
                 printf("%d. ", i+1);
@@ -46,7 +46,7 @@ void history(List listHist, int num){
             }        
         }     
     } else { 
-        printf("History kosong.\n");
+        printf("Belum ada Game yang dimainkan.\n");
     }
 }
 

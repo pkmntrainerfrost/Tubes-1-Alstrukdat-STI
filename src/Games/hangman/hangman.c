@@ -10,9 +10,10 @@ void inputGuess(List Guesses, Word *guess) {
         printf("\nMasukkan tebakan Anda: ");
         boolean valid = wordInput(guess,1,1);
         if (valid) {
-            if ((*guess).buffer[0] >= 'a' && (*guess).buffer[0] <= 'z') {
-                (*guess).buffer[0] -= 32;
-            }
+            lower((*guess).buffer[0]);
+            // if ((*guess).buffer[0] >= 'A' && (*guess).buffer[0] <= 'Z') {
+            //     (*guess).buffer[0] += 32;
+            // }
 
             if (isMemberList(Guesses, *guess)) {
                 printf("Anda sudah pernah menebak huruf %c\n", (*guess).buffer[0]);
@@ -136,9 +137,10 @@ void addToListKata(List *L){
                     // all uppercase
                     int k;
                     for(k=0; k<kata.length; k++){
-                        if (kata.buffer[k] >= 'a' && kata.buffer[k] <= 'z'){
-                            kata.buffer[k] -= 32;
-                        }
+                        upper(kata.buffer[k]);
+                        // if (kata.buffer[k] >= 'a' && kata.buffer[k] <= 'z'){
+                        //     kata.buffer[k] -= 32;
+                        // }
                     }
 
                     insertLast(L, kata);
@@ -252,8 +254,10 @@ void playHangman(List L)
 
             cek = false;
             for (i=0; i<length(GuessWord); i++){
-                if (isWordEqual(guess, getElmt(GuessWord,i))){
-                    setElmt(&kata, i, guess);
+                char uppercase = upper(wordToChar(guess));
+                if (isWordEqual(charToWord(uppercase), getElmt(GuessWord,i))){
+                    Word kar = charToWord(upper(guess.buffer[0]));
+                    setElmt(&kata, i, kar);
                     cek = true;
                     valid++;
                 }
@@ -411,16 +415,16 @@ void hangman()
     saveListKata(L);
 }
 
-// int main()
-// {
-//     // List L;
-//     // createList(&L);
-//     // readListKata(&L);
-//     // addToListKata(&L);
-//     // saveListKata(L);
-//     hangman();
-//     // toContinue();
-//     return 0;
-// }
+int main()
+{
+    // List L;
+    // createList(&L);
+    // readListKata(&L);
+    // addToListKata(&L);
+    // saveListKata(L);
+    hangman();
+    // toContinue();
+    return 0;
+}
 
 // compile : gcc src/Games/hangman/man.c src/Utility/splash.c src/Games/random.c src/Games/hangman/hangman.c src/ADT/list/array.c src/ADT/word/mesinkata/mesinkata.c src/ADT/word/mesinkarakter/mesinkarakter.c src/ADT/word/word.c src/Misc/ascii/ascii.c src/Misc/io/io.c -o driver

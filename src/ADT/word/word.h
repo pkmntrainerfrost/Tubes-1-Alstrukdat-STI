@@ -35,6 +35,8 @@ Word stringToWord(char *s);
 
 Word charToWord(char s);
 
+char wordToChar(Word s);
+
 /* Merubah sebuah kata menjadi suatu integer, apabila word bukan integer yang valid maka akan mengembalikan INT_INVALID */
 int wordToInt(Word w);
 
