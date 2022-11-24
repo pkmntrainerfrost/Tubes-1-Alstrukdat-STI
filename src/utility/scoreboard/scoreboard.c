@@ -23,7 +23,7 @@ void displayscoreboard(Map M){
     }
 }
 
-void resetscoreboard(){
+void resetscoreboard(Map M){
     printf("DAFTAR SCOREBOARD: \n");
     printf("0. ALL\n");
     printf("1. RNG\n");
@@ -51,6 +51,7 @@ void resetscoreboard(){
 
         printf("\n");
         if(isWordEqual(input, ansyes)){
+            deallocateMap(&M);
             printf("Scoreboard berhasil di-reset.\n");
         }else if(isWordEqual(input, ansno)){
             printf("Scoreboard tidak di-reset.\n");

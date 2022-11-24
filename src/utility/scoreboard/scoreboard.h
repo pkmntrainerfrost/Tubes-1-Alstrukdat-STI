@@ -13,6 +13,6 @@
 void displayscoreboard(Map M);
 /*untuk menampilkan scoreboard*/
 
-void resetscoreboard();
+void resetscoreboard(Map M);
 /*untuk command reset scoreboard*/
 #endif
