@@ -46,11 +46,7 @@ void history(List listHist, int num){
             }        
         }     
     } else { 
-<<<<<<< Updated upstream
         printf("Belum ada Game yang dimainkan.\n");
-=======
-        printf("History kosong.\n");
->>>>>>> Stashed changes
     }
 }
 
