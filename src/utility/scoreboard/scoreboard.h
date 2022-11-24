@@ -16,7 +16,4 @@ void displayscoreboard(Map M);
 void inserttoscoreboard(Map *M, Word nama, int score);
 /*menambahkan nama serta score*/
 
-void scoreboard(Map daftarsb, int num);
-void resetscoreboard(Map *daftarsb);
-
 #endif
