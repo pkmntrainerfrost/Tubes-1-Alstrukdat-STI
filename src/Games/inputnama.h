@@ -3,4 +3,5 @@
 #include "../Misc/io/io.h"
 #include "../ADT/boolean.h"
 
-void inputName(Map *M);
+void inputName(Map *M, int score);
+/*untuk input nama di setiap game*/

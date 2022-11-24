@@ -15,6 +15,7 @@
 #include "../../Misc/ascii/ascii.h"
 #include "../../ADT/list/array.h"
 #include "../../Games/random.h"
+#include "../inputnama.h"
 
 // boolean isSame(char str1[], char str2[]);
 // mengembalikan true jika str1 sama dengan str2

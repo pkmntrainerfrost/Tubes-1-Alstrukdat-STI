@@ -11,6 +11,7 @@
 #include "../../Misc/ascii/ascii.h"
 #include "../../ADT/list/array.h"
 #include "../../Games/random.h"
+#include "dinerdash.h"
 
 PQElType addQueue(int i){
     PQElType addOrder;
@@ -192,12 +193,16 @@ void dinerDash(){
     }
     printf("========== GAME OVER ==========\n");
     printf("SKOR AKHIR : %d\n", saldo);
+    Map h;
+    inputName(&h, saldo);
 }
 
-/*
+
 int main(){
     dinerDash();
 }
+
+/*
 compile:
 gcc /Users/trista/Documents/GitHub/Tubes-1-Alstrukdat-STI/src/Games/dinerdash/dinerdash.c /Users/trista/Documents/GitHub/Tubes-1-Alstrukdat-STI/src/ADT/word/mesinkarakter/mesinkarakter.c /Users/trista/Documents/GitHub/Tubes-1-Alstrukdat-STI/src/ADT/word/mesinkata/mesinkata.c /Users/trista/Documents/GitHub/Tubes-1-Alstrukdat-STI/src/ADT/queue/prioqueue.c /Users/trista/Documents/GitHub/Tubes-1-Alstrukdat-STI/src/ADT/queue/queue2.c /Users/trista/Documents/GitHub/Tubes-1-Alstrukdat-STI/src/Misc/io/io.c /Users/trista/Documents/GitHub/Tubes-1-Alstrukdat-STI/src/ADT/word/word.c /Users/trista/Documents/GitHub/Tubes-1-Alstrukdat-STI/src/Misc/ascii/ascii.c /Users/trista/Documents/GitHub/Tubes-1-Alstrukdat-STI/src/ADT/list/array.c -o try_DD
 */

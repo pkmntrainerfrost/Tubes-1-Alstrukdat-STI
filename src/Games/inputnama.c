@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "inputnama.h"
 
-void inputName(Map *M)
+void inputName(Map *M, int score)
 {
     boolean repeat = true;
     while (repeat){
@@ -13,9 +13,6 @@ void inputName(Map *M)
             if (IsMemberMap(*M, name)){
                 printf("Nama sudah ada di daftar scoreboard. \n");
             } else {
-                printf("Masukkan score: ");
-                int score;
-                scanf("%d", &score);
                 InsertMap(M, name, score);
                 repeat = false;
             }

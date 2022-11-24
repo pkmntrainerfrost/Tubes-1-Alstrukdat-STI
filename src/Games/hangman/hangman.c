@@ -333,7 +333,7 @@ void playHangman(List L)
                 loop = false;
             } else if (yesnoinput.buffer[0] == 'N' || yesnoinput.buffer[0] == 'n'){
                 Map h;
-                inputName(&h);
+                inputName(&h, score);
                 printf("Terima kasih telah bermain!\n\n");
                 toContinue();
                 loop = false;
@@ -417,17 +417,17 @@ void hangman()
     saveListKata(L);
 }
 
-// int main()
-// {
-//     // List L;
-//     // createList(&L);
-//     // readListKata(&L);
-//     // addToListKata(&L);
-//     // saveListKata(L);
-//     hangman();
-//     // toContinue();
-//     return 0;
-// }
+int main()
+{
+    // List L;
+    // createList(&L);
+    // readListKata(&L);
+    // addToListKata(&L);
+    // saveListKata(L);
+    hangman();
+    // toContinue();
+    return 0;
+}
 
 // compile : gcc src/Games/hangman/man.c src/Utility/splash.c src/Games/random.c src/Games/hangman/hangman.c src/ADT/list/array.c src/ADT/word/mesinkata/mesinkata.c src/ADT/word/mesinkarakter/mesinkarakter.c src/ADT/word/word.c src/Misc/ascii/ascii.c src/Misc/io/io.c -o driver
-// Games/hangman/man.c Utility/splash.c Games/inputnama.c Games/random.c Games/hangman/hangman.c ADT/list/array.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c Misc/ascii/ascii.c Misc/io/io.c -o driver
+// compile kalo masuk ke src dulu : Games/hangman/man.c Utility/splash.c Games/inputnama.c Games/random.c Games/hangman/hangman.c ADT/list/array.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c Misc/ascii/ascii.c Misc/io/io.c ADT/map/map.c -o driver
