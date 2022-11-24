@@ -13,7 +13,6 @@
 void displayscoreboard(Map M);
 /*untuk menampilkan scoreboard*/
 
-void inserttoscoreboard(Map *M, Word nama, int score);
-/*menambahkan nama serta score*/
-
+void resetscoreboard();
+/*untuk command reset scoreboard*/
 #endif
