@@ -143,21 +143,24 @@ void resetscoreboard(Map M){
 }
 
 int main(){
-    Map MapHangman;
-    CreateEmptyMap(&MapHangman);
-    keytype test, test1;
-    test = stringToWord("hai");
-    test1 = stringToWord("halo");
-    valuetype testInfo, test1Info;
-    testInfo = 10;
-    test1Info = 20;
-    InsertMap(&MapHangman, test, testInfo);
-    InsertMap(&MapHangman, test1, test1Info);
-    printf("**** SCOREBOARD GAME HANGMAN ****\n");
+    // Map MapHangman;
+    // CreateEmptyMap(&MapHangman);
+    // keytype test, test1;
+    // test = stringToWord("hai");
+    // test1 = stringToWord("halo");
+    // valuetype testInfo, test1Info;
+    // testInfo = 10;
+    // test1Info = 20;
+    // InsertMap(&MapHangman, test, testInfo);
+    // InsertMap(&MapHangman, test1, test1Info);
+    Map r;
+    CreateEmptyMap(&r);
+    rng(&r);
+    printf("**** SCOREBOARD GAME RNG ****\n");
     printf("| NAMA        | SKOR        |\n");
-    displayscoreboard(MapHangman);
+    displayscoreboard(r);
     printf("\n");
-    resetscoreboard(MapHangman);
+    // resetscoreboard(MapHangman);
 }
 
 //compile (ketik cd src dulu) : gcc Utility/scoreboard/scoreboard.c ADT/map/map.c ADT/word/word.c ADT/word/mesinkata/mesinkata.c Misc/io/io.c ADT/word/mesinkarakter/mesinkarakter.c Misc/ascii/ascii.c ADT/list/array.c -o try

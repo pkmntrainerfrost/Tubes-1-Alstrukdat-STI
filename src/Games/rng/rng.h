@@ -7,6 +7,7 @@
 #include "../../ADT/word/word.h"
 #include "../../Misc/io/io.h"
 #include "../../Utility/splash.h"
+#include "../inputnama.h"
 
 void rng();
 

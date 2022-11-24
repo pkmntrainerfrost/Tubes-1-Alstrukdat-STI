@@ -332,8 +332,8 @@ void playHangman(List L)
                 playHangman(L);
                 loop = false;
             } else if (yesnoinput.buffer[0] == 'N' || yesnoinput.buffer[0] == 'n'){
-                Map h;
-                inputName(&h, score);
+                // Map h;
+                // inputName(&h, score);
                 printf("Terima kasih telah bermain!\n\n");
                 toContinue();
                 loop = false;

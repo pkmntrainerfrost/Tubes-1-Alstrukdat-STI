@@ -9,6 +9,7 @@
 #include "../listGame/listGame.h"
 #include "../../Misc/io/io.h"
 #include "../../Misc/ascii/ascii.h"
+#include "../../Games/rng/rng.h"
 
 void displayscoreboard(Map M);
 /*untuk menampilkan scoreboard*/
