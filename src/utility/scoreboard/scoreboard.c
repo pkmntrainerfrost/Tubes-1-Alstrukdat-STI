@@ -155,9 +155,9 @@ int main(){
     InsertMap(&MapHangman, test1, test1Info);
     printf("**** SCOREBOARD GAME HANGMAN ****\n");
     printf("| NAMA        | SKOR        |\n");
-    printf("\n");
     displayscoreboard(MapHangman);
-    resetscoreboard();
+    printf("\n");
+    resetscoreboard(MapHangman);
 }
 
 //compile (ketik cd src dulu) : gcc Utility/scoreboard/scoreboard.c ADT/map/map.c ADT/word/word.c ADT/word/mesinkata/mesinkata.c Misc/io/io.c ADT/word/mesinkarakter/mesinkarakter.c Misc/ascii/ascii.c ADT/list/array.c -o try
