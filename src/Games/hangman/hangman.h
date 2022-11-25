@@ -44,11 +44,11 @@ void saveListKata(List L);
 // I.S. L terdefinisi
 // F.S. Menyimpan List L ke file listkata.txt
 
-void playHangman(List L, ListMap *M);
+void playHangman(List L, ListMap *M, ListSet *S);
 // I.S. L terdefinisi
 // F.S. Memainkan game hangman
 
-void hangman(ListMap *M);
+void hangman(ListMap *M, ListSet *S);
 // I.S. Sembarang
 // F.S. Menunjukkan pilihan main game hangman atau menambah kata
 

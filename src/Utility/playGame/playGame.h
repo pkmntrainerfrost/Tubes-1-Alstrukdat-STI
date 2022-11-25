@@ -12,8 +12,9 @@
 #include "../../Games/battleship/battleship.h"
 #include "../../Games/hangman/hangman.h"
 #include "../../ADT/map/listMap.h"
+#include "../../ADT/set/listSet.h"
 
-void playGame(Queue *Q, List L, List *listHist, ListMap *M);
+void playGame(Queue *Q, List L, List *listHist, ListMap *M, ListSet *S);
 // Game yang dimainkan adalah game dengan antrian pertama di antrian game
 // Game yang dapat dimainkan adalah game yang ada di spek game
 

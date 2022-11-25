@@ -36,6 +36,10 @@ int main() {
     createListMap(&ListMapGame);
     addMap(&ListMapGame);
 
+    ListSet ListName;
+    createListSet(&ListName);
+    addSet(&ListName);
+
     boolean Started = false;
 
     boolean InvalidFile = false;
@@ -123,13 +127,13 @@ int main() {
                     } else if (isWordEqual(getElmt(Input,0),stringToWord("DELETE"))){
                         deleteGame(&ListGame, QueueGame);
                     } else if (isWordEqual(getElmt(Input,0),stringToWord("PLAY"))){
-                        playGame(&QueueGame, ListGame, &listHist, &ListMapGame);
+                        playGame(&QueueGame, ListGame, &listHist, &ListMapGame, &ListName);
                     } else if (isWordEqual(getElmt(Input,0),stringToWord("QUEUE"))){
                         queueGame(&QueueGame, ListGame);
                     } else if (isWordEqual(getElmt(Input,0),stringToWord("CREATE"))){
-                        createGame(&ListGame, &ListMapGame);
+                        createGame(&ListGame, &ListMapGame, &ListName);
                     } else if (isWordEqual(getElmt(Input,0),stringToWord("SKIP")) && wordToInt(getElmt(Input,2)) != INVALID_INT && wordToInt(getElmt(Input,2)) >= 0){
-                        skipGame(&QueueGame,ListGame,wordToInt(getElmt(Input,2)), &listHist, &ListMapGame);
+                        skipGame(&QueueGame,ListGame,wordToInt(getElmt(Input,2)), &listHist, &ListMapGame, &ListName);
                     } else {
                         commandlain();
                         printf("\n");
@@ -171,7 +175,7 @@ int main() {
                 }
             } else if (length(Input) == 3){
                 if (isWordEqual(getElmt(Input,0),stringToWord("SKIP")) && isWordEqual(getElmt(Input,1),stringToWord("GAME")) && wordToInt(getElmt(Input,2)) != INVALID_INT && wordToInt(getElmt(Input,2)) >= 0){
-                    skipGame(&QueueGame,ListGame,wordToInt(getElmt(Input,2)), &listHist, &ListMapGame);
+                    skipGame(&QueueGame,ListGame,wordToInt(getElmt(Input,2)), &listHist, &ListMapGame, &ListName);
                 } else {
                     commandlain();
                     printf("\nTekan [ENTER] untuk melanjutkan...");

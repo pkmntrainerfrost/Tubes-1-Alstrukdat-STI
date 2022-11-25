@@ -5,6 +5,7 @@
 #include "../word/mesinkata/mesinkata.h"
 #include "../../Misc/io/io.h"
 #include "../../Misc/ascii/ascii.h"
+#include "../set/listSet.h"
 
 /* MODUL Map
 Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
@@ -29,6 +30,7 @@ typedef struct {
 typedef struct {
 	infotype *Elements;
 	address Count;
+	int CapacityMap;
 } Map;
 
 /* Definisi Map M kosong : M.Count = Nil */
@@ -81,6 +83,6 @@ void PrintMap(Map M, Word GameName);
 // Di setiap keadaan game over atau menang sebuah game, program meminta nama pemain. 
 // Nama pemain yang valid adalah nama yang belum terpakai di scoreboard game yang sedang dimainkan. Kemudian program menyimpan nama dan skor game tersebut di ADT Map.
 
-void inputData(Map *M, int score);
+void inputData(Map *M, Set *S, int score);
 
 #endif

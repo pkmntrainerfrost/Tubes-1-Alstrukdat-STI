@@ -212,7 +212,7 @@ void saveListKata(List L){
     fclose(saveFileKata);
 }
 
-void playHangman(List L, ListMap *M)
+void playHangman(List L, ListMap *M, ListSet *S)
 {
     int chance = 10;
     Word guess;
@@ -318,7 +318,7 @@ void playHangman(List L, ListMap *M)
         printf("Skor Anda: %d\n\n", score);
     }
 
-    inputDataListMap(M, 2, score);
+    inputDataListMap(M, S, 2, score);
     toContinue();
 
     boolean loop = true;
@@ -330,7 +330,7 @@ void playHangman(List L, ListMap *M)
         boolean ans = wordInput(&yesnoinput, 1, 1);
         if (ans){
             if (yesnoinput.buffer[0] == 'Y' || yesnoinput.buffer[0] == 'y'){
-                playHangman(L, M);
+                playHangman(L, M, S);
                 loop = false;
             } else if (yesnoinput.buffer[0] == 'N' || yesnoinput.buffer[0] == 'n'){
                 printf("Terima kasih telah bermain!\n\n");
@@ -349,7 +349,7 @@ void playHangman(List L, ListMap *M)
     }
 }
 
-void hangman(ListMap *M)
+void hangman(ListMap *M, ListSet *S)
 {
     header();
     printf("Selamat datang di permainan Hangman!\n");
@@ -370,7 +370,7 @@ void hangman(ListMap *M)
         boolean valid = wordInput(&input,1,1);
         if (valid){
             if (input.buffer[0] == '1'){
-                playHangman(L, M);
+                playHangman(L, M, S);
                 repeat = false;
             } else if (input.buffer[0] == '2'){
                 addToListKata(&L);
@@ -383,7 +383,7 @@ void hangman(ListMap *M)
                     boolean ans = wordInput(&yesnoinput, 1, 1);
                     if (ans){
                         if (yesnoinput.buffer[0] == 'Y' || yesnoinput.buffer[0] == 'y'){
-                            playHangman(L, M);
+                            playHangman(L, M, S);
                             loop = false;
                         } else if (yesnoinput.buffer[0] == 'N' || yesnoinput.buffer[0] == 'n'){
                             printf("Terima kasih telah bermain!\n\n");

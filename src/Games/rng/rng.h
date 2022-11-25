@@ -9,7 +9,7 @@
 #include "../../Utility/splash.h"
 #include "../../ADT/map/listMap.h"
 
-void rng(ListMap *M);
+void rng(ListMap *M, ListSet *S);
 
 void rngSplash();
 

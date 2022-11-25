@@ -27,8 +27,10 @@ boolean isFullListMap(ListMap L);
 
 void insertListMap(ListMap *L, Map M);
 
+void deleteListMap(ListMap *L, int idx);
+
 void displayListMap(ListMap L, List Game);
 
-void inputDataListMap(ListMap *L, int idx, int score);
+void inputDataListMap(ListMap *L, ListSet *S, int idx, int score);
 
 #endif

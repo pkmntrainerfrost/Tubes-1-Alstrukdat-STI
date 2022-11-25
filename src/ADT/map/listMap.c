@@ -49,8 +49,16 @@ void insertListMap(ListMap *L, Map M){
     (*L).nEff++;
 }
 
-void inputDataListMap(ListMap *L, int idx, int score){
-    inputData(&((*L).ElmtListMap[idx]), score);
+void deleteListMap(ListMap *L, int idx){
+    int i;
+    for (i=idx; i<(*L).nEff-1; i++){
+        (*L).ElmtListMap[i] = (*L).ElmtListMap[i+1];
+    }
+    (*L).nEff--;
+}
+
+void inputDataListMap(ListMap *L, ListSet *S, int idx, int score){
+    inputData(&((*L).ElmtListMap[idx]), &((*S).ElmtListSet[idx]), score);
 }
 
 void displayListMap(ListMap L, List Game){

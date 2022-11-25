@@ -3,7 +3,7 @@
 #include <time.h>
 #include "rng.h"
 
-void rng(ListMap *M){
+void rng(ListMap *M, ListSet *S){
 
     header();
 
@@ -39,7 +39,7 @@ void rng(ListMap *M){
                     Score = 0;
                 }
                 printf("\nSkor Anda adalah: %d\n",Score);
-                inputDataListMap(M, 0, Score);
+                inputDataListMap(M, S, 0, Score);
                 Correct = true;
             }
         } else {

@@ -9,7 +9,7 @@ int main() {
     } else {
         printf("Set tidak kosong\n");
     }
-    infotype test, test1;
+    infotypeSet test, test1;
     test = stringToWord("hai");
     test1 = stringToWord("halo");
     InsertSet(&S, test);
@@ -19,8 +19,16 @@ int main() {
     } else {
         printf("hai bukan anggota set\n");
     }
+
     PrintSet(S);
+
+    boolean valid = InsertSet(&S, test);
+    if (valid){
+        printf("true\n");
+    } else {
+        printf("false\n");
+    }
 
 }
 
-// compile : gcc ADT/set/driverset.c ADT/set/set.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c Misc/ascii/ascii.c -o driver
+// compile : gcc src/ADT/set/driverset.c src/ADT/set/set.c src/ADT/word/mesinkata/mesinkata.c src/ADT/word/mesinkarakter/mesinkarakter.c src/ADT/word/word.c src/Misc/ascii/ascii.c -o driver

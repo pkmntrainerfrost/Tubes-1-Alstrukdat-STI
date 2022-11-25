@@ -9,16 +9,17 @@ Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 */
 
 #define Nil 0
-#define MaxEl 100
+#define InitialSizeSet 10
 
-#define infotype Word
+#define infotypeSet Word
 
 typedef int address;
 
 typedef struct
 {
-    infotype Elementset[MaxEl];
+    infotypeSet *Elementset;
     address Countset;
+    int CapacitySet;
 } Set;
 
 /* Definisi Set S kosong : S.Count = Nil */
@@ -33,6 +34,10 @@ void CreateEmptySet(Set *S);
 /* F.S. Membuat sebuah Set S kosong berkapasitas MaxEl */
 /* Ciri Set kosong : count bernilai Nil */
 
+void deallocateSet(Set *S);
+
+void updateCapacitySet(Set *S);
+
 /* ********* Predikat Untuk test keadaan KOLEKSI ********* */
 boolean IsEmptySet(Set S);
 /* Mengirim true jika Set S kosong*/
@@ -43,19 +48,19 @@ boolean IsFullSet(Set S);
 /* Ciri Set penuh : count bernilai MaxEl */
 
 /* ********** Operator Dasar Set ********* */
-void InsertSet(Set *S, infotype Elmt);
-/* Menambahkan Elmt sebagai elemen Set S. */
+boolean InsertSet(Set *S, infotypeSet Elmt);
+/* Menambahkan Elmt sebagai elemen Set S jika elmt tidak ada di S. */
 /* I.S. S mungkin kosong, S tidak penuh
         S mungkin sudah beranggotakan Elmt */
-/* F.S. Elmt menjadi anggota dari S. Jika Elmt sudah merupakan anggota, operasi tidak dilakukan */
+/* F.S. Elmt menjadi anggota dari S dan true. Jika Elmt sudah merupakan anggota, operasi tidak dilakukan dan false */
 
-void DeleteSet(Set *S, infotype Elmt);
+void DeleteSet(Set *S, infotypeSet Elmt);
 /* Menghapus Elmt dari Set S. */
 /* I.S. S tidak kosong
         Elmt mungkin anggota / bukan anggota dari S */
 /* F.S. Elmt bukan anggota dari S */
 
-boolean IsMemberSet(Set S, infotype Elmt);
+boolean IsMemberSet(Set S, infotypeSet Elmt);
 /* Mengembalikan true jika Elmt adalah member dari S */
 
 void PrintSet(Set S);

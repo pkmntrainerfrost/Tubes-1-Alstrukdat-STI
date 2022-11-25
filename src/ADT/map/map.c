@@ -5,12 +5,14 @@
 void CreateEmptyMap(Map *M)
 {
     (*M).Elements = (infotype*) malloc (InitialSize * sizeof(infotype));
+    (*M).CapacityMap = InitialSize;
     (*M).Count = Nil;
 }
 
 void deallocateMap(Map *M)
 {
     free((*M).Elements);
+    (*M).CapacityMap = 0;
     (*M).Count = Nil;
 }
 
@@ -24,6 +26,7 @@ void updateCapacityMap(Map *M)
     }
     free((*M).Elements);
     (*M).Elements = newBuffer;
+    (*M).CapacityMap = newCapacity;
 }
 
 boolean IsEmptyMap(Map M)
@@ -33,7 +36,7 @@ boolean IsEmptyMap(Map M)
 
 boolean IsFullMap(Map M)
 {
-    return (M.Count == InitialSize);
+    return (M.Count == M.CapacityMap);
 }
 
 valuetype Value(Map M, keytype k)
@@ -130,7 +133,7 @@ void PrintMap(Map M, Word GameName)
     printf("\n");
 }
 
-void inputData(Map *M, int score)
+void inputData(Map *M, Set *S, int score)
 {
     boolean repeat = true;
     while (repeat){
@@ -139,11 +142,11 @@ void inputData(Map *M, int score)
         boolean valid = wordInput(&name, 1, 15);
 
         if (valid){
-            if (IsMemberMap(*M, name)){
-                printf("Nama sudah ada di daftar scoreboard. \n");
-            } else {
+            if (InsertSet(S, name)){
                 InsertMap(M, name, score);
                 repeat = false;
+            } else {
+                printf("Nama sudah ada di dalam scoreboard. Silakan masukkan nama lain.\n");
             }
         } else {
             if (wordLength(name) == 0){

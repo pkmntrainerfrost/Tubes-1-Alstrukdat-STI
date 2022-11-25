@@ -47,7 +47,7 @@ typedef struct {
 #define SHIP(g,i) (g).ships[i]
 #define ENEMY(g)  (g).enemy
 
-void battleship(ListMap *M);
+void battleship(ListMap *M, ListSet *S);
 
 void battleshipSplash();
 

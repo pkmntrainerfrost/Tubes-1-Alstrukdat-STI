@@ -160,6 +160,23 @@ void addMap(ListMap *M){
     insertListMap(M, mapBattle);
 }
 
+void addSet(ListSet *S){
+    Set setRNG, setDiner, setHangman, setTower, setSnake, setBattle;
+    CreateEmptySet(&setRNG);
+    CreateEmptySet(&setDiner);
+    CreateEmptySet(&setHangman);
+    CreateEmptySet(&setTower);
+    CreateEmptySet(&setSnake);
+    CreateEmptySet(&setBattle);
+
+    insertListSet(S, setRNG);
+    insertListSet(S, setDiner);
+    insertListSet(S, setHangman);
+    insertListSet(S, setTower);
+    insertListSet(S, setSnake);
+    insertListSet(S, setBattle);
+}
+
 void scoreboard(ListMap M, List L){
     displayListMap(M, L);
 }

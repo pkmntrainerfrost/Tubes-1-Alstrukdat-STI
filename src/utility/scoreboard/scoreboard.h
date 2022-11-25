@@ -10,8 +10,11 @@
 #include "../../Misc/io/io.h"
 #include "../../Misc/ascii/ascii.h"
 #include "../../ADT/map/listMap.h"
+#include "../../ADT/set/listSet.h"
 
 void addMap(ListMap *M);
+
+void addSet(ListSet *S);
 
 void scoreboard(ListMap M, List L);
 

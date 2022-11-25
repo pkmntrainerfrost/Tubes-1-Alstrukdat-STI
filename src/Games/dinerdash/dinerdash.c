@@ -12,7 +12,7 @@ PQElType addQueue(int i){
     return addOrder;
 }
 
-void dinerDash(ListMap *M){
+void dinerDash(ListMap *M, ListSet *S){
 
     char input[100];
     char cook[] = "COOK";
@@ -183,7 +183,7 @@ void dinerDash(ListMap *M){
     }
     printf("========== GAME OVER ==========\n");
     printf("SKOR AKHIR : %d\n", saldo);
-    inputDataListMap(M, 1, saldo);
+    inputDataListMap(M, S, 1, saldo);
 }
 
 

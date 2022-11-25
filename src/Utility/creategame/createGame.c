@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include "createGame.h"
 
-void createGame(List *L, ListMap *LM){
+void createGame(List *L, ListMap *LM, ListSet *LS){
 
     Map M;
+    Set S;
 
     boolean repeat = true;
 
@@ -34,6 +35,11 @@ void createGame(List *L, ListMap *LM){
                 // insert map baru ke list map
                 CreateEmptyMap(&M);
                 insertListMap(LM,M);
+
+                // insert set baru ke list set
+                CreateEmptySet(&S);
+                insertListSet(LS,S);
+                
                 repeat = false;
             }
         } else {

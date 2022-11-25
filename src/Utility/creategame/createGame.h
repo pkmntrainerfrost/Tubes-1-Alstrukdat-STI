@@ -13,10 +13,11 @@
 #include "../../Misc/ascii/ascii.h"
 #include "../../ADT/map/map.h"
 #include "../../ADT/map/listMap.h"
+#include "../../ADT/set/listSet.h"
 #include "../splash.h"
 
 
-void createGame(List *L, ListMap *LM);
+void createGame(List *L, ListMap *LM, ListSet *LS);
 // I.S. List game tidak kosong
 // F.S. Jika input tidak NULL, menambahkan game baru dalam di akhir list game
 // Jika input NULL, gagal menambahkan game baru
