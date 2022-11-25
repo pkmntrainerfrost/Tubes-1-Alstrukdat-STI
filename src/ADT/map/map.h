@@ -85,4 +85,6 @@ void PrintMap(Map M, Word GameName);
 
 void inputData(Map *M, Set *S, int score);
 
+void sortMap(Map *M);
+
 #endif

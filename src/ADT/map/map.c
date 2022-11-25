@@ -170,3 +170,17 @@ void inputData(Map *M, Set *S, int score)
         }
     }
 }
+
+void sortMap(Map *M)
+{
+    int i, j;
+    for (i=0; i<(*M).Count-1; i++){
+        for (j=i+1; j<(*M).Count; j++){
+            if ((*M).Elements[i].score < (*M).Elements[j].score){
+                infotype temp = (*M).Elements[i];
+                (*M).Elements[i] = (*M).Elements[j];
+                (*M).Elements[j] = temp;
+            }
+        }
+    }
+}

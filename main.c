@@ -113,7 +113,7 @@ int main() {
                 } else if (isWordEqual(getElmt(Input,0),stringToWord("HELP"))) {
                     help();
                 } else if (isWordEqual(getElmt(Input, 0), stringToWord("SCOREBOARD"))){
-                    scoreboard(ListMapGame, ListGame);
+                    scoreboard(&ListMapGame, ListGame);
                     printf("\n");
                     toContinue();
                 } else {

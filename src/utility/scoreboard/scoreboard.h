@@ -16,7 +16,7 @@ void addMap(ListMap *M);
 
 void addSet(ListSet *S);
 
-void scoreboard(ListMap M, List L);
+void scoreboard(ListMap *M, List L);
 
 // void scoreboard(Map daftarsb, int num);
 // void resetscoreboard(Map *daftarsb);

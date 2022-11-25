@@ -177,6 +177,11 @@ void addSet(ListSet *S){
     insertListSet(S, setBattle);
 }
 
-void scoreboard(ListMap M, List L){
-    displayListMap(M, L);
+void scoreboard(ListMap *M, List L){
+    // sort
+    int i;
+    for(i=0; i<(*M).nEff; i++){
+        sortMap(&(*M).ElmtListMap[i]);
+    }
+    displayListMap(*M, L);
 }
