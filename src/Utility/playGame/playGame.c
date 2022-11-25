@@ -3,7 +3,7 @@
 #include <time.h>
 #include "playGame.h"
 
-void playGame(Queue *Q, List L, List *listHist)
+void playGame(Queue *Q, List L, List *listHist, ListMap *M)
 {
     header();
     if (IsEmpty(*Q)){
@@ -23,17 +23,17 @@ void playGame(Queue *Q, List L, List *listHist)
             printf("\nLoading selesai! Tekan [ENTER] untuk memasuki permainan...");
             blankInput();
             if (isSameWord(x, stringToWord("RNG"))){
-                rng();
+                rng(M);
             } else if (isSameWord(x, stringToWord("Diner DASH"))){
-                dinerDash();
+                dinerDash(M);
             } else if (isSameWord(x, stringToWord("HANGMAN"))){
-                hangman();
+                hangman(M);
             } else if (isSameWord(x, stringToWord("TOWER OF HANOI"))){
                 // towerOfHanoi();
             } else if (isSameWord(x, stringToWord("SNAKE ON METEOR"))){
                 // snakeOnMeteor();
             } else if (isSameWord(x, stringToWord("Battleship"))){
-                battleship();
+                battleship(M);
             }
         } 
         // else if (isSameWord(x, stringToWord("EIFFEL TOWER")) || isSameWord(x, stringToWord("RISEWOMAN")) || isSameWord(x, stringToWord("DINOSAUR IN EARTH"))){
@@ -53,6 +53,10 @@ void playGame(Queue *Q, List L, List *listHist)
             printf("GAME OVER\n");
 			int r = random_range(0,100);
 			printf("Score: %d\n", r);
+
+            int index = SearchList(L, x);
+            inputDataListMap(M, index, r);
+            // displayListMap(*M, L);
             printf("\nTekan [ENTER] untuk kembali ke menu utama...");
             blankInput();
         }
@@ -62,8 +66,11 @@ void playGame(Queue *Q, List L, List *listHist)
 
 // int main()
 // {
-//     List L;
+//     List L, hist;
+//     ListMap M;
 //     createList(&L);
+//     createList(&hist);
+//     createListMap(&M);
 //     insertLast(&L, stringToWord("RNG"));
 //     insertLast(&L, stringToWord("Diner DASH"));
 //     insertLast(&L, stringToWord("DINOSAUR IN EARTH"));
@@ -77,9 +84,24 @@ void playGame(Queue *Q, List L, List *listHist)
 //     enqueue(&Q, stringToWord("RNG"));
 //     enqueue(&Q, stringToWord("Diner DASH"));
 //     enqueue(&Q, stringToWord("RNG"));
-//     playGame(&Q, L);
-//     displayQueue(Q);
+    
+//     Map hangman, dinerdash, rng, battleship;
+//     createMap(&hangman, stringToWord("HANGMAN"));
+//     createMap(&dinerdash, stringToWord("Diner DASH"));
+//     createMap(&rng, stringToWord("RNG"));
+//     createMap(&battleship, stringToWord("Battleship"));
+//     insertLastMap(&M, hangman);
+//     insertLastMap(&M, dinerdash);
+//     insertLastMap(&M, rng);
+//     insertLastMap(&M, battleship);
+
+//     displayListMap(M, L);
+//     // playGame(&Q, L, &hist, &M);
+//     // displayQueue(Q);
+//     // printf("hai");
+//     // displayListMap(M, L);
+//     // printf("hai");
 //     return 0;
 // }
 
-// compile: gcc utility/playGame/playGame.c utility/queuegame/queueGame.c utility/listGame/listGame.c Games/rng/rng.c Games/random.c Games/dinerdash/dinerdash.c ADT/list/array.c ADT/queue/queue2.c ADT/queue/prioqueue.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c Misc/io/io.c Misc/ascii/ascii.c -o driver
+// compile: gcc ADT/map/listMap.c ADT/point/point.c Games/battleship/battleship.c ADT/map/map.c Games/hangman/hangman.c Games/hangman/man.c utility/splash.c utility/playGame/playGame.c utility/queuegame/queueGame.c utility/listGame/listGame.c Games/rng/rng.c Games/random.c Games/dinerdash/dinerdash.c ADT/list/array.c ADT/queue/queue2.c ADT/queue/prioqueue.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c Misc/io/io.c Misc/ascii/ascii.c -o driver

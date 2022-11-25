@@ -10,6 +10,7 @@
 #include "../../ADT/word/word.h"
 #include "../../Misc/io/io.h"
 #include "../../Utility/splash.h"
+#include "../../ADT/map/listMap.h"
 
 #define TILECOUNT 100
 #define SHIPCOUNT 5
@@ -46,7 +47,7 @@ typedef struct {
 #define SHIP(g,i) (g).ships[i]
 #define ENEMY(g)  (g).enemy
 
-void battleship();
+void battleship(ListMap *M);
 
 void battleshipSplash();
 

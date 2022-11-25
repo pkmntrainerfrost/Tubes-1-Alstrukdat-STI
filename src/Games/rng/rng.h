@@ -7,9 +7,9 @@
 #include "../../ADT/word/word.h"
 #include "../../Misc/io/io.h"
 #include "../../Utility/splash.h"
-#include "../inputnama.h"
+#include "../../ADT/map/listMap.h"
 
-void rng();
+void rng(ListMap *M);
 
 void rngSplash();
 

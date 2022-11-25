@@ -10,10 +10,10 @@ void inputGuess(List Guesses, Word *guess) {
         printf("\nMasukkan tebakan Anda: ");
         boolean valid = wordInput(guess,1,1);
         if (valid) {
-            lower((*guess).buffer[0]);
-            // if ((*guess).buffer[0] >= 'A' && (*guess).buffer[0] <= 'Z') {
-            //     (*guess).buffer[0] += 32;
-            // }
+            // lower((*guess).buffer[0]);
+            if ((*guess).buffer[0] >= 'A' && (*guess).buffer[0] <= 'Z') {
+                (*guess).buffer[0] += 32;
+            }
 
             if (isMemberList(Guesses, *guess)) {
                 printf("Anda sudah pernah menebak huruf %c\n", (*guess).buffer[0]);
@@ -137,10 +137,10 @@ void addToListKata(List *L){
                     // all uppercase
                     int k;
                     for(k=0; k<kata.length; k++){
-                        upper(kata.buffer[k]);
-                        // if (kata.buffer[k] >= 'a' && kata.buffer[k] <= 'z'){
-                        //     kata.buffer[k] -= 32;
-                        // }
+                        // upper(kata.buffer[k]);
+                        if (kata.buffer[k] >= 'a' && kata.buffer[k] <= 'z'){
+                            kata.buffer[k] -= 32;
+                        }
                     }
 
                     insertLast(L, kata);
@@ -212,7 +212,7 @@ void saveListKata(List L){
     fclose(saveFileKata);
 }
 
-void playHangman(List L)
+void playHangman(List L, ListMap *M)
 {
     int chance = 10;
     Word guess;
@@ -313,12 +313,13 @@ void playHangman(List L)
         printf("Kata yang harus ditebak: ");
         displayKata(GuessWord);
         printf("Skor Anda: %d\n\n", score);
-        toContinue();
     } else {
         printf("Anda menang!\n");
         printf("Skor Anda: %d\n\n", score);
-        toContinue();
     }
+
+    inputDataListMap(M, 2, score);
+    toContinue();
 
     boolean loop = true;
     Word yesnoinput;
@@ -329,11 +330,9 @@ void playHangman(List L)
         boolean ans = wordInput(&yesnoinput, 1, 1);
         if (ans){
             if (yesnoinput.buffer[0] == 'Y' || yesnoinput.buffer[0] == 'y'){
-                playHangman(L);
+                playHangman(L, M);
                 loop = false;
             } else if (yesnoinput.buffer[0] == 'N' || yesnoinput.buffer[0] == 'n'){
-                // Map h;
-                // inputName(&h, score);
                 printf("Terima kasih telah bermain!\n\n");
                 toContinue();
                 loop = false;
@@ -350,7 +349,7 @@ void playHangman(List L)
     }
 }
 
-void hangman()
+void hangman(ListMap *M)
 {
     header();
     printf("Selamat datang di permainan Hangman!\n");
@@ -371,7 +370,7 @@ void hangman()
         boolean valid = wordInput(&input,1,1);
         if (valid){
             if (input.buffer[0] == '1'){
-                playHangman(L);
+                playHangman(L, M);
                 repeat = false;
             } else if (input.buffer[0] == '2'){
                 addToListKata(&L);
@@ -384,7 +383,7 @@ void hangman()
                     boolean ans = wordInput(&yesnoinput, 1, 1);
                     if (ans){
                         if (yesnoinput.buffer[0] == 'Y' || yesnoinput.buffer[0] == 'y'){
-                            playHangman(L);
+                            playHangman(L, M);
                             loop = false;
                         } else if (yesnoinput.buffer[0] == 'N' || yesnoinput.buffer[0] == 'n'){
                             printf("Terima kasih telah bermain!\n\n");
@@ -417,17 +416,22 @@ void hangman()
     saveListKata(L);
 }
 
-int main()
-{
-    // List L;
-    // createList(&L);
-    // readListKata(&L);
-    // addToListKata(&L);
-    // saveListKata(L);
-    hangman();
-    // toContinue();
-    return 0;
-}
+// int main()
+// {
+//     // List L;
+//     // createList(&L);
+//     // readListKata(&L);
+//     // addToListKata(&L);
+//     // saveListKata(L);
 
-// compile : gcc src/Games/hangman/man.c src/Utility/splash.c src/Games/random.c src/Games/hangman/hangman.c src/ADT/list/array.c src/ADT/word/mesinkata/mesinkata.c src/ADT/word/mesinkarakter/mesinkarakter.c src/ADT/word/word.c src/Misc/ascii/ascii.c src/Misc/io/io.c -o driver
-// compile kalo masuk ke src dulu : Games/hangman/man.c Utility/splash.c Games/inputnama.c Games/random.c Games/hangman/hangman.c ADT/list/array.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c Misc/ascii/ascii.c Misc/io/io.c ADT/map/map.c -o driver
+//     // ListMap M;
+//     // createListMap(&M);
+//     // hangman(&M);
+
+//     hangman();
+
+//     // toContinue();
+//     return 0;
+// }
+
+// compile : gcc src/ADT/map/listMap.c src/ADT/map/map.c src/Games/hangman/man.c src/Utility/splash.c src/Games/random.c src/Games/hangman/hangman.c src/ADT/list/array.c src/ADT/word/mesinkata/mesinkata.c src/ADT/word/mesinkarakter/mesinkarakter.c src/ADT/word/word.c src/Misc/ascii/ascii.c src/Misc/io/io.c -o driver

@@ -31,8 +31,13 @@ int main()
     test = getElmt(L, 1);
     printWord(test);
     printf("\n");
+    displayList(L);
+    int idx = SearchList(L, test);
+    printf("idx %d\n", idx);
     deleteLast(&L);
     displayList(L);
+    idx = SearchList(L, test);
+    printf("idx %d\n", idx);
     deallocateList(&L);
     printf("%d\n", L.capacity);
     displayList(L);

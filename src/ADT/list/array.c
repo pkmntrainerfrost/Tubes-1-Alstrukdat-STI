@@ -20,15 +20,27 @@ boolean isElTypeEqual(ElType l1, ElType l2)
 {
     if (l1.length == l2.length){
         int i = 0;
-        while (i < l1.length){
+        for(i=0; i<l1.length; i++){
             if (l1.buffer[i] != l2.buffer[i]){
                 return false;
             }
-            i++;
         }
-        return true;
+    } else {
+        return false;
     }
-    return false;
+    return true;
+}
+
+int SearchList(List L, ElType X)
+{
+    int i = 0;
+    while (i < L.nEff){
+        if (isElTypeEqual(L.A[i], X)){
+            return i;
+        }
+        i++;
+    }
+    return -1;
 }
 
 boolean isEmpty(List L)

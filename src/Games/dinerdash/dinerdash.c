@@ -1,16 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "../../ADT/boolean.h"
-#include "../../ADT/word/mesinkarakter/mesinkarakter.h"
-#include "../../ADT/word/mesinkata/mesinkata.h"
-#include "../../ADT/queue/prioqueue.h"
-#include "../../ADT/queue/queue2.h"
-#include "../../Misc/io/io.h"
-#include "../../ADT/word/word.h"
-#include "../../Misc/ascii/ascii.h"
-#include "../../ADT/list/array.h"
-#include "../../Games/random.h"
 #include "dinerdash.h"
 
 PQElType addQueue(int i){
@@ -22,7 +12,7 @@ PQElType addQueue(int i){
     return addOrder;
 }
 
-void dinerDash(){
+void dinerDash(ListMap *M){
 
     char input[100];
     char cook[] = "COOK";
@@ -193,14 +183,13 @@ void dinerDash(){
     }
     printf("========== GAME OVER ==========\n");
     printf("SKOR AKHIR : %d\n", saldo);
-    Map h;
-    inputName(&h, saldo);
+    inputDataListMap(M, 1, saldo);
 }
 
 
-int main(){
-    dinerDash();
-}
+// int main(){
+//     dinerDash();
+// }
 
 /*
 compile:

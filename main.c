@@ -17,6 +17,7 @@
 #include "src/Utility/skipGame/skipGame.h"
 #include "src/Utility/save/save.h"
 #include "src/Utility/history/history.h"
+#include "src/Utility/scoreboard/scoreboard.h"
 
 #include <stdio.h>
 
@@ -30,6 +31,10 @@ int main() {
 
     Queue QueueGame;
     createQueue(&QueueGame);
+
+    ListMap ListMapGame;
+    createListMap(&ListMapGame);
+    addMap(&ListMapGame);
 
     boolean Started = false;
 
@@ -103,8 +108,13 @@ int main() {
                     quit(&ListGame,&QueueGame, &listHist);
                 } else if (isWordEqual(getElmt(Input,0),stringToWord("HELP"))) {
                     help();
+                } else if (isWordEqual(getElmt(Input, 0), stringToWord("SCOREBOARD"))){
+                    scoreboard(ListMapGame, ListGame);
+                    printf("\n");
+                    toContinue();
                 } else {
                     commandlain();
+                    toContinue();
                 }
             } else if (length(Input) == 2) {
                 if (isWordEqual(getElmt(Input,1),stringToWord("GAME"))){
@@ -113,13 +123,13 @@ int main() {
                     } else if (isWordEqual(getElmt(Input,0),stringToWord("DELETE"))){
                         deleteGame(&ListGame, QueueGame);
                     } else if (isWordEqual(getElmt(Input,0),stringToWord("PLAY"))){
-                        playGame(&QueueGame, ListGame, &listHist);
+                        playGame(&QueueGame, ListGame, &listHist, &ListMapGame);
                     } else if (isWordEqual(getElmt(Input,0),stringToWord("QUEUE"))){
                         queueGame(&QueueGame, ListGame);
                     } else if (isWordEqual(getElmt(Input,0),stringToWord("CREATE"))){
-                        createGame(&ListGame);
+                        createGame(&ListGame, &ListMapGame);
                     } else if (isWordEqual(getElmt(Input,0),stringToWord("SKIP")) && wordToInt(getElmt(Input,2)) != INVALID_INT && wordToInt(getElmt(Input,2)) >= 0){
-                        skipGame(&QueueGame,ListGame,wordToInt(getElmt(Input,2)));
+                        skipGame(&QueueGame,ListGame,wordToInt(getElmt(Input,2)), &listHist, &ListMapGame);
                     } else {
                         commandlain();
                         printf("\n");
@@ -161,7 +171,7 @@ int main() {
                 }
             } else if (length(Input) == 3){
                 if (isWordEqual(getElmt(Input,0),stringToWord("SKIP")) && isWordEqual(getElmt(Input,1),stringToWord("GAME")) && wordToInt(getElmt(Input,2)) != INVALID_INT && wordToInt(getElmt(Input,2)) >= 0){
-                    skipGame(&QueueGame,ListGame,wordToInt(getElmt(Input,2)));
+                    skipGame(&QueueGame,ListGame,wordToInt(getElmt(Input,2)), &listHist, &ListMapGame);
                 } else {
                     commandlain();
                     printf("\nTekan [ENTER] untuk melanjutkan...");

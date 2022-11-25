@@ -9,11 +9,14 @@
 #include "../listGame/listGame.h"
 #include "../../Misc/io/io.h"
 #include "../../Misc/ascii/ascii.h"
-#include "../../Games/rng/rng.h"
+#include "../../ADT/map/listMap.h"
 
-void displayscoreboard(Map M);
-/*untuk menampilkan scoreboard*/
+void addMap(ListMap *M);
 
-void resetscoreboard(Map M);
-/*untuk command reset scoreboard*/
+void scoreboard(ListMap M, List L);
+
+// void scoreboard(Map daftarsb, int num);
+// void resetscoreboard(Map *daftarsb);
+
 #endif
+

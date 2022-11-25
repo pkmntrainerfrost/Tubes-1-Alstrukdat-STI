@@ -7,7 +7,7 @@
 // Loid Forger -> lebih hoki 
 // Anya Forger -> hax (baca pikiran), harus bener terus ato nggak auto kalah
 
-void battleship() {
+void battleship(ListMap *M) {
 
     Word inputEnemy;
     int enemy;
@@ -103,6 +103,7 @@ void battleship() {
         }
 
         printf("Skor Anda: %d\n",score);
+        inputDataListMap(M, 5, score);
 
         printf("\nTekan [ENTER] untuk kembali ke menu utama...\n");
 

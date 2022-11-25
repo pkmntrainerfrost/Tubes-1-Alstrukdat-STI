@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include "../boolean.h"
 #include "../word/mesinkata/mesinkata.h"
+#include "../../Misc/io/io.h"
+#include "../../Misc/ascii/ascii.h"
 
 /* MODUL Map
 Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
@@ -74,10 +76,11 @@ void DeleteMap(Map *M, keytype k);
 boolean IsMemberMap(Map M, keytype k);
 /* Mengembalikan true jika k adalah member dari M */
 
-void PrintMap(Map M);
-
+void PrintMap(Map M, Word GameName);
 // void inputName(Map *M);
 // Di setiap keadaan game over atau menang sebuah game, program meminta nama pemain. 
 // Nama pemain yang valid adalah nama yang belum terpakai di scoreboard game yang sedang dimainkan. Kemudian program menyimpan nama dan skor game tersebut di ADT Map.
+
+void inputData(Map *M, int score);
 
 #endif

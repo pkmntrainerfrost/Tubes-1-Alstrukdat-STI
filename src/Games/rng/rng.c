@@ -3,7 +3,7 @@
 #include <time.h>
 #include "rng.h"
 
-void rng(Map * r){
+void rng(ListMap *M){
 
     header();
 
@@ -39,15 +39,14 @@ void rng(Map * r){
                     Score = 0;
                 }
                 printf("\nSkor Anda adalah: %d\n",Score);
+                inputDataListMap(M, 0, Score);
                 Correct = true;
-                inputName(r, Score);
             }
         } else {
             printf("Masukan tidak valid!\n");
         }
-    
     }
-    
+
     printf("\nTekan [ENTER] untuk kembali ke menu utama...\n");
 
     blankInput();

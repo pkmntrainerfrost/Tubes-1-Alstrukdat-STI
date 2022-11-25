@@ -101,52 +101,56 @@ boolean IsMemberMap(Map M, keytype k)
     return found;
 }
 
-void PrintMap(Map M)
+void PrintMap(Map M, Word GameName)
 {
-    if (IsEmptyMap(M)){
-        printf("Map kosong\n");
-    } else {
-        int i;
-        printf("[");
-        for (i=0; i<M.Count; i++){
-            int j;
+    printf("**** SCOREBOARD GAME ");
+    printWord(GameName);
+    printf(" ****\n");
+    printf("| Nama           | SKOR           |\n");
+    if(!(IsEmptyMap(M))){
+        printf("|---------------------------------|\n");
+        int i, j;
+        for (i = 0; i<M.Count; i++){
+            printf("| ");
             for (j=0; j<M.Elements[i].name.length; j++){
-                printf("%c", M.Elements[i].name.buffer[j]);
+                printf("%c",M.Elements[i].name.buffer[j]);
             }
-            printf(" %d", M.Elements[i].score);
-
-            if (i+1 != M.Count){
-                printf(", ");
+            int k = M.Elements[i].name.length;
+            for(k; k<15; k++){
+                printf(" ");
             }
+            printf("| %-15d", M.Elements[i].score);
+            printf("|\n");
         }
-        printf("]\n");
+        printf("\n");
     }
+    else {
+        printf("------- SCOREBOARD KOSONG -------- \n\n");
+    }
+    printf("\n");
 }
 
-// void inputName(Map *M)
-// {
-//     boolean repeat = true;
-//     while (repeat){
-//         printf("Masukkan nama: ");
-//         Word name;
-//         boolean valid = wordInput(&name, 1, N_MAX);
+void inputData(Map *M, int score)
+{
+    boolean repeat = true;
+    while (repeat){
+        printf("Masukkan nama: ");
+        Word name;
+        boolean valid = wordInput(&name, 1, 15);
 
-//         if (valid){
-//             if (IsMemberMap(*M, name)){
-//                 printf("Nama sudah ada di daftar scoreboard. \n");
-//             } else {
-//                 printf("Masukkan score: ");
-//                 int score;
-//                 scanf("%d", &score);
-//                 InsertMap(M, name, score);
-//                 repeat = false;
-//             }
-//         } else {
-//             if (wordLength(name) == 0){
-//                 printf("Nama tidak boleh kosong. \n");
-//             } else {
-//                 printf("Nama terlalu panjang. \n");
-//             }
-//         }
-//     }
-// }
+        if (valid){
+            if (IsMemberMap(*M, name)){
+                printf("Nama sudah ada di daftar scoreboard. \n");
+            } else {
+                InsertMap(M, name, score);
+                repeat = false;
+            }
+        } else {
+            if (wordLength(name) == 0){
+                printf("Nama tidak boleh kosong. \n");
+            } else {
+                printf("Nama tidak boleh lebih dari 15 karakter. \n");
+            }
+        }
+    }
+}

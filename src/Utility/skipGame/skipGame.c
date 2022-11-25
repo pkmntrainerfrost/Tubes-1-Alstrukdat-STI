@@ -3,7 +3,7 @@
 #include <time.h>
 #include "skipGame.h"
 
-void skipGame(Queue *Q, List L, int n) {
+void skipGame(Queue *Q, List L, int n, List *listHist, ListMap *M) {
 
     header();
 
@@ -35,17 +35,17 @@ void skipGame(Queue *Q, List L, int n) {
             printf("\nLoading selesai! Tekan [ENTER] untuk memasuki permainan...");
             blankInput();
             if (isSameWord(y, stringToWord("RNG"))){
-                rng();
+                rng(M);
             } else if (isSameWord(y, stringToWord("Diner DASH"))){
-                dinerDash();
+                dinerDash(M);
             } else if (isSameWord(y, stringToWord("HANGMAN"))){
-                hangman();
+                hangman(M);
             } else if (isSameWord(y, stringToWord("TOWER OF HANOI"))){
                 // towerOfHanoi();
             } else if (isSameWord(y, stringToWord("SNAKE ON METEOR"))){
                 // snakeOnMeteor();
             } else if (isSameWord(y, stringToWord("Battleship"))){
-                battleship();
+                battleship(M);
             }
         } 
         // else if (isSameWord(y, stringToWord("EIFFEL TOWER")) || isSameWord(y, stringToWord("RISEWOMAN")) || isSameWord(y, stringToWord("DINOSAUR IN EARTH"))){
@@ -65,11 +65,16 @@ void skipGame(Queue *Q, List L, int n) {
             printf("GAME OVER\n");
 			int r = random_range(0,100);
 			printf("Score: %d\n", r);
+
+            int index = SearchList(L, y);
+            inputDataListMap(M, index, r);
+
             printf("Tekan [ENTER] untuk kembali ke menu utama...");
             blankInput();
         }
+        insertFirst(listHist, y);
 
-        
+
     }
 
 

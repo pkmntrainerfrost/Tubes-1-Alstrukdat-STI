@@ -10,7 +10,7 @@
 #include "../../Misc/io/io.h"
 #include "../../Utility/splash.h"
 #include "../random.h"
-#include "../inputnama.h"
+#include "../../ADT/map/listMap.h"
 
 void inputGuess(List Guesses, Word *guess);
 // I.S. Guesses terdefinisi, guess terdefinisi
@@ -44,11 +44,11 @@ void saveListKata(List L);
 // I.S. L terdefinisi
 // F.S. Menyimpan List L ke file listkata.txt
 
-void playHangman(List L);
+void playHangman(List L, ListMap *M);
 // I.S. L terdefinisi
 // F.S. Memainkan game hangman
 
-void hangman();
+void hangman(ListMap *M);
 // I.S. Sembarang
 // F.S. Menunjukkan pilihan main game hangman atau menambah kata
 

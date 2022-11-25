@@ -15,14 +15,14 @@
 #include "../../Misc/ascii/ascii.h"
 #include "../../ADT/list/array.h"
 #include "../../Games/random.h"
-#include "../inputnama.h"
+#include "../../ADT/map/listMap.h"
 
 // boolean isSame(char str1[], char str2[]);
 // mengembalikan true jika str1 sama dengan str2
 
 PQElType addQueue(int i);
 
-void dinerDash();
+void dinerDash(ListMap *M);
 // -	Terdapat 2 command yang dapat dilakukan pada game, yaitu COOK dan SERVE
 // -	COOK merupakan command yang bertujuan untuk memasak makanan
 // -	SERVE merupakan command yang bertujuan untuk menyajikan makanan kepada pelanggan.
