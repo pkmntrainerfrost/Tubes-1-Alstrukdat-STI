@@ -142,11 +142,24 @@ void inputData(Map *M, Set *S, int score)
         boolean valid = wordInput(&name, 1, 15);
 
         if (valid){
-            if (InsertSet(S, name)){
-                InsertMap(M, name, score);
-                repeat = false;
+            // nama yang ada spasinya tidak valid
+            int i=0;
+            boolean cek = true;
+            while (i<wordLength(name)){
+                if (name.buffer[i] == ' '){
+                    cek = false;
+                }
+                i++;
+            }
+            if (cek){
+                if (InsertSet(S, name)){
+                    InsertMap(M, name, score);
+                    repeat = false;
+                } else {
+                    printf("Nama sudah ada di dalam scoreboard. Silakan masukkan nama lain.\n");
+                }
             } else {
-                printf("Nama sudah ada di dalam scoreboard. Silakan masukkan nama lain.\n");
+                printf("Nama tidak boleh mengandung spasi. Silakan masukkan nama lain.\n");
             }
         } else {
             if (wordLength(name) == 0){

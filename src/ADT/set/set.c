@@ -59,6 +59,17 @@ boolean InsertSet(Set *S, infotypeSet Elmt)
         updateCapacitySet(S);
     }
 
+    // nama tidak boleh sama walaupun beda lowercase dan uppercase ex: halo dan HALO
+    char tempstr[wordLength(Elmt) + 1];
+    wordToString(Elmt, tempstr);
+    // change to uppercase
+    int i;
+    for(i = 0; i < wordLength(Elmt); i++){
+        tempstr[i] = upper(tempstr[i]);
+    }
+
+    Elmt = stringToWord(tempstr);
+
     if(!IsMemberSet(*S, Elmt)){
         S->Elementset[S->Countset]=Elmt;
         S->Countset++;
