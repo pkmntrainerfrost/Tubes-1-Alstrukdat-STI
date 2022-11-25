@@ -7,7 +7,7 @@
 #include "../boolean.h"
 
 #define IDX_UNDEF -1
-#define PQCAPACITY 100
+#define PQCAPACITY 7
 
 /* Definisi elemen dan address */
 typedef struct

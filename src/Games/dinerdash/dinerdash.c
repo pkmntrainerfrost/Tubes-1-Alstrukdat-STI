@@ -113,7 +113,7 @@ void dinerDash(){
                 id = id * 10 + (usr.A[1].buffer[i] - '0');
             }
         }
-        printf("id: %d\n", id);
+        // printf("id: %d\n", id);
 
         if (isElTypeEqual(command, cooks) == true)
         {
@@ -133,12 +133,12 @@ void dinerDash(){
                 printf("Berhasil mengantar M%d\n", id);
                 enqueuePQ(&pq, addQueue(idx));
                 PQElType vals;
+                saldo += HEAD(pq).price;
                 dequeuePQ(&pq, &vals);
                 dequeuePQ(&serveQ, &vals);
                 // enqueuePQ(&serveQ, pq.buffer[id]);
                 served++;
                 idx++;
-                saldo += HEAD(pq).price;
 
                 }
 
@@ -206,3 +206,5 @@ int main(){
 compile:
 gcc /Users/trista/Documents/GitHub/Tubes-1-Alstrukdat-STI/src/Games/dinerdash/dinerdash.c /Users/trista/Documents/GitHub/Tubes-1-Alstrukdat-STI/src/ADT/word/mesinkarakter/mesinkarakter.c /Users/trista/Documents/GitHub/Tubes-1-Alstrukdat-STI/src/ADT/word/mesinkata/mesinkata.c /Users/trista/Documents/GitHub/Tubes-1-Alstrukdat-STI/src/ADT/queue/prioqueue.c /Users/trista/Documents/GitHub/Tubes-1-Alstrukdat-STI/src/ADT/queue/queue2.c /Users/trista/Documents/GitHub/Tubes-1-Alstrukdat-STI/src/Misc/io/io.c /Users/trista/Documents/GitHub/Tubes-1-Alstrukdat-STI/src/ADT/word/word.c /Users/trista/Documents/GitHub/Tubes-1-Alstrukdat-STI/src/Misc/ascii/ascii.c /Users/trista/Documents/GitHub/Tubes-1-Alstrukdat-STI/src/ADT/list/array.c -o try_DD
 */
+
+//compile (ketik cd src dulu) : gcc Games/dinerdash/dinerdash.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/mesinkata/mesinkata.c ADT/queue/prioqueue.c ADT/queue/queue2.c Misc/io/io.c ADT/word/word.c Misc/ascii/ascii.c ADT/list/array.c Games/inputnama.c Games/random.c ADT/map/map.c -o try
