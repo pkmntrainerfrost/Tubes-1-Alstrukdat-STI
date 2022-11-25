@@ -3,7 +3,7 @@
 static FILE *saveFile;
 
 // bikin file baru
-void savetoFile(char saveFilename[], List L, List listHist)
+void savetoFile(char saveFilename[], List L, List listHist, ListMap mapGame)
 {
     Word file;
     concateWord(stringToWord("Config/"),stringToWord(saveFilename),&file);
@@ -12,6 +12,8 @@ void savetoFile(char saveFilename[], List L, List listHist)
     wordToString(file, a);
 
     saveFile = fopen(a, "w");
+
+    // save list game
     fprintf(saveFile, "%d\n", L.nEff);
     int i;
     for(i=0; i<length(L); i++){
@@ -24,6 +26,8 @@ void savetoFile(char saveFilename[], List L, List listHist)
         }
     }
     fprintf(saveFile, "\n");
+
+    // save list history
     fprintf(saveFile, "%d\n", listHist.nEff);
     for(i=0; i<length(listHist); i++){
         int j;
@@ -34,6 +38,22 @@ void savetoFile(char saveFilename[], List L, List listHist)
             fprintf(saveFile, "\n");
         }
     }
+
+    fprintf(saveFile, "\n");
+    // save scoreboard
+    for (i=0; i<mapGame.nEff; i++){
+        fprintf(saveFile, "%d\n", mapGame.ElmtListMap[i].Count);
+        if (!(IsEmptyMap(mapGame.ElmtListMap[i]))){
+            int j, k;
+            for (j=0; j<mapGame.ElmtListMap[i].Count; j++){
+                for (k=0; k<mapGame.ElmtListMap[i].Elements[j].name.length; k++){
+                    fprintf(saveFile, "%c", mapGame.ElmtListMap[i].Elements[j].name.buffer[k]);
+                }
+                fprintf(saveFile, " %d\n", mapGame.ElmtListMap[i].Elements[j].score);
+            }
+        }
+    }
+    fprintf(saveFile, "\n");
 
     fclose(saveFile);
     printf("Save file berhasil disimpan\n");

@@ -109,7 +109,7 @@ int main() {
         if (Valid) {
             if (length(Input) == 1) { 
                 if (isWordEqual(getElmt(Input,0),stringToWord("QUIT"))){
-                    quit(&ListGame,&QueueGame, &listHist);
+                    quit(&ListGame,&QueueGame, &listHist, &ListMapGame);
                 } else if (isWordEqual(getElmt(Input,0),stringToWord("HELP"))) {
                     help();
                 } else if (isWordEqual(getElmt(Input, 0), stringToWord("SCOREBOARD"))){
@@ -153,7 +153,7 @@ int main() {
                     if (lower(Check.buffer[wordLength(Check)-4]) == '.' && Check.buffer[wordLength(Check)-3] == 't' && Check.buffer[wordLength(Check)-2] == 'x' && Check.buffer[wordLength(Check)-1] == 't') {
                             char a[wordLength(Check) + 1];
                             wordToString(Check,a);
-                            savetoFile(a, ListGame, listHist);
+                            savetoFile(a, ListGame, listHist, ListMapGame);
                     } else {
                         printf("Nama file tidak valid!\n\n");
                         toContinue();
