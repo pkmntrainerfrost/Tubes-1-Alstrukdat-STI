@@ -5,9 +5,10 @@
 #include "../../ADT/list/array.h"
 #include "../../ADT/word/word.h"
 #include "../../ADT/word/mesinkata/mesinkata.h"
+#include "../../ADT/map/listMap.h"
 
 
-void LOAD(Word filename, List *ListGame, List *listHist);
+void LOAD(Word filename, List *ListGame, List *listHist, ListMap *listMapGame);
 
 boolean CHECKFILE(Word filename);
 

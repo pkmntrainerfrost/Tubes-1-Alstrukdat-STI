@@ -28,34 +28,57 @@ void savetoFile(char saveFilename[], List L, List listHist, ListMap mapGame)
     fprintf(saveFile, "\n");
 
     // save list history
-    fprintf(saveFile, "%d\n", listHist.nEff);
-    for(i=0; i<length(listHist); i++){
-        int j;
-        for(j=0; j<listHist.A[i].length; j++){
-            fprintf(saveFile, "%c", listHist.A[i].buffer[j]);
-        }
-        if (i < length(listHist)-1) {
-            fprintf(saveFile, "\n");
+    if (listHist.nEff == 0){
+        fprintf(saveFile, "%d", listHist.nEff);
+    } else {
+        fprintf(saveFile, "%d\n", listHist.nEff);
+        for(i=0; i<length(listHist); i++){
+            int j;
+            for(j=0; j<listHist.A[i].length; j++){
+                fprintf(saveFile, "%c", listHist.A[i].buffer[j]);
+            }
+            if (i < length(listHist)-1) {
+                fprintf(saveFile, "\n");
+            }
         }
     }
 
     fprintf(saveFile, "\n");
     // save scoreboard
-    for (i=0; i<mapGame.nEff; i++){
-        fprintf(saveFile, "%d\n", mapGame.ElmtListMap[i].Count);
-        if (!(IsEmptyMap(mapGame.ElmtListMap[i]))){
-            int j, k;
-            for (j=0; j<mapGame.ElmtListMap[i].Count; j++){
+    for (i=0; i< mapGame.nEff; i++){
+        if (i == mapGame.nEff - 1){
+            if (IsEmptyMap(mapGame.ElmtListMap[i])){
+                fprintf(saveFile, "%d", mapGame.ElmtListMap[i].Count);
+            } else {
+                fprintf(saveFile, "%d\n", mapGame.ElmtListMap[i].Count);
+                int j, k;
+                for (j=0; j<mapGame.ElmtListMap[i].Count-1; j++){
+                    for (k=0; k<mapGame.ElmtListMap[i].Elements[j].name.length; k++){
+                        fprintf(saveFile, "%c", mapGame.ElmtListMap[i].Elements[j].name.buffer[k]);
+                    }
+                    fprintf(saveFile, " %d\n", mapGame.ElmtListMap[i].Elements[j].score);
+                }
                 for (k=0; k<mapGame.ElmtListMap[i].Elements[j].name.length; k++){
                     fprintf(saveFile, "%c", mapGame.ElmtListMap[i].Elements[j].name.buffer[k]);
                 }
-                fprintf(saveFile, " %d\n", mapGame.ElmtListMap[i].Elements[j].score);
+                fprintf(saveFile, " %d", mapGame.ElmtListMap[i].Elements[j].score);
+            }
+        } else {
+            fprintf(saveFile, "%d\n", mapGame.ElmtListMap[i].Count);
+            if (!(IsEmptyMap(mapGame.ElmtListMap[i]))){
+                int j, k;
+                for (j=0; j<mapGame.ElmtListMap[i].Count; j++){
+                    for (k=0; k<mapGame.ElmtListMap[i].Elements[j].name.length; k++){
+                        fprintf(saveFile, "%c", mapGame.ElmtListMap[i].Elements[j].name.buffer[k]);
+                    }
+                    fprintf(saveFile, " %d\n", mapGame.ElmtListMap[i].Elements[j].score);
+                }
             }
         }
     }
-    fprintf(saveFile, "\n");
 
     fclose(saveFile);
+    printf("\n");
     printf("Save file berhasil disimpan\n");
 }
 

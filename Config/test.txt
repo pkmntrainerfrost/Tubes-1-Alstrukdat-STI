@@ -1,0 +1,23 @@
+7
+RNG
+Diner DASH
+HANGMAN
+TOWER OF HANOI
+SNAKE ON METEOR
+Battleship
+SATU
+4
+RNG
+SATU
+SATU
+SATU
+1
+haha 0
+0
+0
+0
+0
+3
+haha 59
+hihi 41
+hehe 19

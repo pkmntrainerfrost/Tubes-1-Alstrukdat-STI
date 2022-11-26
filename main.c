@@ -34,11 +34,9 @@ int main() {
 
     ListMap ListMapGame;
     createListMap(&ListMapGame);
-    addMap(&ListMapGame);
 
     ListSet ListName;
     createListSet(&ListName);
-    addSet(&ListName);
 
     boolean Started = false;
 
@@ -60,6 +58,8 @@ int main() {
             if (isWordEqual(getElmt(Input,0),stringToWord("START")) && length(Input) == 1) {
                 START(&ListGame);
                 printf("File konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan.\n");
+                addMap(&ListMapGame, ListGame);
+                addSet(&ListName, ListGame);
                 Started = true;
             } else if (isWordEqual(getElmt(Input,0),stringToWord("HELP")) && length(Input) == 1) {
                 noEnter = true;
@@ -67,7 +67,7 @@ int main() {
             } else if (isWordEqual(getElmt(Input,0),stringToWord("LOAD")) && length(Input) == 2) {
                 InvalidFile = CHECKFILE(getElmt(Input,1));
                 if (!InvalidFile) {
-                    LOAD(getElmt(Input,1),&ListGame, &listHist);
+                    LOAD(getElmt(Input,1),&ListGame, &listHist, &ListMapGame);
                     printf("Save file berhasil dibaca. BNMO berhasil dijalankan.\n");
                     Started = true;
                 } else {
@@ -166,6 +166,10 @@ int main() {
                     toContinue();
                 } else if(isWordEqual(getElmt(Input, 0), stringToWord("RESET")) && isWordEqual(getElmt(Input, 1), stringToWord("HISTORY"))){
                     resetHist(&listHist);
+                    printf("\n");
+                    toContinue();
+                } else if (isWordEqual(getElmt(Input, 0), stringToWord("RESET")) && isWordEqual(getElmt(Input, 1), stringToWord("SCOREBOARD"))){
+                    resetScoreboard(&ListMapGame, &ListName, ListGame);
                     printf("\n");
                     toContinue();
                 } else {

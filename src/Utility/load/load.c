@@ -1,11 +1,7 @@
-#include "../../ADT/boolean.h"
-#include "../../ADT/list/array.h"
-#include "../../ADT/word/word.h"
-#include "../../ADT/word/mesinkata/mesinkata.h"
-
 #include <stdio.h>
+#include "load.h"
 
-void LOAD(Word filename, List *ListGame, List *listHist){
+void LOAD(Word filename, List *ListGame, List *listHist, ListMap *listMapGame) {
     
     Word filepath;
     concateWord(stringToWord("Config/"),filename,&filepath);
@@ -13,20 +9,53 @@ void LOAD(Word filename, List *ListGame, List *listHist){
     char filepathstr[wordLength(filepath) + 1];
     wordToString(filepath,filepathstr);
 
+    Map M;
     startKata(true,filepathstr);
     int i;
-    int number = wordToInt(currentKata); //baca jumlah listGame
+    int numberGame = wordToInt(currentKata); //baca jumlah listGame
     advKata();
-    for (i=0; i < number; i++){
+    for (i=0; i < numberGame; i++){
         insertLast(ListGame,currentKata);
+        CreateEmptyMap(&M);
+        insertListMap(listMapGame,M);
         advKata();
     }
-    number = wordToInt(currentKata); //baca jumlah listHist
+
+    int number = wordToInt(currentKata); //baca jumlah listHist
     advKata();
     for (i=0; i < number; i++){
         insertLast(listHist,currentKata);
         advKata();
     }
+
+    int k;
+    for (k=0; k<numberGame; k++){ // jumlah listmapgame
+        int numberMap = wordToInt(currentKata); //baca jumlah  elemen map dlm list map game
+        advKata();
+        for (i=0; i < numberMap; i++){
+            Word name, score;
+            createWord(&name);
+            createWord(&score);
+            int j = 0;
+            while (currentKata.buffer[j] != INPUTBLANK){
+                name.buffer[j] = currentKata.buffer[j];
+                name.length++;
+                j++;
+            }
+
+            j++; // spasi
+
+            while (j < currentKata.length){
+                score.buffer[j - (name.length+1)] = currentKata.buffer[j];
+                score.length++;
+                j++;
+            }
+
+            InsertMap(&listMapGame->ElmtListMap[k], name, wordToInt(score));
+            advKata();
+        }
+    }
+
 }
 
 boolean CHECKFILE(Word filename) {
