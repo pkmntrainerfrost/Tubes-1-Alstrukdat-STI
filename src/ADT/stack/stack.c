@@ -9,15 +9,15 @@ boolean IsEmpty(Stack S){
 }
 
 boolean IsFull(Stack S){
-    return Top(S) == MaxEl-1;
+    return Top(S) == 0;
 }
 
 void Push(Stack * S, infotype X){
-    Top(*S) += 1;
+    Top(*S) -= 1;
     InfoTop(*S) = X;
 }
 
 void Pop(Stack * S, infotype* X){
     (*X) = InfoTop(*S);
-    Top(*S) -= 1;
+    Top(*S) += 1;
 }

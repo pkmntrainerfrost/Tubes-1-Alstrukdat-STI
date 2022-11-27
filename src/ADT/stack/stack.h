@@ -3,11 +3,10 @@
 
 #include <stdio.h>
 #include "../boolean.h"
-#include "../word/mesinkata/mesinkata.h"
 
-#define Nil -1
-#define MaxEl 100
-#define infotype Word
+#define Nil 5
+#define MaxEl 5
+#define infotype int
 /* Nil adalah stack dengan elemen kosong . */
 
 typedef int address;   /* indeks tabel */
@@ -27,6 +26,7 @@ typedef struct {
 /* Definisi akses dengan Selektor : Set dan Get */
 #define Top(S) (S).TOP
 #define InfoTop(S) (S).T[(S).TOP]
+#define Info(S, X) (S).T[(X)]  
 
 /* ************ Prototype ************ */
 /* *** Konstruktor/Kreator *** */
