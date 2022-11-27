@@ -54,4 +54,6 @@ void displayList(List L);
 
 int SearchList(List L, ElType X);
 
+void deleteElmt(List *L, ElType X);
+
 #endif // __ARRAY_H__

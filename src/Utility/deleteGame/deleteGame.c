@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "deleteGame.h"
 
-void deleteGame(List *L, Queue Q) {
+void deleteGame(List *L, Queue Q, List *listHist, ListMap *listMapGame, ListSet *listName) {
 
     boolean repeat = true;
 
@@ -22,13 +22,37 @@ void deleteGame(List *L, Queue Q) {
             } else if (wordToInt(input) > 6) {
                 if (!(IsEmpty(Q))){
                     if (!(isMember(Q, getElmt(*L,wordToInt(input)-1)))){
+                        
+                        // delete di history
+                        Word gamename;
+                        createWord(&gamename);
+                        gamename = getElmt(*L,wordToInt(input)-1);
+                        deleteElmt(listHist, gamename);
+
+                        // delete di listgame
                         deleteAt(L, wordToInt(input)-1);
+
+                        // delete di listmap & listset
+                        deleteListMap(listMapGame, wordToInt(input)-1);
+                        deleteListSet(listName, wordToInt(input)-1);
                         printf("Game berhasil dihapus\n");
                     } else {
                         printf("Game ada di antrian game-mu; game gagal dihapus.");
                     }
                 } else {
+
+                    // delete di history
+                    Word gamename;
+                    createWord(&gamename);
+                    gamename = getElmt(*L,wordToInt(input)-1);
+                    deleteElmt(listHist, gamename);
+
+                   // delete di listgame
                     deleteAt(L, wordToInt(input)-1);
+
+                    // delete di listmap & listset
+                    deleteListMap(listMapGame, wordToInt(input)-1);
+                    deleteListSet(listName, wordToInt(input)-1);
                     printf("Game berhasil dihapus\n");
                 }
             }

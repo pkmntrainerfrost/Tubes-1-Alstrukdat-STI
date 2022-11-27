@@ -67,7 +67,7 @@ int main() {
             } else if (isWordEqual(getElmt(Input,0),stringToWord("LOAD")) && length(Input) == 2) {
                 InvalidFile = CHECKFILE(getElmt(Input,1));
                 if (!InvalidFile) {
-                    LOAD(getElmt(Input,1),&ListGame, &listHist, &ListMapGame);
+                    LOAD(getElmt(Input,1),&ListGame, &listHist, &ListMapGame, &ListName);
                     printf("Save file berhasil dibaca. BNMO berhasil dijalankan.\n");
                     Started = true;
                 } else {
@@ -125,15 +125,13 @@ int main() {
                     if (isWordEqual(getElmt(Input,0),stringToWord("LIST"))){
                         listGameMain(ListGame);
                     } else if (isWordEqual(getElmt(Input,0),stringToWord("DELETE"))){
-                        deleteGame(&ListGame, QueueGame);
+                        deleteGame(&ListGame, QueueGame, &listHist, &ListMapGame, &ListName);
                     } else if (isWordEqual(getElmt(Input,0),stringToWord("PLAY"))){
                         playGame(&QueueGame, ListGame, &listHist, &ListMapGame, &ListName);
                     } else if (isWordEqual(getElmt(Input,0),stringToWord("QUEUE"))){
                         queueGame(&QueueGame, ListGame);
                     } else if (isWordEqual(getElmt(Input,0),stringToWord("CREATE"))){
                         createGame(&ListGame, &ListMapGame, &ListName);
-                    } else if (isWordEqual(getElmt(Input,0),stringToWord("SKIP")) && wordToInt(getElmt(Input,2)) != INVALID_INT && wordToInt(getElmt(Input,2)) >= 0){
-                        skipGame(&QueueGame,ListGame,wordToInt(getElmt(Input,2)), &listHist, &ListMapGame, &ListName);
                     } else {
                         commandlain();
                         printf("\n");

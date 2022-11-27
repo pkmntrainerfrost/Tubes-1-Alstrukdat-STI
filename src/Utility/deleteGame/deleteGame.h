@@ -8,8 +8,10 @@
 #include "../../Misc/io/io.h"
 #include "../../Misc/ascii/ascii.h"
 #include "../splash.h"
+#include "../../ADT/map/listMap.h"
+#include "../../ADT/set/listSet.h"
 
-void deleteGame(List *L, Queue Q);
+void deleteGame(List *L, Queue Q, List *listHist, ListMap *listMapGame, ListSet *listName);
 // I.S.
 // F.S. 
 // Menghapus sebuah game dari daftar game

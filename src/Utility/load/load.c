@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "load.h"
 
-void LOAD(Word filename, List *ListGame, List *listHist, ListMap *listMapGame) {
+void LOAD(Word filename, List *ListGame, List *listHist, ListMap *listMapGame, ListSet *listName) {
     
     Word filepath;
     concateWord(stringToWord("Config/"),filename,&filepath);
@@ -10,6 +10,7 @@ void LOAD(Word filename, List *ListGame, List *listHist, ListMap *listMapGame) {
     wordToString(filepath,filepathstr);
 
     Map M;
+    Set S;
     startKata(true,filepathstr);
     int i;
     int numberGame = wordToInt(currentKata); //baca jumlah listGame
@@ -18,6 +19,8 @@ void LOAD(Word filename, List *ListGame, List *listHist, ListMap *listMapGame) {
         insertLast(ListGame,currentKata);
         CreateEmptyMap(&M);
         insertListMap(listMapGame,M);
+        CreateEmptySet(&S);
+        insertListSet(listName, S);
         advKata();
     }
 
@@ -52,6 +55,7 @@ void LOAD(Word filename, List *ListGame, List *listHist, ListMap *listMapGame) {
             }
 
             InsertMap(&listMapGame->ElmtListMap[k], name, wordToInt(score));
+            InsertSet(&listName->ElmtListSet[k], name);
             advKata();
         }
     }

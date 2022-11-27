@@ -167,4 +167,16 @@ void displayList(List L)
     }
 }
 
+void deleteElmt(List *L, ElType X)
+{
+    int i = 0;
+    while (i < length(*L)){
+        if (isElTypeEqual((*L).A[i], X)){
+            deleteAt(L, i);
+        } else {
+            i++;
+        }
+    }
+}
+
 // compile: gcc ADT/list/array.c ADT/word/word.c Misc/ascii/ascii.c -o driver

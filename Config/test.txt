@@ -6,18 +6,24 @@ TOWER OF HANOI
 SNAKE ON METEOR
 Battleship
 SATU
-4
+7
+RNG
+HANGMAN
+SATU
 RNG
 SATU
 SATU
 SATU
-1
-haha 0
+0
+0
+2
+hihi 11
+HAHA 0
 0
 0
 0
-0
-3
+4
 haha 59
 hihi 41
+HUHU 41
 hehe 19

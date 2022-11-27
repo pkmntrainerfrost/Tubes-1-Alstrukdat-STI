@@ -27,6 +27,8 @@ boolean isFullListSet(ListSet L);
 
 void insertListSet(ListSet *L, Set S);
 
+void deleteListSet(ListSet *L, int idx);
+
 boolean insertElmt(ListSet *L, int idx, infotypeSet Elmt);
 // true jika elmt list tidak ada di set dalam list set lalu menambah elmt ke set dalam list set
 // false jika elmt list sudah ada di set dalam list set. Mengeluarkan pesan eror, list set tetap.

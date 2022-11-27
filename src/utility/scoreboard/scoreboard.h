@@ -13,10 +13,13 @@
 #include "../../ADT/set/listSet.h"
 
 void addMap(ListMap *M, List listGame);
+// bikin map baru waktu command start buat tiap game di list game
 
 void addSet(ListSet *S, List listGame);
+// bikin set baru waktu command start buat tiap game di list game
 
 void scoreboard(ListMap *M, List L);
+// display scoreboard
 
 void resetScoreboard(ListMap *M, ListSet *S, List listGame);
 
