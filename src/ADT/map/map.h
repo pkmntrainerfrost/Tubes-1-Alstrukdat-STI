@@ -8,7 +8,7 @@
 #include "../set/listSet.h"
 
 /* MODUL Map
-Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
+Deklarasi map yang dengan implementasi array eksplisit-statik rata kiri
 */
 
 // #define false 0

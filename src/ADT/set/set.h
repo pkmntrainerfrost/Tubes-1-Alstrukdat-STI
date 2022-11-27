@@ -5,7 +5,7 @@
 #include "../word/mesinkata/mesinkata.h"
 
 /* MODUL Set
-Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
+Deklarasi set yang dengan implementasi array eksplisit-statik rata kiri
 */
 
 #define Nil 0

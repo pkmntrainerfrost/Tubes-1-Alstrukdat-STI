@@ -8,7 +8,7 @@ void printStack(Stack A, Stack B, Stack C){
 	int idxA = 0, idxB = 0, idxC = 0;
 
 	do{
-		if(IsEmpty(A)){
+		if(IsEmptyStack(A)){
 			printf("|");
 		}else{
 			if(idxA == Top(A)){
@@ -35,7 +35,7 @@ void printStack(Stack A, Stack B, Stack C){
 		}
 		idxA++;
 
-		if(IsEmpty(B)){
+		if(IsEmptyStack(B)){
 			printf("|");
 		}else{
 			if(idxB == Top(B)){
@@ -62,7 +62,7 @@ void printStack(Stack A, Stack B, Stack C){
 		}
 		idxB++;
 
-		if(IsEmpty(C)){
+		if(IsEmptyStack(C)){
 			printf("|");
 		}else{
 			if(idxC == Top(C)){
@@ -105,7 +105,7 @@ void pindah(Stack *S1, Stack *S2, char cc){
 }
 
 boolean cekStack(Stack C){
-	if(IsEmpty(C)){
+	if(IsEmptyStack(C)){
 		return 0;
 	}else{
 		if(Info(C, 0) == 1 && Info(C, 1) == 3 && Info(C, 2) == 5 && Info(C, 3) == 7 && Info(C, 4) == 9){
@@ -138,9 +138,9 @@ void towerOfHanoi(){
 	Stack A, B, C;
 	int result = 0;
 	char awal, tujuan;
-	// CreateEmpty(&A);
-	// CreateEmpty(&B);
-	// CreateEmpty(&C);
+	// CreateEmptyStack(&A);
+	// CreateEmptyStack(&B);
+	// CreateEmptyStack(&C);
 
 	// Push(&A, 1);
 	// Push(&A, 3);
@@ -151,7 +151,7 @@ void towerOfHanoi(){
 	do{
 		printf("TIANG ASAL: ");
 		scanf("%c", &awal);
-		printf("TIANG TUJUAN: ")
+		printf("TIANG TUJUAN: ");
 		scanf("%c", &tujuan);
 
 		if((awal == 'A' || awal == 'a') && (tujuan == 'B' || tujuan == 'b')){
