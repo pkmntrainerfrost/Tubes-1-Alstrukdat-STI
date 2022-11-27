@@ -25,22 +25,34 @@ Untuk melakukan kompilasi, buka file compile.txt pada folder bin, lalu salin sel
 |   main.c
 │
 ├───.vscode
-|       Makefile
 │       settings.json
 │
-├───config
+├───Config
 │       config.txt
+|       test.txt
 │
-├───Doc
+├───bin
+|       compile.txt
+|
+├───docs
+|       IF2111_TB1_K2_06.pdf
 │
 └───src
         ├───ADT
         |   │   boolean.h
         |   │
         |   ├───list
-        |   │       driverArray.c
         |   │       array.c
         |   │       array.h
+        |   │       driverArray.c       
+        |   │
+        |   ├───map
+        |   │       driverListMap.c
+        |   |       driverMap.c
+        |   │       listMap.c
+        |   │       listMap.h
+        |   |       map.c
+        |   |       map.h
         |   │
         |   ├───point
         |   │       driverPoint.c
@@ -55,29 +67,38 @@ Untuk melakukan kompilasi, buka file compile.txt pada folder bin, lalu salin sel
         |   │       queue2.c
         |   │       queue2.h
         |   │
+        |   ├───set
+        |   │       driverListSet.c
+        |   |       driverSet.c
+        |   │       listSet.c
+        |   │       listSet.h
+        |   |       set.c
+        |   |       set.h
+        |   │
+        |   ├───stack
+        |   │       driverStack.c
+        |   │       stack.c
+        |   │       stack.h
+        |   |
         |   └───word
         |         |   driverWord.c
-        |         |   driverWord.exe
         |         |   word.c
         |         |   word.h
         |         |
         |         ├───mesinkarakter
         |         |       driver.c
-        |         |       driver.exe
         |         |       mesinkarakter.c
         |         |       mesinkarakter.h
         |         |       test.txt
         |         |
         |         └───mesinkata
         |                 driver.c
-        |                 driver.exe
         |                 mesinkata.c
         |                 mesinkata.h
         |                 test.txt
         |       
         ├───Games
         |   │   random.c
-        |   |   random.exe
         |   |   random.h
         |   │
         |   ├───battleship
@@ -88,9 +109,20 @@ Untuk melakukan kompilasi, buka file compile.txt pada folder bin, lalu salin sel
         |   │       dinerdash.c
         |   │       dinerdash.h
         |   │
-        |   └───rng
-        |           rng.c
-        |           rng.h
+        |   ├───hangman
+        |   │       hangman.c
+        |   │       hangman.h
+        |   │       listKata.txt
+        |   │       man.c
+        |   │       man.h
+        |   │
+        |   ├───rng
+        |   │       rng.c
+        |   │       rng.h
+        |   |
+        |   └───towerofhanoi
+        |           towerOfHanoi.c
+        |           towerOfHanoi.h
         |
         ├───Misc
         |   │   .DS_Store
@@ -124,6 +156,10 @@ Untuk melakukan kompilasi, buka file compile.txt pada folder bin, lalu salin sel
             │       help.c
             │       help.h
             │
+            ├───history
+            │       history.c
+            │       history.h
+            │
             ├───listGame
             │       listGame.c
             │       listGame.h
@@ -135,11 +171,7 @@ Untuk melakukan kompilasi, buka file compile.txt pada folder bin, lalu salin sel
             ├───playGame
             │       playGame.c
             │       playGame.h
-            │
-            ├───creategame
-            │       createGame.c
-            │       createGame.h
-            │
+            |
             ├───queuegame
             │       queueGame.c
             │       queueGame.h
@@ -151,6 +183,10 @@ Untuk melakukan kompilasi, buka file compile.txt pada folder bin, lalu salin sel
             ├───save
             │       save.c
             │       save.h
+            │
+            ├───scoreboard
+            │       scoreboard.c
+            │       scoreboard.h
             │
             ├───skipGame
             │       skipGame.c
