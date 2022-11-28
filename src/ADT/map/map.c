@@ -53,6 +53,7 @@ valuetype Value(Map M, keytype k)
     } else {
         return Undefined;
     }
+    return 0;
 }
 
 void InsertMap(Map *M, keytype k, valuetype v)
@@ -118,8 +119,8 @@ void PrintMap(Map M, Word GameName)
             for (j=0; j<M.Elements[i].name.length; j++){
                 printf("%c",M.Elements[i].name.buffer[j]);
             }
-            int k = M.Elements[i].name.length;
-            for(k; k<15; k++){
+            int k;
+            for(k = M.Elements[i].name.length; k<15; k++){
                 printf(" ");
             }
             printf("| %-15d", M.Elements[i].score);
