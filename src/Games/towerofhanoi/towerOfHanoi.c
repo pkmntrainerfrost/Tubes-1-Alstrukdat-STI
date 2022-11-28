@@ -4,178 +4,208 @@
 
 int step = 0;
 
-void printStack(Stack A, Stack B, Stack C){
-	int idxA = 0, idxB = 0, idxC = 0;
+// Inisialisasi Tower
+void initAllTower(int h, Tower *A, Tower *B, Tower *C){
+    Stack stackA, stackB, stackC;
+    CreateEmpty(&stackA);
+    CreateEmpty(&stackB);
+    CreateEmpty(&stackC);
+    (*A).name = 'A';
+    (*A).height = h;
+    (*A).countDisc = 0;
+    (*A).content = stackA;
+    (*B).name = 'B';    
+    (*B).height = h;
+    (*B).countDisc = 0;
+    (*B).content = stackB;
+    (*C).name = 'C';
+    (*C).height = h;
+    (*C).countDisc = 0;
+    (*C).content = stackC;
 
-	do{
-		if(IsEmptyStack(A)){
-			printf("|");
-		}else{
-			if(idxA == Top(A)){
-				switch(Info(A, idxA)){
-					case 1:
-						printf("*");
-						break;
-					case 3:
-						printf("***");
-						break;
-					case 5:
-						printf("*****");
-						break;
-					case 7:
-						printf("*******");
-						break;
-					case 9:
-						printf("*********");
-						break;
-				}
-			}else{
-				printf("|");
-			}
-		}
-		idxA++;
+    // fill in stack depends on h to tower A
+    int i;
+    for (i = h; i > 0 ; i--){
+        Push(&(*A).content, i);
+        (*A).countDisc++;
+    };
+};
 
-		if(IsEmptyStack(B)){
-			printf("|");
-		}else{
-			if(idxB == Top(B)){
-				switch(Info(B, idxB)){
-					case 1:
-						printf("*");
-						break;
-					case 3:
-						printf("***");
-						break;
-					case 5:
-						printf("*****");
-						break;
-					case 7:
-						printf("*******");
-						break;
-					case 9:
-						printf("*********");
-						break;
-				}
-			}else{
-				printf("|");
-			}
-		}
-		idxB++;
-
-		if(IsEmptyStack(C)){
-			printf("|");
-		}else{
-			if(idxC == Top(C)){
-				switch(Info(C, idxC)){
-					case 1:
-						printf("*");
-						break;
-					case 3:
-						printf("***");
-						break;
-					case 5:
-						printf("*****");
-						break;
-					case 7:
-						printf("*******");
-						break;
-					case 9:
-						printf("*********");
-						break;
-				}
-			}else{
-				printf("|");
-			}
-		}
-		idxC++;
-	}while(idxA < MaxEl);
+void printAllTower(Tower A, Tower B, Tower C)
+{
+    printf("Tower A\n");
+    printTower(A);
+    printf("Tower B\n");    
+    printTower(B);
+    printf("Tower C\n");
+    printTower(C);
+    printf("\n========================\n");
 }
 
-void pindah(Stack *S1, Stack *S2, char cc){
-	// cek TOP S1 dengan S2
-	infotype x;
-	if(InfoTop(*S1) < InfoTop(*S2)){
-		Pop(S1, &x);
-		Push(S2, x);
-		printf("Memindahkan piringan ke %c...\n", cc);
-		step++;
-	}else{
-		printf("Piringan tidak dapat dipindahkan.");
+void printTower(Tower T){
+    int h, count, top, i, j, s, c;
+    h = T.height;
+    count = T.countDisc;
+    top = InfoTop(T.content);
+
+    // print for empty level
+    for (i = 0; i < h - count; i++){
+        for (j = 0; j < h; j++){
+			printf(" ");		
+		}
+        printf("|\n");
+    }
+
+    // print for the rest of tower
+    if (top != 0) {
+        for (i = 0, c=top; i < count; i++, c++)
+        {
+            for (j = 0; j < h-c;j++){
+                printf(" ");		
+            }
+            for (s = 1; s <= c ;s++){
+                printf("*");
+            }
+            printf("|");
+            for (s = 1; s <= c ;s++){
+                printf("*");
+            }
+            printf("\n");
+        }
+    }
+	for (i=0; i<=2*h; i++){
+		printf("-");
 	}
+	printf("\n\n");
 }
 
-boolean cekStack(Stack C){
-	if(IsEmptyStack(C)){
-		return 0;
-	}else{
-		if(Info(C, 0) == 1 && Info(C, 1) == 3 && Info(C, 2) == 5 && Info(C, 3) == 7 && Info(C, 4) == 9){
-			return 1;
-		}else{
-			return 0;
-		}
+
+void moveDisc(Tower *A, Tower *B)
+{
+
+    if (IsEmptyStack((*A).content)){
+        printf("Tower is empty and can't be moved\n");
+        return;
+    }
+
+    if (IsEmptyStack((*B).content)) {
+        int popped;
+        Pop(&((*A).content), &popped);
+        (*A).countDisc--;
+        Push(&((*B).content), popped);
+        (*B).countDisc++;
+    } else {
+        if (InfoTop((*A).content) > InfoTop((*B).content)){
+            printf("you can't move the disc from tower %c to tower %c.\n", (*A).name, (*B).name);
+            return;
+        } else {
+            int popped;
+            Pop(&((*A).content), &popped);
+            (*A).countDisc--;
+            Push(&((*B).content), popped);
+            (*B).countDisc++;
+        }
+    }
+}
+
+int towerOfHanoi(){
+    Tower A, B, C;
+    Word many;
+    int height;
+    int moves = 0;
+    boolean play = true;
+
+    printf("Hi! Welcome to Tower of Hanoi! Have fun!\n");    
+    printf("How many discs you wanna play with?: ");
+	wordInput(&many, 1, 2);
+    int intMany = wordToInt(many);
+
+	while (intMany < 1) {
+		printf("Choose a better number...\n");
+		printf("How many discs you wanna play with?: ");
+        wordInput(&many, 1, 2);
+        wordToInt(many);
+        intMany = wordToInt(many);
 	}
+    height = intMany;
+    initAllTower(height, &A, &B, &C);
+    printAllTower(A, B, C);
+    
+    while (play){
+        Word wordFirst;
+        boolean valid = false;
+        printf("Choose the starting tower: ");
+        wordInput(&wordFirst, 1, 1);
+        char first = wordToChar(wordFirst);
+        while (!valid){
+            if(first == 'A' || first == 'B' || first == 'C' || first == 'a' || first == 'b' || first == 'c'){
+                valid = true;
+            }else{
+                printf("There is no %c tower in this game\n", first);
+                printf("Choose the starting tower: ");
+                wordInput(&wordFirst, 1, 1);
+                first = wordToChar(wordFirst);            
+            }            
+        }
+
+        Word wordDest;
+        valid = false;
+        printf("Choose the destination tower: ");
+        wordInput(&wordDest, 1, 1);
+        char dest = wordToChar(wordDest);
+        while (!valid){
+            if(dest == 'A' || dest == 'B' || dest == 'C' || dest == 'a' || dest == 'b' || dest == 'c'){
+                valid = true;
+            }else{
+                printf("There is no %c tower in this game\n", dest);
+                printf("Choose the destination tower: ");
+                wordInput(&wordDest, 1, 1);
+                dest = wordToChar(wordDest);              
+            }            
+        }
+
+        if (first == dest){
+            printf("Don't choose the same tower, Choose another one!\n");
+        }else{
+            if (first == 'A' || first == 'a'){
+                if (dest == 'B' || dest == 'b'){
+                    moveDisc(&A, &B);
+                }
+                else if(dest == 'C' || dest == 'c'){
+                    moveDisc(&A, &C);
+                }
+            }
+            else if (first == 'B' || first == 'b'){
+                if(dest == 'A' || dest == 'a'){
+                    moveDisc(&B, &A);
+                }
+                else if(dest == 'C' || dest == 'c'){
+                    moveDisc(&B, &C);
+                }
+            }
+            else //shud be from tower C
+                if(dest == 'A' || dest == 'a'){
+                    moveDisc(&C, &A);
+                }
+                else if(dest == 'B' || dest == 'b'){
+                    moveDisc(&C, &B);
+                }
+            printf("moving disc from tower %c to tower %c", first, dest);
+            moves += 1;
+        }
+
+        printAllTower(A, B, C);
+
+        if (C.countDisc == height) {
+            play = false;
+        }
+    }
+    float min_moves = pow(2, height) - 1;
+    int score = (min_moves/moves*100);
+    printf("Yay! you did great! congrats on solving the Tower of Hanoi\n");
+    printf("Your score is: %d\n", score);
 }
 
-boolean endGame(Stack C){
-	infotype x;
-	char nama[20];
-	int result = cekStack(C);
-	if(result){
-		printf("Kamu berhasil!\n");
-		if(step == 31){
-			printf("Skor didapatkan: 10\n");
-		}else{
-			x = step/3; // hitung skor
-			printf("Skor didapatkan: %d\n", x);
-		}
-		printf("Nama: ");	
-		scanf("%s", nama);
-	}
-	return result;
-}
-
-void towerOfHanoi(){
-	Stack A, B, C;
-	int result = 0;
-	char awal, tujuan;
-	// CreateEmptyStack(&A);
-	// CreateEmptyStack(&B);
-	// CreateEmptyStack(&C);
-
-	// Push(&A, 1);
-	// Push(&A, 3);
-	// Push(&A, 5);
-	// Push(&B, 7);
-	// Push(&C, 9);
-
-	do{
-		printf("TIANG ASAL: ");
-		scanf("%c", &awal);
-		printf("TIANG TUJUAN: ");
-		scanf("%c", &tujuan);
-
-		if((awal == 'A' || awal == 'a') && (tujuan == 'B' || tujuan == 'b')){
-			pindah(&A, &B, tujuan);
-		}else if((awal == 'A' || awal == 'a') && (tujuan == 'C' || tujuan == 'c')){
-			pindah(&A, &C, tujuan);
-		}else if((awal == 'B' || awal == 'b') && (tujuan == 'A' || tujuan == 'a')){
-			pindah(&B, &A, tujuan);
-		}else if((awal == 'B' || awal == 'b') && (tujuan == 'C' || tujuan == 'c')){
-			pindah(&B, &C, tujuan);
-		}else if((awal == 'C' || awal == 'c') && (tujuan == 'A' || tujuan == 'a')){
-			pindah(&C, &A, tujuan);
-		}else if((awal == 'C' || awal == 'c') && (tujuan == 'B' || tujuan == 'b')){
-			pindah(&C, &B, tujuan);
-		}else{
-			printf("Tidak dapat memindahkan piringan ke tiang yang sama.\n");
-		}
-		result = endGame(C);
-	}while(result == 0);
-
-	printStack(A, B, C);
-}
-
-int main(){
-	towerOfHanoi();
-	return 0;
-}
+// compile:
+// ganti dulu nama function tower of hanoi jadi main kalo mau coba 
+// gcc src/Games/towerofhanoi/towerOfHanoi.c src/ADT/stack/stack.c src/Utility/splash.c src/Games/random.c src/ADT/word/mesinkata/mesinkata.c src/ADT/word/mesinkarakter/mesinkarakter.c src/ADT/word/word.c src/ADT/list/array.c src/Misc/ascii/ascii.c src/Misc/io/io.c -o driver

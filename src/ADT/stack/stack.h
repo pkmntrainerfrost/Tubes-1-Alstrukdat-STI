@@ -1,14 +1,13 @@
 #ifndef stack_H
 #define stack_H
 
-#include <stdio.h>
-#include "../boolean.h"
+#include "../../ADT/boolean.h"
 
-#define Nil 5
-#define MaxEl 5
-#define infotype int
+#define Nill -1
+#define MaxEl 100
 /* Nil adalah stack dengan elemen kosong . */
 
+typedef int infotype;
 typedef int address;   /* indeks tabel */
 
 /* Contoh deklarasi variabel bertype stack dengan ciri TOP : */
@@ -26,11 +25,10 @@ typedef struct {
 /* Definisi akses dengan Selektor : Set dan Get */
 #define Top(S) (S).TOP
 #define InfoTop(S) (S).T[(S).TOP]
-#define Info(S, X) (S).T[(X)]  
 
 /* ************ Prototype ************ */
 /* *** Konstruktor/Kreator *** */
-void CreateEmptyStack(Stack *S);
+void CreateEmpty(Stack *S);
 /* I.S. sembarang; */
 /* F.S. Membuat sebuah stack S yang kosong berkapasitas MaxEl */
 /* jadi indeksnya antara 0.. MaxEl */
@@ -53,5 +51,6 @@ void Pop(Stack * S, infotype* X);
 /* Menghapus X dari Stack S. */
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
+Stack CopyStack(Stack S);
 
 #endif
