@@ -87,4 +87,4 @@ void resetScoreboard(ListMap *M, ListSet *S, List listGame){
 }
 
 
-//compile (ketik cd src dulu) : gcc Utility/scoreboard/scoreboard.c ADT/map/map.c ADT/word/word.c ADT/word/mesinkata/mesinkata.c Misc/io/io.c ADT/word/mesinkarakter/mesinkarakter.c Misc/ascii/ascii.c ADT/list/array.c -o try
+//compile (ketik cd src dulu) : gcc Utility/scoreboard/scoreboard.c ADT/map/map.c ADT/word/word.c ADT/word/mesinkata/mesinkata.c Misc/io/io.c ADT/word/mesinkarakter/mesinkarakter.c Misc/ascii/ascii.c ADT/list/array.c ADT/map/listMap.c ADT/set/set.c ADT/set/listSet.c -o test
