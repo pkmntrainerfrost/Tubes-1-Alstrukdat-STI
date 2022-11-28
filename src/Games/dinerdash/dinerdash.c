@@ -9,6 +9,7 @@ PQElType addQueue(int i){
     addOrder.cookTime = (rand() % 5) + 1;
     addOrder.stayTime = (rand() % 5) + 1;
     addOrder.price = (rand() % 5 ) * 5000 + 10000;
+    addOrder.cookTimeDef = addOrder.cookTime;
     return addOrder;
 }
 
@@ -38,6 +39,7 @@ void dinerDash(ListMap *M, ListSet *S){
         order[i].cookTime = random_range(1,4) + 1;
         order[i].stayTime = random_range(1,5) + 1;
         order[i].price = random_range(1,8) * 5000 + 10000;
+        order[i].cookTimeDef = order[i].cookTime;
         enqueuePQ(&pq, order[i]); 
     }   
 
@@ -164,6 +166,22 @@ void dinerDash(ListMap *M, ListSet *S){
             serveQ.buffer[ctr].stayTime -= 1;
             ctr++;   
         }
+
+        // kondisional makanan hangus, waktu serve habis 
+        if (!isEmptyPQ(serveQ)){
+            ctr = IDX_HEAD(serveQ);
+            while (ctr < IDX_TAIL(serveQ)+1){ 
+                if (serveQ.buffer[ctr].stayTime == 0){
+                    PQElType value;
+                    dequeueAt(&serveQ, ctr, &value);
+                    enqueuePQ(&cookQ, value);
+                    // cookQ.buffer[id].cookTimeDef = pq.buffer[id].cookTime;
+                    // printf("di index M%d cook time udah diubahnya %d\n", serveQ.buffer[ctr].foodId, serveQ.buffer[ctr].cookTime);
+                }
+                ctr++;
+            }                
+        }
+    
 
         ctr = IDX_HEAD(cookQ);
         while (ctr < IDX_TAIL(cookQ) + 1){ //untuk mengurangi waktu masak 

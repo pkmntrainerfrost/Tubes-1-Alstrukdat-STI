@@ -7,7 +7,7 @@
 #include "../boolean.h"
 
 #define IDX_UNDEF -1
-#define PQCAPACITY 7
+#define PQCAPACITY 100
 
 /* Definisi elemen dan address */
 typedef struct
@@ -17,6 +17,7 @@ typedef struct
         int cookTime;
         int stayTime;
         int price;
+        int cookTimeDef;
 } PQElType;
 
 typedef struct

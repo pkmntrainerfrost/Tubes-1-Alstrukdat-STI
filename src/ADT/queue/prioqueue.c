@@ -34,6 +34,7 @@ void enqueuePQ(PrioQueue *pq, PQElType val){ //untuk kondisi full, jangan dienqu
 	TAIL(*pq).cookTime = val.cookTime;
 	TAIL(*pq).stayTime = val.stayTime;
 	TAIL(*pq).price = val.price;
+	TAIL(*pq).cookTimeDef = val.cookTime;
 }
 
 void dequeuePQ(PrioQueue *pq, PQElType *val){
@@ -41,6 +42,7 @@ void dequeuePQ(PrioQueue *pq, PQElType *val){
 	(*val).cookTime = HEAD(*pq).cookTime;
 	(*val).stayTime = HEAD(*pq).stayTime;
 	(*val).price = HEAD(*pq).price;
+	(*val).cookTimeDef = HEAD(*pq).cookTimeDef;
     if (IDX_HEAD(*pq) == IDX_TAIL(*pq)){
         IDX_HEAD(*pq) = IDX_UNDEF;
         IDX_TAIL(*pq) = IDX_UNDEF;
@@ -51,6 +53,7 @@ void dequeuePQ(PrioQueue *pq, PQElType *val){
 			(*pq).buffer[i].cookTime = (*pq).buffer[i + 1].cookTime;
 			(*pq).buffer[i].stayTime = (*pq).buffer[i + 1].stayTime;
 			(*pq).buffer[i].price = (*pq).buffer[i + 1].price;	
+			(*pq).buffer[i].cookTimeDef = (*pq).buffer[i+1].cookTimeDef;
 		}
 		IDX_TAIL(*pq)--;
     }
@@ -61,6 +64,7 @@ void dequeueAt(PrioQueue *pq, int idx,PQElType * val){
 	(*val).cookTime = (*pq).buffer[idx].cookTime;
 	(*val).stayTime = (*pq).buffer[idx].stayTime;
 	(*val).price = (*pq).buffer[idx].price;
+	(*val).cookTimeDef = (*pq).buffer[idx].cookTimeDef;
     if (IDX_HEAD(*pq) == IDX_TAIL(*pq)){
         IDX_HEAD(*pq) = IDX_UNDEF;
         IDX_TAIL(*pq) = IDX_UNDEF;
@@ -71,6 +75,7 @@ void dequeueAt(PrioQueue *pq, int idx,PQElType * val){
 			(*pq).buffer[i].cookTime = (*pq).buffer[i + 1].cookTime;
 			(*pq).buffer[i].stayTime = (*pq).buffer[i + 1].stayTime;
 			(*pq).buffer[i].price = (*pq).buffer[i + 1].price;	
+			(*pq).buffer[i].cookTimeDef = (*pq).buffer[i+1].cookTimeDef;
 		}
         IDX_TAIL(*pq)--;
     }
