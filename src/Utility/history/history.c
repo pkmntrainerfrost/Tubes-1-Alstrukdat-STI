@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "history.h"
 #include "../playGame/playGame.h"
-#include "../queueGame/queueGame.h"
+#include "../../Utility/queuegame/queueGame.h"
 
 void resetHist(List *listHist){
     Word yn;

@@ -43,48 +43,54 @@ void printAllTower(Tower A, Tower B, Tower C)
 }
 
 void printTower(Tower T){
-    int h, count, top, i, j, s, c;
+    int h, count, top, i, j, s, disc;
+    Stack temp;
+    CreateEmptyStack(&temp);
     h = T.height;
     count = T.countDisc;
     top = InfoTop(T.content);
+    temp = CopyStack(T.content);
 
     // print for empty level
     for (i = 0; i < h - count; i++){
         for (j = 0; j < h; j++){
-			printf(" ");		
-		}
+   printf(" ");  
+  }
         printf("|\n");
     }
 
     // print for the rest of tower
     if (top != 0) {
-        for (i = 0, c=top; i < count; i++, c++)
+        for (i = 0; i < count; i++)
         {
-            for (j = 0; j < h-c;j++){
-                printf(" ");		
+            // get current disc from temp stack
+            Pop(&temp, &disc);
+            for (j = 0; j < h - disc;j++){
+                printf(" ");  
             }
-            for (s = 1; s <= c ;s++){
+            for (s = 0; s < disc;s++){
                 printf("*");
             }
             printf("|");
-            for (s = 1; s <= c ;s++){
+            for (s = 0; s < disc;s++){
                 printf("*");
             }
             printf("\n");
         }
     }
-	for (i=0; i<=2*h; i++){
-		printf("-");
-	}
-	printf("\n\n");
-}
+
+ for (i=0; i<=2*h; i++){
+  printf("-");
+ }
+ printf("\n");
+};
 
 
 void moveDisc(Tower *A, Tower *B)
 {
 
     if (IsEmptyStack((*A).content)){
-        printf("Tower is empty and can't be moved\n");
+        printf("Tower kosong, tidak ada yang bisa dipindahkan!\n");
         
         printf("\nTekan [ENTER] untuk melanjutkan...");
         blankInput();
@@ -98,13 +104,13 @@ void moveDisc(Tower *A, Tower *B)
         Push(&((*B).content), popped);
         (*B).countDisc++;
 
-        printf("moving disc from tower %c to tower %c\n", (*A).name, (*B).name);
+        printf("Memindahkan piringan dari tower %c ke tower %c\n", (*A).name, (*B).name);
         printf("\nTekan [ENTER] untuk melanjutkan...");
         blankInput();
 
     } else {
         if (InfoTop((*A).content) > InfoTop((*B).content)){
-            printf("you can't move the disc from tower %c to tower %c.\n", (*A).name, (*B).name);
+            printf("Piringan dari tower %c ke tower %c tidak dapat dipindahkan\n", (*A).name, (*B).name);
 
             printf("\nTekan [ENTER] untuk melanjutkan...");
             blankInput();
@@ -116,7 +122,7 @@ void moveDisc(Tower *A, Tower *B)
             Push(&((*B).content), popped);
             (*B).countDisc++;
 
-            printf("moving disc from tower %c to tower %c\n", (*A).name, (*B).name);
+            printf("Memindahkan piringan dari tower %c ke tower %c\n", (*A).name, (*B).name);
             printf("\nTekan [ENTER] untuk melanjutkan...");
             blankInput();
         }
@@ -132,18 +138,18 @@ void towerOfHanoi(ListMap *M, ListSet *S){
     int moves = 0;
     boolean play = true;
 
-    printf("Hi! Welcome to Tower of Hanoi! Have fun!\n");    
-    printf("How many discs you wanna play with?: ");
+    printf("Halo! Selamat datang di Tower of Hanoi!\n");    
+    printf("Mau main dengan berapa piringan?: ");
 	wordInput(&many, 1, 2);
     int intMany = wordToInt(many);
 
 	while (intMany < 1) {
-		printf("Choose a better number...\n");
+		printf("Pilih angka lebih baik...\n");
         printf("\nTekan [ENTER] untuk melanjutkan...");
         blankInput();
 
         header();
-		printf("How many discs you wanna play with?: ");
+		printf("Mau main dengan berapa piringan?: ");
         wordInput(&many, 1, 2);
         wordToInt(many);
         intMany = wordToInt(many);
@@ -157,20 +163,20 @@ void towerOfHanoi(ListMap *M, ListSet *S){
     while (play){
         Word wordFirst;
         boolean valid = false;
-        printf("Choose the starting tower: ");
+        printf("Pilih tower asal: ");
         wordInput(&wordFirst, 1, 1);
         char first = wordToChar(wordFirst);
         while (!valid){
             if(first == 'A' || first == 'B' || first == 'C' || first == 'a' || first == 'b' || first == 'c'){
                 valid = true;
             }else{
-                printf("There is no %c tower in this game\n", first);
+                printf("Tidak ada tower %c di game ini\n", first);
                 printf("\nTekan [ENTER] untuk melanjutkan...");
                 blankInput();
 
                 header();
                 printAllTower(A, B, C);
-                printf("Choose the starting tower: ");
+                printf("Pilih tower asal: ");
                 wordInput(&wordFirst, 1, 1);
                 first = wordToChar(wordFirst);            
             }            
@@ -178,15 +184,14 @@ void towerOfHanoi(ListMap *M, ListSet *S){
 
         Word wordDest;
         valid = false;
-        printf("Choose the destination tower: ");
+        printf("Pilih tower tujuan: ");
         wordInput(&wordDest, 1, 1);
         char dest = wordToChar(wordDest);
         while (!valid){
             if(dest == 'A' || dest == 'B' || dest == 'C' || dest == 'a' || dest == 'b' || dest == 'c'){
                 valid = true;
             }else{
-                printf("There is no %c tower in this game\n\n", dest);
-
+                printf("Tidak ada tower %c di game ini\n", dest);
                 printf("Choose the destination tower: ");
                 wordInput(&wordDest, 1, 1);
                 dest = wordToChar(wordDest);              
@@ -194,7 +199,7 @@ void towerOfHanoi(ListMap *M, ListSet *S){
         }
 
         if (first == dest){
-            printf("Don't choose the same tower, Choose another one!\n");
+            printf("Tidak bisa memindahkan ke tower yang sama! Pilih tower lain\n");
             printf("\nTekan [ENTER] untuk melanjutkan...");
             blankInput();
 
@@ -237,8 +242,8 @@ void towerOfHanoi(ListMap *M, ListSet *S){
     header();
     float min_moves = pow(2, height) - 1;
     int score = (min_moves/moves*100);
-    printf("Yay! you did great! congrats on solving the Tower of Hanoi\n");
-    printf("Your score is: %d\n", score);
+    printf("Selamat telah menyelesaikan Tower of Hanoi!\n");
+    printf("Skor kamu: %d\n", score);
     inputDataListMap(M, S, 3, score);
 }
 
