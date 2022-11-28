@@ -52,4 +52,6 @@ void hangman(ListMap *M, ListSet *S);
 // I.S. Sembarang
 // F.S. Menunjukkan pilihan main game hangman atau menambah kata
 
+void hangmanSplash();
+
 #endif

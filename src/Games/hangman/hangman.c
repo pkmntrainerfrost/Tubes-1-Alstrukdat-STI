@@ -352,7 +352,11 @@ void playHangman(List L, ListMap *M, ListSet *S)
 void hangman(ListMap *M, ListSet *S)
 {
     header();
-    printf("Selamat datang di permainan Hangman!\n");
+    
+    hangmanSplash();
+
+    toContinue();
+    header();
 
     // baca list kata dari listKata.txt
     List L;
@@ -416,8 +420,36 @@ void hangman(ListMap *M, ListSet *S)
     saveListKata(L);
 }
 
+void hangmanSplash()
+{
+printf("              WELCOME TO HANGMAN!           \n\n");
+printf("                     ___________.._______           \n");
+printf("                    | .__________))______|          \n");
+printf("                    | | / /      ||                 \n");
+printf("                    | |/ /       ||                 \n");
+printf("                    | | /        ||.-''.            \n");
+printf("                    | |/         |/  _  \\           \n");
+printf("                    | |          ||  `/,/           \n");
+printf("                    | |          (\\`_.'            \n");
+printf("                    | |         .-`--'.             \n");
+printf("                    | |        /Y     Y\\            \n");
+printf("                    | |       // |   | \\\\           \n");
+printf("                    | |      //  |   |  \\\\          \n");
+printf("                    | |     ')   |   |   (`         \n");
+printf("                    | |          || ||              \n");
+printf("                    | |          || ||              \n");
+printf("                    | |          || ||              \n");
+printf("                    | |          || ||              \n");
+printf("                    | |         / | | \\             \n");
+printf("                                `-' `-'            \n");
+printf("\n\n");
+printf("                            Guess the WORD or else ...\n");
+printf("\n\n");
+}
+
 // int main()
 // {
+//     hangmanSplash();
 //     // List L;
 //     // createList(&L);
 //     // readListKata(&L);
@@ -434,4 +466,4 @@ void hangman(ListMap *M, ListSet *S)
 //     return 0;
 // }
 
-// compile : gcc src/ADT/map/listMap.c src/ADT/map/map.c src/Games/hangman/man.c src/Utility/splash.c src/Games/random.c src/Games/hangman/hangman.c src/ADT/list/array.c src/ADT/word/mesinkata/mesinkata.c src/ADT/word/mesinkarakter/mesinkarakter.c src/ADT/word/word.c src/Misc/ascii/ascii.c src/Misc/io/io.c -o driver
+// compile : gcc src/ADT/map/listMap.c src/ADT/set/listSet.c src/ADT/set/set.c src/ADT/map/map.c src/Games/hangman/man.c src/Utility/splash.c src/Games/random.c src/Games/hangman/hangman.c src/ADT/list/array.c src/ADT/word/mesinkata/mesinkata.c src/ADT/word/mesinkarakter/mesinkarakter.c src/ADT/word/word.c src/Misc/ascii/ascii.c src/Misc/io/io.c -o driver
