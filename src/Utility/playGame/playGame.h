@@ -11,6 +11,7 @@
 #include "../../Games/dinerdash/dinerdash.h"
 #include "../../Games/battleship/battleship.h"
 #include "../../Games/hangman/hangman.h"
+#include "../../Games/towerofhanoi/towerOfHanoi.h"
 #include "../../ADT/map/listMap.h"
 #include "../../ADT/set/listSet.h"
 

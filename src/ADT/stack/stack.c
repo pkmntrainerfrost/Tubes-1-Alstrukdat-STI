@@ -1,8 +1,7 @@
-#include "stack.h"
-#include "../../ADT/boolean.h"
 #include <stdio.h>
+#include "stack.h"
 
-void CreateEmpty(Stack *S){
+void CreateEmptyStack(Stack *S){
     Top(*S) = Nill;
 }
 
@@ -14,20 +13,20 @@ boolean IsFullStack(Stack S){
     return Top(S) == MaxEl-1;
 }
 
-void Push(Stack * S, infotype X){
+void Push(Stack * S, infotypeStack X){
     Top(*S) += 1;
     InfoTop(*S) = X;
 }
 
-void Pop(Stack * S, infotype* X){
+void Pop(Stack * S, infotypeStack* X){
     (*X) = InfoTop(*S);
     Top(*S) -= 1;
 }
 
 Stack CopyStack(Stack S){
     Stack temp, B;
-    CreateEmpty(&temp);
-    CreateEmpty(&B);
+    CreateEmptyStack(&temp);
+    CreateEmptyStack(&B);
 
     while (!IsEmptyStack((S))){
         int popped;

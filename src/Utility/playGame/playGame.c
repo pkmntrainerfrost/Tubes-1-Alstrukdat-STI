@@ -29,7 +29,7 @@ void playGame(Queue *Q, List L, List *listHist, ListMap *M, ListSet *S)
             } else if (isSameWord(x, stringToWord("HANGMAN"))){
                 hangman(M, S);
             } else if (isSameWord(x, stringToWord("TOWER OF HANOI"))){
-                towerOfHanoi();
+                towerOfHanoi(M, S);
             } else if (isSameWord(x, stringToWord("SNAKE ON METEOR"))){
                 // snakeOnMeteor();
             } else if (isSameWord(x, stringToWord("Battleship"))){

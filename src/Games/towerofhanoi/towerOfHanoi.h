@@ -10,11 +10,14 @@
 #include "../../ADT/stack/stack.h"
 #include "../../ADT/word/mesinkata/mesinkata.h"
 #include "../../ADT/word/word.h"
+#include "../../ADT/map/listMap.h"
+#include "../../ADT/set/listSet.h"
 #include "../../Misc/ascii/ascii.h"
 #include "../../Misc/io/io.h"
 #include "../../Utility/splash.h"
 #include "../../ADT/list/array.h"
 #include "../random.h"
+
 
 // Tower Type
 typedef struct Tower {
@@ -32,5 +35,7 @@ void moveDisc(Tower *A, Tower *B);
 void printTower(Tower T);
 // Print all tower
 void printAllTower(Tower A, Tower B, Tower C);
+
+void towerOfHanoi(ListMap *M, ListSet *S);
 
 #endif

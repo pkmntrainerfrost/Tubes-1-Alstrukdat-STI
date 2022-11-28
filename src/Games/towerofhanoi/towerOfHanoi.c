@@ -1,15 +1,15 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include"towerOfHanoi.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "towerOfHanoi.h"
 
 int step = 0;
 
 // Inisialisasi Tower
 void initAllTower(int h, Tower *A, Tower *B, Tower *C){
     Stack stackA, stackB, stackC;
-    CreateEmpty(&stackA);
-    CreateEmpty(&stackB);
-    CreateEmpty(&stackC);
+    CreateEmptyStack(&stackA);
+    CreateEmptyStack(&stackB);
+    CreateEmptyStack(&stackC);
     (*A).name = 'A';
     (*A).height = h;
     (*A).countDisc = 0;
@@ -85,6 +85,9 @@ void moveDisc(Tower *A, Tower *B)
 
     if (IsEmptyStack((*A).content)){
         printf("Tower is empty and can't be moved\n");
+        
+        printf("\nTekan [ENTER] untuk melanjutkan...");
+        blankInput();
         return;
     }
 
@@ -94,9 +97,17 @@ void moveDisc(Tower *A, Tower *B)
         (*A).countDisc--;
         Push(&((*B).content), popped);
         (*B).countDisc++;
+
+        printf("moving disc from tower %c to tower %c\n", (*A).name, (*B).name);
+        printf("\nTekan [ENTER] untuk melanjutkan...");
+        blankInput();
+
     } else {
         if (InfoTop((*A).content) > InfoTop((*B).content)){
             printf("you can't move the disc from tower %c to tower %c.\n", (*A).name, (*B).name);
+
+            printf("\nTekan [ENTER] untuk melanjutkan...");
+            blankInput();
             return;
         } else {
             int popped;
@@ -104,11 +115,17 @@ void moveDisc(Tower *A, Tower *B)
             (*A).countDisc--;
             Push(&((*B).content), popped);
             (*B).countDisc++;
+
+            printf("moving disc from tower %c to tower %c\n", (*A).name, (*B).name);
+            printf("\nTekan [ENTER] untuk melanjutkan...");
+            blankInput();
         }
     }
 }
 
-int towerOfHanoi(){
+void towerOfHanoi(ListMap *M, ListSet *S){
+    header();
+
     Tower A, B, C;
     Word many;
     int height;
@@ -122,11 +139,17 @@ int towerOfHanoi(){
 
 	while (intMany < 1) {
 		printf("Choose a better number...\n");
+        printf("\nTekan [ENTER] untuk melanjutkan...");
+        blankInput();
+
+        header();
 		printf("How many discs you wanna play with?: ");
         wordInput(&many, 1, 2);
         wordToInt(many);
         intMany = wordToInt(many);
 	}
+
+    header();
     height = intMany;
     initAllTower(height, &A, &B, &C);
     printAllTower(A, B, C);
@@ -142,6 +165,11 @@ int towerOfHanoi(){
                 valid = true;
             }else{
                 printf("There is no %c tower in this game\n", first);
+                printf("\nTekan [ENTER] untuk melanjutkan...");
+                blankInput();
+
+                header();
+                printAllTower(A, B, C);
                 printf("Choose the starting tower: ");
                 wordInput(&wordFirst, 1, 1);
                 first = wordToChar(wordFirst);            
@@ -157,7 +185,8 @@ int towerOfHanoi(){
             if(dest == 'A' || dest == 'B' || dest == 'C' || dest == 'a' || dest == 'b' || dest == 'c'){
                 valid = true;
             }else{
-                printf("There is no %c tower in this game\n", dest);
+                printf("There is no %c tower in this game\n\n", dest);
+
                 printf("Choose the destination tower: ");
                 wordInput(&wordDest, 1, 1);
                 dest = wordToChar(wordDest);              
@@ -166,6 +195,9 @@ int towerOfHanoi(){
 
         if (first == dest){
             printf("Don't choose the same tower, Choose another one!\n");
+            printf("\nTekan [ENTER] untuk melanjutkan...");
+            blankInput();
+
         }else{
             if (first == 'A' || first == 'a'){
                 if (dest == 'B' || dest == 'b'){
@@ -190,20 +222,24 @@ int towerOfHanoi(){
                 else if(dest == 'B' || dest == 'b'){
                     moveDisc(&C, &B);
                 }
-            printf("moving disc from tower %c to tower %c", first, dest);
+
             moves += 1;
         }
 
+        header();
         printAllTower(A, B, C);
 
         if (C.countDisc == height) {
             play = false;
         }
     }
+
+    header();
     float min_moves = pow(2, height) - 1;
     int score = (min_moves/moves*100);
     printf("Yay! you did great! congrats on solving the Tower of Hanoi\n");
     printf("Your score is: %d\n", score);
+    inputDataListMap(M, S, 3, score);
 }
 
 // compile:
