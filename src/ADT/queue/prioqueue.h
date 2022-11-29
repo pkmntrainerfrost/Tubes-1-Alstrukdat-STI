@@ -7,7 +7,7 @@
 #include "../boolean.h"
 
 #define IDX_UNDEF -1
-#define PQCAPACITY 100
+#define PQCAPACITY 7
 
 /* Definisi elemen dan address */
 typedef struct
@@ -17,7 +17,6 @@ typedef struct
         int cookTime;
         int stayTime;
         int price;
-        int cookTimeDef;
 } PQElType;
 
 typedef struct
@@ -64,29 +63,14 @@ void dequeuePQ(PrioQueue *pq, PQElType *val);
 /* F.S. val = nilai elemen HEAD pd I.S., isi elemen mundur;
         pq mungkin kosong */
 
-void dequeueAt(PrioQueue *pq, int idx,PQElType * val);
-/* Proses: Menghapus val pada pq */
-/* I.S. pq tidak mungkin kosong */
-/* F.S. val = nilai elemen HEAD pd I.S., isi elemen mundur;
-        pq mungkin kosong */
-
 void printOrders(PrioQueue pq);
 /* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung
    siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan
    karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
 /* I.S. pq di awal berisi tiga pesanan, default saat memulai game */
 
-void printCooking(PrioQueue pq);
-/* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung
-   siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan
-   karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
-/* I.S. pq boleh kosong */
-/* F.S. Jika pq tidak kosong: [e1,e2,...,en] */
-/* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
-/* Jika Queue kosong : menulis [] */
+PQElType getElmtPQ(PrioQueue pq, int id);
 
-void printServing(PrioQueue pq);
-/* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung
-   siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan
-   karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
+boolean isMemberPQ(PrioQueue pq, int id);
+
 #endif
