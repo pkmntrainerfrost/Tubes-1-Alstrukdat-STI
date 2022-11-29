@@ -44,7 +44,10 @@ Untuk melakukan kompilasi, buka file compile.txt pada folder bin, lalu salin sel
         |   ├───list
         |   │       array.c
         |   │       array.h
-        |   │       driverArray.c       
+        |   │       driverArray.c   
+        |   │       driverListDiner.c
+        |   │       listDiner.c
+        |   │       listDiner.h    
         |   │
         |   ├───map
         |   │       driverListMap.c
@@ -69,7 +72,7 @@ Untuk melakukan kompilasi, buka file compile.txt pada folder bin, lalu salin sel
         |   │
         |   ├───set
         |   │       driverListSet.c
-        |   |       driverSet.c
+        |   |       driverset.c
         |   │       listSet.c
         |   │       listSet.h
         |   |       set.c
