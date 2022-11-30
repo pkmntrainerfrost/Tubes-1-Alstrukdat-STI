@@ -2,8 +2,27 @@
 #include <stdlib.h>
 #include "towerOfHanoi.h"
 
-int step = 0;
-
+void headerTOH(){
+    printf("#########   ######   ##      #     ##   ######   ####    \n");
+    printf("   ##      ##    ##   ##    ###   ##    ##      ##   #     \n");
+    printf("   ##      ##    ##    ##   ###  ##     #####   #####       \n");
+    printf("   ##      ##    ##     # ##  ## #      ##      ##  ##       \n");
+    printf("   ##       ######      ###   ###       ######  ##   ##       \n");
+    printf("-------------------------- O F -------------------------       \n");
+    printf("##    ##     ###     ####    ##    ######    #########     \n");
+    printf("##    ##    ## ##    ## ##   ##   ##    ##       ##         \n");
+    printf("########   #######   ##  ##  ##   ##    ##       ##          \n");
+    printf("##    ##  ##     ##  ##   ## ##   ##    ##       ##           \n");
+    printf("##    ##  ##     ##  ##    ####    ######    #########         \n");
+    printf("      ____                                                      \n");
+    printf("     |____|                    ||                      ||\n");
+    printf("    |______|                   ||                      ||\n");
+    printf("   |________|                  ||                      ||\n");
+    printf("  |__________|                 ||                      ||\n");
+    printf(" |____________|                ||                      ||\n");
+    printf("=================      =================      =================\n");
+    printf("\n");
+}
 // Inisialisasi Tower
 void initAllTower(int h, Tower *A, Tower *B, Tower *C){
     Stack stackA, stackB, stackC;
@@ -199,13 +218,14 @@ void moveDisc(Tower *A, Tower *B)
 
 void towerOfHanoi(ListMap *M, ListSet *S){
     header();
+    headerTOH();
     Tower A, B, C;
     Word many;
     int height;
     int moves = 0;
     boolean play = true;
 
-    printf("Halo! Selamat datang di Tower of Hanoi!\n");    
+    printf("Halo! Selamat datang!\n");    
     printf("Mau main dengan berapa piringan?: ");
 	wordInput(&many, 1, 2);
     int intMany = wordToInt(many);
