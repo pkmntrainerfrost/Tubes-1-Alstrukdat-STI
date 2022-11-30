@@ -318,7 +318,7 @@ void towerOfHanoi(ListMap *M, ListSet *S){
     }
     header();
     float min_moves = pow(2, height) - 1;
-    int score = (min_moves/moves*100);
+    int score = (min_moves/moves*10);
     printf("Selamat telah menyelesaikan Tower of Hanoi!\n");
     printf("Skor kamu: %d\n", score);
     inputDataListMap(M, S, 3, score);
