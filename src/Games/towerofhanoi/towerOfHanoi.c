@@ -31,6 +31,32 @@ void initAllTower(int h, Tower *A, Tower *B, Tower *C){
     };
 };
 
+// void initAllTowerV2(int h, Tower *A, Tower *B, Tower *C){
+//     Stack stackA, stackB, stackC;
+//     CreateEmptyStack(&stackA);
+//     CreateEmptyStack(&stackB);
+//     CreateEmptyStack(&stackC);
+//     (*A).name = 'A';
+//     (*A).height = h;
+//     (*A).countDisc = 0;
+//     (*A).content = stackA;
+//     (*B).name = 'B';    
+//     (*B).height = h;
+//     (*B).countDisc = 0;
+//     (*B).content = stackB;
+//     (*C).name = 'C';
+//     (*C).height = h;
+//     (*C).countDisc = 0;
+//     (*C).content = stackC;
+
+//     // fill in stack depends on h to tower A
+//     int i;
+//     for (i = h; i > 0 ; i--){
+//         Push(&(*A).content, i);
+//         (*A).countDisc++;
+//     };
+// };
+
 void printAllTower(Tower A, Tower B, Tower C)
 {
     printf("Tower A\n");
@@ -54,8 +80,8 @@ void printTower(Tower T){
     // print for empty level
     for (i = 0; i < h - count; i++){
         for (j = 0; j < h; j++){
-   printf(" ");  
-  }
+            printf(" ");  
+        }
         printf("|\n");
     }
 
@@ -65,26 +91,68 @@ void printTower(Tower T){
         {
             // get current disc from temp stack
             Pop(&temp, &disc);
-            for (j = 0; j < h - disc;j++){
+            for (j = 0; j <= h - disc;j++){
                 printf(" ");  
             }
-            for (s = 0; s < disc;s++){
+            for (s = 0; s < disc-1;s++){
                 printf("*");
             }
-            printf("|");
-            for (s = 0; s < disc;s++){
+            printf("*");
+            for (s = 0; s < disc-1;s++){
                 printf("*");
             }
             printf("\n");
         }
     }
 
- for (i=0; i<=2*h; i++){
-  printf("-");
- }
- printf("\n");
+    for (i=0; i<=2*h; i++){
+        printf("-");
+    }
+    printf("\n");
 };
 
+// void printTowerV2(Tower T){
+//     int h, count, top, i, j, s, disc;
+//     Stack temp;
+//     CreateEmptyStack(&temp);
+//     h = T.height;
+//     count = T.countDisc;
+//     top = InfoTop(T.content);
+//     temp = CopyStack(T.content);
+
+//     // print for empty level
+//     for (i = 0; i < h - count; i++){
+//         for (j = 0; j < h; j++){
+//             printf(" ");  
+//         }
+//         printf("|\n");
+//     }
+
+//     // print for the rest of tower
+//     if (top != 0) {
+//         for (i = 0; i < count; i++)
+//         {
+//             // get current disc from temp stack
+//             Pop(&temp, &disc);
+//             for (j = 0; j < h - disc;j++){
+//                 printf(" ");  
+//             }
+//             for (s = 0; s < disc;s++){
+//                 printf("*");
+//             }
+//             printf("|");
+//             for (s = 0; s < disc;s++){
+//                 printf("*");
+//             }
+//             printf("\n");
+//         }
+//     }
+
+//  for (i=0; i<=2*h; i++){
+//   printf("-");
+//  }
+//  printf("\n");
+// };
 
 void moveDisc(Tower *A, Tower *B)
 {
