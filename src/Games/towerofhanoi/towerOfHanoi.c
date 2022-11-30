@@ -131,7 +131,6 @@ void moveDisc(Tower *A, Tower *B)
 
 void towerOfHanoi(ListMap *M, ListSet *S){
     header();
-
     Tower A, B, C;
     Word many;
     int height;
@@ -155,76 +154,87 @@ void towerOfHanoi(ListMap *M, ListSet *S){
         intMany = wordToInt(many);
 	}
 
-    header();
     height = intMany;
     initAllTower(height, &A, &B, &C);
-    printAllTower(A, B, C);
     
     while (play){
         Word wordFirst;
         boolean valid = false;
-        printf("Pilih tower asal: ");
-        wordInput(&wordFirst, 1, 1);
-        char first = wordToChar(wordFirst);
         while (!valid){
-            if(first == 'A' || first == 'B' || first == 'C' || first == 'a' || first == 'b' || first == 'c'){
-                valid = true;
-            }else{
-                printf("Tidak ada tower %c di game ini\n", first);
-                printf("\nTekan [ENTER] untuk melanjutkan...");
+            header();
+            printAllTower(A, B, C);
+            printf("Pilih tower asal: ");
+            createWord(&wordFirst);
+            wordInput(&wordFirst, 1, 1);
+            if (wordLength(wordFirst) == 0){
+                printf("Masukan kosong, ulangi masukan tower!\n");
+                printf("\nTekan [ENTER] untuk melanjutkan...");                    
                 blankInput();
-
-                header();
-                printAllTower(A, B, C);
-                printf("Pilih tower asal: ");
-                wordInput(&wordFirst, 1, 1);
-                first = wordToChar(wordFirst);            
-            }            
+            }else if(wordLength(wordFirst) > 1){
+                printf("Masukan tidak valid, ulangi masukan tower!\n");
+                printf("\nTekan [ENTER] untuk melanjutkan...");                    
+                blankInput();
+            }else {
+                if(wordFirst.buffer[0] == 'A' || wordFirst.buffer[0] == 'B' || wordFirst.buffer[0] == 'C' || wordFirst.buffer[0] == 'a' || wordFirst.buffer[0] == 'b' || wordFirst.buffer[0] == 'c'){
+                    valid = true;
+                }else{
+                    printf("Tidak ada tower %c di game ini\n", wordFirst.buffer[0]);
+                    printf("\nTekan [ENTER] untuk melanjutkan...");                    
+                    blankInput();
+                }
+            }
+           
         }
 
         Word wordDest;
         valid = false;
-        printf("Pilih tower tujuan: ");
-        wordInput(&wordDest, 1, 1);
-        char dest = wordToChar(wordDest);
+
         while (!valid){
-            if(dest == 'A' || dest == 'B' || dest == 'C' || dest == 'a' || dest == 'b' || dest == 'c'){
-                valid = true;
+            printf("Pilih tower tujuan: ");
+            createWord(&wordDest);
+            wordInput(&wordDest, 1, 1);
+            if (wordLength(wordDest) == 0){
+                printf("Masukan kosong, ulangi masukan tower!\n\n");
+            }else if(wordLength(wordDest) > 1){
+                printf("Masukan tidak valid, ulangi masukan tower!\n");
+                printf("\nTekan [ENTER] untuk melanjutkan...");                    
+                blankInput();
             }else{
-                printf("Tidak ada tower %c di game ini\n", dest);
-                printf("Choose the destination tower: ");
-                wordInput(&wordDest, 1, 1);
-                dest = wordToChar(wordDest);              
-            }            
+                if(wordDest.buffer[0] == 'A' || wordDest.buffer[0] == 'B' || wordDest.buffer[0] == 'C' || wordDest.buffer[0] == 'a' || wordDest.buffer[0] == 'b' || wordDest.buffer[0] == 'c'){
+                    valid = true;
+                }else{
+                    printf("Tidak ada tower %c di game ini\n", wordDest.buffer[0]);
+                }                  
+            }
         }
 
-        if (first == dest){
+        if (wordFirst.buffer[0] == wordDest.buffer[0]){
             printf("Tidak bisa memindahkan ke tower yang sama! Pilih tower lain\n");
             printf("\nTekan [ENTER] untuk melanjutkan...");
             blankInput();
 
         }else{
-            if (first == 'A' || first == 'a'){
-                if (dest == 'B' || dest == 'b'){
+            if (wordFirst.buffer[0] == 'A' || wordFirst.buffer[0] == 'a'){
+                if (wordDest.buffer[0] == 'B' || wordDest.buffer[0] == 'b'){
                     moveDisc(&A, &B);
                 }
-                else if(dest == 'C' || dest == 'c'){
+                else if(wordDest.buffer[0] == 'C' || wordDest.buffer[0] == 'c'){
                     moveDisc(&A, &C);
                 }
             }
-            else if (first == 'B' || first == 'b'){
-                if(dest == 'A' || dest == 'a'){
+            else if (wordFirst.buffer[0] == 'B' || wordFirst.buffer[0] == 'b'){
+                if(wordDest.buffer[0] == 'A' || wordDest.buffer[0] == 'a'){
                     moveDisc(&B, &A);
                 }
-                else if(dest == 'C' || dest == 'c'){
+                else if(wordDest.buffer[0] == 'C' || wordDest.buffer[0] == 'c'){
                     moveDisc(&B, &C);
                 }
             }
             else //shud be from tower C
-                if(dest == 'A' || dest == 'a'){
+                if(wordDest.buffer[0] == 'A' || wordDest.buffer[0] == 'a'){
                     moveDisc(&C, &A);
                 }
-                else if(dest == 'B' || dest == 'b'){
+                else if(wordDest.buffer[0] == 'B' || wordDest.buffer[0] == 'b'){
                     moveDisc(&C, &B);
                 }
 
@@ -238,7 +248,6 @@ void towerOfHanoi(ListMap *M, ListSet *S){
             play = false;
         }
     }
-
     header();
     float min_moves = pow(2, height) - 1;
     int score = (min_moves/moves*100);

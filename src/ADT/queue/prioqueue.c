@@ -57,6 +57,11 @@ void dequeuePQ(PrioQueue *pq, PQElType *val){
 
 PQElType getElmtPQ(PrioQueue pq, int id)
 {
+	PQElType temp;
+	temp.cookTime = 0;
+	temp.foodId = 0;
+	temp.price = 0;
+	temp.stayTime = 0;
 	int i = IDX_HEAD(pq);
 	while(i <= IDX_TAIL(pq)){
 		if(pq.buffer[i].foodId == id){
@@ -64,6 +69,7 @@ PQElType getElmtPQ(PrioQueue pq, int id)
 		}
 		i++;
 	}
+	return temp;
 }
 
 boolean isMemberPQ(PrioQueue pq, int id)

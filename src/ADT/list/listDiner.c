@@ -124,6 +124,7 @@ int getidxDiner(ListDiner L, int ID)
         }
         i++;
     }
+    return 0;
 }
 
 void printCookingDiner(ListDiner L)
