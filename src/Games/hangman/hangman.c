@@ -117,6 +117,7 @@ void addToListKata(List *L){
     while (repeat){
         header();
         printf("Masukkan kata yang ingin Anda tambahkan ke dictionary kata: ");
+        
         boolean valid = wordInput(&kata, 1, 50);
         if (valid){
             // all uppercase
