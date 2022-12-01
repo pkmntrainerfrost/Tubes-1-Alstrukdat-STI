@@ -24,9 +24,9 @@ void drawMap(SnakeGrid *SG) {
 
 }
 
-boolean validMove(LinkedList S, Word D) {
+boolean validMove(SnakeGrid SG, LinkedList S, Word D) {
 
-    Point P = copyPoint(LLFirst(S)->info);
+    Point P = copyPoint(Info(First(S)));
     Point NP;
 
     if (isWordEqual(stringToWord("W"),D)) {
@@ -43,13 +43,13 @@ boolean validMove(LinkedList S, Word D) {
         ABSCISSA(NP) = ABSCISSA(NP) % 5;
     }
 
-    return searchLL(S,NP) == NIL;
+    return (searchLL(S,NP) == NIL && !isPointEqual(NP,SG.meteor));
 
 }
 
-boolean checkGrow(LinkedList S) {
+boolean checkGrow(SnakeGrid SG, LinkedList S) {
 
-    Point Tail = copyPoint(LLInfo(LLLast(S)));
+    Point Tail = copyPoint(Info(Last(S)));
 
 }
 
@@ -72,7 +72,7 @@ void spawn(LinkedList *S) {
 
 void move(LinkedList *S, Word D) {
 
-    Point P = copyPoint(LLFirst(*S)->info);
+    Point P = copyPoint(Info(First(*S)));
     Point NP;
 
     if (isWordEqual(stringToWord("W"),D)) {

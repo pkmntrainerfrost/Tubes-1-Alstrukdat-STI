@@ -21,11 +21,11 @@ typedef struct {
     Address last;
 } LinkedList;
 
-#define LLFirst(ll) ((ll).first)
-#define LLLast(ll) ((ll).last)
-#define LLInfo(A) (A)->info
-#define LLNext(A) (A)->next
-#define LLPrev(A) (A)->prev
+#define First(ll) ((ll).first)
+#define Last(ll) ((ll).last)
+#define Info(A) (A)->info
+#define Next(A) (A)->next
+#define Prev(A) (A)->prev
 
 boolean isEmptyLL(LinkedList LL);
 
@@ -39,7 +39,7 @@ void insVFirstLL(LinkedList *LL, Point P);
 
 void insVLastLL(LinkedList *LL, Point P);
 
-void dekVFirstLL(LinkedList *LL, Point *P);
+void delVFirstLL(LinkedList *LL, Point *P);
 
 void delVLastLL(LinkedList *LL, Point *P);
 
@@ -47,17 +47,17 @@ void insertFirstLL(LinkedList *LL, Address A);
 
 void insertLastLL(LinkedList *LL, Address A);
 
-void insertBeforeLL(LinkedList *LL, Address A, Address Prec);
+void insertBeforeLL(LinkedList *LL, Address A, Address Succ);
 
-void insertAfterLL(LinkedList *LL, Address A, Address Succ);
+void insertAfterLL(LinkedList *LL, Address A, Address Prec);
 
 void deleteFirstLL(LinkedList *LL, Address *A);
 
 void deleteLastLL(LinkedList *LL, Address *A);
 
-void deleteBeforeLL(LinkedList *LL, Address *A, Address Prec);
+void deleteBeforeLL(LinkedList *LL, Address *A, Address Succ);
 
-void deleteAfterLL(LinkedList *LL, Address *A, Address Succ);
+void deleteAfterLL(LinkedList *LL, Address *A, Address Prec);
 
 Point getElmtLL(LinkedList LL, int I);
 

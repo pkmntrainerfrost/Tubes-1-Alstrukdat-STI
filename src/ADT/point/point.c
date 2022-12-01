@@ -7,6 +7,12 @@ void createPoint(Point *p , int x, int y) {
 
 }
 
+boolean isPointEqual(Point P1, Point P2) {
+
+    return (ABSCISSA(P1) == ABSCISSA(P2)) && (ORDINATE(P1) == ORDINATE(P2));
+
+}
+
 boolean isOrigin(Point p) {
 
     return (ABSCISSA(p) == 0 && ORDINATE(p) == 0);

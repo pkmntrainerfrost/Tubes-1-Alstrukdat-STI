@@ -12,9 +12,9 @@ typedef struct {
 
 void drawMap(SnakeGrid *SG);
 
-boolean validMove(LinkedList S, Word D);
+boolean validMove(SnakeGrid SG, LinkedList S, Word D);
 
-boolean checkGrow(LinkedList S);
+boolean checkGrow(SnakeGrid SG, LinkedList S);
 
 void spawn(LinkedList *S);
 

@@ -14,6 +14,8 @@ typedef struct {
 #define ABSCISSA(p) (p).x
 #define ORDINATE(p) (p).y
 
+boolean isPointEqual(Point P1, Point P2);
+
 void createPoint(Point *p , int x, int y);
 
 boolean isOrigin(Point p);
