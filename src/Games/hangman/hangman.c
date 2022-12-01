@@ -119,6 +119,14 @@ void addToListKata(List *L){
         printf("Masukkan kata yang ingin Anda tambahkan ke dictionary kata: ");
         boolean valid = wordInput(&kata, 1, 50);
         if (valid){
+            // all uppercase
+            int k;
+            for(k=0; k<kata.length; k++){
+                // upper(kata.buffer[k]);
+                if (kata.buffer[k] >= 'a' && kata.buffer[k] <= 'z'){
+                    kata.buffer[k] -= 32;
+                }
+            }
             if (isMemberList(*L, kata)) {
                 printf("Kata sudah ada di dalam dictionary kata!\n\n");
                 toContinue();
@@ -134,15 +142,6 @@ void addToListKata(List *L){
                 }
 
                 if (cek){
-                    // all uppercase
-                    int k;
-                    for(k=0; k<kata.length; k++){
-                        // upper(kata.buffer[k]);
-                        if (kata.buffer[k] >= 'a' && kata.buffer[k] <= 'z'){
-                            kata.buffer[k] -= 32;
-                        }
-                    }
-
                     insertLast(L, kata);
                     printf("Kata berhasil ditambahkan ke dictionary kata!\n\n");
                     toContinue();
