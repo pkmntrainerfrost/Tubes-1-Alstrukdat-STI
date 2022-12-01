@@ -191,19 +191,35 @@ boolean noMoreMoves(SnakeGrid SG, LinkedList S) {
     boolean Valid = true;
 
     NP = translate(P,1,0);
-    ABSCISSA(NP) = ABSCISSA(NP) % 5;
+    if (ABSCISSA(NP) < 0) {
+            ABSCISSA(NP) = 4;
+        } else {
+            ABSCISSA(NP) = ABSCISSA(NP) % 5;
+        }
     Valid = Valid && !(!isPointEqual(NP,SG.meteor) && searchLL(S,NP) == NIL);
 
     NP = translate(P,-1,0);
-    ABSCISSA(NP) = ABSCISSA(NP) % 5;
+    if (ABSCISSA(NP) < 0) {
+            ABSCISSA(NP) = 4;
+        } else {
+            ABSCISSA(NP) = ABSCISSA(NP) % 5;
+        }
     Valid = Valid && !(!isPointEqual(NP,SG.meteor) && searchLL(S,NP) == NIL);
 
     NP = translate(P,0,1);
-    ORDINATE(NP) = ORDINATE(NP) % 5;
+    if (ORDINATE(NP) < 0) {
+            ORDINATE(NP) = 4;
+        } else {
+            ORDINATE(NP) = ORDINATE(NP) % 5;
+        }
     Valid = Valid && !(!isPointEqual(NP,SG.meteor) && searchLL(S,NP) == NIL);
 
     NP = translate(P,0,-1);
-    ORDINATE(NP) = ORDINATE(NP) % 5;
+    if (ORDINATE(NP) < 0) {
+            ORDINATE(NP) = 4;
+        } else {
+            ORDINATE(NP) = ORDINATE(NP) % 5;
+        }
     Valid = Valid && !(!isPointEqual(NP,SG.meteor) && searchLL(S,NP) == NIL);
 
     return Valid;
@@ -217,16 +233,32 @@ Point validMove(SnakeGrid SG, LinkedList S, Word D) {
 
     if (isWordEqual(stringToWord("W"),D) || isWordEqual(stringToWord("w"),D)) {
         NP = translate(P,0,-1);
-        ORDINATE(NP) = ORDINATE(NP) % 5;
+        if (ORDINATE(NP) < 0) {
+            ORDINATE(NP) = 4;
+        } else {
+            ORDINATE(NP) = ORDINATE(NP) % 5;
+        }
     } else if (isWordEqual(stringToWord("A"),D) || isWordEqual(stringToWord("a"),D)) {
         NP = translate(P,-1,0);
-        ABSCISSA(NP) = ABSCISSA(NP) % 5;
+        if (ABSCISSA(NP) < 0) {
+            ABSCISSA(NP) = 4;
+        } else {
+            ABSCISSA(NP) = ABSCISSA(NP) % 5;
+        }
     } else if (isWordEqual(stringToWord("S"),D) || isWordEqual(stringToWord("s"),D)) {
         NP = translate(P,0,1);
-        ORDINATE(NP) = ORDINATE(NP) % 5;
+        if (ORDINATE(NP) < 0) {
+            ORDINATE(NP) = 4;
+        } else {
+            ORDINATE(NP) = ORDINATE(NP) % 5;
+        }
     } else if (isWordEqual(stringToWord("D"),D) || isWordEqual(stringToWord("d"),D)) {
         NP = translate(P,1,0);
-        ABSCISSA(NP) = ABSCISSA(NP) % 5;
+        if (ABSCISSA(NP) < 0) {
+            ABSCISSA(NP) = 4;
+        } else {
+                ABSCISSA(NP) = ABSCISSA(NP) % 5;
+        }
     } else {
         createPoint(&NP,-3,-3);
     }
