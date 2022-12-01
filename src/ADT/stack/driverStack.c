@@ -13,8 +13,12 @@ int main()
     Push(&S, 5);
     Push(&S, 3);
     Push(&S, 1);
-    infotype X;
-    Pop(&S, &X);
+    infotypeStack X;
+    int i;
+    for(i=0; i<3; i++){
+        printf("%d\n", InfoTop(S));
+        Pop(&S, &X);
+    }
     return 0;
 }
 
