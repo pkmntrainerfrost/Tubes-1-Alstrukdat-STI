@@ -3,6 +3,7 @@
 
 #include "../../ADT/list/linkedList.h"
 #include "../../ADT/word/mesinkata/mesinkata.h"
+#include "../../Misc/io/io.h"
 
 typedef struct {
     Point meteor;
@@ -10,22 +11,24 @@ typedef struct {
     Point food;
 } SnakeGrid;
 
-void drawMap(SnakeGrid *SG);
+void drawMap(SnakeGrid SG, LinkedList S, boolean Lose, boolean Hit, int Turns);
 
-boolean validMove(SnakeGrid SG, LinkedList S, Word D);
+Point validMove(SnakeGrid SG, LinkedList S, Word D);
 
-boolean checkGrow(SnakeGrid SG, LinkedList S);
+Point checkGrow(SnakeGrid SG, LinkedList S);
 
 void spawn(LinkedList *S);
 
-void move(LinkedList *S, Word D);
+int move(SnakeGrid *SG, LinkedList *S, Word D, boolean *Lose);
 
-void hit(SnakeGrid *SG, LinkedList *S, boolean *Lose);
+void hit(SnakeGrid *SG, LinkedList *S, boolean *Lose, boolean *Hit);
 
-void grow(LinkedList *S);
+void grow(SnakeGrid *SG, LinkedList *S, boolean *Lose);
 
 void updateFood(SnakeGrid *SG, LinkedList S);
 
 void updateMeteor(SnakeGrid *SG);
+
+boolean noMoreMoves(SnakeGrid SG, LinkedList S);
 
 #endif

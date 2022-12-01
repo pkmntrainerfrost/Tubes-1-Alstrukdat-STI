@@ -1,4 +1,4 @@
-#include "linkedlist.h"
+#include "linkedList.h"
 #include <stdio.h>
 
 boolean isEmptyLL(LinkedList LL) {
@@ -100,7 +100,7 @@ void insertLastLL(LinkedList *LL, Address A) {
 
     Next(A) = NIL;
 
-    if (IsEmpty(*LL)) {
+    if (isEmptyLL(*LL)) {
 
         Prev(A) = NIL;
         First(*LL) = A;
@@ -138,7 +138,7 @@ void insertAfterLL(LinkedList *LL, Address A, Address Prec) {
 
     if (Prec == Last(*LL)) {
 
-        InsertLast(LL,A);
+        insertLastLL(LL,A);
     
     } else {
 
@@ -187,14 +187,14 @@ void delAddressLL(LinkedList *LL, Point P) {
     if (A != NIL) {
 
         if (A == First(*LL)) {
-            DelFirst(LL,&A);
+            deleteFirstLL(LL,&A);
         } else if (A == Last(*LL)) {
-            DelLast(LL,&A);
+            deleteLastLL(LL,&A);
         } else {
-            DelBefore(LL,&A,Next(A));
+            deleteBeforeLL(LL,&A,Next(A));
         }
     
-        Dealokasi(A);
+        deallocateNode(A);
 
     }
 
@@ -287,4 +287,40 @@ Address searchLL(LinkedList LL, Point P) {
 
 }
 
-int lengthLL(LinkedList LL);
+int lengthLL(LinkedList LL) {
+
+    Address A = First(LL);
+    int Len = 0;
+
+    while (A != NIL) {
+        Len = Len + 1;
+        A = Next(A);
+    }
+
+    return Len;
+
+}
+
+int getIdxLL(LinkedList LL, Point P) {
+
+    Address A = First(LL);
+    boolean Found = false;
+    int Idx = 0;
+
+
+    while (A != NIL && !Found) {
+        if (isPointEqual(P,Info(A))) {
+            Found = true;
+        } else {
+            Idx = Idx + 1;
+            A = Next(A);
+        }
+    }
+
+    if (!Found) {
+        return -1;
+    } else {
+        return Idx;
+    }
+
+}

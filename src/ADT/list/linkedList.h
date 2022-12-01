@@ -59,6 +59,8 @@ void deleteBeforeLL(LinkedList *LL, Address *A, Address Succ);
 
 void deleteAfterLL(LinkedList *LL, Address *A, Address Prec);
 
+void delAddressLL(LinkedList *LL, Point P);
+
 Point getElmtLL(LinkedList LL, int I);
 
 void setElmtLL(LinkedList *LL, int I, Point P);
@@ -66,5 +68,7 @@ void setElmtLL(LinkedList *LL, int I, Point P);
 Address searchLL(LinkedList LL, Point P);
 
 int lengthLL(LinkedList LL);
+
+int getIdxLL(LinkedList LL, Point P);
 
 #endif
