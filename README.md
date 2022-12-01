@@ -45,7 +45,10 @@ Untuk melakukan kompilasi, buka file compile.txt pada folder bin, lalu salin sel
         |   │       array.c
         |   │       array.h
         |   │       driverArray.c   
+        |   │       driverLinkedList.c
         |   │       driverListDiner.c
+        |   │       linkedList.c
+        |   │       linkedList.h
         |   │       listDiner.c
         |   │       listDiner.h    
         |   │
@@ -82,6 +85,11 @@ Untuk melakukan kompilasi, buka file compile.txt pada folder bin, lalu salin sel
         |   │       driverStack.c
         |   │       stack.c
         |   │       stack.h
+        |   |
+        |   ├───tree
+        |   │       driverTree.c
+        |   │       tree.c
+        |   │       tree.h
         |   |
         |   └───word
         |         |   driverWord.c
@@ -122,6 +130,14 @@ Untuk melakukan kompilasi, buka file compile.txt pada folder bin, lalu salin sel
         |   ├───rng
         |   │       rng.c
         |   │       rng.h
+        |   |
+        |   ├───snakeonmeteor
+        |   │       snakeonmeteor.c
+        |   │       snakeonmeteor.h
+        |   |
+        |   ├───tgg
+        |   │       tgg.c
+        |   │       tgg.h
         |   |
         |   └───towerofhanoi
         |           towerOfHanoi.c

@@ -16,7 +16,7 @@ void playGame(Queue *Q, List L, List *listHist, ListMap *M, ListSet *S)
         printf("\n");
         QElType x;
         dequeue(Q, &x);
-        if (isSameWord(x, stringToWord("RNG")) || isSameWord(x, stringToWord("Diner DASH")) || isSameWord(x, stringToWord("HANGMAN")) || isSameWord(x, stringToWord("TOWER OF HANOI")) || isSameWord(x, stringToWord("SNAKE ON METEOR")) || isSameWord(x, stringToWord("Battleship"))){
+        if (isSameWord(x, stringToWord("RNG")) || isSameWord(x, stringToWord("Diner DASH")) || isSameWord(x, stringToWord("HANGMAN")) || isSameWord(x, stringToWord("TOWER OF HANOI")) || isSameWord(x, stringToWord("SNAKE ON METEOR")) || isSameWord(x, stringToWord("Battleship")) || isSameWord(x, stringToWord("The Guessing Genie"))){
             printf("Loading ");
             printWord(x);
             printf(" ...\n");
@@ -34,6 +34,8 @@ void playGame(Queue *Q, List L, List *listHist, ListMap *M, ListSet *S)
                 // snakeOnMeteor();
             } else if (isSameWord(x, stringToWord("Battleship"))){
                 battleship(M, S);
+            } else if (isSameWord(x, stringToWord("The Guessing Genie"))){
+                guessingGenie(M, S);
             }
         } 
         // else if (isSameWord(x, stringToWord("EIFFEL TOWER")) || isSameWord(x, stringToWord("RISEWOMAN")) || isSameWord(x, stringToWord("DINOSAUR IN EARTH"))){

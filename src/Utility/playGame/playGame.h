@@ -12,6 +12,7 @@
 #include "../../Games/battleship/battleship.h"
 #include "../../Games/hangman/hangman.h"
 #include "../../Games/towerofhanoi/towerOfHanoi.h"
+#include "../../Games/tgg/tgg.h"
 #include "../../ADT/map/listMap.h"
 #include "../../ADT/set/listSet.h"
 

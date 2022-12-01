@@ -17,9 +17,9 @@ void deleteGame(List *L, Queue Q, List *listHist, ListMap *listMapGame, ListSet 
 
         boolean valid = wordInput(&input,1,10);
         if (valid && wordToInt(input) > 0 && wordToInt(input) <= length(*L)) {
-            if (wordToInt(input)>=1 && wordToInt(input)<=6){
+            if (wordToInt(input)>=1 && wordToInt(input)<=7){
                 printf("Game gagal dihapus.\n");
-            } else if (wordToInt(input) > 6) {
+            } else if (wordToInt(input) > 7) {
                 if (!(IsEmpty(Q))){
                     if (!(isMember(Q, getElmt(*L,wordToInt(input)-1)))){
                         

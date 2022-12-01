@@ -28,7 +28,7 @@ void skipGame(Queue *Q, List L, int n, List *listHist, ListMap *M, ListSet *S) {
         QElType y;
         dequeue(Q, &y);
 
-        if (isSameWord(y, stringToWord("RNG")) || isSameWord(y, stringToWord("Diner DASH")) || isSameWord(y, stringToWord("HANGMAN")) || isSameWord(y, stringToWord("TOWER OF HANOI")) || isSameWord(y, stringToWord("SNAKE ON METEOR")) || isSameWord(y, stringToWord("Battleship"))){
+        if (isSameWord(y, stringToWord("RNG")) || isSameWord(y, stringToWord("Diner DASH")) || isSameWord(y, stringToWord("HANGMAN")) || isSameWord(y, stringToWord("TOWER OF HANOI")) || isSameWord(y, stringToWord("SNAKE ON METEOR")) || isSameWord(y, stringToWord("Battleship")) || isSameWord(y, stringToWord("The Guessing Genie"))){
             printf("Loading ");
             printWord(y);
             printf(" ...\n");
@@ -46,6 +46,8 @@ void skipGame(Queue *Q, List L, int n, List *listHist, ListMap *M, ListSet *S) {
                 // snakeOnMeteor();
             } else if (isSameWord(y, stringToWord("Battleship"))){
                 battleship(M, S);
+            } else if (isSameWord(y, stringToWord("The Guessing Genie"))){
+                guessingGenie(M, S);
             }
         } 
         // else if (isSameWord(y, stringToWord("EIFFEL TOWER")) || isSameWord(y, stringToWord("RISEWOMAN")) || isSameWord(y, stringToWord("DINOSAUR IN EARTH"))){
