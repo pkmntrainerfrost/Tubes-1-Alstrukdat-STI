@@ -263,7 +263,7 @@ Point validMove(SnakeGrid SG, LinkedList S, Word D) {
         createPoint(&NP,-3,-3);
     }
 
-    if (isPointEqual(NP,copyPoint(Info(Next(First(S)))))) {
+    if (searchLL(S,NP) != NIL) {
         createPoint(&NP,-1,-1);
     } else if (isPointEqual(NP,SG.meteor)) {
         createPoint(&NP,-2,-2);
