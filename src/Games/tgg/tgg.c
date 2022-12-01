@@ -117,7 +117,7 @@ int move(BinTree T)
         }
     } else if (ROOT(T) == 18){
         printf("Ohh, I know!\n");
-        printf("It's a ORCHID, isn't it?\n");
+        printf("It's an ORCHID, isn't it?\n");
         if (yesno()){  
             return 100;
         } else {
@@ -149,7 +149,7 @@ int move(BinTree T)
         }
     } else if (ROOT(T) == 22){
         printf("Ohh, I know!\n");
-        printf("It's a ELEPHANT, isn't it?\n");
+        printf("It's an ELEPHANT, isn't it?\n");
         if (yesno()){  
             return 100;
         } else {
@@ -197,7 +197,7 @@ int move(BinTree T)
         }
     } else if (ROOT(T) == 28){
         printf("Ohh, I know!\n");
-        printf("It's a OWL, isn't it?\n");
+        printf("It's an OWL, isn't it?\n");
         if (yesno()){  
             return 100;
         } else {
