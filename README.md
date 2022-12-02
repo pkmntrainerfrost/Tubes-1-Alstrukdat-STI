@@ -16,7 +16,7 @@ BNMO merupakan suatu robot game console yang diprogram menggunakan bahasa C, den
 | Rania Sasi Kirana | 18221168 |
 
 ### Kompilasi Program
-Untuk melakukan kompilasi, buka file compile.txt pada folder bin, lalu salin seluruh isinya ke terminal. Pastikan terminal sedang berada di folder utama program.
+Untuk melakukan kompilasi seluruh program, buka file compile.txt pada folder bin, lalu salin bagian compile program ke terminal. Selain itu, untuk melakukan kompilasi tiap fitur, salin bagian fitur yang ingin dicompile. Pastikan terminal sedang berada di folder utama program.
 
 ### Struktur Program
 ```

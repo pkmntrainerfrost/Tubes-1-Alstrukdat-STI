@@ -249,6 +249,7 @@ Point getElmtLL(LinkedList LL, int I) {
     }
 
     P = copyPoint(Info(A));
+    return P;
 
 }
 

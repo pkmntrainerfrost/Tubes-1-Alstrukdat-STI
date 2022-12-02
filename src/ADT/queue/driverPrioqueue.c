@@ -35,8 +35,6 @@ int main()
         printf("Queue tidak kosong\n");
     }
     printOrders(pq);
-    printCooking(pq);
-    printServing(pq);
     return 0;
 }
 

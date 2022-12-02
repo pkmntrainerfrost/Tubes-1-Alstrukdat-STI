@@ -12,7 +12,7 @@ int main() {
 
     printf("\n");    
 
-    start(true,"test.txt");
+    start(true,"src/ADT/word/mesinkarakter/test.txt");
 
     while (!eoi) {
         printf("%c",cc);
@@ -27,5 +27,5 @@ int main() {
         printf("%c",cc);
         adv();
     }
-
+    printf("\n");
 }

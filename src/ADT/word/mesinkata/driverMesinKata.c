@@ -12,7 +12,7 @@ int main() {
         advKata();
     }
 
-    startKata(true,"test.txt");
+    startKata(true,"src/ADT/word/mesinkata/test.txt");
 
     while (!endKata) {
         printWord(currentKata);
