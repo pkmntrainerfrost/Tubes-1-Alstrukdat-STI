@@ -7,7 +7,6 @@ void snakeonmeteor(ListMap *M, ListSet *S) {
 
     snakeSplash();
 
-    printf("\n\nPress [ENTER] to continue...");
     blankInput();
 
     LinkedList Snake;
@@ -192,7 +191,7 @@ void drawMap(SnakeGrid SG, LinkedList S, boolean Lose, boolean Hit, int LoseCond
 
     }
 
-    if (Turns == 0) {
+    if (Turns == 1) {
         printf("                     Masukkan W/A/S/D untuk mulai bermain...\n");
     } else {
         if (Lose) {
@@ -472,15 +471,19 @@ void updateMeteor(SnakeGrid *SG) {
 
 void snakeSplash()
 {               
-printf("           __            _____         _                    \n");
-printf("          {0O}          |   __|___ ___| |_ ___    ___ ___   \n");
-printf("          \\__/          |__   |   | .'| '_| -_|  | . |   |  \n"); 
-printf("          /^/           |_____|_|_|__,|_,_|___|  |___|_|_|  \n");       
-printf("         ( (             _____     _                        \n");
-printf("         \\_\\_____       |     |___| |_ ___ ___ ___          \n");
-printf("         (_______)      | | | | -_|  _| -_| . |  _|         \n");
-printf("        (_________()Oo  |_|_|_|___|_| |___|___|_|           \n");
+printf("               __            _____         _                   \n");
+printf("               {0O}          |   __|___ ___| |_ ___    ___ ___   \n");
+printf("               \\__/          |__   |   | .'| '_| -_|  | . |   |  \n"); 
+printf("               /^/           |_____|_|_|__,|_,_|___|  |___|_|_|  \n");       
+printf("               ( (             _____     _                        \n");
+printf("               \\_\\_____       |     |___| |_ ___ ___ ___          \n");
+printf("               (_______)      | | | | -_|  _| -_| . |  _|         \n");
+printf("               (_________()Oo  |_|_|_|___|_| |___|___|_|           \n");
+printf("\n");
+printf("               Men-generate peta, snake dan makanan.. Berhasil!\n");
+printf("                          Tekan enter untuk memulai..\n");
 
+               
                            
 }
 

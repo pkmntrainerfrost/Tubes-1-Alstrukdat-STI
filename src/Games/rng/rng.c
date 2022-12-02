@@ -38,7 +38,7 @@ void rng(ListMap *M, ListSet *S){
                 if (Score < 0) {
                     Score = 0;
                 }
-                printf("\nSkor Anda adalah: %d\n",Score);
+                printf("\nSkor Anda adalah: %d\n\n",Score);
                 inputDataListMap(M, S, 0, Score);
                 Correct = true;
             }
