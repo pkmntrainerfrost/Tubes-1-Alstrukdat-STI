@@ -62,18 +62,18 @@ void snakeonmeteor(ListMap *M, ListSet *S) {
                         Move = Move + 1;
                     } else {
                         if (ValidMove == 1) {
-                            printf("Snake tidak boleh bergerak ke diri sendiri!");
+                            printf("Snake tidak boleh bergerak ke diri sendiri!\n");
                         } else if (ValidMove == 2) {
-                            printf("Meteor masih panas! Anda belum dapat kembali ke titik tersebut.");
+                            printf("Meteor masih panas! Anda belum dapat kembali ke titik tersebut.\n");
                         } else {
-                            printf("Masukan tidak valid!");
+                            printf("Masukan tidak valid!\n");
                         }
                     }
                 } else {
                     if (wordLength(Input) == 0) {
-                        printf("Masukan tidak boleh kosong!");
+                        printf("Masukan tidak boleh kosong!\n");
                     } else {
-                        printf("Masukan tidak valid!");
+                        printf("Masukan tidak valid!\n");
                     }
                 }
 
