@@ -44,4 +44,4 @@ int main()
     return 0;
 }
 
-// compile : gcc ADT/set/driverListSet.c ADT/set/listSet.c ADT/set/set.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c Misc/ascii/ascii.c -o driver
+// compile : gcc src/ADT/set/driverListSet.c src/ADT/set/listSet.c src/ADT/set/set.c src/ADT/word/mesinkata/mesinkata.c src/ADT/word/mesinkarakter/mesinkarakter.c src/ADT/word/word.c src/Misc/ascii/ascii.c -o driver

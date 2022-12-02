@@ -21,3 +21,5 @@ int main() {
     }
 
 }
+
+// compile : gcc src/ADT/word/mesinkata/driverMesinKata.c src/ADT/word/mesinkata/mesinkata.c src/ADT/word/mesinkarakter/mesinkarakter.c src/ADT/word/word.c src/Misc/ascii/ascii.c -o driver

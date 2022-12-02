@@ -25,4 +25,4 @@ int main()
     return 0;
 }
 
-// compile: gcc driverTree.c tree.c -o driver
+// compile: gcc src/ADT/tree/driverTree.c src/ADT/tree/tree.c -o driver

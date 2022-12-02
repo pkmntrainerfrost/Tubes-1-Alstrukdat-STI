@@ -31,4 +31,4 @@ int main()
     return 0;
 }
 
-// compile: gcc ADT/queue/driverQueue2.c ADT/queue/queue2.c ADT/word/word.c Misc/ascii/ascii.c -o driver
+// compile: gcc src/ADT/queue/driverQueue2.c src/ADT/queue/queue2.c src/ADT/word/word.c src/Misc/ascii/ascii.c -o driver

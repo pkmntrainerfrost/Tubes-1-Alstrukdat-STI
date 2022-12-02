@@ -37,4 +37,4 @@ int main()
     return 0;
 }
 
-// compile: gcc ADT/list/driverListDiner.c ADT/list/listDiner.c ADT/queue/prioqueue.c -o driver
+// compile: gcc src/ADT/list/driverListDiner.c src/ADT/list/listDiner.c src/ADT/queue/prioqueue.c -o driver

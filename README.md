@@ -99,13 +99,13 @@ Jika ingin melakukan kompilasi driver tiap ADT, lakukan cd src terlebih dahulu, 
         |         |   word.h
         |         |
         |         ├───mesinkarakter
-        |         |       driver.c
+        |         |       driverMesinKarakter.c
         |         |       mesinkarakter.c
         |         |       mesinkarakter.h
         |         |       test.txt
         |         |
         |         └───mesinkata
-        |                 driver.c
+        |                 driverMesinKata.c
         |                 mesinkata.c
         |                 mesinkata.h
         |                 test.txt
