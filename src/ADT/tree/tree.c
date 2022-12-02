@@ -4,7 +4,7 @@
 
 BinTree NewTree (TreeElType akar, BinTree l, BinTree r) 
 {
-    Address t = newTreeNode(akar);
+    AddressTree t = newTreeNode(akar);
     if (t != NULL) {
         LEFT(t) = l;
         RIGHT(t) = r;
@@ -22,9 +22,9 @@ void CreateTree (TreeElType akar, BinTree l, BinTree r, BinTree *p)
     
 }
 
-Address newTreeNode(TreeElType x)
+AddressTree newTreeNode(TreeElType x)
 {
-    Address p = (Address) malloc (sizeof(TreeNode));
+    AddressTree p = (AddressTree) malloc (sizeof(TreeNode));
     if (p != NULL){
         ROOT(p) = x;
         LEFT(p) = NULL;
@@ -33,7 +33,7 @@ Address newTreeNode(TreeElType x)
     return p;
 }
 
-void deallocTreeNode (Address p)
+void deallocTreeNode (AddressTree p)
 {
     free(p);
 }

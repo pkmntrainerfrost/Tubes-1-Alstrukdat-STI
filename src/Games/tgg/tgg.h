@@ -14,7 +14,7 @@
 boolean yesno();
 // meminta input yes atau no
 
-int move(BinTree T);
+int moveInTree(BinTree T);
 // bergerak di binary tree
 
 void guessingGenie();

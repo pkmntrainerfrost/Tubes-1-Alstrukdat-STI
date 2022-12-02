@@ -3,13 +3,18 @@
 
 #include "../../ADT/list/linkedList.h"
 #include "../../ADT/word/mesinkata/mesinkata.h"
+#include "../../ADT/map/listMap.h"
 #include "../../Misc/io/io.h"
+#include "../../Utility/splash.h"
+#include "../random.h"
 
 typedef struct {
     Point meteor;
     Point obstacle;
     Point food;
 } SnakeGrid;
+
+void snakeonmeteor(ListMap *M, ListSet *S);
 
 void drawMap(SnakeGrid SG, LinkedList S, boolean Lose, boolean Hit, int Turns);
 
