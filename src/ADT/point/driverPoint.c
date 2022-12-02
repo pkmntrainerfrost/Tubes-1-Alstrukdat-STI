@@ -22,4 +22,4 @@ int main()
     return 0;
 }
 
-// compile : gcc point/driverPoint.c point/point.c -o driver
+// compile : gcc src/ADT/point/driverPoint.c src/ADT/point/point.c -o driver

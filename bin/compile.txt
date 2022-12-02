@@ -3,40 +3,40 @@ gcc -o main ./main.c ./src/ADT/list/linkedList.c ./src/Games/snakeonmeteor/snake
 
 
 compile driverArray
-gcc ADT/list/driverArray.c ADT/list/array.c ADT/word/word.c Misc/ascii/ascii.c -o driver
+gcc src/ADT/list/driverArray.c src/ADT/list/array.c src/ADT/word/word.c src/Misc/ascii/ascii.c -o driver
 
 compile driverLinkedList
-segmentation error
+gcc src/ADT/point/point.c src/ADT/list/linkedList.c src/ADT/list/driverLinkedList.c -o driver
 
 compile driverListDiner
-gcc ADT/list/driverListDiner.c ADT/list/listDiner.c ADT/queue/prioqueue.c -o driver
+gcc src/ADT/list/driverListDiner.c src/ADT/list/listDiner.c src/ADT/queue/prioqueue.c -o driver
 
 compile driverListMap
-gcc Utility/start/start.c ADT/list/array.c ADT/map/map.c ADT/map/driverListMap.c ADT/map/listMap.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c Misc/ascii/ascii.c Misc/io/io.c -o driver
+gcc src/ADT/set/set.c src/ADT/set/listSet.c src/ADT/list/array.c src/ADT/map/map.c src/ADT/map/driverListMap.c src/ADT/map/listMap.c src/ADT/word/mesinkata/mesinkata.c src/ADT/word/mesinkarakter/mesinkarakter.c src/ADT/word/word.c src/Misc/ascii/ascii.c src/Misc/io/io.c -o driver
 
 compile driverMap
-gcc ADT/list/array.c ADT/map/driverMap.c ADT/map/map.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c Misc/ascii/ascii.c Misc/io/io.c -o driver
+gcc src/ADT/set/set.c src/ADT/set/listSet.c src/ADT/list/array.c src/ADT/map/driverMap.c src/ADT/map/map.c src/ADT/word/mesinkata/mesinkata.c src/ADT/word/mesinkarakter/mesinkarakter.c src/ADT/word/word.c src/Misc/ascii/ascii.c src/Misc/io/io.c -o driver
 
 compile driverPoint
-gcc point/driverPoint.c point/point.c -o driver
+gcc src/ADT/point/driverPoint.c src/ADT/point/point.c -o driver
 
 compile driverPrioqueue
-gcc ADT/queue/driverPrioqueue.c ADT/queue/prioqueue.c -o driver
+gcc src/ADT/queue/driverPrioqueue.c src/ADT/queue/prioqueue.c -o driver
 
 compile driverQueue2
-gcc ADT/queue/driverQueue2.c ADT/queue/queue2.c ADT/word/word.c Misc/ascii/ascii.c -o driver
+gcc src/ADT/queue/driverQueue2.c src/ADT/queue/queue2.c src/ADT/word/word.c src/Misc/ascii/ascii.c -o driver
 
 compile driverListSet
-gcc ADT/set/driverListSet.c ADT/set/listSet.c ADT/set/set.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c Misc/ascii/ascii.c -o driver
+gcc src/ADT/set/driverListSet.c src/ADT/set/listSet.c src/ADT/set/set.c src/ADT/word/mesinkata/mesinkata.c src/ADT/word/mesinkarakter/mesinkarakter.c src/ADT/word/word.c src/Misc/ascii/ascii.c -o driver
 
 compile driverset
-gcc ADT/set/driverset.c ADT/set/set.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c Misc/ascii/ascii.c -o driver
+gcc src/ADT/set/driverset.c src/ADT/set/set.c src/ADT/word/mesinkata/mesinkata.c src/ADT/word/mesinkarakter/mesinkarakter.c src/ADT/word/word.c src/Misc/ascii/ascii.c -o driver
 
 compile driverStack
-gcc ADT/stack/stack.c ADT/stack/driverStack.c -o driver
+gcc src/ADT/stack/stack.c src/ADT/stack/driverStack.c -o driver
 
 compile driverTree
-gcc driverTree.c tree.c -o driver
+gcc src/ADT/tree/driverTree.c src/ADT/tree/tree.c -o driver
 
 compile driverMesinKarakter
 gcc src/ADT/word/mesinkarakter/driverMesinKarakter.c src/ADT/word/mesinkarakter/mesinkarakter.c -o driver
@@ -45,4 +45,4 @@ compile driverMesinKata
 gcc src/ADT/word/mesinkata/driverMesinKata.c src/ADT/word/mesinkata/mesinkata.c src/ADT/word/mesinkarakter/mesinkarakter.c src/ADT/word/word.c src/Misc/ascii/ascii.c -o driver
 
 compile driverWord
-gcc ADT/word/driverWord.c ADT/word/word.c Misc/ascii/ascii.c -o driver
+gcc src/ADT/word/driverWord.c src/ADT/word/word.c src/Misc/ascii/ascii.c -o driver

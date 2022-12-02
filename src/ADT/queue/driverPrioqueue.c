@@ -38,4 +38,4 @@ int main()
     return 0;
 }
 
-// compile: gcc ADT/queue/driverPrioqueue.c ADT/queue/prioqueue.c -o driver
+// compile: gcc src/ADT/queue/driverPrioqueue.c src/ADT/queue/prioqueue.c -o driver

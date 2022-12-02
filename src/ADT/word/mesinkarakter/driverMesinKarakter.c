@@ -29,3 +29,5 @@ int main() {
     }
     printf("\n");
 }
+
+// compile : gcc src/ADT/word/mesinkarakter/driverMesinKarakter.c src/ADT/word/mesinkarakter/mesinkarakter.c -o driver

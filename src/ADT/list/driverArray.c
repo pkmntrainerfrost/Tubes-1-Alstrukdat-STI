@@ -44,4 +44,4 @@ int main()
     return 0;
 }
 
-// compile: gcc ADT/list/driverArray.c ADT/list/array.c ADT/word/word.c Misc/ascii/ascii.c -o driver
+// compile: gcc src/ADT/list/driverArray.c src/ADT/list/array.c src/ADT/word/word.c src/Misc/ascii/ascii.c -o driver

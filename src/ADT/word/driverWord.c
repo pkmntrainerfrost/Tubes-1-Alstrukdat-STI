@@ -27,7 +27,7 @@ int main()
     wordToString(test, s);
     printf("%s\n", s);
     test = intToWord(123);
-    Word a = stringToWord("123a");
+    Word a = stringToWord("123");
     int num = wordToInt(a);
     printf("print inttoword ");
     printWord(test);
@@ -36,4 +36,4 @@ int main()
     return 0;
 }
 
-// compile: gcc ADT/word/driverWord.c ADT/word/word.c Misc/ascii/ascii.c -o driver
+// compile: gcc src/ADT/word/driverWord.c src/ADT/word/word.c src/Misc/ascii/ascii.c -o driver
