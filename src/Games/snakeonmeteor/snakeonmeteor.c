@@ -27,7 +27,7 @@ void snakeonmeteor(ListMap *M, ListSet *S) {
     boolean Lose = false;
     boolean Hit = false;
 
-    int Move = 0;
+    int Move = 1;
 
     while (!Lose) {
         
@@ -41,9 +41,11 @@ void snakeonmeteor(ListMap *M, ListSet *S) {
             Word Input;
             boolean Valid = false;
 
+            printf("\nTURN %d:\n",Move);
+
             while (!Valid) {
 
-                printf("\nSilahkan masukkan command Anda [W/A/S/D]: ");
+                printf("Silahkan masukkan command Anda [W/A/S/D]: ");
                 
                 int InputValid = wordInput(&Input,1,1);
 
@@ -90,8 +92,15 @@ void snakeonmeteor(ListMap *M, ListSet *S) {
 
     int score;
     score = lengthLL(Snake) * 2;
-    printf("\n GAME OVER\n");
-    printf("SKOR: %d",score);
+
+    while (!isEmptyLL(Snake)) {
+        Address Temp;
+        deleteFirstLL(&Snake,&Temp);
+        deallocateNode(Temp);
+    }
+
+    printf("\nGAME OVER\n");
+    printf("SKOR: %d\n\n",score);
     
     inputDataListMap(M, S, 4, score);
 
@@ -104,7 +113,17 @@ void drawMap(SnakeGrid SG, LinkedList S, boolean Lose, boolean Hit, int LoseCond
 
     for (int i = 0; i < 5; i++) {
         
-        printf("                         |");
+        if (i == 0) { 
+            printf("                 KONTROL |");
+        } else if (i == 1) {
+            printf("                ATAS - W |");
+        } else if (i == 2) {
+            printf("               BAWAH - S |");
+        } else if (i == 3) {
+            printf("                KIRI - A |");
+        } else {
+            printf("               KANAN - D |");
+        }
         
         for (int j = 0; j < 5; j++) {
             
@@ -152,15 +171,15 @@ void drawMap(SnakeGrid SG, LinkedList S, boolean Lose, boolean Hit, int LoseCond
             printf("                         +-----+-----+-----+-----+-----+\n");
         } else if (i == 1) {
             printf("O - MAKANAN\n");
-            printf("                         +-----+-----+-----+-----+-----+ M - METEOR \n");
+            printf("                         +-----+-----+-----+-----+-----+\n");
         } else if (i == 2) {
-            printf("X - OBSTACLE\n");
+            printf("M - METEOR\n");
             printf("                         +-----+-----+-----+-----+-----+\n");
         } else if (i == 3) {
-            printf("H - KEPALA\n");
+            printf("X - OBSTACLE\n");
             printf("                         +-----+-----+-----+-----+-----+\n");
         } else {
-            printf("W/A/S/D UNTUK BERGERAK\n");
+            printf("H - KEPALA\n");
             printf("                         +-----+-----+-----+-----+-----+\n");
         }
 
@@ -444,15 +463,17 @@ void updateMeteor(SnakeGrid *SG) {
 
 }
 
-// int main() {
+/*
+ int main() {
 
-//     ListMap M;
-//     ListSet S;
-//     snakeonmeteor(&M, &S);
+     ListMap M;
+    ListSet S;
+    snakeonmeteor(&M, &S);
 
-//     return 0;
+    return 0;
 
-// }
+ }
+*/
 
 // ========
 //
@@ -470,3 +491,25 @@ void updateMeteor(SnakeGrid *SG) {
 //                    // +---+---+---+---+---+
 
 // gcc ADT/list/linkedList.c ADT/word/word.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/mesinkata/mesinkata.c ADT/point/point.c Games/snakeonmeteor/snakeonmeteor.c Utility/splash.c Misc/io/io.c Misc/ascii/ascii.c Games/random.c ADT/list/array.c -o snakeonmeteor
+
+/*
+                 
+   __            _____         _                   
+  {0O}          |   __|___ ___| |_ ___    ___ ___   
+  \__/          |__   |   | .'| '_| -_|  | . |   |  
+  /^/           |_____|_|_|__,|_,_|___|  |___|_|_|       
+ ( (             _____     _                  
+ \_\_____       |     |___| |_ ___ ___ ___      
+ (_______)      | | | | -_|  _| -_| . |  _| 
+(_________()Oo  |_|_|_|___|_| |___|___|_|     
+
+
+
+
+                           
+        
+
+        
+      
+                             
+*/
