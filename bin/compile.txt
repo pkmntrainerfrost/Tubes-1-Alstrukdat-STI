@@ -1,12 +1,15 @@
-compile program utama
+compile program utama:
 gcc -o main ./main.c ./src/ADT/list/linkedList.c ./src/Games/snakeonmeteor/snakeonmeteor.c ./src/ADT/tree/tree.c ./src/Games/tgg/tgg.c ./src/ADT/list/listDiner.c ./src/ADT/stack/stack.c ./src/ADT/set/set.c ./src/ADT/set/listSet.c ./src/Utility/scoreboard/scoreboard.c ./src/ADT/map/listMap.c ./src/ADT/map/map.c ./src/Utility/history/history.c ./src/Utility/splash.c ./src/Misc/io/io.c ./src/ADT/word/word.c ./src/ADT/list/array.c ./src/ADT/queue/queue2.c ./src/Utility/start/start.c ./src/Utility/load/load.c ./src/Utility/help/help.c ./src/Utility/commandlain/commandlain.c ./src/Utility/quit/quit.c ./src/Utility/listGame/listGame.c ./src/Utility/deleteGame/deleteGame.c ./src/Utility/playGame/playGame.c ./src/Utility/queuegame/queueGame.c ./src/Utility/skipGame/skipGame.c ./src/Utility/save/save.c ./src/Misc/ascii/ascii.c ./src/ADT/word/mesinkarakter/mesinkarakter.c ./src/ADT/word/mesinkata/mesinkata.c ./src/Games/battleship/battleship.c ./src/Games/towerofhanoi/towerOfHanoi.c ./src/Games/hangman/hangman.c ./src/Games/hangman/man.c ./src/Games/rng/rng.c ./src/Games/dinerdash/dinerdash.c ./src/Games/random.c ./src/ADT/point/point.c ./src/ADT/queue/prioqueue.c ./src/Utility/creategame/createGame.c 
 
+
+compile driver tiap ADT:
+harap lakukan cd src terlebih dahulu
 
 compile driverArray
 gcc ADT/list/driverArray.c ADT/list/array.c ADT/word/word.c Misc/ascii/ascii.c -o driver
 
 compile driverLinkedList
-segmentation error
+gcc src/ADT/point/point.c src/ADT/list/linkedList.c src/ADT/list/driverLinkedList.c -o driver
 
 compile driverListDiner
 gcc ADT/list/driverListDiner.c ADT/list/listDiner.c ADT/queue/prioqueue.c -o driver
@@ -39,10 +42,10 @@ compile driverTree
 gcc driverTree.c tree.c -o driver
 
 compile driverMesinKarakter
-gcc src/ADT/word/mesinkarakter/driverMesinKarakter.c src/ADT/word/mesinkarakter/mesinkarakter.c -o driver
+gcc ADT/word/mesinkarakter/driverMesinKarakter.c ADT/word/mesinkarakter/mesinkarakter.c -o driver
 
 compile driverMesinKata
-gcc src/ADT/word/mesinkata/driverMesinKata.c src/ADT/word/mesinkata/mesinkata.c src/ADT/word/mesinkarakter/mesinkarakter.c src/ADT/word/word.c src/Misc/ascii/ascii.c -o driver
+gcc ADT/word/mesinkata/driverMesinKata.c ADT/word/mesinkata/mesinkata.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/word.c Misc/ascii/ascii.c -o driver
 
 compile driverWord
 gcc ADT/word/driverWord.c ADT/word/word.c Misc/ascii/ascii.c -o driver
