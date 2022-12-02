@@ -478,7 +478,7 @@ printf("               /^/           |_____|_|_|__,|_,_|___|  |___|_|_|  \n");
 printf("               ( (             _____     _                        \n");
 printf("               \\_\\_____       |     |___| |_ ___ ___ ___          \n");
 printf("               (_______)      | | | | -_|  _| -_| . |  _|         \n");
-printf("               (_________()Oo  |_|_|_|___|_| |___|___|_|           \n");
+printf("               (_________()O  |_|_|_|___|_| |___|___|_|           \n");
 printf("\n");
 printf("               Men-generate peta, snake dan makanan.. Berhasil!\n");
 printf("                          Tekan enter untuk memulai..\n");
