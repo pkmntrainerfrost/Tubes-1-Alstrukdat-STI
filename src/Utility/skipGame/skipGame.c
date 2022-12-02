@@ -13,9 +13,7 @@ void skipGame(Queue *Q, List L, int n, List *listHist, ListMap *M, ListSet *S) {
     int i;
     QElType X;
     if (n>=Length(*Q)){
-        for(i=0; i<Length(*Q); i++){
-            dequeue(Q, &X);
-        }
+        createQueue(Q);
         printf("Tidak ada permainan lagi dalam daftar game-mu.\n");
         printf("Tekan [ENTER] untuk kembali ke menu utama...");
         blankInput();
