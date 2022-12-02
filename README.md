@@ -144,7 +144,6 @@ Untuk melakukan kompilasi, buka file compile.txt pada folder bin, lalu salin sel
         |           towerOfHanoi.h
         |
         ├───Misc
-        |   │   .DS_Store
         |   │
         |   ├───ascii
         |   │       ascii.c

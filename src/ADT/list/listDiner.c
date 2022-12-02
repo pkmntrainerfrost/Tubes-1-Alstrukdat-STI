@@ -138,7 +138,11 @@ void printCookingDiner(ListDiner L)
 	} else {
 		int i = 0;
 		while (i < L.nEff){
-            printf("M%d      | %d              \n", L.Data[i].foodId, L.Data[i].cookTime);
+            if (L.Data[i].foodId < 10){
+                printf("M%d      | %d              \n", L.Data[i].foodId, L.Data[i].cookTime);
+            } else {
+                printf("M%d     | %d              \n", L.Data[i].foodId, L.Data[i].cookTime);
+            }
 			i++;
 		}
 	}
@@ -155,7 +159,11 @@ void printServingDiner(ListDiner L)
 	} else {
 		int i = 0;
 		while (i < L.nEff){
-			printf("M%d      | %d              \n", L.Data[i].foodId, L.Data[i].stayTime);
+            if (L.Data[i].foodId < 10){
+			    printf("M%d      | %d              \n", L.Data[i].foodId, L.Data[i].stayTime);
+            } else {
+                printf("M%d     | %d              \n", L.Data[i].foodId, L.Data[i].stayTime);
+            }
 			i++;
 		}
 	}

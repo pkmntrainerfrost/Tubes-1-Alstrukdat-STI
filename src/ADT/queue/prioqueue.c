@@ -96,7 +96,7 @@ void printOrders(PrioQueue pq){
 		PQElType val;
 		int i = IDX_HEAD(pq);
 		while (i != IDX_TAIL(pq)+1){
-			if (i < 10){
+			if (pq.buffer[i].foodId < 10){
 				printf("M%d      | %d              | %d         | %d\n", pq.buffer[i].foodId, pq.buffer[i].cookTime, pq.buffer[i].stayTime, pq.buffer[i].price);
 			} else {
 				printf("M%d     | %d              | %d         | %d\n", pq.buffer[i].foodId, pq.buffer[i].cookTime, pq.buffer[i].stayTime, pq.buffer[i].price);
