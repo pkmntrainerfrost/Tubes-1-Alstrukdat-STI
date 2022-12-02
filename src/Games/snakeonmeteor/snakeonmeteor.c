@@ -61,7 +61,6 @@ void snakeonmeteor() {
                         }
                     }
                 } else {
-                    printf("Masuk");
                     if (wordLength(Input) == 0) {
                         printf("kosong\n");
                     } else {
@@ -76,7 +75,7 @@ void snakeonmeteor() {
             }
 
             if (!Lose) {
-                updateMeteor(&Grid);   
+                updateMeteor(&Grid);  
                 hit(&Grid,&Snake,&Lose,&Hit);
             }
 
@@ -162,10 +161,10 @@ void drawMap(SnakeGrid SG, LinkedList S, boolean Lose, boolean Hit, int Turns) {
         printf("                    Masukkan W/A/S/D untuk mulai bermain...\n");
     } else {
         if (Lose) {
-            if (isPointEqual(Info(First(S)),SG.obstacle)) {
-                printf("Kena obstacle lmao\n");
-            } else if (Hit) {
+            if (Hit) {
                 printf("Kena meteor\n");
+            } else if (isPointEqual(Info(First(S)),SG.obstacle)) {
+                printf("Kena obstacle\n");
             } else if (noMoreMoves) {
                 printf("dah nggak bisa kemana2\n");
             } else {
@@ -355,12 +354,13 @@ int move(SnakeGrid *SG, LinkedList *S, Word D, boolean *Lose) {
     createPoint(&MoveToMeteor,-2,-2);
 
     if (isFirstQuadrant(NP)) {
-        for (int i = lengthLL(*S) - 1; i > 0; i--) {
-            setElmtLL(S,i,getElmtLL(*S,i-1));
-        }
-        setElmtLL(S,0,NP);
         if (isPointEqual(NP,SG->obstacle)) {
             *Lose = true;
+        } else {
+            for (int i = lengthLL(*S) - 1; i > 0; i--) {
+                setElmtLL(S,i,getElmtLL(*S,i-1));
+            }
+            setElmtLL(S,0,NP);
         }
         return 0;
     } else {
