@@ -15,6 +15,7 @@ typedef struct {
 } SnakeGrid;
 
 void drawMap(SnakeGrid SG, LinkedList S, boolean Lose, boolean Hit, int LoseCondition, int Turns);
+
 void snakeonmeteor(ListMap *M, ListSet *S);
 
 Point validMove(SnakeGrid SG, LinkedList S, Word D);
@@ -34,5 +35,7 @@ void updateFood(SnakeGrid *SG, LinkedList S);
 void updateMeteor(SnakeGrid *SG);
 
 boolean noMoreMoves(SnakeGrid SG, LinkedList S);
+
+void snakeSplash();
 
 #endif

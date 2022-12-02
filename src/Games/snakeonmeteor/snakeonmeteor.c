@@ -3,6 +3,13 @@
 
 void snakeonmeteor(ListMap *M, ListSet *S) {
 
+    header();
+
+    snakeSplash();
+
+    printf("\n\nPress [ENTER] to continue...");
+    blankInput();
+
     LinkedList Snake;
     createLL(&Snake);
 
@@ -463,6 +470,19 @@ void updateMeteor(SnakeGrid *SG) {
 
 }
 
+void snakeSplash()
+{               
+printf("           __            _____         _                    \n");
+printf("          {0O}          |   __|___ ___| |_ ___    ___ ___   \n");
+printf("          \\__/          |__   |   | .'| '_| -_|  | . |   |  \n"); 
+printf("          /^/           |_____|_|_|__,|_,_|___|  |___|_|_|  \n");       
+printf("         ( (             _____     _                        \n");
+printf("         \\_\\_____       |     |___| |_ ___ ___ ___          \n");
+printf("         (_______)      | | | | -_|  _| -_| . |  _|         \n");
+printf("        (_________()Oo  |_|_|_|___|_| |___|___|_|           \n");
+                           
+}
+
 /*
  int main() {
 
@@ -491,25 +511,3 @@ void updateMeteor(SnakeGrid *SG) {
 //                    // +---+---+---+---+---+
 
 // gcc ADT/list/linkedList.c ADT/word/word.c ADT/word/mesinkarakter/mesinkarakter.c ADT/word/mesinkata/mesinkata.c ADT/point/point.c Games/snakeonmeteor/snakeonmeteor.c Utility/splash.c Misc/io/io.c Misc/ascii/ascii.c Games/random.c ADT/list/array.c -o snakeonmeteor
-
-/*
-                 
-   __            _____         _                   
-  {0O}          |   __|___ ___| |_ ___    ___ ___   
-  \__/          |__   |   | .'| '_| -_|  | . |   |  
-  /^/           |_____|_|_|__,|_,_|___|  |___|_|_|       
- ( (             _____     _                  
- \_\_____       |     |___| |_ ___ ___ ___      
- (_______)      | | | | -_|  _| -_| . |  _| 
-(_________()Oo  |_|_|_|___|_| |___|___|_|     
-
-
-
-
-                           
-        
-
-        
-      
-                             
-*/
