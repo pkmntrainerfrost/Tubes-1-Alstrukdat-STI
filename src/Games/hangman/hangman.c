@@ -443,7 +443,7 @@ printf("                    | |          || ||              \n");
 printf("                    | |         / | | \\             \n");
 printf("                                `-' `-'            \n");
 printf("\n\n");
-printf("                            Guess the WORD or else ...\n");
+printf("                            Guess the COUNTRY or else ...\n");
 printf("\n\n");
 }
 

@@ -260,9 +260,8 @@ void genieSplash()
 {
 printf("\nWELCOME TO THE GAME!\n\n");
 
-printf("                _.---.__                \n");
-printf("              .'        `-.             \n");
-printf("             /      .--.   |            \n");
+printf("                _.---.___               \n");
+printf("             /      ____  \\            \n");
 printf("            \\/  / /    |_/             \n");
 printf("             `\\/|/    _(_)             \n");
 printf("           ___  /|_.--'    `.   .       \n");
@@ -274,18 +273,16 @@ printf("           \\|  |  |   /        |       \n");
 printf("           __\\@/  |@ | ___ \\--'        \n");    
 printf("          (     /' `--'  __)|           \n");
 printf("         __>   (  .  .--' & \\           \n");
-printf("        /   `--|_/--'     &  |          \n");
-printf("        |                 #. |          \n");
+printf("        |   `--|_/--'     &  |          \n");
 printf("         \\              ,ad#'           \n");
 printf("          `.________.ad####'            \n");
 printf("            `#####""""""''              \n");
-printf("             `&#/                       \n");
-printf("              &#  &                     \n");
-printf("               #//                    \n");
+printf("              &#   &                     \n");
+printf("               #__//                    \n");
 
 printf("\n                          MEET OUR GUESSING GENIE!\n");
 
-printf("\n\nThink of an animal!\n"); 
+printf("\n\nThink of an ANIMAL!\n"); 
 printf("I bet i can guess what animal you're thinking of with just 5 questions!\n\n");
 }
 
