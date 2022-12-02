@@ -11,7 +11,7 @@ typedef struct {
     Point food;
 } SnakeGrid;
 
-void drawMap(SnakeGrid SG, LinkedList S, boolean Lose, boolean Hit, int Turns);
+void drawMap(SnakeGrid SG, LinkedList S, boolean Lose, boolean Hit, int LoseCondition, int Turns);
 
 Point validMove(SnakeGrid SG, LinkedList S, Word D);
 
@@ -19,11 +19,11 @@ Point checkGrow(SnakeGrid SG, LinkedList S);
 
 void spawn(LinkedList *S);
 
-int move(SnakeGrid *SG, LinkedList *S, Word D, boolean *Lose);
+int move(SnakeGrid *SG, LinkedList *S, Word D, boolean *Lose, int *LoseCondition);
 
-void hit(SnakeGrid *SG, LinkedList *S, boolean *Lose, boolean *Hit);
+void hit(SnakeGrid *SG, LinkedList *S, boolean *Lose, boolean *Hit, int *LoseCondition);
 
-void grow(SnakeGrid *SG, LinkedList *S, boolean *Lose);
+void grow(SnakeGrid *SG, LinkedList *S, boolean *Lose, int *LoseCondition);
 
 void updateFood(SnakeGrid *SG, LinkedList S);
 

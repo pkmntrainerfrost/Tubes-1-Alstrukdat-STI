@@ -25,6 +25,7 @@ void snakeonmeteor() {
 
     Grid.food = copyPoint(O);
 
+    int LoseCondition = 0;
     boolean Lose = false;
     boolean Hit = false;
 
@@ -37,46 +38,48 @@ void snakeonmeteor() {
 
         if (!Lose) {
 
-            drawMap(Grid,Snake,Lose,Hit,Move);
+            drawMap(Grid,Snake,Lose,Hit,LoseCondition,Move);
 
             Word Input;
             boolean Valid = false;
 
             while (!Valid) {
+
+                printf("\nSilahkan masukkan command Anda [W/A/S/D]: ");
                 
                 int InputValid = wordInput(&Input,1,1);
 
                 if (InputValid) {
-                    int ValidMove = move(&Grid,&Snake,Input,&Lose);
+                    int ValidMove = move(&Grid,&Snake,Input,&Lose,&LoseCondition);
                     if (ValidMove == 0) {
                         Valid = true;
                         Move = Move + 1;
                     } else {
                         if (ValidMove == 1) {
-                            printf("Dilarang\n");
+                            printf("Snake tidak boleh bergerak ke diri sendiri!");
                         } else if (ValidMove == 2) {
-                            printf("Dilarang\n");
+                            printf("Meteor masih panas! Anda belum dapat kembali ke titik tersebut.");
                         } else {
-                            printf("INPUT TIDAK VALID\n");
+                            printf("Masukan tidak valid!");
                         }
                     }
                 } else {
                     if (wordLength(Input) == 0) {
-                        printf("kosong\n");
+                        printf("Masukan tidak boleh kosong!");
                     } else {
-                        printf("input tidak valid\n");
+                        printf("Masukan tidak valid!");
                     }
                 }
 
             }
 
             if (!Lose) {
-                grow(&Grid,&Snake,&Lose);
+                grow(&Grid,&Snake,&Lose,&LoseCondition);
             }
 
             if (!Lose) {
                 updateMeteor(&Grid);  
-                hit(&Grid,&Snake,&Lose,&Hit);
+                hit(&Grid,&Snake,&Lose,&Hit,&LoseCondition);
             }
 
         }
@@ -85,54 +88,58 @@ void snakeonmeteor() {
 
     header();
     
-    drawMap(Grid,Snake,Lose,Hit,Move);
+    drawMap(Grid,Snake,Lose,Hit,LoseCondition,Move);
 
-    printf("\n GAME OVER\n");
+    printf("\nGAME OVER\n");
     printf("SKOR: %d",lengthLL(Snake) * 2);
 
 }
 
-void drawMap(SnakeGrid SG, LinkedList S, boolean Lose, boolean Hit, int Turns) {
+void drawMap(SnakeGrid SG, LinkedList S, boolean Lose, boolean Hit, int LoseCondition, int Turns) {
 
-    printf("                                SNAKE ON METEOR\n");
-    printf("                             +---+---+---+---+---+\n");
+    printf("                                 SNAKE ON METEOR\n");
+    printf("                         +-----+-----+-----+-----+-----+\n");
 
     for (int i = 0; i < 5; i++) {
         
-        printf("                             |");
+        printf("                         |");
         
         for (int j = 0; j < 5; j++) {
             
-            printf(" ");
+            printf("  ");
 
             Point P;
             createPoint(&P,j,i);
 
             if (isPointEqual(P,SG.food)) {
-                printf("O");
+                printf("O  ");
             } else if (isPointEqual(P,SG.meteor)) {
-                printf("M");
+                printf("M  ");
             } else if (isPointEqual(P,SG.obstacle)) {
-                printf("X");
+                printf("X  ");
             } else {
                 int Body = getIdxLL(S,P);   
                 if (Body == -1) {
-                    printf(" ");
+                    printf("   ");
                 } else if (Body == 0) {
                     if (Lose && Hit) {
-                        printf("1");
+                        printf("1  ");
                     } else {
-                        printf("H");
+                        printf("H  ");
                     }
                 } else {
                     if (Lose && Hit) {
                         Body = Body + 1;
                     }
                     printf("%d",Body);
+                    if (Body < 10) {
+                        printf(" ");
+                    }
+                    printf(" ");
                 }
             }
 
-            printf(" |");
+            printf("|");
     
         }
 
@@ -140,46 +147,46 @@ void drawMap(SnakeGrid SG, LinkedList S, boolean Lose, boolean Hit, int Turns) {
 
         if (i == 0) {
             printf("LEGENDA\n");
-            printf("                             +---+---+---+---+---+\n");
+            printf("                         +-----+-----+-----+-----+-----+\n");
         } else if (i == 1) {
             printf("O - MAKANAN\n");
-            printf("                             +---+---+---+---+---+ M - METEOR \n");
+            printf("                         +-----+-----+-----+-----+-----+ M - METEOR \n");
         } else if (i == 2) {
             printf("X - OBSTACLE\n");
-            printf("                             +---+---+---+---+---+\n");
+            printf("                         +-----+-----+-----+-----+-----+\n");
         } else if (i == 3) {
             printf("H - KEPALA\n");
-            printf("                             +---+---+---+---+---+\n");
+            printf("                         +-----+-----+-----+-----+-----+\n");
         } else {
             printf("W/A/S/D UNTUK BERGERAK\n");
-            printf("                             +---+---+---+---+---+\n");
+            printf("                         +-----+-----+-----+-----+-----+\n");
         }
 
     }
 
     if (Turns == 0) {
-        printf("                    Masukkan W/A/S/D untuk mulai bermain...\n");
+        printf("                     Masukkan W/A/S/D untuk mulai bermain...\n");
     } else {
         if (Lose) {
-            if (Hit) {
-                printf("Kena meteor\n");
-            } else if (isPointEqual(Info(First(S)),SG.obstacle)) {
-                printf("Kena obstacle\n");
-            } else if (noMoreMoves) {
-                printf("dah nggak bisa kemana2\n");
+            if (LoseCondition == 1) {
+                printf("                     Kepala snake terkena meteor! Game over!\n");
+            } else if (LoseCondition == 2) {
+                printf("                       Snake menabrak obstacle! Game over!\n");
+            } else if (LoseCondition == 3) {
+                printf("                    Ekor snake tidak dapat tumbuh! Game over!\n");
             } else {
-                printf("ndak bisa tumbuh\n");
+                printf("                   Snake tidak lagi dapat bergerak! Game over!\n");
             }
         } else {
             if (!Hit) {
-                printf("jalan\n");
+                printf("                Berhasil bergerak! Silahkan lanjutkan permainan..\n");
             } else {
-                printf("kena\n");
+                printf("               Anda terkena meteor! Silahkan lanjutkan permainan..\n");
             }
         }
     }
 
-    printf("\n=================\n");
+    printf("\n================================================================================\n");
 
 }
 
@@ -343,7 +350,7 @@ void spawn(LinkedList *S) {
 
 }
 
-int move(SnakeGrid *SG, LinkedList *S, Word D, boolean *Lose) {
+int move(SnakeGrid *SG, LinkedList *S, Word D, boolean *Lose, int *LoseCondition) {
 
     Point P = copyPoint(Info(First(*S)));
     Point NP = validMove(*SG,*S,D);
@@ -355,6 +362,7 @@ int move(SnakeGrid *SG, LinkedList *S, Word D, boolean *Lose) {
 
     if (isFirstQuadrant(NP)) {
         if (isPointEqual(NP,SG->obstacle)) {
+            *LoseCondition = 2;
             *Lose = true;
         } else {
             for (int i = lengthLL(*S) - 1; i > 0; i--) {
@@ -375,13 +383,14 @@ int move(SnakeGrid *SG, LinkedList *S, Word D, boolean *Lose) {
 
 }
 
-void hit(SnakeGrid *SG, LinkedList *S, boolean *Lose, boolean *Hit) {
+void hit(SnakeGrid *SG, LinkedList *S, boolean *Lose, boolean *Hit, int *LoseCondition) {
 
     Address H = searchLL(*S,SG->meteor);
 
     if (H != NIL) {
         if (H == First(*S) || lengthLL(*S) == 1) {
             *Lose = true;
+            *LoseCondition = 1;
         }
         *Hit = true;
         delAddressLL(S,SG->meteor);
@@ -391,7 +400,7 @@ void hit(SnakeGrid *SG, LinkedList *S, boolean *Lose, boolean *Hit) {
 
 }
 
-void grow(SnakeGrid *SG, LinkedList *S, boolean *Lose) {
+void grow(SnakeGrid *SG, LinkedList *S, boolean *Lose, int *LoseCondition) {
 
     Point Invalid;
     createPoint(&Invalid,-1,-1);
@@ -399,6 +408,7 @@ void grow(SnakeGrid *SG, LinkedList *S, boolean *Lose) {
     if (isPointEqual(Info(First(*S)),SG->food)) {
         Point Grow = checkGrow(*SG,*S);
         if (isPointEqual(Grow,Invalid)) {
+            *LoseCondition = 3;
             *Lose = true;
         } else {
             insVLastLL(S,Grow);
