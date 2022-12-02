@@ -24,6 +24,9 @@ void resetHist(List *listHist){
 
 void history(List listHist, int num){
     int i;
+
+    header();
+
     if (length(listHist) > 0){
         printf("Berikut adalah daftar Game yang telah dimainkan\n");
         if (num < length(listHist)){

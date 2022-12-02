@@ -21,6 +21,9 @@ void addSet(ListSet *S, List listGame){
 
 void scoreboard(ListMap *M, List L){
     // sort
+
+    header();
+
     int i;
     for(i=0; i<(*M).nEff; i++){
         sortMap(&(*M).ElmtListMap[i]);
@@ -29,6 +32,9 @@ void scoreboard(ListMap *M, List L){
 }
 
 void resetScoreboard(ListMap *M, ListSet *S, List listGame){
+
+    header();
+
     boolean repeat = true;
 
     while (repeat){
