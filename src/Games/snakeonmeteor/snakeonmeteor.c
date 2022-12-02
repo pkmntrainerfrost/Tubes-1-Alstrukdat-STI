@@ -278,28 +278,44 @@ Point checkGrow(SnakeGrid SG, LinkedList S) {
     Point Tail = copyPoint(Info(Last(S)));
 
     Point Grow = translate(Tail,-1,0);
-    ABSCISSA(Grow) = ABSCISSA(Grow) % 5;
+    if (ABSCISSA(Grow) < 0) {
+            ABSCISSA(Grow) = 4;
+        } else {
+            ABSCISSA(Grow) = ABSCISSA(Grow) % 5;
+        }
 
     if (!isPointEqual(Grow,SG.meteor) && !isPointEqual(Grow,SG.obstacle) && (searchLL(S,Grow) == NIL)) {
         return Grow;
     }
 
     Grow = translate(Tail,0,-1);
-    ORDINATE(Grow) = ORDINATE(Grow) % 5;
+    if (ORDINATE(Grow) < 0) {
+            ORDINATE(Grow) = 4;
+        } else {
+            ORDINATE(Grow) = ORDINATE(Grow) % 5;
+        }
 
     if (!isPointEqual(Grow,SG.meteor) && !isPointEqual(Grow,SG.obstacle) && (searchLL(S,Grow) == NIL)) {
         return Grow;
     }
 
     Grow = translate(Tail,0,1);
-    ORDINATE(Grow) = ORDINATE(Grow) % 5;
+    if (ORDINATE(Grow) < 0) {
+            ORDINATE(Grow) = 4;
+        } else {
+            ORDINATE(Grow) = ORDINATE(Grow) % 5;
+        }
 
     if (!isPointEqual(Grow,SG.meteor) && !isPointEqual(Grow,SG.obstacle) && (searchLL(S,Grow) == NIL)) {
         return Grow;
     }
 
     Grow = translate(Tail,1,0);
-    ABSCISSA(Grow) = ABSCISSA(Grow) % 5;
+    if (ABSCISSA(Grow) < 0) {
+            ABSCISSA(Grow) = 4;
+        } else {
+            ABSCISSA(Grow) = ABSCISSA(Grow) % 5;
+        }
 
     if (!isPointEqual(Grow,SG.meteor) && !isPointEqual(Grow,SG.obstacle) && (searchLL(S,Grow) == NIL)) {
         return Grow;
