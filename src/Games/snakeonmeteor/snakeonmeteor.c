@@ -1,9 +1,7 @@
-#include "../../Utility/splash.h"
-#include "snakeonmeteor.h"
-#include "../random.h"
 #include <stdio.h>
+#include "snakeonmeteor.h"
 
-void snakeonmeteor() {
+void snakeonmeteor(ListMap *M, ListSet *S) {
 
     LinkedList Snake;
     createLL(&Snake);
@@ -90,8 +88,12 @@ void snakeonmeteor() {
     
     drawMap(Grid,Snake,Lose,Hit,LoseCondition,Move);
 
-    printf("\nGAME OVER\n");
-    printf("SKOR: %d",lengthLL(Snake) * 2);
+    int score;
+    score = lengthLL(Snake) * 2;
+    printf("\n GAME OVER\n");
+    printf("SKOR: %d",score);
+    
+    inputDataListMap(M, S, 4, score);
 
 }
 
@@ -442,13 +444,15 @@ void updateMeteor(SnakeGrid *SG) {
 
 }
 
-int main() {
+// int main() {
 
-    snakeonmeteor();
+//     ListMap M;
+//     ListSet S;
+//     snakeonmeteor(&M, &S);
 
-    return 0;
+//     return 0;
 
-}
+// }
 
 // ========
 //

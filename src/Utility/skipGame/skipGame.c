@@ -43,7 +43,7 @@ void skipGame(Queue *Q, List L, int n, List *listHist, ListMap *M, ListSet *S) {
             } else if (isSameWord(y, stringToWord("TOWER OF HANOI"))){
                 towerOfHanoi(M, S);
             } else if (isSameWord(y, stringToWord("SNAKE ON METEOR"))){
-                // snakeOnMeteor();
+                snakeonmeteor(M, S);
             } else if (isSameWord(y, stringToWord("Battleship"))){
                 battleship(M, S);
             } else if (isSameWord(y, stringToWord("The Guessing Genie"))){
