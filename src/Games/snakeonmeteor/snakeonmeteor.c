@@ -120,13 +120,13 @@ void drawMap(SnakeGrid SG, LinkedList S, boolean Lose, boolean Hit, int Turns) {
                 if (Body == -1) {
                     printf(" ");
                 } else if (Body == 0) {
-                    if (!Lose) {
-                        printf("H");
-                    } else {
+                    if (Lose && Hit) {
                         printf("1");
+                    } else {
+                        printf("H");
                     }
                 } else {
-                    if (Lose) {
+                    if (Lose && Hit) {
                         Body = Body + 1;
                     }
                     printf("%d",Body);
